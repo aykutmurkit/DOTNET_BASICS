@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "test",
-    "version": "1.0"
+    "title": "Device Management API",
+    "description": "API for managing devices and their APN settings",
+    "version": "v1"
   },
   "paths": {
     "/api/ApnAddress": {
@@ -10,6 +11,7 @@
         "tags": [
           "ApnAddress"
         ],
+        "summary": "Get all items",
         "responses": {
           "200": {
             "description": "Success",
@@ -46,28 +48,41 @@
         "tags": [
           "ApnAddress"
         ],
+        "summary": "Create a new item",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnAddressDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnAddressDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnAddressDto"
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -82,6 +97,26 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApnAddressDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -94,6 +129,7 @@
         "tags": [
           "ApnAddress"
         ],
+        "summary": "Get item by id",
         "parameters": [
           {
             "name": "id",
@@ -126,6 +162,26 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -133,6 +189,7 @@
         "tags": [
           "ApnAddress"
         ],
+        "summary": "Update an existing item",
         "parameters": [
           {
             "name": "id",
@@ -149,17 +206,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnAddressDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnAddressDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnAddressDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnAddressDto"
+                  }
+                ]
               }
             }
           }
@@ -184,6 +253,46 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -191,6 +300,7 @@
         "tags": [
           "ApnAddress"
         ],
+        "summary": "Delete an item",
         "parameters": [
           {
             "name": "id",
@@ -204,8 +314,28 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success"
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -215,6 +345,7 @@
         "tags": [
           "ApnName"
         ],
+        "summary": "Get all items",
         "responses": {
           "200": {
             "description": "Success",
@@ -251,28 +382,41 @@
         "tags": [
           "ApnName"
         ],
+        "summary": "Create a new item",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnNameDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnNameDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnNameDto"
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -287,6 +431,26 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApnNameDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -299,6 +463,7 @@
         "tags": [
           "ApnName"
         ],
+        "summary": "Get item by id",
         "parameters": [
           {
             "name": "id",
@@ -331,6 +496,26 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -338,6 +523,7 @@
         "tags": [
           "ApnName"
         ],
+        "summary": "Update an existing item",
         "parameters": [
           {
             "name": "id",
@@ -354,17 +540,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnNameDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnNameDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnNameDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnNameDto"
+                  }
+                ]
               }
             }
           }
@@ -389,6 +587,46 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -396,6 +634,7 @@
         "tags": [
           "ApnName"
         ],
+        "summary": "Delete an item",
         "parameters": [
           {
             "name": "id",
@@ -409,8 +648,28 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success"
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -420,6 +679,7 @@
         "tags": [
           "ApnPassword"
         ],
+        "summary": "Get all items",
         "responses": {
           "200": {
             "description": "Success",
@@ -456,28 +716,41 @@
         "tags": [
           "ApnPassword"
         ],
+        "summary": "Create a new item",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnPasswordDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnPasswordDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateApnPasswordDto"
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -492,6 +765,26 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApnPasswordDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -504,6 +797,7 @@
         "tags": [
           "ApnPassword"
         ],
+        "summary": "Get item by id",
         "parameters": [
           {
             "name": "id",
@@ -533,6 +827,26 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApnPasswordDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -543,6 +857,7 @@
         "tags": [
           "ApnPassword"
         ],
+        "summary": "Update an existing item",
         "parameters": [
           {
             "name": "id",
@@ -559,17 +874,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateApnPasswordDto"
+                  }
+                ]
               }
             }
           }
@@ -591,6 +918,46 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApnPasswordDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -601,6 +968,7 @@
         "tags": [
           "ApnPassword"
         ],
+        "summary": "Delete an item",
         "parameters": [
           {
             "name": "id",
@@ -614,292 +982,28 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Device/details": {
-      "get": {
-        "tags": [
-          "Device"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDetailDto"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDetailDto"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDetailDto"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/Device/details/{id}": {
-      "get": {
-        "tags": [
-          "Device"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDetailDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDetailDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDetailDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Device": {
-      "get": {
-        "tags": [
-          "Device"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeviceDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Device"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDeviceDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDeviceDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDeviceDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Device/{id}": {
-      "get": {
-        "tags": [
-          "Device"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Device"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDeviceDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDeviceDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDeviceDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeviceDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Device"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
           }
         }
       }
@@ -1006,109 +1110,32 @@
         },
         "additionalProperties": false
       },
-      "CreateDeviceDto": {
+      "ProblemDetails": {
         "type": "object",
         "properties": {
-          "name": {
+          "type": {
             "type": "string",
             "nullable": true
           },
-          "serialNumber": {
+          "title": {
             "type": "string",
             "nullable": true
           },
-          "apnNameId": {
+          "status": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "apnPasswordId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "apnAddressId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DeviceDetailDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
+          "detail": {
             "type": "string",
             "nullable": true
           },
-          "serialNumber": {
+          "instance": {
             "type": "string",
-            "nullable": true
-          },
-          "apnNameId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "apnPasswordId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "apnAddressId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedDate": {
-            "type": "string",
-            "format": "date-time",
             "nullable": true
           }
         },
-        "additionalProperties": false
-      },
-      "DeviceDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "serialNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "apnName": {
-            "type": "string",
-            "nullable": true
-          },
-          "apnPassword": {
-            "type": "string",
-            "nullable": true
-          },
-          "apnAddress": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
+        "additionalProperties": { }
       },
       "UpdateApnAddressDto": {
         "type": "object",
@@ -1144,36 +1171,6 @@
           "password": {
             "type": "string",
             "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateDeviceDto": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "serialNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "apnNameId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "apnPasswordId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "apnAddressId": {
-            "type": "integer",
-            "format": "int32"
           },
           "id": {
             "type": "integer",

@@ -281,3 +281,6 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.csproj.Up2Date
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.genruntimeconfig.cache
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\ref\test.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\bin\Debug\net8.0\test.xml
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.xml

@@ -41,7 +41,16 @@
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
@@ -68,6 +77,15 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -99,6 +117,24 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -116,7 +152,22 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
   },
   {
     "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -160,7 +211,16 @@
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
@@ -187,6 +247,15 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -218,6 +287,24 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -235,7 +322,22 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
   },
   {
     "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -279,7 +381,16 @@
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
@@ -306,6 +417,15 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -337,6 +457,24 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
@@ -354,10 +492,25 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.Device, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.DeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.DeviceController",
     "Method": "GetAll",
     "RelativePath": "api/Device",
     "HttpMethod": "GET",
@@ -374,10 +527,13 @@
         ],
         "StatusCode": 200
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.Device, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.DeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.DeviceController",
     "Method": "Create",
     "RelativePath": "api/Device",
     "HttpMethod": "POST",
@@ -398,12 +554,24 @@
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.Device, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.DeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.DeviceController",
     "Method": "GetById",
     "RelativePath": "api/Device/{id}",
     "HttpMethod": "GET",
@@ -425,11 +593,23 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.Device, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.DeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.DeviceController",
     "Method": "Update",
     "RelativePath": "api/Device/{id}",
     "HttpMethod": "PUT",
@@ -456,11 +636,32 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.Device, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.DeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateDeviceDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.DeviceController",
     "Method": "Delete",
     "RelativePath": "api/Device/{id}",
     "HttpMethod": "DELETE",
@@ -473,7 +674,25 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Device Management"
+    ]
   },
   {
     "ContainingType": "test.Controllers.DeviceController",
@@ -493,6 +712,9 @@
         ],
         "StatusCode": 200
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   },
   {
@@ -518,7 +740,19 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Device Management"
     ]
   }
 ]

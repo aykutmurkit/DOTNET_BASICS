@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>test</name>
+    </assembly>
+    <members>
+        <member name="M:test.Controllers.BaseController`4.GetAll">
+            <summary>
+            Get all items
+            </summary>
+        </member>
+        <member name="M:test.Controllers.BaseController`4.GetById(System.Int32)">
+            <summary>
+            Get item by id
+            </summary>
+        </member>
+        <member name="M:test.Controllers.BaseController`4.Create(`2)">
+            <summary>
+            Create a new item
+            </summary>
+        </member>
+        <member name="M:test.Controllers.BaseController`4.Update(System.Int32,`3)">
+            <summary>
+            Update an existing item
+            </summary>
+        </member>
+        <member name="M:test.Controllers.BaseController`4.Delete(System.Int32)">
+            <summary>
+            Delete an item
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.GetAll">
+            <summary>
+            Get all devices
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.GetById(System.Int32)">
+            <summary>
+            Get device by id
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.GetAllDetails">
+            <summary>
+            Get all devices with details
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.GetDetailById(System.Int32)">
+            <summary>
+            Get device details by id
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.Create(test.DTOs.CreateDeviceDto)">
+            <summary>
+            Create a new device
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.Update(System.Int32,test.DTOs.UpdateDeviceDto)">
+            <summary>
+            Update an existing device
+            </summary>
+        </member>
+        <member name="M:test.Controllers.DeviceController.Delete(System.Int32)">
+            <summary>
+            Delete a device
+            </summary>
+        </member>
+    </members>
+</doc>
