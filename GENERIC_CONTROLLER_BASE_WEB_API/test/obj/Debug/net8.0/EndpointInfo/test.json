@@ -620,6 +620,85 @@
         }
       }
     },
+    "/api/Device/details": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceDetailDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceDetailDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceDetailDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Device/details/{id}": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDetailDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDetailDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDetailDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Device": {
       "get": {
         "tags": [
@@ -824,45 +903,6 @@
           }
         }
       }
-    },
-    "/WeatherForecast": {
-      "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
-        "operationId": "GetWeatherForecast",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -992,6 +1032,45 @@
         },
         "additionalProperties": false
       },
+      "DeviceDetailDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "apnNameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "apnPasswordId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "apnAddressId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DeviceDto": {
         "type": "object",
         "properties": {
@@ -1099,29 +1178,6 @@
           "id": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "WeatherForecast": {
-        "type": "object",
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "temperatureC": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "temperatureF": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "summary": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

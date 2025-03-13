@@ -4,9 +4,9 @@ using test.Entities;
 
 namespace test.Services
 {
-    public class ApnNameService : BaseService<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto>
+    public class SettingService : BaseService<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto>
     {
-        public ApnNameService(IRepository<ApnName> repository) : base(repository) { }
+        public SettingService(IRepository<ApnName> repository) : base(repository) { }
 
         protected override ApnNameDto MapToDto(ApnName entity)
         {

@@ -30,6 +30,40 @@ namespace test.Services
             };
         }
 
+        public async Task<DeviceDetailDto> GetDeviceDetailByIdAsync(int id)
+        {
+            var entity = await _repository.GetByIdAsync(id);
+            if (entity == null) return null;
+
+            return new DeviceDetailDto
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                SerialNumber = entity.SerialNumber,
+                ApnNameId = entity.ApnNameId,
+                ApnPasswordId = entity.ApnPasswordId,
+                ApnAddressId = entity.ApnAddressId,
+                CreatedDate = entity.CreatedDate,
+                UpdatedDate = entity.UpdatedDate
+            };
+        }
+
+        public async Task<IEnumerable<DeviceDetailDto>> GetAllDeviceDetailsAsync()
+        {
+            var entities = await _repository.GetAllAsync();
+            return entities.Select(entity => new DeviceDetailDto
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                SerialNumber = entity.SerialNumber,
+                ApnNameId = entity.ApnNameId,
+                ApnPasswordId = entity.ApnPasswordId,
+                ApnAddressId = entity.ApnAddressId,
+                CreatedDate = entity.CreatedDate,
+                UpdatedDate = entity.UpdatedDate
+            });
+        }
+
         protected override Device MapToEntity(CreateDeviceDto createDto)
         {
             return new Device
