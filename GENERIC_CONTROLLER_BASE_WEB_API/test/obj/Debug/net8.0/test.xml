@@ -4,6 +4,11 @@
         <name>test</name>
     </assembly>
     <members>
+        <member name="M:test.Configuration.SwaggerConfiguration.GetSwaggerUICustomization">
+            <summary>
+            Gets the custom CSS and JavaScript for Swagger UI
+            </summary>
+        </member>
         <member name="M:test.Controllers.BaseController`4.GetAll">
             <summary>
             Get all items
@@ -284,6 +289,36 @@
             </summary>
             <param name="message">Not found message</param>
             <returns>A not found Result</returns>
+        </member>
+        <member name="M:test.Extensions.DatabaseExtensions.EnsureDatabaseCreated(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Boolean)">
+            <summary>
+            Ensures the database is created and seeded
+            </summary>
+        </member>
+        <member name="M:test.Extensions.ServiceCollectionExtensions.AddDatabaseServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds database context to the service collection
+            </summary>
+        </member>
+        <member name="M:test.Extensions.ServiceCollectionExtensions.AddRepositoryServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds repository services to the service collection
+            </summary>
+        </member>
+        <member name="M:test.Extensions.ServiceCollectionExtensions.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds application services to the service collection
+            </summary>
+        </member>
+        <member name="M:test.Extensions.SwaggerExtensions.AddSwaggerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Swagger services to the service collection
+            </summary>
+        </member>
+        <member name="M:test.Extensions.SwaggerExtensions.UseSwaggerServices(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configures the Swagger middleware
+            </summary>
         </member>
     </members>
 </doc>
