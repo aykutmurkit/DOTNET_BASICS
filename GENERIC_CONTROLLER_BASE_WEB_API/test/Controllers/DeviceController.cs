@@ -23,8 +23,8 @@ namespace test.Controllers
         /// Get all devices
         /// </summary>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public override async Task<ActionResult<IEnumerable<DeviceDto>>> GetAll()
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        public override async Task<ActionResult> GetAll()
         {
             return await base.GetAll();
         }
@@ -33,9 +33,9 @@ namespace test.Controllers
         /// Get device by id
         /// </summary>
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public override async Task<ActionResult<DeviceDto>> GetById(int id)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public override async Task<ActionResult> GetById(int id)
         {
             return await base.GetById(id);
         }
@@ -44,35 +44,35 @@ namespace test.Controllers
         /// Get all devices with details
         /// </summary>
         [HttpGet("details")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public virtual async Task<ActionResult<IEnumerable<DeviceDetailDto>>> GetAllDetails()
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        public virtual async Task<ActionResult> GetAllDetails()
         {
             var items = await _deviceService.GetAllDeviceDetailsAsync();
-            return Ok(items);
+            return this.Ok(items, "Device details retrieved successfully");
         }
 
         /// <summary>
         /// Get device details by id
         /// </summary>
         [HttpGet("details/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult<DeviceDetailDto>> GetDetailById(int id)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public virtual async Task<ActionResult> GetDetailById(int id)
         {
             var item = await _deviceService.GetDeviceDetailByIdAsync(id);
             if (item == null)
-                return NotFound();
+                return this.NotFound($"Device details with ID {id} not found");
 
-            return Ok(item);
+            return this.Ok(item, "Device details retrieved successfully");
         }
 
         /// <summary>
         /// Create a new device
         /// </summary>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public override async Task<ActionResult<DeviceDto>> Create([FromBody] CreateDeviceDto createDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        public override async Task<ActionResult> Create([FromBody] CreateDeviceDto createDto)
         {
             return await base.Create(createDto);
         }
@@ -81,10 +81,10 @@ namespace test.Controllers
         /// Update an existing device
         /// </summary>
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public override async Task<ActionResult<DeviceDto>> Update(int id, [FromBody] UpdateDeviceDto updateDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public override async Task<ActionResult> Update(int id, [FromBody] UpdateDeviceDto updateDto)
         {
             return await base.Update(id, updateDto);
         }
@@ -93,8 +93,8 @@ namespace test.Controllers
         /// Delete a device
         /// </summary>
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
         public override async Task<ActionResult> Delete(int id)
         {
             return await base.Delete(id);

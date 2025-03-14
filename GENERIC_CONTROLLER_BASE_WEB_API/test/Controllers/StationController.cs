@@ -20,40 +20,40 @@ namespace test.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public override async Task<ActionResult<IEnumerable<object>>> GetAll()
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        public override async Task<ActionResult> GetAll()
         {
             return await base.GetAll();
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public override async Task<ActionResult<object>> GetById(int id)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public override async Task<ActionResult> GetById(int id)
         {
             return await base.GetById(id);
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public override async Task<ActionResult<object>> Create([FromBody] object createDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        public override async Task<ActionResult> Create([FromBody] object createDto)
         {
             return await base.Create(createDto);
         }
 
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public override async Task<ActionResult<object>> Update(int id, [FromBody] object updateDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public override async Task<ActionResult> Update(int id, [FromBody] object updateDto)
         {
             return await base.Update(id, updateDto);
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
         public override async Task<ActionResult> Delete(int id)
         {
             return await base.Delete(id);

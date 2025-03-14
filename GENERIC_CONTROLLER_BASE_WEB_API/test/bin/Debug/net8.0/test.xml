@@ -64,5 +64,226 @@
             Delete a device
             </summary>
         </member>
+        <member name="M:test.Controllers.ResultDemoController.GetAll">
+            <summary>
+            Get all devices with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoController.GetById(System.Int32)">
+            <summary>
+            Get device by id with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoController.Create(test.DTOs.CreateDeviceDto)">
+            <summary>
+            Create a new device with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoController.Update(System.Int32,test.DTOs.UpdateDeviceDto)">
+            <summary>
+            Update an existing device with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoController.Delete(System.Int32)">
+            <summary>
+            Delete a device with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoNonGenericController.GetAll">
+            <summary>
+            Get all items with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoNonGenericController.GetById(System.Int32)">
+            <summary>
+            Get item by id with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoNonGenericController.Create(System.Object)">
+            <summary>
+            Create a new item with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoNonGenericController.Update(System.Int32,System.Object)">
+            <summary>
+            Update an existing item with Result pattern
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ResultDemoNonGenericController.Delete(System.Int32)">
+            <summary>
+            Delete an item with Result pattern
+            </summary>
+        </member>
+        <member name="T:test.Core.ControllerBaseExtensions">
+            <summary>
+            Extension methods for ControllerBase to return Result objects
+            </summary>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.ToActionResult(Microsoft.AspNetCore.Mvc.ControllerBase,test.Core.Result)">
+            <summary>
+            Returns an ActionResult with the appropriate status code based on the Result
+            </summary>
+            <param name="controller">The controller instance</param>
+            <param name="result">The Result object</param>
+            <returns>An ActionResult with the appropriate status code</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.ToActionResult``1(Microsoft.AspNetCore.Mvc.ControllerBase,test.Core.Result{``0})">
+            <summary>
+            Returns an ActionResult with the appropriate status code based on the Result
+            </summary>
+            <typeparam name="T">Type of the data in the Result</typeparam>
+            <param name="controller">The controller instance</param>
+            <param name="result">The Result object</param>
+            <returns>An ActionResult with the appropriate status code</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.Ok(Microsoft.AspNetCore.Mvc.ControllerBase,System.String)">
+            <summary>
+            Creates a successful Result with OK status
+            </summary>
+            <param name="controller">The controller instance</param>
+            <param name="message">Success message</param>
+            <returns>An ActionResult with OK status</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.Ok``1(Microsoft.AspNetCore.Mvc.ControllerBase,``0,System.String)">
+            <summary>
+            Creates a successful Result with OK status and data
+            </summary>
+            <typeparam name="T">Type of the data</typeparam>
+            <param name="controller">The controller instance</param>
+            <param name="data">Data to return</param>
+            <param name="message">Success message</param>
+            <returns>An ActionResult with OK status and data</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.Created``1(Microsoft.AspNetCore.Mvc.ControllerBase,``0,System.String)">
+            <summary>
+            Creates a successful Result with Created status and data
+            </summary>
+            <typeparam name="T">Type of the data</typeparam>
+            <param name="controller">The controller instance</param>
+            <param name="data">Data to return</param>
+            <param name="message">Success message</param>
+            <returns>An ActionResult with Created status and data</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.NotFound(Microsoft.AspNetCore.Mvc.ControllerBase,System.String)">
+            <summary>
+            Creates a failed Result with NotFound status
+            </summary>
+            <param name="controller">The controller instance</param>
+            <param name="message">Not found message</param>
+            <returns>An ActionResult with NotFound status</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.BadRequest(Microsoft.AspNetCore.Mvc.ControllerBase,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a failed Result with BadRequest status
+            </summary>
+            <param name="controller">The controller instance</param>
+            <param name="message">Error message</param>
+            <param name="errors">List of detailed error messages</param>
+            <returns>An ActionResult with BadRequest status</returns>
+        </member>
+        <member name="M:test.Core.ControllerBaseExtensions.NoContent(Microsoft.AspNetCore.Mvc.ControllerBase)">
+            <summary>
+            Creates a successful Result with NoContent status
+            </summary>
+            <param name="controller">The controller instance</param>
+            <returns>An ActionResult with NoContent status</returns>
+        </member>
+        <member name="T:test.Core.ModelStateExtensions">
+            <summary>
+            Extension methods for ModelStateDictionary
+            </summary>
+        </member>
+        <member name="M:test.Core.ModelStateExtensions.GetValidationErrors(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)">
+            <summary>
+            Extracts all validation errors from ModelState
+            </summary>
+            <param name="modelState">The ModelStateDictionary</param>
+            <returns>A list of error messages</returns>
+        </member>
+        <member name="T:test.Core.Result">
+            <summary>
+            Base Result class for API responses
+            </summary>
+        </member>
+        <member name="P:test.Core.Result.Success">
+            <summary>
+            Indicates if the operation was successful
+            </summary>
+        </member>
+        <member name="P:test.Core.Result.Message">
+            <summary>
+            Message describing the result of the operation
+            </summary>
+        </member>
+        <member name="P:test.Core.Result.Errors">
+            <summary>
+            List of error messages if operation failed
+            </summary>
+        </member>
+        <member name="P:test.Core.Result.StatusCode">
+            <summary>
+            HTTP status code for the response
+            </summary>
+        </member>
+        <member name="M:test.Core.Result.Ok(System.String,System.Int32)">
+            <summary>
+            Creates a successful result
+            </summary>
+            <param name="message">Success message</param>
+            <param name="statusCode">HTTP status code</param>
+            <returns>A successful Result</returns>
+        </member>
+        <member name="M:test.Core.Result.Fail(System.String,System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            Creates a failed result
+            </summary>
+            <param name="message">Error message</param>
+            <param name="errors">List of detailed error messages</param>
+            <param name="statusCode">HTTP status code</param>
+            <returns>A failed Result</returns>
+        </member>
+        <member name="M:test.Core.Result.NotFound(System.String)">
+            <summary>
+            Creates a not found result
+            </summary>
+            <param name="message">Not found message</param>
+            <returns>A not found Result</returns>
+        </member>
+        <member name="T:test.Core.Result`1">
+            <summary>
+            Generic Result class that includes data
+            </summary>
+            <typeparam name="T">Type of the data</typeparam>
+        </member>
+        <member name="P:test.Core.Result`1.Data">
+            <summary>
+            Data returned by the operation
+            </summary>
+        </member>
+        <member name="M:test.Core.Result`1.Ok(`0,System.String,System.Int32)">
+            <summary>
+            Creates a successful result with data
+            </summary>
+            <param name="data">Data to return</param>
+            <param name="message">Success message</param>
+            <param name="statusCode">HTTP status code</param>
+            <returns>A successful Result with data</returns>
+        </member>
+        <member name="M:test.Core.Result`1.Fail(System.String,System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            Creates a failed result
+            </summary>
+            <param name="message">Error message</param>
+            <param name="errors">List of detailed error messages</param>
+            <param name="statusCode">HTTP status code</param>
+            <returns>A failed Result</returns>
+        </member>
+        <member name="M:test.Core.Result`1.NotFound(System.String)">
+            <summary>
+            Creates a not found result
+            </summary>
+            <param name="message">Not found message</param>
+            <returns>A not found Result</returns>
+        </member>
     </members>
 </doc>

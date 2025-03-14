@@ -16,60 +16,66 @@ namespace test.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public virtual async Task<ActionResult<IEnumerable<object>>> GetAll()
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        public virtual async Task<ActionResult> GetAll()
         {
             var items = await _service.GetAllAsync();
-            return Ok(items);
+            return this.Ok(items, "Items retrieved successfully");
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult<object>> GetById(int id)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public virtual async Task<ActionResult> GetById(int id)
         {
             var item = await _service.GetByIdAsync(id);
             if (item == null)
-                return NotFound();
+                return this.NotFound($"Item with ID {id} not found");
 
-            return Ok(item);
+            return this.Ok(item, "Item retrieved successfully");
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public virtual async Task<ActionResult<object>> Create([FromBody] object createDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        public virtual async Task<ActionResult> Create([FromBody] object createDto)
         {
+            if (!ModelState.IsValid)
+                return this.BadRequest("Invalid data", ModelState.GetValidationErrors());
+
             var item = await _service.CreateAsync(createDto);
-            return CreatedAtAction(nameof(GetById), new { id = ((dynamic)item).Id }, item);
+            return this.Created(item, "Item created successfully");
         }
 
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult<object>> Update(int id, [FromBody] object updateDto)
+        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
+        public virtual async Task<ActionResult> Update(int id, [FromBody] object updateDto)
         {
             if (id != ((dynamic)updateDto).Id)
-                return BadRequest();
+                return this.BadRequest("ID mismatch between URL and body");
+
+            if (!ModelState.IsValid)
+                return this.BadRequest("Invalid data", ModelState.GetValidationErrors());
 
             if (!await _service.ExistsAsync(id))
-                return NotFound();
+                return this.NotFound($"Item with ID {id} not found");
 
             var item = await _service.UpdateAsync(updateDto);
-            return Ok(item);
+            return this.Ok(item, "Item updated successfully");
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
         public virtual async Task<ActionResult> Delete(int id)
         {
             if (!await _service.ExistsAsync(id))
-                return NotFound();
+                return this.NotFound($"Item with ID {id} not found");
 
             await _service.DeleteAsync(id);
-            return NoContent();
+            return this.NoContent();
         }
     }
 } 

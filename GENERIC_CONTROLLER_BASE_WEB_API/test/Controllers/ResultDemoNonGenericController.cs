@@ -1,42 +1,39 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using test.Core;
-using test.Entities;
 
 namespace test.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public abstract class BaseController<T, TDto, TCreateDto, TUpdateDto> : ControllerBase, IBaseController<T, TDto, TCreateDto, TUpdateDto>
-        where T : BaseEntity
-        where TDto : class
-        where TCreateDto : class
-        where TUpdateDto : class
+    public class ResultDemoNonGenericController : ControllerBase
     {
-        protected readonly IService<T, TDto, TCreateDto, TUpdateDto> _service;
+        private readonly IServiceNonGeneric _service;
 
-        protected BaseController(IService<T, TDto, TCreateDto, TUpdateDto> service)
+        public ResultDemoNonGenericController(IServiceNonGeneric service)
         {
             _service = service;
         }
 
         /// <summary>
-        /// Get all items
+        /// Get all items with Result pattern
         /// </summary>
         [HttpGet]
-        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
-        public virtual async Task<ActionResult> GetAll()
+        [ProducesResponseType(typeof(Result<IEnumerable<object>>), 200)]
+        public async Task<ActionResult> GetAll()
         {
             var items = await _service.GetAllAsync();
             return this.Ok(items, "Items retrieved successfully");
         }
 
         /// <summary>
-        /// Get item by id
+        /// Get item by id with Result pattern
         /// </summary>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult> GetById(int id)
+        [ProducesResponseType(typeof(Result<object>), 200)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public async Task<ActionResult> GetById(int id)
         {
             var item = await _service.GetByIdAsync(id);
             if (item == null)
@@ -46,34 +43,38 @@ namespace test.Controllers
         }
 
         /// <summary>
-        /// Create a new item
+        /// Create a new item with Result pattern
         /// </summary>
         [HttpPost]
-        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
-        public virtual async Task<ActionResult> Create([FromBody] TCreateDto createDto)
+        [ProducesResponseType(typeof(Result<object>), 201)]
+        [ProducesResponseType(typeof(Result), 400)]
+        public async Task<ActionResult> Create([FromBody] object createDto)
         {
             if (!ModelState.IsValid)
+            {
                 return this.BadRequest("Invalid data", ModelState.GetValidationErrors());
+            }
 
             var item = await _service.CreateAsync(createDto);
             return this.Created(item, "Item created successfully");
         }
 
         /// <summary>
-        /// Update an existing item
+        /// Update an existing item with Result pattern
         /// </summary>
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult> Update(int id, [FromBody] TUpdateDto updateDto)
+        [ProducesResponseType(typeof(Result<object>), 200)]
+        [ProducesResponseType(typeof(Result), 400)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public async Task<ActionResult> Update(int id, [FromBody] object updateDto)
         {
             if (id != ((dynamic)updateDto).Id)
                 return this.BadRequest("ID mismatch between URL and body");
 
             if (!ModelState.IsValid)
+            {
                 return this.BadRequest("Invalid data", ModelState.GetValidationErrors());
+            }
 
             if (!await _service.ExistsAsync(id))
                 return this.NotFound($"Item with ID {id} not found");
@@ -83,12 +84,12 @@ namespace test.Controllers
         }
 
         /// <summary>
-        /// Delete an item
+        /// Delete an item with Result pattern
         /// </summary>
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult> Delete(int id)
+        [ProducesResponseType(typeof(Result), 204)]
+        [ProducesResponseType(typeof(Result), 404)]
+        public async Task<ActionResult> Delete(int id)
         {
             if (!await _service.ExistsAsync(id))
                 return this.NotFound($"Item with ID {id} not found");
