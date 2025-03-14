@@ -13,6 +13,7 @@ namespace test.Core
         public DbSet<ApnName> ApnNames { get; set; }
         public DbSet<ApnPassword> ApnPasswords { get; set; }
         public DbSet<ApnAddress> ApnAddresses { get; set; }
+        public DbSet<Station> Stations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +38,13 @@ namespace test.Core
                 new ApnAddress { Id = 1, Address = "Address1", CreatedDate = DateTime.UtcNow },
                 new ApnAddress { Id = 2, Address = "Address2", CreatedDate = DateTime.UtcNow },
                 new ApnAddress { Id = 3, Address = "Address3", CreatedDate = DateTime.UtcNow }
+            );
+
+            // Seed Stations
+            modelBuilder.Entity<Station>().HasData(
+                new Station { Id = 1, Name = "Station1", Location = "Location1", Capacity = 100, IsActive = true, CreatedDate = DateTime.UtcNow },
+                new Station { Id = 2, Name = "Station2", Location = "Location2", Capacity = 200, IsActive = true, CreatedDate = DateTime.UtcNow },
+                new Station { Id = 3, Name = "Station3", Location = "Location3", Capacity = 300, IsActive = false, CreatedDate = DateTime.UtcNow }
             );
 
             // Seed Devices

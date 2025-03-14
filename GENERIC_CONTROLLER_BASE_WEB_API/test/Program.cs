@@ -57,12 +57,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Register Repositories
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IRepositoryNonGeneric, RepositoryNonGeneric>();
 
-// Register Services
+// Register Generic Services
 builder.Services.AddScoped<IService<Device, DeviceDto, CreateDeviceDto, UpdateDeviceDto>, DeviceService>();
 builder.Services.AddScoped<IService<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto>, SettingService>();
 builder.Services.AddScoped<IService<ApnPassword, ApnPasswordDto, CreateApnPasswordDto, UpdateApnPasswordDto>, ApnPasswordService>();
 builder.Services.AddScoped<IService<ApnAddress, ApnAddressDto, CreateApnAddressDto, UpdateApnAddressDto>, ApnAddressService>();
+
+// Register Non Generic Services
+builder.Services.AddScoped<IServiceNonGeneric, StationService>();
 
 var app = builder.Build();
 
