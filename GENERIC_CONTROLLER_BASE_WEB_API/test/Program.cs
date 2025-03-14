@@ -61,9 +61,9 @@ builder.Services.AddScoped<IRepositoryNonGeneric, RepositoryNonGeneric>();
 
 // Register Generic Services
 builder.Services.AddScoped<IService<Device, DeviceDto, CreateDeviceDto, UpdateDeviceDto>, DeviceService>();
-builder.Services.AddScoped<IService<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto>, SettingService>();
-builder.Services.AddScoped<IService<ApnPassword, ApnPasswordDto, CreateApnPasswordDto, UpdateApnPasswordDto>, ApnPasswordService>();
-builder.Services.AddScoped<IService<ApnAddress, ApnAddressDto, CreateApnAddressDto, UpdateApnAddressDto>, ApnAddressService>();
+builder.Services.AddScoped<IService<ApnName, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>>, ApnNameService>();
+builder.Services.AddScoped<IService<ApnPassword, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>>, ApnPasswordService>();
+builder.Services.AddScoped<IService<ApnAddress, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>>, ApnAddressService>();
 
 // Register Non Generic Services
 builder.Services.AddScoped<IServiceNonGeneric, StationService>();

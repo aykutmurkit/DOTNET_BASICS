@@ -22,9 +22,9 @@ namespace test.Services
                 Id = entity.Id,
                 Name = entity.Name,
                 SerialNumber = entity.SerialNumber,
-                ApnName = _context.ApnNames.Find(entity.ApnNameId)?.Name,
-                ApnPassword = _context.ApnPasswords.Find(entity.ApnPasswordId)?.Password,
-                ApnAddress = _context.ApnAddresses.Find(entity.ApnAddressId)?.Address,
+                ApnName = _context.ApnNames.Find(entity.ApnNameId)?.Value,
+                ApnPassword = _context.ApnPasswords.Find(entity.ApnPasswordId)?.Value,
+                ApnAddress = _context.ApnAddresses.Find(entity.ApnAddressId)?.Value,
                 CreatedDate = entity.CreatedDate,
                 UpdatedDate = entity.UpdatedDate
             };

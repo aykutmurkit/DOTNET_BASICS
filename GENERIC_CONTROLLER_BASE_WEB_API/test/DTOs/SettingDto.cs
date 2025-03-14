@@ -1,56 +1,85 @@
 namespace test.DTOs
 {
-    public class ApnNameDto
+    // Base DTO classes for all settings
+    public class BaseSettingDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
     }
 
-    public class ApnPasswordDto
+    public class BaseCreateSettingDto
     {
-        public int Id { get; set; }
-        public string Password { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
     }
 
-    public class ApnAddressDto
-    {
-        public int Id { get; set; }
-        public string Address { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
-    }
-
-    public class CreateApnNameDto
-    {
-        public string Name { get; set; }
-    }
-
-    public class CreateApnPasswordDto
-    {
-        public string Password { get; set; }
-    }
-
-    public class CreateApnAddressDto
-    {
-        public string Address { get; set; }
-    }
-
-    public class UpdateApnNameDto : CreateApnNameDto
+    public class BaseUpdateSettingDto : BaseCreateSettingDto
     {
         public int Id { get; set; }
     }
 
-    public class UpdateApnPasswordDto : CreateApnPasswordDto
+    // Generic setting DTOs
+    public class SettingDto<TValue> : BaseSettingDto
     {
-        public int Id { get; set; }
+        public TValue Value { get; set; }
     }
 
-    public class UpdateApnAddressDto : CreateApnAddressDto
+    public class CreateSettingDto<TValue> : BaseCreateSettingDto
     {
-        public int Id { get; set; }
+        public TValue Value { get; set; }
     }
+
+    public class UpdateSettingDto<TValue> : BaseUpdateSettingDto
+    {
+        public TValue Value { get; set; }
+    }
+
+    // Specific setting DTOs using the generic base
+    // ApnName
+    public class ApnNameDto : SettingDto<string>
+    {
+    }
+
+    public class CreateApnNameDto : CreateSettingDto<string>
+    {
+    }
+
+    public class UpdateApnNameDto : UpdateSettingDto<string>
+    {
+    }
+
+    // ApnPassword
+    public class ApnPasswordDto : SettingDto<string>
+    {
+    }
+
+    public class CreateApnPasswordDto : CreateSettingDto<string>
+    {
+    }
+
+    public class UpdateApnPasswordDto : UpdateSettingDto<string>
+    {
+    }
+
+    // ApnAddress
+    public class ApnAddressDto : SettingDto<string>
+    {
+    }
+
+    public class CreateApnAddressDto : CreateSettingDto<string>
+    {
+    }
+
+    public class UpdateApnAddressDto : UpdateSettingDto<string>
+    {
+    }
+
+    // Example of how to add new settings:
+    // public class NewSettingDto : SettingDto<string> { }
+    // public class CreateNewSettingDto : CreateSettingDto<string> { }
+    // public class UpdateNewSettingDto : UpdateSettingDto<string> { }
+    
+    // For settings with different value types:
+    // public class NumericSettingDto : SettingDto<int> { }
+    // public class CreateNumericSettingDto : CreateSettingDto<int> { }
+    // public class UpdateNumericSettingDto : UpdateSettingDto<int> { }
 } 

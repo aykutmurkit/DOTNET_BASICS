@@ -5,27 +5,49 @@ using test.Entities;
 
 namespace test.Controllers
 {
-    public class ApnNameController : BaseController<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto>
+    // Base controller for all settings
+    public abstract class BaseSettingController<TEntity, TValue> : BaseController<TEntity, SettingDto<TValue>, CreateSettingDto<TValue>, UpdateSettingDto<TValue>>
+        where TEntity : BaseSetting<TValue>
     {
-        public ApnNameController(IService<ApnName, ApnNameDto, CreateApnNameDto, UpdateApnNameDto> service)
+        protected BaseSettingController(IService<TEntity, SettingDto<TValue>, CreateSettingDto<TValue>, UpdateSettingDto<TValue>> service)
             : base(service)
         {
         }
     }
 
-    public class ApnPasswordController : BaseController<ApnPassword, ApnPasswordDto, CreateApnPasswordDto, UpdateApnPasswordDto>
+    // Specific setting controllers
+    public class ApnNameController : BaseSettingController<ApnName, string>
     {
-        public ApnPasswordController(IService<ApnPassword, ApnPasswordDto, CreateApnPasswordDto, UpdateApnPasswordDto> service)
+        public ApnNameController(IService<ApnName, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>> service)
             : base(service)
         {
         }
     }
 
-    public class ApnAddressController : BaseController<ApnAddress, ApnAddressDto, CreateApnAddressDto, UpdateApnAddressDto>
+    public class ApnPasswordController : BaseSettingController<ApnPassword, string>
     {
-        public ApnAddressController(IService<ApnAddress, ApnAddressDto, CreateApnAddressDto, UpdateApnAddressDto> service)
+        public ApnPasswordController(IService<ApnPassword, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>> service)
             : base(service)
         {
         }
     }
+
+    public class ApnAddressController : BaseSettingController<ApnAddress, string>
+    {
+        public ApnAddressController(IService<ApnAddress, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>> service)
+            : base(service)
+        {
+        }
+    }
+
+    // Example of how to add a new setting controller:
+    /*
+    public class NewSettingController : BaseSettingController<NewSetting, string>
+    {
+        public NewSettingController(IService<NewSetting, SettingDto<string>, CreateSettingDto<string>, UpdateSettingDto<string>> service)
+            : base(service)
+        {
+        }
+    }
+    */
 } 

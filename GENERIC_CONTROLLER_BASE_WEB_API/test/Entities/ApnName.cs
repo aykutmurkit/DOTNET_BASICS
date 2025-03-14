@@ -2,17 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace test.Entities
 {
-    public class ApnName : BaseEntity
+    public class ApnName : BaseSetting<string>
     {
-        [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
-
-        public virtual ICollection<Device> Devices { get; set; }
-
-        public ApnName()
-        {
-            Devices = new HashSet<Device>();
-        }
+        public override string Value { get; set; }
     }
 } 

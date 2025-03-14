@@ -21,23 +21,23 @@ namespace test.Core
 
             // Seed ApnNames
             modelBuilder.Entity<ApnName>().HasData(
-                new ApnName { Id = 1, Name = "APN1", CreatedDate = DateTime.UtcNow },
-                new ApnName { Id = 2, Name = "APN2", CreatedDate = DateTime.UtcNow },
-                new ApnName { Id = 3, Name = "APN3", CreatedDate = DateTime.UtcNow }
+                new ApnName { Id = 1, Value = "APN1", CreatedDate = DateTime.UtcNow },
+                new ApnName { Id = 2, Value = "APN2", CreatedDate = DateTime.UtcNow },
+                new ApnName { Id = 3, Value = "APN3", CreatedDate = DateTime.UtcNow }
             );
 
             // Seed ApnPasswords
             modelBuilder.Entity<ApnPassword>().HasData(
-                new ApnPassword { Id = 1, Password = "Pass1", CreatedDate = DateTime.UtcNow },
-                new ApnPassword { Id = 2, Password = "Pass2", CreatedDate = DateTime.UtcNow },
-                new ApnPassword { Id = 3, Password = "Pass3", CreatedDate = DateTime.UtcNow }
+                new ApnPassword { Id = 1, Value = "Pass1", CreatedDate = DateTime.UtcNow },
+                new ApnPassword { Id = 2, Value = "Pass2", CreatedDate = DateTime.UtcNow },
+                new ApnPassword { Id = 3, Value = "Pass3", CreatedDate = DateTime.UtcNow }
             );
 
             // Seed ApnAddresses
             modelBuilder.Entity<ApnAddress>().HasData(
-                new ApnAddress { Id = 1, Address = "Address1", CreatedDate = DateTime.UtcNow },
-                new ApnAddress { Id = 2, Address = "Address2", CreatedDate = DateTime.UtcNow },
-                new ApnAddress { Id = 3, Address = "Address3", CreatedDate = DateTime.UtcNow }
+                new ApnAddress { Id = 1, Value = "Address1", CreatedDate = DateTime.UtcNow },
+                new ApnAddress { Id = 2, Value = "Address2", CreatedDate = DateTime.UtcNow },
+                new ApnAddress { Id = 3, Value = "Address3", CreatedDate = DateTime.UtcNow }
             );
 
             // Seed Stations

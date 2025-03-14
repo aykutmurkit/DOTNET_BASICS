@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAll",
     "RelativePath": "api/ApnAddress",
     "HttpMethod": "GET",
@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Create",
     "RelativePath": "api/ApnAddress",
     "HttpMethod": "POST",
@@ -29,13 +29,13 @@
     "Parameters": [
       {
         "Name": "createDto",
-        "Type": "test.DTOs.CreateApnAddressDto",
+        "Type": "test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnAddressDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetById",
     "RelativePath": "api/ApnAddress/{id}",
     "HttpMethod": "GET",
@@ -70,7 +70,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnAddressDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Update",
     "RelativePath": "api/ApnAddress/{id}",
     "HttpMethod": "PUT",
@@ -104,13 +104,13 @@
       },
       {
         "Name": "updateDto",
-        "Type": "test.DTOs.UpdateApnAddressDto",
+        "Type": "test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnAddressDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnAddressDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnAddress, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Delete",
     "RelativePath": "api/ApnAddress/{id}",
     "HttpMethod": "DELETE",
@@ -170,7 +170,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAll",
     "RelativePath": "api/ApnName",
     "HttpMethod": "GET",
@@ -179,7 +179,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Create",
     "RelativePath": "api/ApnName",
     "HttpMethod": "POST",
@@ -199,13 +199,13 @@
     "Parameters": [
       {
         "Name": "createDto",
-        "Type": "test.DTOs.CreateApnNameDto",
+        "Type": "test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnNameDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -225,7 +225,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetById",
     "RelativePath": "api/ApnName/{id}",
     "HttpMethod": "GET",
@@ -240,7 +240,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnNameDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -260,7 +260,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Update",
     "RelativePath": "api/ApnName/{id}",
     "HttpMethod": "PUT",
@@ -274,13 +274,13 @@
       },
       {
         "Name": "updateDto",
-        "Type": "test.DTOs.UpdateApnNameDto",
+        "Type": "test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnNameDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -309,7 +309,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnNameDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnName, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Delete",
     "RelativePath": "api/ApnName/{id}",
     "HttpMethod": "DELETE",
@@ -340,7 +340,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetAll",
     "RelativePath": "api/ApnPassword",
     "HttpMethod": "GET",
@@ -349,7 +349,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Create",
     "RelativePath": "api/ApnPassword",
     "HttpMethod": "POST",
@@ -369,13 +369,13 @@
     "Parameters": [
       {
         "Name": "createDto",
-        "Type": "test.DTOs.CreateApnPasswordDto",
+        "Type": "test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnPasswordDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -395,7 +395,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "GetById",
     "RelativePath": "api/ApnPassword/{id}",
     "HttpMethod": "GET",
@@ -410,7 +410,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnPasswordDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -430,7 +430,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Update",
     "RelativePath": "api/ApnPassword/{id}",
     "HttpMethod": "PUT",
@@ -444,13 +444,13 @@
       },
       {
         "Name": "updateDto",
-        "Type": "test.DTOs.UpdateApnPasswordDto",
+        "Type": "test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.DTOs.ApnPasswordDto",
+        "Type": "test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -479,7 +479,7 @@
     ]
   },
   {
-    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.ApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateApnPasswordDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "test.Controllers.BaseController\u00604[[test.Entities.ApnPassword, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.SettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.CreateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[test.DTOs.UpdateSettingDto\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Delete",
     "RelativePath": "api/ApnPassword/{id}",
     "HttpMethod": "DELETE",

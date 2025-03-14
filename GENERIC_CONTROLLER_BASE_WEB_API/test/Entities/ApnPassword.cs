@@ -2,17 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace test.Entities
 {
-    public class ApnPassword : BaseEntity
+    public class ApnPassword : BaseSetting<string>
     {
-        [Required]
         [MaxLength(100)]
-        public string Password { get; set; }
-
-        public virtual ICollection<Device> Devices { get; set; }
-
-        public ApnPassword()
-        {
-            Devices = new HashSet<Device>();
-        }
+        public override string Value { get; set; }
     }
 } 
