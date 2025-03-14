@@ -6,7 +6,7 @@ namespace test.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public abstract class BaseController<T, TDto, TCreateDto, TUpdateDto> : ControllerBase
+    public abstract class BaseController<T, TDto, TCreateDto, TUpdateDto> : ControllerBase, IBaseController<T, TDto, TCreateDto, TUpdateDto>
         where T : BaseEntity
         where TDto : class
         where TCreateDto : class

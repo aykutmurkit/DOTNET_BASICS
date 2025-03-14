@@ -8,7 +8,6 @@ namespace test.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ApiExplorerSettings(GroupName = "Device")]
     [Tags("Device Management")]
     public class DeviceController : BaseController<Device, DeviceDto, CreateDeviceDto, UpdateDeviceDto>
     {
