@@ -19,12 +19,18 @@ builder.Services.AddDatabaseServices(builder.Configuration);
 builder.Services.AddRepositoryServices();
 builder.Services.AddApplicationServices();
 
+// Add rate limiting services
+builder.Services.AddRateLimitingServices(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseSwaggerServices();
 
 app.UseHttpsRedirection();
+
+// Add rate limiting middleware
+app.UseRateLimiting();
 
 app.UseAuthorization();
 

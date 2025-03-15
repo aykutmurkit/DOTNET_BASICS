@@ -140,7 +140,7 @@
               "RelativeDocumentMoniker": "test\\Extensions\\SwaggerExtensions.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Extensions\\SwaggerExtensions.cs",
               "RelativeToolTip": "test\\Extensions\\SwaggerExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-14T17:45:49.289Z",
               "EditorCaption": ""
@@ -155,8 +155,7 @@
               "RelativeToolTip": "test\\Seed\\DataSeeder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:33:08.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T17:33:08.255Z"
             },
             {
               "$type": "Document",
@@ -168,8 +167,7 @@
               "RelativeToolTip": "test\\Core\\ApplicationDbContext.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:24:31.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T17:24:31.671Z"
             },
             {
               "$type": "Document",
@@ -217,8 +215,7 @@
               "RelativeToolTip": "test\\Controllers\\BaseController.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAwwCwAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T12:15:09.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T12:15:09.551Z"
             },
             {
               "$type": "Document",
@@ -230,8 +227,7 @@
               "RelativeToolTip": "test\\Program.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:06:12.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T20:06:12.952Z"
             },
             {
               "$type": "Document",
@@ -255,8 +251,7 @@
               "RelativeToolTip": "test\\Controllers\\DeviceController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:24:34.981Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T20:24:34.981Z"
             },
             {
               "$type": "Document",

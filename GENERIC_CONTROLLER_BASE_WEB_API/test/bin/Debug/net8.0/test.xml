@@ -4,6 +4,21 @@
         <name>test</name>
     </assembly>
     <members>
+        <member name="T:test.Configuration.RateLimitingConfiguration">
+            <summary>
+            Configuration for API rate limiting
+            </summary>
+        </member>
+        <member name="P:test.Configuration.RateLimitingConfiguration.RequestLimit">
+            <summary>
+            Maximum number of requests allowed per time window
+            </summary>
+        </member>
+        <member name="P:test.Configuration.RateLimitingConfiguration.TimeWindowMinutes">
+            <summary>
+            Time window in minutes
+            </summary>
+        </member>
         <member name="M:test.Configuration.SwaggerConfiguration.GetSwaggerUICustomization">
             <summary>
             Gets the custom CSS and JavaScript for Swagger UI
@@ -295,6 +310,21 @@
             Ensures the database is created and seeded
             </summary>
         </member>
+        <member name="T:test.Extensions.RateLimitingExtensions">
+            <summary>
+            Extension methods for rate limiting
+            </summary>
+        </member>
+        <member name="M:test.Extensions.RateLimitingExtensions.AddRateLimitingServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds rate limiting services to the service collection
+            </summary>
+        </member>
+        <member name="M:test.Extensions.RateLimitingExtensions.UseRateLimiting(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds rate limiting middleware to the application pipeline
+            </summary>
+        </member>
         <member name="M:test.Extensions.ServiceCollectionExtensions.AddDatabaseServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             Adds database context to the service collection
@@ -318,6 +348,11 @@
         <member name="M:test.Extensions.SwaggerExtensions.UseSwaggerServices(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Configures the Swagger middleware
+            </summary>
+        </member>
+        <member name="T:test.Middleware.RateLimitingMiddleware">
+            <summary>
+            Middleware for API rate limiting
             </summary>
         </member>
     </members>
