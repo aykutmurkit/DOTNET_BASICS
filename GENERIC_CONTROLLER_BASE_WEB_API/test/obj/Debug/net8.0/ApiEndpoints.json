@@ -523,7 +523,7 @@
   },
   {
     "ContainingType": "test.Controllers.DeviceController",
-    "Method": "GetAll",
+    "Method": "GetAllDetails",
     "RelativePath": "api/Device",
     "HttpMethod": "GET",
     "IsController": true,
@@ -584,7 +584,7 @@
   },
   {
     "ContainingType": "test.Controllers.DeviceController",
-    "Method": "GetById",
+    "Method": "GetDetailById",
     "RelativePath": "api/Device/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -712,7 +712,7 @@
   },
   {
     "ContainingType": "test.Controllers.DeviceController",
-    "Method": "GetAllDetails",
+    "Method": "GetAll",
     "RelativePath": "api/Device/details",
     "HttpMethod": "GET",
     "IsController": true,
@@ -735,7 +735,7 @@
   },
   {
     "ContainingType": "test.Controllers.DeviceController",
-    "Method": "GetDetailById",
+    "Method": "GetById",
     "RelativePath": "api/Device/details/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -1129,7 +1129,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "test.Core.Result\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "test.Core.Result\u00601[[System.Collections.Generic.IEnumerable\u00601[[test.DTOs.StationDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1152,13 +1152,13 @@
     "Parameters": [
       {
         "Name": "createDto",
-        "Type": "System.Object",
+        "Type": "test.DTOs.CreateStationDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.Core.Result\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "test.Core.Result\u00601[[test.DTOs.StationDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1196,7 +1196,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "test.Core.Result\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "test.Core.Result\u00601[[test.DTOs.StationDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1233,13 +1233,13 @@
       },
       {
         "Name": "updateDto",
-        "Type": "System.Object",
+        "Type": "test.DTOs.UpdateStationDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "test.Core.Result\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "test.Core.Result\u00601[[test.DTOs.StationDto, test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

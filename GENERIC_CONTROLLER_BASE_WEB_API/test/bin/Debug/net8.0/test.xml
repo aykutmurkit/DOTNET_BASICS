@@ -134,6 +134,31 @@
             Delete an item with Result pattern
             </summary>
         </member>
+        <member name="M:test.Controllers.StationController.GetAll">
+            <summary>
+            Get all stations
+            </summary>
+        </member>
+        <member name="M:test.Controllers.StationController.GetById(System.Int32)">
+            <summary>
+            Get station by id
+            </summary>
+        </member>
+        <member name="M:test.Controllers.StationController.Create(test.DTOs.CreateStationDto)">
+            <summary>
+            Create a new station
+            </summary>
+        </member>
+        <member name="M:test.Controllers.StationController.Update(System.Int32,test.DTOs.UpdateStationDto)">
+            <summary>
+            Update an existing station
+            </summary>
+        </member>
+        <member name="M:test.Controllers.StationController.Delete(System.Int32)">
+            <summary>
+            Delete a station
+            </summary>
+        </member>
         <member name="T:test.Core.ControllerBaseExtensions">
             <summary>
             Extension methods for ControllerBase to return Result objects

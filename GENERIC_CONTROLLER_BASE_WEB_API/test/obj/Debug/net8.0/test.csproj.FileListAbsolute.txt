@@ -277,7 +277,6 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.test.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.test.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.csproj.Up2Date
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.genruntimeconfig.cache
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\ref\test.dll
@@ -429,3 +428,4 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\te
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.pdb
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\test.genruntimeconfig.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\ref\test.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\GENERIC_CONTROLLER_BASE_WEB_API\test\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

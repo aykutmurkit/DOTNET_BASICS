@@ -22,7 +22,7 @@ namespace test.Controllers
         /// <summary>
         /// Get all devices
         /// </summary>
-        [HttpGet]
+        [HttpGet("details")]
         [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
         public override async Task<ActionResult> GetAll()
         {
@@ -32,7 +32,7 @@ namespace test.Controllers
         /// <summary>
         /// Get device by id
         /// </summary>
-        [HttpGet("{id}")]
+        [HttpGet("details/{id}")]
         [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
         public override async Task<ActionResult> GetById(int id)
@@ -43,7 +43,7 @@ namespace test.Controllers
         /// <summary>
         /// Get all devices with details
         /// </summary>
-        [HttpGet("details")]
+        [HttpGet]
         [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
         public virtual async Task<ActionResult> GetAllDetails()
         {
@@ -54,7 +54,7 @@ namespace test.Controllers
         /// <summary>
         /// Get device details by id
         /// </summary>
-        [HttpGet("details/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(typeof(Result<object>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Result), StatusCodes.Status404NotFound)]
         public virtual async Task<ActionResult> GetDetailById(int id)

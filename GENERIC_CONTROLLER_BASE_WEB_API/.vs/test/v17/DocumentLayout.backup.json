@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\settingcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\settingcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\stationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\stationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\seed\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\seed\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\configuration\\ratelimitingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\configuration\\ratelimitingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\seed\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\seed\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\entities\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,14 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\resultdemonongenericcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\resultdemonongenericcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\stationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\stationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\settingcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|solutionrelative:test\\controllers\\settingcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A3DB3DBC-7C41-43EA-89AA-3FE7F2D4BB2D}|test\\test.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\generic_controller_base_web_api\\test\\controllers\\resultdemocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -130,60 +134,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SwaggerExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Extensions\\SwaggerExtensions.cs",
-              "RelativeDocumentMoniker": "test\\Extensions\\SwaggerExtensions.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Extensions\\SwaggerExtensions.cs",
-              "RelativeToolTip": "test\\Extensions\\SwaggerExtensions.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:45:49.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DataSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Seed\\DataSeeder.cs",
-              "RelativeDocumentMoniker": "test\\Seed\\DataSeeder.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Seed\\DataSeeder.cs",
-              "RelativeToolTip": "test\\Seed\\DataSeeder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:33:08.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "test\\Core\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\ApplicationDbContext.cs",
-              "RelativeToolTip": "test\\Core\\ApplicationDbContext.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:24:31.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "README_RESULT_PATTERN.md",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\README_RESULT_PATTERN.md",
-              "RelativeDocumentMoniker": "test\\README_RESULT_PATTERN.md",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\README_RESULT_PATTERN.md",
-              "RelativeToolTip": "test\\README_RESULT_PATTERN.md",
-              "ViewState": "AgIAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-03-14T17:22:35.685Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ResultDemoController.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\ResultDemoController.cs",
               "RelativeDocumentMoniker": "test\\Controllers\\ResultDemoController.cs",
@@ -195,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "StationDto.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\DTOs\\StationDto.cs",
               "RelativeDocumentMoniker": "test\\DTOs\\StationDto.cs",
@@ -207,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "BaseController.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\BaseController.cs",
               "RelativeDocumentMoniker": "test\\Controllers\\BaseController.cs",
@@ -219,19 +174,133 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Program.cs",
               "RelativeDocumentMoniker": "test\\Program.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Program.cs",
               "RelativeToolTip": "test\\Program.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:06:12.952Z"
+              "WhenOpened": "2025-03-13T20:06:12.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\appsettings.json",
+              "RelativeDocumentMoniker": "test\\appsettings.json",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\appsettings.json",
+              "RelativeToolTip": "test\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-13T20:06:14.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StationController.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\StationController.cs",
+              "RelativeDocumentMoniker": "test\\Controllers\\StationController.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\StationController.cs",
+              "RelativeToolTip": "test\\Controllers\\StationController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T17:10:44.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SettingControllers.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\SettingControllers.cs",
+              "RelativeDocumentMoniker": "test\\Controllers\\SettingControllers.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\SettingControllers.cs",
+              "RelativeToolTip": "test\\Controllers\\SettingControllers.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wCoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T20:17:01.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeviceController.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\DeviceController.cs",
+              "RelativeDocumentMoniker": "test\\Controllers\\DeviceController.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\DeviceController.cs",
+              "RelativeToolTip": "test\\Controllers\\DeviceController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T20:24:34.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "README_RESULT_PATTERN.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\README_RESULT_PATTERN.md",
+              "RelativeDocumentMoniker": "test\\README_RESULT_PATTERN.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\README_RESULT_PATTERN.md",
+              "RelativeToolTip": "test\\README_RESULT_PATTERN.md",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-14T17:22:35.685Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "test\\Core\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\ApplicationDbContext.cs",
+              "RelativeToolTip": "test\\Core\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T17:24:31.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DataSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Seed\\DataSeeder.cs",
+              "RelativeDocumentMoniker": "test\\Seed\\DataSeeder.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Seed\\DataSeeder.cs",
+              "RelativeToolTip": "test\\Seed\\DataSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T17:33:08.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SwaggerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Extensions\\SwaggerExtensions.cs",
+              "RelativeDocumentMoniker": "test\\Extensions\\SwaggerExtensions.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Extensions\\SwaggerExtensions.cs",
+              "RelativeToolTip": "test\\Extensions\\SwaggerExtensions.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T17:45:49.289Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RateLimitingConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Configuration\\RateLimitingConfiguration.cs",
+              "RelativeDocumentMoniker": "test\\Configuration\\RateLimitingConfiguration.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Configuration\\RateLimitingConfiguration.cs",
+              "RelativeToolTip": "test\\Configuration\\RateLimitingConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T10:26:49.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Device.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\Device.cs",
               "RelativeDocumentMoniker": "test\\Entities\\Device.cs",
@@ -243,19 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DeviceController.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\DeviceController.cs",
-              "RelativeDocumentMoniker": "test\\Controllers\\DeviceController.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\DeviceController.cs",
-              "RelativeToolTip": "test\\Controllers\\DeviceController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:24:34.981Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Station.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\Station.cs",
               "RelativeDocumentMoniker": "test\\Entities\\Station.cs",
@@ -267,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "test\\Properties\\launchSettings.json",
@@ -279,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "ApnPassword.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\ApnPassword.cs",
               "RelativeDocumentMoniker": "test\\Entities\\ApnPassword.cs",
@@ -291,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "BaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Repositories\\BaseRepository.cs",
               "RelativeDocumentMoniker": "test\\Repositories\\BaseRepository.cs",
@@ -303,19 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\appsettings.json",
-              "RelativeDocumentMoniker": "test\\appsettings.json",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\appsettings.json",
-              "RelativeToolTip": "test\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-13T20:06:14.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "ApnAddress.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\ApnAddress.cs",
               "RelativeDocumentMoniker": "test\\Entities\\ApnAddress.cs",
@@ -327,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "BaseSetting.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\BaseSetting.cs",
               "RelativeDocumentMoniker": "test\\Entities\\BaseSetting.cs",
@@ -339,19 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "StationController.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\StationController.cs",
-              "RelativeDocumentMoniker": "test\\Controllers\\StationController.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\StationController.cs",
-              "RelativeToolTip": "test\\Controllers\\StationController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwAsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:10:44.6Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "ResultDemoNonGenericController.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\ResultDemoNonGenericController.cs",
               "RelativeDocumentMoniker": "test\\Controllers\\ResultDemoNonGenericController.cs",
@@ -363,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "Result.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\Result.cs",
               "RelativeDocumentMoniker": "test\\Core\\Result.cs",
@@ -375,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ModelStateExtensions.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\ModelStateExtensions.cs",
               "RelativeDocumentMoniker": "test\\Core\\ModelStateExtensions.cs",
@@ -387,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "DeviceDto.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\DTOs\\DeviceDto.cs",
               "RelativeDocumentMoniker": "test\\DTOs\\DeviceDto.cs",
@@ -399,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "test\\Entities\\BaseEntity.cs",
@@ -411,19 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SettingControllers.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\SettingControllers.cs",
-              "RelativeDocumentMoniker": "test\\Controllers\\SettingControllers.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\SettingControllers.cs",
-              "RelativeToolTip": "test\\Controllers\\SettingControllers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:17:01.069Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "SettingDto.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\DTOs\\SettingDto.cs",
               "RelativeDocumentMoniker": "test\\DTOs\\SettingDto.cs",
@@ -435,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\IRepository.cs",
               "RelativeDocumentMoniker": "test\\Core\\IRepository.cs",
@@ -447,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "IService.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Core\\IService.cs",
               "RelativeDocumentMoniker": "test\\Core\\IService.cs",
@@ -459,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "ApnName.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Entities\\ApnName.cs",
               "RelativeDocumentMoniker": "test\\Entities\\ApnName.cs",
@@ -471,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "BaseService.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Services\\BaseService.cs",
               "RelativeDocumentMoniker": "test\\Services\\BaseService.cs",
@@ -483,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "SettingServices.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Services\\SettingServices.cs",
               "RelativeDocumentMoniker": "test\\Services\\SettingServices.cs",
