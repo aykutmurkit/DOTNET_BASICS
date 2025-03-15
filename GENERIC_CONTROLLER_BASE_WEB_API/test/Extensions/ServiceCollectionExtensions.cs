@@ -47,6 +47,9 @@ namespace test.Extensions
             // Register Non Generic Services
             services.AddScoped<IServiceNonGeneric, StationService>();
 
+            // Register Validation Service
+            services.AddScoped<IValidationService, ValidationService>();
+
             return services;
         }
     }

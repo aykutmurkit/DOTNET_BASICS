@@ -159,6 +159,16 @@
             Delete a station
             </summary>
         </member>
+        <member name="M:test.Controllers.ValidationDemoController.ValidateGeneric(test.DTOs.CreateStationDto)">
+            <summary>
+            Demo endpoint for generic validation
+            </summary>
+        </member>
+        <member name="M:test.Controllers.ValidationDemoController.ValidateNonGeneric(test.DTOs.CreateStationDto)">
+            <summary>
+            Demo endpoint for non-generic validation
+            </summary>
+        </member>
         <member name="T:test.Core.ControllerBaseExtensions">
             <summary>
             Extension methods for ControllerBase to return Result objects
@@ -375,10 +385,37 @@
             Configures the Swagger middleware
             </summary>
         </member>
+        <member name="M:test.Extensions.ValidationExtensions.AddGenericValidationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds FluentValidation services for the generic architecture
+            </summary>
+        </member>
+        <member name="M:test.Extensions.ValidationExtensions.AddNonGenericValidationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds FluentValidation services for the non-generic architecture
+            </summary>
+        </member>
         <member name="T:test.Middleware.RateLimitingMiddleware">
             <summary>
             Middleware for API rate limiting
             </summary>
+        </member>
+        <member name="M:test.Services.IValidationService.ValidateAsync``1(``0,System.Boolean)">
+            <summary>
+            Validates an object using the appropriate validator
+            </summary>
+        </member>
+        <member name="T:test.Validators.Generic.BaseValidator`1">
+            <summary>
+            Base validator for generic architecture
+            </summary>
+            <typeparam name="T">The type to validate</typeparam>
+        </member>
+        <member name="T:test.Validators.NonGeneric.BaseValidator`1">
+            <summary>
+            Base validator for non-generic architecture
+            </summary>
+            <typeparam name="T">The type to validate</typeparam>
         </member>
     </members>
 </doc>

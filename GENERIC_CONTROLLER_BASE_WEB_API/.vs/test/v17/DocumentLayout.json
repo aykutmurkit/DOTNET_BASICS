@@ -182,8 +182,7 @@
               "RelativeToolTip": "test\\Program.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:06:12.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T20:06:12.952Z"
             },
             {
               "$type": "Document",
@@ -195,8 +194,7 @@
               "RelativeToolTip": "test\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-13T20:06:14.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T20:06:14.036Z"
             },
             {
               "$type": "Document",
@@ -208,8 +206,7 @@
               "RelativeToolTip": "test\\Controllers\\StationController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwAsAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:10:44.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T17:10:44.6Z"
             },
             {
               "$type": "Document",
@@ -221,8 +218,7 @@
               "RelativeToolTip": "test\\Controllers\\SettingControllers.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAA5wCoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:17:01.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T20:17:01.069Z"
             },
             {
               "$type": "Document",
@@ -232,7 +228,7 @@
               "RelativeDocumentMoniker": "test\\Controllers\\DeviceController.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\GENERIC_CONTROLLER_BASE_WEB_API\\test\\Controllers\\DeviceController.cs",
               "RelativeToolTip": "test\\Controllers\\DeviceController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T20:24:34.981Z",
               "EditorCaption": ""
@@ -295,8 +291,7 @@
               "RelativeToolTip": "test\\Configuration\\RateLimitingConfiguration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T10:26:49.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T10:26:49.047Z"
             },
             {
               "$type": "Document",
