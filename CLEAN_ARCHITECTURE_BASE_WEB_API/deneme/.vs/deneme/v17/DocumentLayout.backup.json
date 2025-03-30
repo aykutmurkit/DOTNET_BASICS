@@ -1,0 +1,167 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\core\\utilities\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\core\\utilities\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\entities\\concrete\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\entities\\concrete\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\entities\\dtos\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\entities\\dtos\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\entities\\dtos\\twofactordtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\entities\\dtos\\twofactordtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Program.cs",
+              "RelativeDocumentMoniker": "deneme\\Program.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Program.cs",
+              "RelativeToolTip": "deneme\\Program.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T00:52:57.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "deneme\\Data\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "deneme\\Data\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T00:52:46.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "deneme\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.Development.json",
+              "RelativeToolTip": "deneme\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-28T12:51:36.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "deneme\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Properties\\launchSettings.json",
+              "RelativeToolTip": "deneme\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-28T12:17:01.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Core\\Utilities\\EmailService.cs",
+              "RelativeDocumentMoniker": "deneme\\Core\\Utilities\\EmailService.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Core\\Utilities\\EmailService.cs",
+              "RelativeToolTip": "deneme\\Core\\Utilities\\EmailService.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAqwF8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T12:16:48.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TwoFactorDtos.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
+              "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
+              "RelativeToolTip": "deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T10:43:42.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Concrete\\User.cs",
+              "RelativeDocumentMoniker": "deneme\\Entities\\Concrete\\User.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Concrete\\User.cs",
+              "RelativeToolTip": "deneme\\Entities\\Concrete\\User.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T10:39:21.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.json",
+              "RelativeDocumentMoniker": "deneme\\appsettings.json",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.json",
+              "RelativeToolTip": "deneme\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-28T07:40:28.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserDtos.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\UserDtos.cs",
+              "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\UserDtos.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\UserDtos.cs",
+              "RelativeToolTip": "deneme\\Entities\\Dtos\\UserDtos.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T10:43:47.349Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

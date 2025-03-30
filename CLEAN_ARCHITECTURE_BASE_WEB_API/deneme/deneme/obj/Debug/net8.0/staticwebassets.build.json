@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "Hash": "mK0e4xBfcE8HrZAzUgaXDoASI2ncOEOKrtNacf5+PIs=",
+  "Source": "deneme",
+  "BasePath": "_content/deneme",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "deneme\\wwwroot",
+      "Source": "deneme",
+      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "BasePath": "_content/deneme",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "SourceId": "deneme",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "BasePath": "_content/deneme",
+      "RelativePath": "assets/templates/email/password-reset#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fvdws8asy5",
+      "Integrity": "O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
+    },
+    {
+      "Identity": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "SourceId": "deneme",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "BasePath": "_content/deneme",
+      "RelativePath": "assets/templates/email/two-factor-auth#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xtf1jh41ay",
+      "Integrity": "m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\two-factor-auth.html"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "assets/templates/email/password-reset.fvdws8asy5.html",
+      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fvdws8asy5"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/templates/email/password-reset.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/templates/email/password-reset.html",
+      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/templates/email/two-factor-auth.html",
+      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6091"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/templates/email/two-factor-auth.xtf1jh41ay.html",
+      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6091"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xtf1jh41ay"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/templates/email/two-factor-auth.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ="
+        }
+      ]
+    }
+  ]
+}

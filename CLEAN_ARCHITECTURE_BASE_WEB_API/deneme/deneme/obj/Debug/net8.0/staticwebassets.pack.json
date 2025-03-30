@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\password-reset.html"
+    },
+    {
+      "Id": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\two-factor-auth.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.deneme.props",
+      "PackagePath": "build\\deneme.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.deneme.props",
+      "PackagePath": "buildMultiTargeting\\deneme.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.deneme.props",
+      "PackagePath": "buildTransitive\\deneme.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.deneme.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.deneme.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
