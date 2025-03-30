@@ -7,6 +7,7 @@ Bu bölüm, Deneme API'nin tüm endpoint'lerini, parametrelerini ve yanıt forma
 - [Temel URL](#temel-url)
 - [Yetkilendirme](#yetkilendirme)
 - [Yanıt Formatı](#yanıt-formatı)
+- [Rate Limiting](#rate-limiting)
 - [Kimlik Doğrulama API](#kimlik-doğrulama-api)
   - [Kullanıcı Kaydı](#kullanıcı-kaydı)
   - [Kullanıcı Girişi](#kullanıcı-girişi)
@@ -73,6 +74,53 @@ Tüm API yanıtları standart bir format kullanır:
 }
 ```
 
+## Rate Limiting
+
+API, istemcilerin yapabilecekleri istek sayısını sınırlamak için rate limiting uygular. Bu, API'nin istikrarını korumak, hizmet reddi (DoS) saldırılarını önlemek ve adil kullanımı sağlamak için tasarlanmıştır.
+
+### Genel API Limitleri
+
+- **Genel Limit**: Her IP adresi için dakikada maksimum 200 istek
+- **IP Bazlı Limit**: Her IP adresi için dakikada maksimum 100 istek
+
+### Endpoint Spesifik Limitler
+
+| Endpoint | Limit | Periyot | Açıklama |
+|----------|-------|---------|----------|
+| `/api/Auth/login` | 10 | 5 dakika | Maksimum 5 eş zamanlı istek |
+| `/api/Auth/register` | 3 | 10 dakika | Yeni hesap oluşturma limiti |
+| `/api/Auth/forgot-password` | 3 | 30 dakika | Şifre sıfırlama limiti |
+| `/api/Auth/verify-2fa` | 5 | 5 dakika | 2FA doğrulama limiti |
+| `/api/Users/profile-picture` | 10 | 1 dakika | Profil fotoğrafı yükleme limiti |
+
+### Rate Limit Aşıldığında
+
+Rate limit aşıldığında, API aşağıdaki yanıtı döndürür:
+
+- **HTTP Durum Kodu**: 429 (Too Many Requests)
+- **Yanıt Gövdesi**:
+
+```json
+{
+  "statusCode": 429,
+  "isSuccess": false,
+  "message": "İstek limiti aşıldı. Lütfen daha sonra tekrar deneyin.",
+  "retryAfter": 60
+}
+```
+
+### Rate Limiting Başlıkları
+
+API, rate limit durumu hakkında bilgi veren HTTP başlıkları içerir:
+
+- **Retry-After**: Yeni bir istek yapmadan önce beklenecek saniye sayısı
+
+### Rate Limiting En İyi Uygulamalar
+
+- İstek sayısını azaltmak için uygun önbelleğe alma stratejileri kullanın
+- Bir token alırken eksponansiyel geri çekilme uygulamak için `Retry-After` başlığını kullanın
+- Rate limit'e takılma olasılığı yüksek endpoint'ler için iş mantığınızda yeniden deneme mekanizmaları ekleyin
+
 ## Kimlik Doğrulama API
 
 ### Kullanıcı Kaydı
@@ -82,6 +130,8 @@ Yeni bir kullanıcı hesabı oluşturur.
 **Endpoint**: `POST /Auth/register`
 
 **Yetki**: Herkese açık
+
+**Rate Limit**: 10 dakikada 3 istek
 
 **İstek**:
 
@@ -130,6 +180,8 @@ Mevcut kullanıcı kimlik bilgileri ile giriş yapar.
 **Endpoint**: `POST /Auth/login`
 
 **Yetki**: Herkese açık
+
+**Rate Limit**: 5 dakikada 10 istek
 
 **İstek**:
 
@@ -294,6 +346,8 @@ Kullanıcının iki faktörlü kimlik doğrulama ayarlarını günceller.
 
 **Yetki**: Herkese açık
 
+**Rate Limit**: 5 dakikada 5 istek
+
 **İstek**:
 
 ```json
@@ -339,6 +393,8 @@ Kullanıcının iki faktörlü kimlik doğrulama ayarlarını günceller.
 **Endpoint**: `POST /Auth/forgot-password`
 
 **Yetki**: Herkese açık
+
+**Rate Limit**: 30 dakikada 3 istek
 
 **İstek**:
 
@@ -628,6 +684,8 @@ Kullanıcı profil fotoğrafı yükler.
 
 **Yetki**: Kimliği doğrulanmış kullanıcı
 
+**Rate Limit**: 1 dakikada 10 istek
+
 **İstek**: `multipart/form-data` formatında dosya
 
 | Alan Adı | Tür | Açıklama |
@@ -667,6 +725,7 @@ Kullanıcının profil fotoğrafını resim formatında döndürür.
 | 404 | Not Found | Kaynak bulunamadı (kullanıcı, profil fotoğrafı, vb.) |
 | 409 | Conflict | Aynı kullanıcı adı veya e-posta zaten kullanımda |
 | 422 | Unprocessable Entity | Doğrulama hatası (şifre kriterleri, e-posta formatı, vb.) |
+| 429 | Too Many Requests | İstek limiti aşıldı, rate limiting |
 | 500 | Internal Server Error | Sunucu taraflı hata |
 
 ---

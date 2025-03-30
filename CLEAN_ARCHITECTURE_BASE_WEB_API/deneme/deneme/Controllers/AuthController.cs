@@ -3,6 +3,7 @@ using Core.Utilities;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System.Security.Claims;
 
 namespace deneme.Controllers
@@ -22,6 +23,7 @@ namespace deneme.Controllers
         /// Kullanıcı giriş işlemi
         /// </summary>
         [HttpPost("login")]
+        [EnableRateLimiting("api_auth_login")]
         public async Task<ActionResult<ApiResponse<object>>> Login([FromBody] LoginRequest request)
         {
             try
@@ -51,6 +53,7 @@ namespace deneme.Controllers
         /// İki faktörlü kimlik doğrulama
         /// </summary>
         [HttpPost("verify-2fa")]
+        [EnableRateLimiting("api_auth_verify-2fa")]
         public async Task<ActionResult<ApiResponse<AuthResponse>>> VerifyTwoFactor([FromBody] TwoFactorVerifyRequest request)
         {
             try
@@ -118,6 +121,7 @@ namespace deneme.Controllers
         /// Kullanıcı kayıt işlemi
         /// </summary>
         [HttpPost("register")]
+        [EnableRateLimiting("api_auth_register")]
         public async Task<ActionResult<ApiResponse<AuthResponse>>> Register([FromBody] RegisterRequest request)
         {
             try
@@ -188,6 +192,7 @@ namespace deneme.Controllers
         /// Şifre sıfırlama talebi
         /// </summary>
         [HttpPost("forgot-password")]
+        [EnableRateLimiting("api_auth_forgot-password")]
         public async Task<ActionResult<ApiResponse<object>>> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
             try
@@ -210,15 +215,19 @@ namespace deneme.Controllers
             try
             {
                 await _authService.ResetPasswordAsync(request);
-                return Ok(ApiResponse<object>.Success(null, "Şifre başarıyla sıfırlandı"));
+                return Ok(ApiResponse<object>.Success(null, "Şifreniz başarıyla sıfırlandı"));
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Geçersiz") || ex.Message.Contains("süresi dolmuş"))
+                if (ex.Message.Contains("geçersiz") || ex.Message.Contains("süresi dolmuş"))
                 {
-                    return StatusCode(401, ApiResponse<object>.Unauthorized(ex.Message));
+                    return BadRequest(ApiResponse<object>.Error(ex.Message));
                 }
-                return BadRequest(ApiResponse<object>.Error(ex.Message));
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
             }
         }
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mK0e4xBfcE8HrZAzUgaXDoASI2ncOEOKrtNacf5+PIs=",
+  "Hash": "ZtfeKi8ZwE32Iq2gotfPTWm6ty7TQhM+p5vhFdriuYk=",
   "Source": "deneme",
   "BasePath": "_content/deneme",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "deneme\\wwwroot",
       "Source": "deneme",
-      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\",
       "BasePath": "_content/deneme",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "SourceId": "deneme",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\",
       "BasePath": "_content/deneme",
       "RelativePath": "assets/templates/email/password-reset#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
     },
     {
-      "Identity": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "SourceId": "deneme",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\",
       "BasePath": "_content/deneme",
       "RelativePath": "assets/templates/email/two-factor-auth#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "assets/templates/email/password-reset.fvdws8asy5.html",
-      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -107,7 +107,7 @@
     },
     {
       "Route": "assets/templates/email/password-reset.html",
-      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -144,7 +144,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.html",
-      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -181,7 +181,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.xtf1jh41ay.html",
-      "AssetFile": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {

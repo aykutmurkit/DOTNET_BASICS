@@ -18,6 +18,7 @@ Deneme API, güvenli ve ölçeklenebilir bir kullanıcı yönetim sistemi sunar.
 - **İki Faktörlü Kimlik Doğrulama (2FA)**: Ek güvenlik katmanı
 - **Rol Tabanlı Erişim Kontrolü**: Admin, Developer ve User rolleri
 - **Kullanıcı Yönetimi**: Kapsamlı profil ve hesap yönetimi
+- **Rate Limiting**: IP ve endpoint bazlı istek sınırlama
 - **Standart API Yanıtları**: Tutarlı yanıt formatları
 
 ## Başlarken
@@ -66,7 +67,8 @@ API şu adreste çalışmaya başlayacaktır: `https://localhost:7052`
 |-------|-------|--------|
 | v1.0  | Aktif | İlk sürüm - temel kimlik doğrulama ve kullanıcı yönetimi |
 | v1.1  | Aktif | İki faktörlü kimlik doğrulama eklendi |
-| v1.2  | Geliştirme | Rol tabanlı erişim kontrollerinin genişletilmesi |
+| v1.2  | Aktif | Rol tabanlı erişim kontrollerinin genişletilmesi ve Rate Limiting eklendi |
+| v1.3  | Geliştirme | Gelişmiş izleme ve loglama işlevleri |
 
 ## İletişim
 

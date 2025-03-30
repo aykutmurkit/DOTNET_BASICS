@@ -1,5 +1,6 @@
 using Business.Interfaces;
 using Business.Services;
+using Core.Extensions;
 using Core.Security;
 using Core.Utilities;
 using Data.Context;
@@ -9,6 +10,7 @@ using Data.Repositories;
 using Data.Seeding;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -45,6 +47,9 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+
+// Rate limiting servislerini ekle
+builder.Services.AddRateLimitingServices(builder.Configuration);
 
 // Servisleri kaydet
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -159,9 +164,30 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Rate limiting middleware'ini ekle
+app.UseRateLimiter();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+// Endpoint spesifik rate limit'leri uygula
+app.MapControllers().RequireRateLimiting("ip");
+
+// Uygulamayı çalıştır
+if (app.Environment.IsDevelopment())
+{
+    // Geliştirme ortamında rate limit bilgilerini logla
+    using (var scope = app.Services.CreateScope())
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        var endpointPolicyMappings = RateLimitExtensions.GetEndpointPolicyMappings(builder.Configuration);
+        
+        logger.LogInformation("Rate limit politikaları yapılandırıldı:");
+        foreach (var mapping in endpointPolicyMappings)
+        {
+            logger.LogInformation(mapping);
+        }
+    }
+}
 
 app.Run();

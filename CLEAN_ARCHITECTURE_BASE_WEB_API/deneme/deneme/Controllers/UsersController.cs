@@ -3,6 +3,7 @@ using Core.Utilities;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System.Security.Claims;
 using static Core.Utilities.ControllerExtensions;
 
@@ -192,16 +193,14 @@ namespace deneme.Controllers
         /// Profil fotoğrafı yükler
         /// </summary>
         [HttpPost("profile-picture")]
+        [EnableRateLimiting("api_users_profile-picture")]
         public async Task<ActionResult<ApiResponse<object>>> UploadProfilePicture([FromForm] UploadProfilePictureRequest request)
         {
             try
             {
                 var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 await _userService.UploadProfilePictureAsync(userId, request);
-                
-                // Profil fotoğrafı yüklendikten sonra güncel kullanıcı bilgilerini döndür
-                var user = await _userService.GetUserByIdAsync(userId);
-                return Ok(ApiResponse<UserDto>.Success(user, "Profil fotoğrafı başarıyla yüklendi"));
+                return Ok(ApiResponse<object>.Success(null, "Profil fotoğrafı başarıyla yüklendi"));
             }
             catch (Exception ex)
             {
@@ -210,7 +209,7 @@ namespace deneme.Controllers
         }
 
         /// <summary>
-        /// Profil fotoğrafını getirir
+        /// Kullanıcının profil fotoğrafını getirir
         /// </summary>
         [HttpGet("{id}/profile-picture")]
         [AllowAnonymous]
@@ -219,13 +218,16 @@ namespace deneme.Controllers
             try
             {
                 var profilePicture = await _userService.GetProfilePictureAsync(id);
+                if (profilePicture == null)
+                {
+                    return NotFound();
+                }
+
                 return File(profilePicture, "image/png");
             }
             catch (Exception ex)
             {
-                // Profil fotoğrafı durumunda ApiResponse yerine doğrudan dosya dönüyoruz,
-                // hatalı durumda ise normal bir hata yanıtı
-                return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                return NotFound();
             }
         }
     }
