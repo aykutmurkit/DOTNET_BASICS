@@ -1,5 +1,7 @@
+using Data.Configurations;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Data.Context
 {
@@ -26,30 +28,10 @@ namespace Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // Burada veritabanı yapılandırmaları yapılabilir
-            // Örneğin indeksler, ilişkiler vb.
-
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)
-                .IsUnique();
-
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Email)
-                .IsUnique();
-                
-            // User ve UserRole arasındaki ilişki
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Role)
-                .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleId)
-                .OnDelete(DeleteBehavior.Restrict); // Rol silindiğinde kullanıcıyı silme
-                
-            // Seed data için roller
-            modelBuilder.Entity<UserRole>().HasData(
-                new UserRole { Id = 1, Name = "User" },
-                new UserRole { Id = 2, Name = "Developer" },
-                new UserRole { Id = 3, Name = "Admin" }
-            );
+            // Tüm yapılandırma sınıflarını otomatik olarak uygula
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            
+            // Not: Seed data artık ayrı seeder sınıflarında yönetilmektedir
         }
     }
 } 

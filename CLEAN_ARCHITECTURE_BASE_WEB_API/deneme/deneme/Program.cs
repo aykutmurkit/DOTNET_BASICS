@@ -3,9 +3,10 @@ using Business.Services;
 using Core.Security;
 using Core.Utilities;
 using Data.Context;
+using Data.Extensions;
 using Data.Interfaces;
 using Data.Repositories;
-using Entities.Concrete;
+using Data.Seeding;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,8 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Veritabanı bağlantısını ekle
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Veritabanı servislerini ekle
+builder.Services.AddDatabaseServices(builder.Configuration);
 
 // JWT doğrulama yapılandırması
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -131,17 +131,22 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Veritabanını her başlangıçta sıfırla
+// Veritabanını başlangıçta yapılandır
 if (builder.Configuration.GetValue<bool>("DatabaseSettings:ResetDatabaseOnStartup"))
 {
     using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        dbContext.Database.EnsureDeleted();
-        dbContext.Database.EnsureCreated();
+        var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
-        // Başlangıç kullanıcılarını ekle
-        SeedInitialUsers(dbContext, builder.Configuration);
+        logger.LogInformation("Veritabanı sıfırlanıyor...");
+        await dbContext.Database.EnsureDeletedAsync();
+        await dbContext.Database.EnsureCreatedAsync();
+        
+        logger.LogInformation("Veritabanı başlangıç verileri ekleniyor...");
+        await seeder.SeedAsync();
+        logger.LogInformation("Veritabanı başlangıç verileri başarıyla eklendi.");
     }
 }
 
@@ -160,77 +165,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// Başlangıç kullanıcılarını ekleme metodu
-void SeedInitialUsers(AppDbContext dbContext, IConfiguration configuration)
-{
-    // Önce rollerin eklendiğinden emin olalım
-    if (!dbContext.UserRoles.Any())
-    {
-        dbContext.UserRoles.AddRange(
-            new UserRole { Id = 1, Name = "User" },
-            new UserRole { Id = 2, Name = "Developer" },
-            new UserRole { Id = 3, Name = "Admin" }
-        );
-        dbContext.SaveChanges(); // Rollerin önce kaydedilmesi önemli
-    }
-    
-    var initialUsers = configuration.GetSection("InitialUsers").Get<List<InitialUser>>();
-    
-    if (initialUsers != null)
-    {
-        foreach (var initialUser in initialUsers)
-        {
-            // Kullanıcının zaten var olup olmadığını kontrol et
-            if (dbContext.Users.Any(u => u.Username == initialUser.Username || u.Email == initialUser.Email))
-                continue;
-                
-            string salt = PasswordHelper.CreateSalt();
-            string passwordHash = PasswordHelper.HashPassword(initialUser.Password, salt);
-
-            // Rol ID'sini belirle
-            int roleId;
-            switch (initialUser.Role.ToLower())
-            {
-                case "admin":
-                    roleId = 3;
-                    break;
-                case "developer":
-                    roleId = 2;
-                    break;
-                default:
-                    roleId = 1; // User
-                    break;
-            }
-
-            // Rolün var olduğundan emin ol
-            if (!dbContext.UserRoles.Any(r => r.Id == roleId))
-            {
-                throw new Exception($"Role ID {roleId} bulunamadı. Kullanıcı oluşturulamıyor: {initialUser.Username}");
-            }
-
-            var user = new User
-            {
-                Username = initialUser.Username,
-                Email = initialUser.Email,
-                PasswordHash = passwordHash,
-                PasswordSalt = salt,
-                RoleId = roleId,
-                CreatedDate = DateTime.UtcNow
-            };
-
-            dbContext.Users.Add(user);
-        }
-        
-        dbContext.SaveChanges();
-    }
-}
-
-// Başlangıç kullanıcıları için yardımcı sınıf
-class InitialUser
-{
-    public string Username { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string Role { get; set; }
-}

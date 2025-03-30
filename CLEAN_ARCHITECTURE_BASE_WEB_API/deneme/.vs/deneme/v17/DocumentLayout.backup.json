@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\downloads\\deneme\\deneme\\deneme\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -46,11 +66,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UserRoleSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Seeding\\UserRoleSeeder.cs",
+              "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserRoleSeeder.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Seeding\\UserRoleSeeder.cs",
+              "RelativeToolTip": "deneme\\Data\\Seeding\\UserRoleSeeder.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAYwCUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T14:47:41.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Seeding\\UserSeeder.cs",
+              "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserSeeder.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Seeding\\UserSeeder.cs",
+              "RelativeToolTip": "deneme\\Data\\Seeding\\UserSeeder.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wCUAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T15:05:59.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "deneme\\Data\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "deneme\\Data\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAA0wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T12:31:20.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "deneme\\Data\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "deneme\\Data\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T12:31:10.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "api-reference.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Documentation\\api-reference.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\api-reference.md",
+              "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Documentation\\api-reference.md",
+              "RelativeToolTip": "deneme\\Documentation\\api-reference.md",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-30T02:07:42.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Program.cs",
               "RelativeDocumentMoniker": "deneme\\Program.cs",
@@ -58,8 +140,7 @@
               "RelativeToolTip": "deneme\\Program.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T00:52:57.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T00:52:57.992Z"
             },
             {
               "$type": "Document",
@@ -69,14 +150,14 @@
               "RelativeDocumentMoniker": "deneme\\Data\\Context\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Data\\Context\\AppDbContext.cs",
               "RelativeToolTip": "deneme\\Data\\Context\\AppDbContext.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T00:52:46.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.Development.json",
               "RelativeDocumentMoniker": "deneme\\appsettings.Development.json",
@@ -88,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "deneme\\Properties\\launchSettings.json",
@@ -100,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Core\\Utilities\\EmailService.cs",
               "RelativeDocumentMoniker": "deneme\\Core\\Utilities\\EmailService.cs",
@@ -112,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "TwoFactorDtos.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
@@ -124,7 +205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Concrete\\User.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Concrete\\User.cs",
@@ -136,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\appsettings.json",
               "RelativeDocumentMoniker": "deneme\\appsettings.json",
@@ -144,12 +225,11 @@
               "RelativeToolTip": "deneme\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-28T07:40:28.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T07:40:28.945Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "UserDtos.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Downloads\\deneme\\deneme\\deneme\\Entities\\Dtos\\UserDtos.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\UserDtos.cs",

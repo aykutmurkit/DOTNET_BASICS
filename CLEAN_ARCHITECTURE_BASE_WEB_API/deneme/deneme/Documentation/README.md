@@ -24,7 +24,7 @@ Deneme API, güvenli ve ölçeklenebilir bir kullanıcı yönetim sistemi sunar.
 
 ### Gereksimler
 
-- .NET 7.0 veya üzeri
+- .NET 8.0 veya üzeri
 - Microsoft SQL Server veya SQLite
 - HTTPS desteği
 
@@ -58,6 +58,7 @@ API şu adreste çalışmaya başlayacaktır: `https://localhost:7052`
 - [**Kimlik Doğrulama**](./authentication.md): Kayıt, giriş ve yetkilendirme süreçleri
 - [**İki Faktörlü Kimlik Doğrulama**](./two-factor-auth.md): 2FA özelliklerinin detaylı açıklaması
 - [**Kullanıcı Yönetimi**](./users.md): Kullanıcı profili ve hesap yönetimi API'leri
+- [**Veritabanı Yapılandırması ve Seeding**](./database-configuration.md): Veritabanı yapılandırması ve seed işlemleri
 
 ## API Sürümleri
 
