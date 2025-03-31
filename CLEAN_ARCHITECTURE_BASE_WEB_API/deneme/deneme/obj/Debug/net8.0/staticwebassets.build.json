@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZtfeKi8ZwE32Iq2gotfPTWm6ty7TQhM+p5vhFdriuYk=",
+  "Hash": "V3ruPjIly7O3cIPqcwg7DSk78tcskEH+Z+8/R9zxP1o=",
   "Source": "deneme",
   "BasePath": "_content/deneme",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fvdws8asy5",
-      "Integrity": "O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=",
+      "Fingerprint": "ve4ofuvggb",
+      "Integrity": "V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
@@ -52,59 +52,14 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xtf1jh41ay",
-      "Integrity": "m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=",
+      "Fingerprint": "ojkunuhez5",
+      "Integrity": "fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\two-factor-auth.html"
     }
   ],
   "Endpoints": [
-    {
-      "Route": "assets/templates/email/password-reset.fvdws8asy5.html",
-      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6142"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "fvdws8asy5"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/templates/email/password-reset.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="
-        }
-      ]
-    },
     {
       "Route": "assets/templates/email/password-reset.html",
       "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
@@ -116,7 +71,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6142"
+          "Value": "6321"
         },
         {
           "Name": "Content-Type",
@@ -124,11 +79,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\""
+          "Value": "\"V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+          "Value": "Sun, 30 Mar 2025 21:43:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -138,7 +93,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="
+          "Value": "sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="
+        }
+      ]
+    },
+    {
+      "Route": "assets/templates/email/password-reset.ve4ofuvggb.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6321"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Mar 2025 21:43:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ve4ofuvggb"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/templates/email/password-reset.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="
         }
       ]
     },
@@ -153,7 +153,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6091"
+          "Value": "6270"
         },
         {
           "Name": "Content-Type",
@@ -161,11 +161,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=\""
+          "Value": "\"fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+          "Value": "Sun, 30 Mar 2025 21:43:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -175,12 +175,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ="
+          "Value": "sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4="
         }
       ]
     },
     {
-      "Route": "assets/templates/email/two-factor-auth.xtf1jh41ay.html",
+      "Route": "assets/templates/email/two-factor-auth.ojkunuhez5.html",
       "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -190,7 +190,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6091"
+          "Value": "6270"
         },
         {
           "Name": "Content-Type",
@@ -198,11 +198,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=\""
+          "Value": "\"fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Mar 2025 12:50:59 GMT"
+          "Value": "Sun, 30 Mar 2025 21:43:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -212,7 +212,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xtf1jh41ay"
+          "Value": "ojkunuhez5"
         },
         {
           "Name": "label",
@@ -220,7 +220,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ="
+          "Value": "sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4="
         }
       ]
     }

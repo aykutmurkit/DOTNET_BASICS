@@ -417,7 +417,13 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\dene
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.deneme.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.deneme.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\deneme.csproj.Up2Date
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\deneme.genruntimeconfig.cache
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\ref\deneme.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\DnsClient.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\Snappier.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

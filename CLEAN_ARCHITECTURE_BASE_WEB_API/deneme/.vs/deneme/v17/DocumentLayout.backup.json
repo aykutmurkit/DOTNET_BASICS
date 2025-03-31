@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -75,19 +79,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "deneme\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "deneme\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAUwNsAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T16:42:59.801Z",
+              "Title": "logging-system.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\logging-system.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
+              "RelativeToolTip": "deneme\\Documentation\\logging-system.md",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAAAGsAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-31T17:35:14.068Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "deneme\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "deneme\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAuwNsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T16:42:59.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserRoleSeeder.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserRoleSeeder.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserRoleSeeder.cs",
@@ -99,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserSeeder.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserSeeder.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserSeeder.cs",
@@ -107,12 +123,11 @@
               "RelativeToolTip": "deneme\\Data\\Seeding\\UserSeeder.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAgwCUAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T15:05:59.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T15:05:59.807Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Repositories\\UserRepository.cs",
@@ -124,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Interfaces\\IUserRepository.cs",
@@ -136,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "api-reference.md",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\api-reference.md",
               "RelativeDocumentMoniker": "deneme\\Documentation\\api-reference.md",
@@ -148,19 +163,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Program.cs",
               "RelativeDocumentMoniker": "deneme\\Program.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Program.cs",
               "RelativeToolTip": "deneme\\Program.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALgAAAAAAAAAAAAYwNEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T00:52:57.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Context\\AppDbContext.cs",
@@ -172,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\appsettings.Development.json",
               "RelativeDocumentMoniker": "deneme\\appsettings.Development.json",
@@ -184,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "deneme\\Properties\\launchSettings.json",
@@ -196,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Core\\Utilities\\EmailService.cs",
               "RelativeDocumentMoniker": "deneme\\Core\\Utilities\\EmailService.cs",
@@ -208,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "TwoFactorDtos.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\TwoFactorDtos.cs",
@@ -220,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Entities\\Concrete\\User.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Concrete\\User.cs",
@@ -232,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\appsettings.json",
               "RelativeDocumentMoniker": "deneme\\appsettings.json",
@@ -244,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "UserDtos.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Entities\\Dtos\\UserDtos.cs",
               "RelativeDocumentMoniker": "deneme\\Entities\\Dtos\\UserDtos.cs",

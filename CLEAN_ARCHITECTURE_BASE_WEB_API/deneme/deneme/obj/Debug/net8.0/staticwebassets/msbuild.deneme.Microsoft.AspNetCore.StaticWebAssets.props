@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fvdws8asy5</Fingerprint>
-      <Integrity>O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=</Integrity>
+      <Fingerprint>ve4ofuvggb</Fingerprint>
+      <Integrity>V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</OriginalItemSpec>
@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xtf1jh41ay</Fingerprint>
-      <Integrity>m6KWfI50NTa/a7SEX+7x0QjY2aHLM0sxUzfcrCFdwQQ=</Integrity>
+      <Fingerprint>ojkunuhez5</Fingerprint>
+      <Integrity>fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop+F+0XcFwG4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\two-factor-auth.html'))</OriginalItemSpec>

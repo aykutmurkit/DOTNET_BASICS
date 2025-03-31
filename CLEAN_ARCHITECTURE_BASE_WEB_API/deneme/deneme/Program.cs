@@ -16,6 +16,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+using MongoDB.Driver;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using deneme.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +62,16 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<JwtHelper>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<ITwoFactorService, TwoFactorService>();
+
+// Add MongoDB client
+builder.Services.AddSingleton<IMongoClient>(_ => 
+{
+    var connectionString = builder.Configuration.GetConnectionString("MongoDb");
+    return new MongoClient(connectionString);
+});
+
+// Add logging services
+builder.Services.AddLoggingServices();
 
 // Controller'lara validasyon filtresi ve API yanıt formatını özelleştirme
 builder.Services.AddControllers(options =>
@@ -172,6 +186,9 @@ app.UseAuthorization();
 
 // Endpoint spesifik rate limit'leri uygula
 app.MapControllers().RequireRateLimiting("ip");
+
+// Use request/response logging middleware
+app.UseRequestResponseLogging();
 
 // Uygulamayı çalıştır
 if (app.Environment.IsDevelopment())

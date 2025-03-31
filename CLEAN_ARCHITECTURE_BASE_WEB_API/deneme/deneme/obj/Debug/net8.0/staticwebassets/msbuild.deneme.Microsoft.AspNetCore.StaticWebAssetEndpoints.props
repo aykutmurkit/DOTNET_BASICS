@@ -1,28 +1,28 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/password-reset.fvdws8asy5.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"fvdws8asy5"},{"Name":"integrity","Value":"sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="},{"Name":"label","Value":"_content/deneme/assets/templates/email/password-reset.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6142"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 28 Mar 2025 12:50:59 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/password-reset.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6142"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022O2qFW0ZEsdZFJD3qtO2hdOsewxRhE6Lx1pXxul/HCRk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 28 Mar 2025 12:50:59 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6321"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 21:43:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/password-reset.ve4ofuvggb.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ve4ofuvggb"},{"Name":"integrity","Value":"sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="},{"Name":"label","Value":"_content/deneme/assets/templates/email/password-reset.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6321"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 21:43:45 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/two-factor-auth.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\two-factor-auth.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-m6KWfI50NTa/a7SEX\u002B7x0QjY2aHLM0sxUzfcrCFdwQQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6091"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022m6KWfI50NTa/a7SEX\u002B7x0QjY2aHLM0sxUzfcrCFdwQQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 28 Mar 2025 12:50:59 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6270"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 21:43:45 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/two-factor-auth.xtf1jh41ay.html">
+    <StaticWebAssetEndpoint Include="_content/deneme/assets/templates/email/two-factor-auth.ojkunuhez5.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\two-factor-auth.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xtf1jh41ay"},{"Name":"integrity","Value":"sha256-m6KWfI50NTa/a7SEX\u002B7x0QjY2aHLM0sxUzfcrCFdwQQ="},{"Name":"label","Value":"_content/deneme/assets/templates/email/two-factor-auth.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6091"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022m6KWfI50NTa/a7SEX\u002B7x0QjY2aHLM0sxUzfcrCFdwQQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 28 Mar 2025 12:50:59 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ojkunuhez5"},{"Name":"integrity","Value":"sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4="},{"Name":"label","Value":"_content/deneme/assets/templates/email/two-factor-auth.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6270"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 21:43:45 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
