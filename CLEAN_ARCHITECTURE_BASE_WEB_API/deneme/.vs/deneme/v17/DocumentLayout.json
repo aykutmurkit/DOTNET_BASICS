@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\authentication.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\authentication.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\two-factor-auth.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\two-factor-auth.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\users.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\users.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\extensions\\loggingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\extensions\\loggingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\data\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\api\\middleware\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\api\\middleware\\requestresponseloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\data\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\api-reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\documentation\\logging-system.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -65,6 +65,30 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\deneme\\deneme\\entities\\dtos\\twofactordtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|deneme\\deneme.csproj|solutionrelative:deneme\\entities\\dtos\\twofactordtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Controllers\\UsersController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserRoleSeeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Data\\Seeding\\UserRoleSeeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserSeeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Data\\Seeding\\UserSeeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Data\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Interfaces\\IUserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Data\\Interfaces\\IUserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Context\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:deneme\\Data\\Context\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,24 +98,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "logging-system.md",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
-              "RelativeDocumentMoniker": "deneme\\Documentation\\logging-system.md",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
-              "RelativeToolTip": "deneme\\Documentation\\logging-system.md",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAAANIAAABCAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "authentication.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\authentication.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\authentication.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\authentication.md",
+              "RelativeToolTip": "deneme\\Documentation\\authentication.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-03-31T17:35:14.068Z",
+              "WhenOpened": "2025-03-31T22:37:11.493Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "two-factor-auth.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\two-factor-auth.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\two-factor-auth.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\two-factor-auth.md",
+              "RelativeToolTip": "deneme\\Documentation\\two-factor-auth.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-31T22:37:10.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "users.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\users.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\users.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\users.md",
+              "RelativeToolTip": "deneme\\Documentation\\users.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-31T22:37:08.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\README.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\README.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\README.md",
+              "RelativeToolTip": "deneme\\Documentation\\README.md",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-31T22:36:54.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoggingExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Extensions\\LoggingExtensions.cs",
+              "RelativeDocumentMoniker": "deneme\\Extensions\\LoggingExtensions.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Extensions\\LoggingExtensions.cs",
+              "RelativeToolTip": "deneme\\Extensions\\LoggingExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T22:21:57.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "logging-system.md",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
+              "RelativeDocumentMoniker": "deneme\\Documentation\\logging-system.md",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\logging-system.md",
+              "RelativeToolTip": "deneme\\Documentation\\logging-system.md",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAiwNIAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-31T17:35:14.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "deneme\\Controllers\\UsersController.cs",
@@ -103,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "UserRoleSeeder.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserRoleSeeder.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserRoleSeeder.cs",
@@ -115,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 18,
               "Title": "UserSeeder.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Seeding\\UserSeeder.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Seeding\\UserSeeder.cs",
@@ -127,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 19,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Repositories\\UserRepository.cs",
@@ -139,7 +227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 20,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Interfaces\\IUserRepository.cs",
@@ -151,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "api-reference.md",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Documentation\\api-reference.md",
               "RelativeDocumentMoniker": "deneme\\Documentation\\api-reference.md",
@@ -159,23 +247,37 @@
               "RelativeToolTip": "deneme\\Documentation\\api-reference.md",
               "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-03-30T02:07:42.141Z"
+              "WhenOpened": "2025-03-30T02:07:42.141Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "RequestResponseLoggingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "RelativeDocumentMoniker": "deneme\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "RelativeToolTip": "deneme\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwBsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T22:22:00.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Program.cs",
               "RelativeDocumentMoniker": "deneme\\Program.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Program.cs",
               "RelativeToolTip": "deneme\\Program.cs",
-              "ViewState": "AgIAALgAAAAAAAAAAAAYwNEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAcwJsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T00:52:57.992Z"
+              "WhenOpened": "2025-03-30T00:52:57.992Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 21,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\Data\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "deneme\\Data\\Context\\AppDbContext.cs",

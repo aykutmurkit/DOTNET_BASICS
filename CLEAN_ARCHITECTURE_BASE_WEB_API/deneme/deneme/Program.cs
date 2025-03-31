@@ -1,79 +1,18 @@
-using Business.Interfaces;
-using Business.Services;
-using Core.Extensions;
-using Core.Security;
+using Deneme.API.Extensions;
+using Deneme.API.Middleware;
+using Deneme.Business.Extensions;
+using Deneme.Core.Extensions;
+using Deneme.DataAccess.Extensions;
 using Core.Utilities;
-using Data.Context;
-using Data.Extensions;
-using Data.Interfaces;
-using Data.Repositories;
-using Data.Seeding;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Text;
-using System.Text.Json.Serialization;
-using MongoDB.Driver;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using deneme.Extensions;
+using System.Text.Json.Serialization;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Veritabanı servislerini ekle
-builder.Services.AddDatabaseServices(builder.Configuration);
-
-// JWT doğrulama yapılandırması
-var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]);
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.RequireHttpsMetadata = true;
-    options.SaveToken = true;
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidIssuer = jwtSettings["Issuer"],
-        ValidAudience = jwtSettings["Audience"],
-        ClockSkew = TimeSpan.Zero
-    };
-});
-
-// Rate limiting servislerini ekle
-builder.Services.AddRateLimitingServices(builder.Configuration);
-
-// Servisleri kaydet
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<JwtHelper>();
-builder.Services.AddScoped<EmailService>();
-builder.Services.AddScoped<ITwoFactorService, TwoFactorService>();
-
-// Add MongoDB client
-builder.Services.AddSingleton<IMongoClient>(_ => 
-{
-    var connectionString = builder.Configuration.GetConnectionString("MongoDb");
-    return new MongoClient(connectionString);
-});
-
-// Add logging services
-builder.Services.AddLoggingServices();
-
-// Controller'lara validasyon filtresi ve API yanıt formatını özelleştirme
+// Controllers ve API davranış ayarları
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ValidationFilter>();
@@ -110,6 +49,7 @@ builder.Services.AddControllers(options =>
 });
 
 // Swagger yapılandırması
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Deneme API", Version = "v1" });
@@ -146,28 +86,22 @@ builder.Services.AddHttpsRedirection(options =>
     options.HttpsPort = 5001;
 });
 
-builder.Services.AddEndpointsApiExplorer();
+// DataAccess Layer servisleri
+builder.Services.AddDataAccessServices(builder.Configuration);
+
+// Business Layer servisleri
+builder.Services.AddBusinessServices();
+
+// Core layer servisleri
+builder.Services.AddCoreServices(builder.Configuration);
+
+// JWT Authentication
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
+// Rate limiting servisleri
+builder.Services.AddRateLimitingServices(builder.Configuration);
 
 var app = builder.Build();
-
-// Veritabanını başlangıçta yapılandır
-if (builder.Configuration.GetValue<bool>("DatabaseSettings:ResetDatabaseOnStartup"))
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
-        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-        logger.LogInformation("Veritabanı sıfırlanıyor...");
-        await dbContext.Database.EnsureDeletedAsync();
-        await dbContext.Database.EnsureCreatedAsync();
-        
-        logger.LogInformation("Veritabanı başlangıç verileri ekleniyor...");
-        await seeder.SeedAsync();
-        logger.LogInformation("Veritabanı başlangıç verileri başarıyla eklendi.");
-    }
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -184,25 +118,37 @@ app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// İstek/yanıt loglama middleware'ini ekle
+app.UseRequestResponseLogging();
+
 // Endpoint spesifik rate limit'leri uygula
 app.MapControllers().RequireRateLimiting("ip");
 
-// Use request/response logging middleware
-app.UseRequestResponseLogging();
-
-// Uygulamayı çalıştır
-if (app.Environment.IsDevelopment())
+// Veritabanını sıfırlama ve seed etme
+if (builder.Configuration.GetValue<bool>("DatabaseSettings:ResetDatabaseOnStartup"))
 {
-    // Geliştirme ortamında rate limit bilgilerini logla
     using (var scope = app.Services.CreateScope())
     {
-        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        var endpointPolicyMappings = RateLimitExtensions.GetEndpointPolicyMappings(builder.Configuration);
+        var serviceProvider = scope.ServiceProvider;
+        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
         
-        logger.LogInformation("Rate limit politikaları yapılandırıldı:");
-        foreach (var mapping in endpointPolicyMappings)
+        try
         {
-            logger.LogInformation(mapping);
+            var context = serviceProvider.GetRequiredService<Data.Context.AppDbContext>();
+            var seeder = serviceProvider.GetRequiredService<Data.Seeding.DatabaseSeeder>();
+            
+            logger.LogInformation("Veritabanı sıfırlanıyor...");
+            await context.Database.EnsureDeletedAsync();
+            await context.Database.EnsureCreatedAsync();
+            
+            logger.LogInformation("Veritabanı başlangıç verileri ekleniyor...");
+            await seeder.SeedAsync();
+            logger.LogInformation("Veritabanı başlangıç verileri başarıyla eklendi.");
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Veritabanı başlatma sırasında hata oluştu");
+            throw;
         }
     }
 }

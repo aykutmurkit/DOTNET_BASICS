@@ -427,4 +427,5 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\dene
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\Snappier.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\ZstdSharp.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\deneme\deneme\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,10 +1,10 @@
-using deneme.Middleware;
+using Deneme.API.Middleware;
 using deneme.Services.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 
-namespace deneme.Extensions
+namespace Deneme.Extensions
 {
     public static class LoggingExtensions
     {

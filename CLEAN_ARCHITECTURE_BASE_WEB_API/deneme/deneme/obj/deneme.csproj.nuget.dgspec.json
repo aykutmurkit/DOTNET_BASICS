@@ -73,6 +73,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.IO.RecyclableMemoryStream": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.3.0, )"

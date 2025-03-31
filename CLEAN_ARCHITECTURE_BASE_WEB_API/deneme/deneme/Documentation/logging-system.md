@@ -7,9 +7,11 @@ Bu bölüm, Deneme API'nin loglama sistemi hakkında bilgiler içerir.
 - [Genel Bakış](#genel-bakış)
 - [Log Tipleri](#log-tipleri)
 - [MongoDB Entegrasyonu](#mongodb-entegrasyonu)
+- [Middleware Yapısı](#middleware-yapısı)
 - [API Endpoints](#api-endpoints)
 - [Yapılandırma](#yapılandırma)
 - [Güvenlik Önlemleri](#güvenlik-önlemleri)
+- [Extension Metotları](#extension-metotları)
 - [Best Practices](#best-practices)
 
 ## Genel Bakış
@@ -73,6 +75,186 @@ Loglama sistemi, verileri saklamak için MongoDB kullanır. Sistem, aşağıdaki
 - **ApiLogs**: API olay logları
 
 Her iki koleksiyon da, `Timestamp` alanı üzerinde TTL (Time-To-Live) indeksine sahiptir. Bu sayede loglar, belirli bir süre sonra otomatik olarak silinir.
+
+## Middleware Yapısı
+
+Loglama sistemi, `RequestResponseLoggingMiddleware` adlı özel bir middleware kullanarak HTTP istek ve yanıtlarını yakalar ve loglar. Bu middleware, ASP.NET Core pipeline'ında stratejik bir konumda çalışır.
+
+### RequestResponseLoggingMiddleware
+
+Bu middleware, gelen her HTTP isteğini ve giden yanıtı yakalayarak MongoDB'ye kaydeder. Middleware şu şekilde çalışır:
+
+```csharp
+public class RequestResponseLoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger<RequestResponseLoggingMiddleware> _logger;
+    private readonly RecyclableMemoryStreamManager _recyclableMemoryStreamManager;
+    private readonly string[] _excludedPaths;
+    private readonly ILogRepository _logRepository;
+
+    public RequestResponseLoggingMiddleware(
+        RequestDelegate next,
+        ILogger<RequestResponseLoggingMiddleware> logger,
+        IConfiguration configuration,
+        ILogRepository logRepository)
+    {
+        _next = next;
+        _logger = logger;
+        _recyclableMemoryStreamManager = new RecyclableMemoryStreamManager();
+        _excludedPaths = configuration.GetSection("LogSettings:ExcludedPaths").Get<string[]>() ?? Array.Empty<string>();
+        _logRepository = logRepository;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        // Bu endpoint için loglama atlanmalı mı kontrol et
+        if (ShouldSkipLogging(context.Request.Path))
+        {
+            await _next(context);
+            return;
+        }
+
+        // Yeni log nesnesi oluştur
+        var log = new RequestResponseLog
+        {
+            TraceId = context.TraceIdentifier,
+            Path = context.Request.Path,
+            HttpMethod = context.Request.Method,
+            QueryString = context.Request.QueryString.ToString(),
+            UserIp = context.Connection.RemoteIpAddress?.ToString(),
+            Timestamp = DateTime.UtcNow
+        };
+
+        // Kimlik bilgilerini ekle (eğer kullanıcı kimliği doğrulanmışsa)
+        if (context.User.Identity?.IsAuthenticated == true)
+        {
+            log.UserId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            log.Username = context.User.FindFirstValue(ClaimTypes.Name);
+        }
+
+        // İstek gövdesini yakala
+        var originalRequestBody = context.Request.Body;
+        using var requestBodyStream = _recyclableMemoryStreamManager.GetStream();
+        await context.Request.Body.CopyToAsync(requestBodyStream);
+        requestBodyStream.Position = 0;
+
+        // İstek gövdesini oku ve hassas verileri gizle
+        using var requestReader = new StreamReader(requestBodyStream);
+        var requestBody = await requestReader.ReadToEndAsync();
+        log.RequestBody = SanitizeSensitiveData(requestBody);
+        log.RequestSize = requestBody.Length;
+
+        // İstek stream'ini sıfırla, böylece sonraki middleware'ler okuyabilir
+        requestBodyStream.Position = 0;
+        context.Request.Body = requestBodyStream;
+
+        // Yanıt gövdesini yakalamak için orijinal response stream'ini değiştir
+        var originalResponseBody = context.Response.Body;
+        using var responseBodyStream = _recyclableMemoryStreamManager.GetStream();
+        context.Response.Body = responseBodyStream;
+
+        // İsteği işleme süresi ölçümü için başlangıç zamanı al
+        var startTime = Stopwatch.GetTimestamp();
+
+        try
+        {
+            // Request pipeline'ının geri kalanını çalıştır
+            await _next(context);
+        }
+        catch (Exception ex)
+        {
+            // İşlem sırasında bir hata oluşursa, hata logunu kaydet
+            _logger.LogError(ex, "Request pipeline execution error");
+            log.Exception = ex.ToString();
+            throw;
+        }
+        finally
+        {
+            // İşlem süresini hesapla
+            var endTime = Stopwatch.GetTimestamp();
+            log.ExecutionTime = Stopwatch.GetElapsedTime(startTime, endTime).Milliseconds;
+
+            // Durum kodunu kaydet
+            log.StatusCode = context.Response.StatusCode;
+
+            // Yanıt gövdesini oku
+            responseBodyStream.Position = 0;
+            var responseBody = await new StreamReader(responseBodyStream).ReadToEndAsync();
+            log.ResponseBody = SanitizeSensitiveData(responseBody);
+            log.ResponseSize = responseBody.Length;
+
+            // Yanıtı istemciye döndür
+            responseBodyStream.Position = 0;
+            await responseBodyStream.CopyToAsync(originalResponseBody);
+            context.Response.Body = originalResponseBody;
+
+            // Log kaydını MongoDB'ye kaydet
+            try
+            {
+                await _logRepository.SaveRequestResponseLogAsync(log);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error saving request/response log");
+            }
+        }
+    }
+
+    private bool ShouldSkipLogging(PathString path)
+    {
+        // Belirli endpoint'ler için loglama atlanmalı mı kontrol et
+        return _excludedPaths.Any(excludedPath => 
+            path.StartsWithSegments(excludedPath, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private string SanitizeSensitiveData(string content)
+    {
+        if (string.IsNullOrEmpty(content))
+            return content;
+
+        // JSON içeriğini parse et
+        try
+        {
+            var jsonDoc = JsonDocument.Parse(content);
+            using var outputStream = new MemoryStream();
+            using var writer = new Utf8JsonWriter(outputStream, new JsonWriterOptions { Indented = false });
+            SanitizeJsonElement(jsonDoc.RootElement, writer);
+            writer.Flush();
+            return Encoding.UTF8.GetString(outputStream.ToArray());
+        }
+        catch (JsonException)
+        {
+            // JSON olarak ayrıştırılamıyorsa, içeriği regex ile temizle
+            var sanitized = content;
+            sanitized = Regex.Replace(sanitized, "\"password\"\\s*:\\s*\"[^\"]*\"", "\"password\":\"***REDACTED***\"", RegexOptions.IgnoreCase);
+            sanitized = Regex.Replace(sanitized, "\"token\"\\s*:\\s*\"[^\"]*\"", "\"token\":\"***REDACTED***\"", RegexOptions.IgnoreCase);
+            // diğer hassas alanlar için benzer regex'ler...
+            return sanitized;
+        }
+    }
+
+    private void SanitizeJsonElement(JsonElement element, Utf8JsonWriter writer)
+    {
+        // Hassas JSON alanlarını gizle
+        // ... JSON işleme kodu ...
+    }
+}
+```
+
+### Middleware Kayıt Süreci
+
+Middleware çalışma sırası:
+
+1. Gelen istek alındığında, middleware `ShouldSkipLogging` metodu ile bu endpoint'in loglanıp loglanmayacağını kontrol eder.
+2. `RecyclableMemoryStreamManager` kullanarak istek gövdesi için bir bellek akışı tahsis eder (bellek optimizasyonu için).
+3. İstek gövdesini okur, hassas verileri gizler ve orijinal istek gövdesini diğer middleware'lerin okuyabilmesi için sıfırlar.
+4. Yanıt gövdesini yakalamak için yanıt akışını değiştirir.
+5. İstek işleme süresini ölçmek için bir sayaç başlatır.
+6. Pipeline'ın geri kalanını çalıştırır.
+7. Yanıt gövdesini okur, hassas verileri gizler ve yanıtı istemciye döndürür.
+8. İstek, yanıt ve ilgili meta verileri bir `RequestResponseLog` nesnesine toplar.
+9. Log nesnesini MongoDB'ye kaydeder.
 
 ## API Endpoints
 
@@ -184,6 +366,71 @@ Loglama sistemi, güvenlik açısından aşağıdaki önlemleri içerir:
 3. **Yetkilendirme**: Log erişim API'leri yalnızca Admin rolüne sahip kullanıcılar tarafından kullanılabilir.
 
 4. **TTL ile Otomatik Silme**: Loglar, belirli bir süre sonra otomatik olarak silinir.
+
+## Extension Metotları
+
+Loglama sistemini uygulamaya entegre etmek için bir dizi extension metodu kullanılır:
+
+### ApplicationBuilderExtensions
+
+```csharp
+namespace Deneme.API.Extensions
+{
+    public static class ApplicationBuilderExtensions
+    {
+        public static IApplicationBuilder UseRequestResponseLogging(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<RequestResponseLoggingMiddleware>();
+        }
+    }
+}
+```
+
+### LoggingExtensions
+
+```csharp
+namespace Deneme.Core.Extensions
+{
+    public static class LoggingExtensions
+    {
+        public static IServiceCollection AddLoggingServices(this IServiceCollection services)
+        {
+            // Log repository kayıtları
+            services.AddSingleton<ILogRepository, MongoLogRepository>();
+            
+            // Log servisleri
+            services.AddSingleton<IApiLogService, ApiLogService>();
+            
+            // RecyclableMemoryStreamManager kayıt (middleware için)
+            services.AddSingleton<RecyclableMemoryStreamManager>();
+            
+            return services;
+        }
+    }
+}
+```
+
+### Program.cs'de Kullanımı
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// ... diğer servis kayıtları
+
+// Loglama servislerini ekle
+builder.Services.AddLoggingServices();
+
+var app = builder.Build();
+
+// ... diğer middleware kayıtları
+
+// İstek/yanıt loglama middleware'ini ekle
+app.UseRequestResponseLogging();
+
+app.MapControllers();
+
+app.Run();
+```
 
 ## Best Practices
 

@@ -1,78 +1,48 @@
 # Deneme API Dokümantasyonu
 
-Bu dokümantasyon, Deneme API'nin kullanımı, özellikleri ve teknik detayları hakkında bilgiler içerir.
+Bu klasör, Deneme API projesi ile ilgili teknik dokümantasyonu içerir.
 
 ## İçindekiler
 
-- [Genel Bakış](#genel-bakış)
-- [Başlarken](#başlarken)
-- [Doküman İçeriği](#doküman-içeriği)
-- [API Sürümleri](#api-sürümleri)
-- [İletişim](#i̇letişim)
+- [Mimari Dokümantasyonu](#mimari-dokümantasyonu)
+- [Loglama Sistemi](#loglama-sistemi)
+- [API Kullanımı](#api-kullanımı)
+- [Veritabanı Şeması](#veritabanı-şeması)
 
-## Genel Bakış
+## Mimari Dokümantasyonu
 
-Deneme API, güvenli ve ölçeklenebilir bir kullanıcı yönetim sistemi sunar. Temel özellikleri:
+Deneme API, modern .NET 8 teknolojilerini kullanan bir N-Tier (Çok Katmanlı) mimari üzerine inşa edilmiştir. Bu yapı, uygulamayı mantıksal olarak birbirinden ayrılmış katmanlara bölerek, daha modüler, test edilebilir ve bakımı kolay hale getirir.
 
-- **Güçlü Kimlik Doğrulama**: JWT tabanlı yetkilendirme, güvenli oturum yönetimi
-- **İki Faktörlü Kimlik Doğrulama (2FA)**: Ek güvenlik katmanı
-- **Rol Tabanlı Erişim Kontrolü**: Admin, Developer ve User rolleri
-- **Kullanıcı Yönetimi**: Kapsamlı profil ve hesap yönetimi
-- **Rate Limiting**: IP ve endpoint bazlı istek sınırlama
-- **Standart API Yanıtları**: Tutarlı yanıt formatları
+Detaylı bilgi için [N-Tier Mimari Dokümantasyonu](N-Tier-Architecture.md) sayfasına bakabilirsiniz.
 
-## Başlarken
+## Loglama Sistemi
 
-### Gereksimler
+Deneme API, MongoDB tabanlı kapsamlı bir loglama sistemi kullanır. Bu sistem, gelen istekleri, yanıtları ve sistem olaylarını kaydeder ve analiz amacıyla saklar.
 
-- .NET 8.0 veya üzeri
-- Microsoft SQL Server veya SQLite
-- HTTPS desteği
+Detaylı bilgi için [Loglama Sistemi Dokümantasyonu](logging-system.md) sayfasına bakabilirsiniz.
 
-### Kurulum
+## API Kullanımı
 
-1. Projeyi klonlayın:
-```
-git clone https://github.com/example/deneme-api.git
-```
+Deneme API, REST standartlarını takip eden bir API sunar. Tüm istekler JSON formatında veri alır ve döndürür.
 
-2. Bağımlılıkları yükleyin:
-```
-dotnet restore
-```
+API dokümantasyonu, OpenAPI (Swagger) kullanılarak otomatik olarak oluşturulur ve şu adresten erişilebilir: `https://{base-url}/swagger`
 
-3. Veritabanını kurun:
-```
-dotnet ef database update
-```
+## Veritabanı Şeması
 
-4. Uygulamayı çalıştırın:
-```
-dotnet run
-```
+Deneme API, birincil veritabanı olarak SQL Server, loglama için ise MongoDB kullanır. Veritabanı şeması, Entity Framework Core Code-First yaklaşımı ile oluşturulmuştur.
 
-API şu adreste çalışmaya başlayacaktır: `https://localhost:7052`
+Veritabanı yapılandırması ve migration işlemleri hakkında detaylı bilgi için [Veritabanı Şeması Dokümantasyonu] sayfasına bakabilirsiniz (henüz oluşturulmamıştır).
 
-## Doküman İçeriği
+## Katkıda Bulunma
 
-- [**API Referansı**](./api-reference.md): Tüm endpoint'lerin teknik detayları
-- [**Kimlik Doğrulama**](./authentication.md): Kayıt, giriş ve yetkilendirme süreçleri
-- [**İki Faktörlü Kimlik Doğrulama**](./two-factor-auth.md): 2FA özelliklerinin detaylı açıklaması
-- [**Kullanıcı Yönetimi**](./users.md): Kullanıcı profili ve hesap yönetimi API'leri
-- [**Veritabanı Yapılandırması ve Seeding**](./database-configuration.md): Veritabanı yapılandırması ve seed işlemleri
+Projeye katkıda bulunmak için aşağıdaki adımları izleyebilirsiniz:
 
-## API Sürümleri
+1. Bu repo'yu fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
+4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
 
-| Sürüm | Durum | Notlar |
-|-------|-------|--------|
-| v1.0  | Aktif | İlk sürüm - temel kimlik doğrulama ve kullanıcı yönetimi |
-| v1.1  | Aktif | İki faktörlü kimlik doğrulama eklendi |
-| v1.2  | Aktif | Rol tabanlı erişim kontrollerinin genişletilmesi ve Rate Limiting eklendi |
-| v1.3  | Geliştirme | Gelişmiş izleme ve loglama işlevleri |
+## Lisans
 
-## İletişim
-
-API hakkında sorularınız veya önerileriniz için:
-
-- **E-posta**: api-support@example.com
-- **GitHub**: [github.com/example/deneme-api](https://github.com/example/deneme-api) 
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylı bilgi için `LICENSE` dosyasına bakabilirsiniz. 

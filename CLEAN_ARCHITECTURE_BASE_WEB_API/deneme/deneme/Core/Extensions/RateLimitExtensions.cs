@@ -8,101 +8,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.RateLimiting;
 
-namespace Core.Extensions
+namespace Deneme.Core.Extensions
 {
     public static class RateLimitExtensions
     {
         public static IServiceCollection AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var rateLimitSettings = configuration.GetSection("RateLimitSettings");
-            
-            if (!rateLimitSettings.Exists() || !rateLimitSettings.GetValue<bool>("EnableGlobalRateLimit", false))
+            // Global rate limiting etkinlik durumu
+            bool enableGlobalRateLimit = configuration.GetValue<bool>("RateLimitSettings:EnableGlobalRateLimit");
+            string globalPeriod = configuration.GetValue<string>("RateLimitSettings:GlobalRateLimitPeriod") ?? "1m";
+            int globalRequests = configuration.GetValue<int>("RateLimitSettings:GlobalRateLimitRequests");
+
+            // IP bazlı rate limiting etkinlik durumu
+            bool enableIpRateLimit = configuration.GetValue<bool>("RateLimitSettings:IpRateLimiting:EnableIpRateLimiting");
+            string ipPeriod = configuration.GetValue<string>("RateLimitSettings:IpRateLimiting:IpRateLimitPeriod") ?? "1m";
+            int ipRequests = configuration.GetValue<int>("RateLimitSettings:IpRateLimiting:IpRateLimitRequests");
+
+            // Endpoint bazlı rate limiting konfigürasyonlarını al
+            var endpointLimits = configuration.GetSection("RateLimitSettings:EndpointLimits")
+                .Get<List<EndpointRateLimit>>() ?? new List<EndpointRateLimit>();
+
+            var rateLimitOptions = new RateLimiterOptions();
+
+            // Global limit
+            if (enableGlobalRateLimit)
             {
-                return services;
+                rateLimitOptions.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+                {
+                    var timeWindow = ParsePeriod(globalPeriod);
+                    return RateLimitPartition.GetFixedWindowLimiter("global", _ => new FixedWindowRateLimiterOptions
+                    {
+                        PermitLimit = globalRequests,
+                        Window = timeWindow,
+                        QueueLimit = 0
+                    });
+                });
             }
 
-            services.AddRateLimiter(options =>
+            // IP bazlı limit
+            if (enableIpRateLimit)
             {
-                // Global Rate Limit Policy
-                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                services.AddRateLimiter(options =>
                 {
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "anonymous",
-                        factory: _ => new FixedWindowRateLimiterOptions
-                        {
-                            AutoReplenishment = true,
-                            PermitLimit = rateLimitSettings.GetValue<int>("GlobalRateLimitRequests", 200),
-                            Window = ParsePeriod(rateLimitSettings.GetValue<string>("GlobalRateLimitPeriod", "1m"))
-                        });
-                });
+                    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
-                // IP-based Rate Limiting
-                var ipRateLimitingSection = rateLimitSettings.GetSection("IpRateLimiting");
-                if (ipRateLimitingSection.GetValue<bool>("EnableIpRateLimiting", false))
-                {
-                    options.AddPolicy("ip", httpContext =>
+                    options.AddPolicy("ip", context =>
                     {
-                        return RateLimitPartition.GetFixedWindowLimiter(
-                            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "anonymous",
-                            factory: _ => new FixedWindowRateLimiterOptions
-                            {
-                                AutoReplenishment = true,
-                                PermitLimit = ipRateLimitingSection.GetValue<int>("IpRateLimitRequests", 100),
-                                Window = ParsePeriod(ipRateLimitingSection.GetValue<string>("IpRateLimitPeriod", "1m"))
-                            });
+                        var ipAddress = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                        var timeWindow = ParsePeriod(ipPeriod);
+
+                        return RateLimitPartition.GetFixedWindowLimiter(ipAddress, _ => new FixedWindowRateLimiterOptions
+                        {
+                            PermitLimit = ipRequests,
+                            Window = timeWindow,
+                            QueueLimit = 0
+                        });
                     });
-                }
 
-                // Endpoint-specific Rate Limiting Policies
-                var endpointLimits = rateLimitSettings.GetSection("EndpointLimits").Get<List<EndpointRateLimitConfig>>() ?? new List<EndpointRateLimitConfig>();
-                foreach (var endpointLimit in endpointLimits)
-                {
-                    string policyName = GetPolicyNameFromEndpoint(endpointLimit.Endpoint);
-                    
-                    if (endpointLimit.EnableConcurrencyLimit)
+                    // Endpoint spesifik rate limit'ler
+                    foreach (var endpointLimit in endpointLimits)
                     {
-                        options.AddConcurrencyLimiter(policyName, options =>
+                        var policyName = $"endpoint_{endpointLimit.Endpoint.Replace('/', '_')}";
+                        var timeWindow = ParsePeriod(endpointLimit.Period);
+
+                        if (endpointLimit.EnableConcurrencyLimit)
                         {
-                            options.PermitLimit = endpointLimit.ConcurrencyLimit > 0 ? endpointLimit.ConcurrencyLimit : 10;
-                            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-                            options.QueueLimit = 5;
-                        });
-                    }
-                    else
-                    {
-                        options.AddFixedWindowLimiter(policyName, options =>
+                            options.AddConcurrencyLimiter(policyName, options =>
+                            {
+                                options.PermitLimit = endpointLimit.ConcurrencyLimit;
+                                options.QueueLimit = 0;
+                                options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                            });
+                        }
+                        else
                         {
-                            options.PermitLimit = endpointLimit.Limit;
-                            options.Window = ParsePeriod(endpointLimit.Period);
-                            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-                            options.QueueLimit = 2;
-                        });
+                            options.AddFixedWindowLimiter(policyName, options =>
+                            {
+                                options.PermitLimit = endpointLimit.Limit;
+                                options.Window = timeWindow;
+                                options.QueueLimit = 0;
+                                options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                            });
+                        }
                     }
-                }
-
-                // Rejection response
-                options.OnRejected = async (context, token) =>
-                {
-                    context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
-                    context.HttpContext.Response.ContentType = "application/json";
-
-                    var retryAfter = context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfterSeconds)
-                        ? retryAfterSeconds.TotalSeconds
-                        : 60;
-                        
-                    context.HttpContext.Response.Headers.Append("Retry-After", ((int)retryAfter).ToString());
-                    
-                    var response = new
-                    {
-                        statusCode = StatusCodes.Status429TooManyRequests,
-                        isSuccess = false,
-                        message = "İstek limiti aşıldı. Lütfen daha sonra tekrar deneyin.",
-                        retryAfter = (int)retryAfter
-                    };
-                    
-                    await context.HttpContext.Response.WriteAsJsonAsync(response, token);
-                };
-            });
+                });
+            }
 
             return services;
         }
@@ -110,10 +100,10 @@ namespace Core.Extensions
         private static TimeSpan ParsePeriod(string period)
         {
             if (string.IsNullOrEmpty(period))
-                return TimeSpan.FromMinutes(1);
+                return TimeSpan.FromMinutes(1); // Varsayılan olarak 1 dakika
 
-            var value = int.Parse(period.Substring(0, period.Length - 1));
-            var unit = period[period.Length - 1];
+            int value = int.Parse(period.Substring(0, period.Length - 1));
+            char unit = period[period.Length - 1];
 
             return unit switch
             {
@@ -121,30 +111,30 @@ namespace Core.Extensions
                 'm' => TimeSpan.FromMinutes(value),
                 'h' => TimeSpan.FromHours(value),
                 'd' => TimeSpan.FromDays(value),
-                _ => TimeSpan.FromMinutes(value)
+                _ => TimeSpan.FromMinutes(value) // Bilinmeyen birim için varsayılan olarak dakika
             };
         }
 
-        private static string GetPolicyNameFromEndpoint(string endpoint)
+        public static List<string> GetEndpointPolicyMappings(IConfiguration configuration)
         {
-            // Endpoint adını / karakterleri olmadan daha uygun bir policy ismine çevir
-            return endpoint.Trim('/').Replace("/", "_").ToLowerInvariant();
-        }
-
-        public static IEnumerable<string> GetEndpointPolicyMappings(IConfiguration configuration)
-        {
+            var result = new List<string>();
             var endpointLimits = configuration.GetSection("RateLimitSettings:EndpointLimits")
-                .Get<List<EndpointRateLimitConfig>>() ?? new List<EndpointRateLimitConfig>();
-
-            return endpointLimits.Select(el => new
+                .Get<List<EndpointRateLimit>>() ?? new List<EndpointRateLimit>();
+            
+            foreach (var limit in endpointLimits)
             {
-                Endpoint = el.Endpoint,
-                Policy = GetPolicyNameFromEndpoint(el.Endpoint)
-            }).Select(mapping => $"{mapping.Endpoint} -> {mapping.Policy}");
+                var policyName = $"endpoint_{limit.Endpoint.Replace('/', '_')}";
+                var limitType = limit.EnableConcurrencyLimit ? "Concurrency" : "Rate";
+                var limitValue = limit.EnableConcurrencyLimit ? limit.ConcurrencyLimit.ToString() : $"{limit.Limit}/{limit.Period}";
+                
+                result.Add($"Endpoint: {limit.Endpoint} - {limitType} Limit: {limitValue}");
+            }
+            
+            return result;
         }
     }
 
-    public class EndpointRateLimitConfig
+    public class EndpointRateLimit
     {
         public string Endpoint { get; set; }
         public string Period { get; set; }
