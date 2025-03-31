@@ -8,6 +8,7 @@ Bu klasör, Deneme API projesi ile ilgili teknik dokümantasyonu içerir.
 - [Loglama Sistemi](#loglama-sistemi)
 - [API Kullanımı](#api-kullanımı)
 - [Veritabanı Şeması](#veritabanı-şeması)
+- [Klasör Yapısı Rehberi](#klasör-yapısı-rehberi)
 
 ## Mimari Dokümantasyonu
 
@@ -32,6 +33,62 @@ API dokümantasyonu, OpenAPI (Swagger) kullanılarak otomatik olarak oluşturulu
 Deneme API, birincil veritabanı olarak SQL Server, loglama için ise MongoDB kullanır. Veritabanı şeması, Entity Framework Core Code-First yaklaşımı ile oluşturulmuştur.
 
 Veritabanı yapılandırması ve migration işlemleri hakkında detaylı bilgi için [Veritabanı Şeması Dokümantasyonu] sayfasına bakabilirsiniz (henüz oluşturulmamıştır).
+
+## Klasör Yapısı Rehberi
+
+Deneme API projesi, N-Tier mimariye uygun olarak aşağıdaki klasör yapısını kullanır:
+
+```
+deneme/
+│
+├── API/                      # Presentation Layer - API katmanı
+│   ├── Controllers/          # API endpoint'lerini içeren controller'lar
+│   ├── Middleware/           # HTTP Pipeline'ında kullanılan middleware'ler
+│   ├── Models/               # API'ye özgü model sınıfları
+│   └── Extensions/           # API katmanına özgü extension metotları
+│
+├── Business/                 # Business Layer - İş mantığı katmanı
+│   ├── Services/             # İş mantığını içeren servisler
+│   │   ├── Concrete/         # Servis implementasyonları
+│   │   └── Interfaces/       # Servis arayüzleri
+│   └── Extensions/           # Business katmanına özgü extension metotları
+│
+├── DataAccess/               # Data Access Layer - Veri erişim katmanı
+│   ├── Context/              # EF Core DbContext sınıfları
+│   ├── Repositories/         # Repository pattern implementasyonları
+│   │   ├── Concrete/         # Somut repository sınıfları
+│   │   └── Interfaces/       # Repository arayüzleri
+│   ├── Configurations/       # Entity Configurations
+│   ├── Seeding/              # Seed sınıfları ve veritabanı ilk veriler
+│   └── Extensions/           # DataAccess katmanına özgü extension metotları
+│
+├── Entities/                 # Entity Layer - Varlık katmanı
+│   ├── Concrete/             # Veritabanı entity'leri
+│   └── DTOs/                 # Veri Transfer Objeleri
+│
+├── Core/                     # Core Layer - Çekirdek katmanı
+│   ├── Security/             # Güvenlik ile ilgili sınıflar
+│   ├── Utilities/            # Yardımcı sınıflar ve metotlar
+│   ├── Extensions/           # Genel extension metotları
+│   └── Logging/              # Loglama altyapısı
+│
+├── Documentation/            # Proje dokümantasyonu
+│
+├── Program.cs                # Uygulama giriş noktası ve konfigürasyon
+└── appsettings.json          # Uygulama ayarları
+```
+
+### Namespace Yapısı
+
+Projenin namespace yapısı, klasör yapısına paralel olarak düzenlenmiştir:
+
+```
+Deneme.API.*                  # API katmanı namespace'leri
+Deneme.Business.*             # Business katmanı namespace'leri
+Deneme.DataAccess.*           # DataAccess katmanı namespace'leri
+Deneme.Entities.*             # Entity katmanı namespace'leri
+Deneme.Core.*                 # Core katmanı namespace'leri
+```
 
 ## Katkıda Bulunma
 

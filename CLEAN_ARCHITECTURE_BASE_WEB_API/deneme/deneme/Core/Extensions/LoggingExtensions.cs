@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 
-namespace Deneme.Extensions
+namespace Deneme.Core.Extensions
 {
     public static class LoggingExtensions
     {
@@ -28,7 +28,7 @@ namespace Deneme.Extensions
         /// <summary>
         /// Adds the request/response logging middleware to the pipeline
         /// </summary>
-        public static IApplicationBuilder UseRequestResponseLogging(this IApplicationBuilder app)
+        public static IApplicationBuilder UseCoreRequestResponseLogging(this IApplicationBuilder app)
         {
             app.UseMiddleware<RequestResponseLoggingMiddleware>();
             

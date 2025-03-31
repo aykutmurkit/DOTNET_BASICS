@@ -23,7 +23,7 @@ namespace Deneme.Core.Extensions
             services.AddHttpContextAccessor();
             
             // Loglama servisleri
-            services.AddLoggingServices();
+            services.AddCoreLoggingServices();
             
             return services;
         }
@@ -59,7 +59,7 @@ namespace Deneme.Core.Extensions
             return services;
         }
         
-        public static IServiceCollection AddLoggingServices(this IServiceCollection services)
+        public static IServiceCollection AddCoreLoggingServices(this IServiceCollection services)
         {
             // Loglama servisleri
             services.AddSingleton<ILogRepository, MongoLogRepository>();
