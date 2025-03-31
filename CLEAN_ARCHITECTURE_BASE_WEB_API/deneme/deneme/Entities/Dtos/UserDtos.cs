@@ -86,6 +86,24 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Random şifre ile kullanıcı oluşturma DTO'su
+    /// </summary>
+    public class RandomPasswordUserRequest
+    {
+        [Required(ErrorMessage = "Kullanıcı adı zorunludur")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Kullanıcı adı 3-50 karakter arasında olmalıdır")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "E-posta zorunludur")]
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Rol ID zorunludur")]
+        [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
+        public int RoleId { get; set; }
+    }
+
+    /// <summary>
     /// Kullanıcı güncelleme DTO'su
     /// </summary>
     public class UpdateUserRequest
@@ -98,6 +116,26 @@ namespace Entities.Dtos
 
         [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
         public int? RoleId { get; set; }
+    }
+
+    /// <summary>
+    /// Kullanıcı rolü güncelleme DTO'su
+    /// </summary>
+    public class UpdateUserRoleRequest
+    {
+        [Required(ErrorMessage = "Rol ID zorunludur")]
+        [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
+        public int RoleId { get; set; }
+    }
+
+    /// <summary>
+    /// Kullanıcı e-posta güncelleme DTO'su
+    /// </summary>
+    public class UpdateUserEmailRequest
+    {
+        [Required(ErrorMessage = "E-posta zorunludur")]
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz")]
+        public string Email { get; set; }
     }
 
     /// <summary>

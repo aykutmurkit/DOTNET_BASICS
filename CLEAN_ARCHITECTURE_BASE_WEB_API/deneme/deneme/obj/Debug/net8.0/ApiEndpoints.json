@@ -497,6 +497,37 @@
   },
   {
     "ContainingType": "deneme.Controllers.UsersController",
+    "Method": "UpdateUserEmail",
+    "RelativePath": "api/Users/{id}/email",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Entities.Dtos.UpdateUserEmailRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, deneme, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "deneme.Controllers.UsersController",
     "Method": "GetProfilePicture",
     "RelativePath": "api/Users/{id}/profile-picture",
     "HttpMethod": "GET",
@@ -510,6 +541,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "deneme.Controllers.UsersController",
+    "Method": "UpdateUserRole",
+    "RelativePath": "api/Users/{id}/role",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Entities.Dtos.UpdateUserRoleRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, deneme, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "deneme.Controllers.UsersController",
@@ -574,6 +636,32 @@
     "ReturnTypes": [
       {
         "Type": "Core.Utilities.ApiResponse\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "deneme.Controllers.UsersController",
+    "Method": "CreateUserWithRandomPassword",
+    "RelativePath": "api/Users/random-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Entities.Dtos.RandomPasswordUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, deneme, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

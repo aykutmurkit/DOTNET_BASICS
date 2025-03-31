@@ -590,6 +590,51 @@ Yeni bir kullanıcı oluşturur.
 }
 ```
 
+### Random Şifre ile Kullanıcı Oluşturma
+
+Rastgele güçlü bir şifre ile yeni bir kullanıcı hesabı oluşturur ve şifre bilgisini kullanıcının e-posta adresine gönderir.
+
+**Endpoint**: `POST /Users/random-password`
+
+**Yetki**: Admin
+
+**İstek**:
+
+```json
+{
+  "username": "yeni_kullanici",
+  "email": "yeni@example.com",
+  "roleId": 1
+}
+```
+
+**Yanıt** (201 Created):
+
+```json
+{
+  "statusCode": 201,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "yeni_kullanici",
+    "email": "yeni@example.com",
+    "role": {
+      "id": 1,
+      "name": "User"
+    },
+    "createdDate": "2025-03-30T02:15:10.1234567",
+    "twoFactor": {
+      "enabled": false,
+      "required": false
+    },
+    "profilePicture": {
+      "hasProfilePicture": false
+    }
+  },
+  "message": "Kullanıcı otomatik şifre ile başarıyla oluşturuldu ve e-posta gönderildi"
+}
+```
+
 ### Kullanıcı Güncelle
 
 Belirli bir kullanıcıyı günceller.
@@ -625,6 +670,78 @@ Belirli bir kullanıcıyı günceller.
     // ... diğer kullanıcı özellikleri
   },
   "message": "Kullanıcı başarıyla güncellendi"
+}
+```
+
+### Kullanıcı Rolünü Güncelleme
+
+Belirli bir kullanıcının yalnızca rol bilgisini günceller.
+
+**Endpoint**: `PATCH /Users/{id}/role`
+
+**Yetki**: Admin
+
+**İstek**:
+
+```json
+{
+  "roleId": 2
+}
+```
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "ornek_kullanici",
+    "email": "ornek@example.com",
+    "role": {
+      "id": 2,
+      "name": "Developer"
+    },
+    // ... diğer kullanıcı özellikleri
+  },
+  "message": "Kullanıcı rolü başarıyla güncellendi"
+}
+```
+
+### Kullanıcı E-posta Adresini Güncelleme
+
+Belirli bir kullanıcının yalnızca e-posta adresini günceller.
+
+**Endpoint**: `PATCH /Users/{id}/email`
+
+**Yetki**: Admin
+
+**İstek**:
+
+```json
+{
+  "email": "yeni_email@example.com"
+}
+```
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "ornek_kullanici",
+    "email": "yeni_email@example.com",
+    "role": {
+      "id": 1,
+      "name": "User"
+    },
+    // ... diğer kullanıcı özellikleri
+  },
+  "message": "Kullanıcı e-posta adresi başarıyla güncellendi"
 }
 ```
 

@@ -1,5 +1,6 @@
 using Business.Interfaces;
 using Core.Security;
+using Core.Utilities;
 using Data.Context;
 using Data.Interfaces;
 using Entities.Concrete;
@@ -8,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Drawing;
 using System;
 using System.Drawing.Imaging;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Business.Services
 {
@@ -19,12 +23,21 @@ namespace Business.Services
         private readonly IUserRepository _userRepository;
         private readonly ITwoFactorService _twoFactorService;
         private readonly AppDbContext _context;
+        private readonly EmailService _emailService;
+        private readonly IConfiguration _configuration;
 
-        public UserService(IUserRepository userRepository, ITwoFactorService twoFactorService, AppDbContext context)
+        public UserService(
+            IUserRepository userRepository, 
+            ITwoFactorService twoFactorService, 
+            AppDbContext context,
+            EmailService emailService,
+            IConfiguration configuration)
         {
             _userRepository = userRepository;
             _twoFactorService = twoFactorService;
             _context = context;
+            _emailService = emailService;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -263,6 +276,141 @@ namespace Business.Services
                 },
                 ProfilePicture = profilePictureInfo
             };
+        }
+
+        /// <summary>
+        /// Random şifre ile kullanıcı oluşturur
+        /// </summary>
+        public async Task<UserDto> CreateUserWithRandomPasswordAsync(RandomPasswordUserRequest request)
+        {
+            // Kullanıcı adı ve e-posta kontrolü
+            if (await _userRepository.UsernameExistsAsync(request.Username))
+            {
+                throw new Exception("Bu kullanıcı adı zaten kullanılıyor.");
+            }
+
+            if (await _userRepository.EmailExistsAsync(request.Email))
+            {
+                throw new Exception("Bu e-posta adresi zaten kullanılıyor.");
+            }
+
+            // Rol kontrolü
+            var role = await _context.UserRoles.FindAsync(request.RoleId);
+            if (role == null)
+            {
+                throw new Exception("Geçersiz rol ID'si.");
+            }
+
+            // Random şifre oluştur
+            string password = GenerateRandomPassword();
+
+            // Şifre hashleme
+            string salt = PasswordHelper.CreateSalt();
+            string passwordHash = PasswordHelper.HashPassword(password, salt);
+
+            // Yeni kullanıcı oluşturma
+            var user = new User
+            {
+                Username = request.Username,
+                Email = request.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = salt,
+                RoleId = request.RoleId,
+                CreatedDate = DateTime.UtcNow,
+                ProfilePicture = GetDefaultProfilePicture()
+            };
+
+            await _userRepository.AddUserAsync(user);
+
+            // Kullanıcıya email gönder
+            await _emailService.SendRandomPasswordEmailAsync(user.Email, user.Username, password);
+
+            return MapToUserDto(user, includeProfilePicture: true);
+        }
+
+        /// <summary>
+        /// Kullanıcı rolünü günceller
+        /// </summary>
+        public async Task<UserDto> UpdateUserRoleAsync(int id, UpdateUserRoleRequest request)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                throw new Exception("Kullanıcı bulunamadı.");
+            }
+
+            // Rol kontrolü
+            var role = await _context.UserRoles.FindAsync(request.RoleId);
+            if (role == null)
+            {
+                throw new Exception("Geçersiz rol ID'si.");
+            }
+
+            user.RoleId = request.RoleId;
+            await _userRepository.UpdateUserAsync(user);
+            
+            return MapToUserDto(user, includeProfilePicture: true);
+        }
+
+        /// <summary>
+        /// Kullanıcı e-posta adresini günceller
+        /// </summary>
+        public async Task<UserDto> UpdateUserEmailAsync(int id, UpdateUserEmailRequest request)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                throw new Exception("Kullanıcı bulunamadı.");
+            }
+
+            // E-posta kontrolü
+            if (request.Email != user.Email && await _userRepository.EmailExistsAsync(request.Email))
+            {
+                throw new Exception("Bu e-posta adresi zaten kullanılıyor.");
+            }
+
+            user.Email = request.Email;
+            await _userRepository.UpdateUserAsync(user);
+            
+            return MapToUserDto(user, includeProfilePicture: true);
+        }
+
+        /// <summary>
+        /// Güçlü rastgele şifre oluşturur
+        /// </summary>
+        private string GenerateRandomPassword(int length = 12)
+        {
+            const string upperChars = "ABCDEFGHJKLMNOPQRSTUVWXYZ";
+            const string lowerChars = "abcdefghijkmnopqrstuvwxyz";
+            const string numberChars = "0123456789";
+            const string specialChars = "!@#$%^&*()_-+=<>?";
+            
+            var random = new Random();
+            var chars = new List<char>();
+            
+            // En az bir tane her türden karakter ekle
+            chars.Add(upperChars[random.Next(upperChars.Length)]);
+            chars.Add(lowerChars[random.Next(lowerChars.Length)]);
+            chars.Add(numberChars[random.Next(numberChars.Length)]);
+            chars.Add(specialChars[random.Next(specialChars.Length)]);
+            
+            // Geri kalan karakterleri ekle
+            var allChars = upperChars + lowerChars + numberChars + specialChars;
+            for (int i = chars.Count; i < length; i++)
+            {
+                chars.Add(allChars[random.Next(allChars.Length)]);
+            }
+            
+            // Karakterleri karıştır
+            for (int i = 0; i < chars.Count; i++)
+            {
+                int j = random.Next(chars.Count);
+                var temp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = temp;
+            }
+            
+            return new string(chars.ToArray());
         }
     }
 } 

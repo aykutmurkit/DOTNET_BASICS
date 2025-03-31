@@ -11,7 +11,10 @@ Bu bölüm, Deneme API'nin kullanıcı profili ve hesap yönetimi özelliklerini
   - [Kullanıcı Detayı](#kullanıcı-detayı)
   - [Kullanıcı Profili](#kullanıcı-profili)
   - [Kullanıcı Oluşturma](#kullanıcı-oluşturma)
+  - [Random Şifre ile Kullanıcı Oluşturma](#random-şifre-ile-kullanıcı-oluşturma)
   - [Kullanıcı Güncelleme](#kullanıcı-güncelleme)
+  - [Kullanıcı Rolünü Güncelleme](#kullanıcı-rolünü-güncelleme)
+  - [Kullanıcı E-posta Adresini Güncelleme](#kullanıcı-e-posta-adresini-güncelleme)
   - [Profil Güncelleme](#profil-güncelleme)
   - [Kullanıcı Silme](#kullanıcı-silme)
   - [Profil Fotoğrafı Yönetimi](#profil-fotoğrafı-yönetimi)
@@ -182,6 +185,62 @@ Yeni bir kullanıcı hesabı oluşturur. Bu endpoint yalnızca Admin rolündeki 
 }
 ```
 
+### Random Şifre ile Kullanıcı Oluşturma
+
+Rastgele güçlü bir şifre ile yeni bir kullanıcı hesabı oluşturur ve şifre bilgisini kullanıcının e-posta adresine gönderir. Bu endpoint yalnızca Admin rolündeki kullanıcılar tarafından erişilebilir.
+
+**Endpoint**: `POST /api/Users/random-password`
+
+**Yetki**: Admin
+
+**İstek Örneği**:
+
+```json
+{
+  "username": "yeni_kullanici",
+  "email": "yeni@example.com",
+  "roleId": 1
+}
+```
+
+**Yanıt Örneği**:
+
+```json
+{
+  "statusCode": 201,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "yeni_kullanici",
+    "email": "yeni@example.com",
+    "role": {
+      "id": 1,
+      "name": "User"
+    },
+    "createdDate": "2025-03-30T02:15:10.1234567",
+    "twoFactor": {
+      "enabled": false,
+      "required": false
+    },
+    "profilePicture": {
+      "hasProfilePicture": false
+    }
+  },
+  "message": "Kullanıcı otomatik şifre ile başarıyla oluşturuldu ve e-posta gönderildi"
+}
+```
+
+**Özellikler**:
+
+- Random şifre, aşağıdaki kriterlere göre otomatik oluşturulur:
+  - 12 karakter uzunluğunda
+  - En az bir büyük harf
+  - En az bir küçük harf
+  - En az bir rakam
+  - En az bir özel karakter
+- Oluşturulan şifre, kullanıcının e-posta adresine HTML formatında gönderilir
+- Kullanıcı, giriş yaptıktan sonra şifresini değiştirebilir
+
 ### Kullanıcı Güncelleme
 
 Belirli bir kullanıcının bilgilerini günceller. Bu endpoint yalnızca Admin rolündeki kullanıcılar tarafından erişilebilir.
@@ -219,6 +278,103 @@ Belirli bir kullanıcının bilgilerini günceller. Bu endpoint yalnızca Admin 
   "message": "Kullanıcı başarıyla güncellendi"
 }
 ```
+
+### Kullanıcı Rolünü Güncelleme
+
+Belirli bir kullanıcının yalnızca rol bilgisini günceller. Bu endpoint yalnızca Admin rolündeki kullanıcılar tarafından erişilebilir.
+
+**Endpoint**: `PATCH /api/Users/{id}/role`
+
+**Yetki**: Admin
+
+**İstek Örneği**:
+
+```json
+{
+  "roleId": 2
+}
+```
+
+**Yanıt Örneği**:
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "ornek_kullanici",
+    "email": "ornek@example.com",
+    "role": {
+      "id": 2,
+      "name": "Developer"
+    },
+    "createdDate": "2025-03-30T02:15:10.1234567",
+    "lastLoginDate": "2025-03-30T02:16:20.1234567",
+    "twoFactor": {
+      "enabled": false,
+      "required": false
+    },
+    "profilePicture": {
+      "hasProfilePicture": true,
+      "url": "/api/Users/5/profile-picture",
+      "picture": "base64_encoded_image_data"
+    }
+  },
+  "message": "Kullanıcı rolü başarıyla güncellendi"
+}
+```
+
+### Kullanıcı E-posta Adresini Güncelleme
+
+Belirli bir kullanıcının yalnızca e-posta adresini günceller. Bu endpoint yalnızca Admin rolündeki kullanıcılar tarafından erişilebilir.
+
+**Endpoint**: `PATCH /api/Users/{id}/email`
+
+**Yetki**: Admin
+
+**İstek Örneği**:
+
+```json
+{
+  "email": "yeni_email@example.com"
+}
+```
+
+**Yanıt Örneği**:
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 5,
+    "username": "ornek_kullanici",
+    "email": "yeni_email@example.com",
+    "role": {
+      "id": 1,
+      "name": "User"
+    },
+    "createdDate": "2025-03-30T02:15:10.1234567",
+    "lastLoginDate": "2025-03-30T02:16:20.1234567",
+    "twoFactor": {
+      "enabled": false,
+      "required": false
+    },
+    "profilePicture": {
+      "hasProfilePicture": true,
+      "url": "/api/Users/5/profile-picture",
+      "picture": "base64_encoded_image_data"
+    }
+  },
+  "message": "Kullanıcı e-posta adresi başarıyla güncellendi"
+}
+```
+
+**Doğrulama**:
+
+- Yeni e-posta adresi, sistemdeki diğer kullanıcılar tarafından kullanılmıyor olmalıdır
+- E-posta adresi geçerli bir formatta olmalıdır
 
 ### Profil Güncelleme
 
@@ -351,6 +507,16 @@ Admin kullanıcılar, sistem yönetimi için yeni kullanıcılar oluşturabilir:
 1. `POST /api/Users` endpoint'ine kullanıcı bilgilerini gönderin
 2. Oluşturulan kullanıcıya uygun rolü atayın
 3. Gerekirse, oluşturulan kullanıcı için 2FA gereksinimleri ayarlayın
+
+### Random Şifre ile Kullanıcı Oluşturma (Admin)
+
+Admin kullanıcılar, otomatik şifre atanan yeni kullanıcılar oluşturabilir:
+
+1. `POST /api/Users/random-password` endpoint'ine kullanıcı bilgilerini gönderin
+2. Sistem otomatik olarak güçlü bir şifre oluşturur ve kullanıcıya e-posta ile gönderir
+3. Kullanıcı, e-postadaki şifre ile giriş yapabilir ve daha sonra şifresini değiştirebilir
+
+Bu yöntem, özellikle çok sayıda kullanıcı eklerken veya güvenli başlangıç şifresi oluşturmak istediğinizde kullanışlıdır.
 
 ---
 

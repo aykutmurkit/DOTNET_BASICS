@@ -155,6 +155,126 @@ namespace Core.Utilities
         }
 
         /// <summary>
+        /// Yeni kullanıcıya otomatik oluşturulan şifre bilgisini gönderir
+        /// </summary>
+        public async Task SendRandomPasswordEmailAsync(string email, string username, string password)
+        {
+            var emailSettings = _configuration.GetSection("EmailSettings");
+            var subject = "Hoş Geldiniz - Yeni Hesap Bilgileriniz";
+            
+            var body = GetRandomPasswordEmailTemplate(username, password);
+
+            await SendEmailAsync(email, subject, body);
+        }
+
+        /// <summary>
+        /// Otomatik oluşturulan şifre e-posta şablonu
+        /// </summary>
+        private string GetRandomPasswordEmailTemplate(string username, string password)
+        {
+            return $@"
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset='UTF-8'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <title>Hoş Geldiniz - Yeni Hesap Bilgileriniz</title>
+                <style>
+                    body {{
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        background-color: #f9f9f9;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .container {{
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    }}
+                    .header {{
+                        text-align: center;
+                        padding: 20px 0;
+                        border-bottom: 1px solid #eaeaea;
+                    }}
+                    .header h1 {{
+                        color: #2c3e50;
+                        margin: 0;
+                        font-size: 24px;
+                    }}
+                    .content {{
+                        padding: 30px 20px;
+                        text-align: center;
+                    }}
+                    .password-container {{
+                        margin: 30px 0;
+                        padding: 20px;
+                        background-color: #f5f7f9;
+                        border-radius: 6px;
+                        font-family: monospace;
+                        font-size: 24px;
+                        font-weight: bold;
+                        letter-spacing: 2px;
+                        color: #2c3e50;
+                    }}
+                    .footer {{
+                        text-align: center;
+                        padding: 20px 0;
+                        color: #7f8c8d;
+                        font-size: 14px;
+                        border-top: 1px solid #eaeaea;
+                    }}
+                    .button {{
+                        display: inline-block;
+                        padding: 12px 24px;
+                        background-color: #3498db;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                    }}
+                    .warning {{
+                        color: #e74c3c;
+                        margin-top: 20px;
+                        font-weight: bold;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <div class='header'>
+                        <h1>Hoş Geldiniz!</h1>
+                    </div>
+                    <div class='content'>
+                        <p>Merhaba <strong>{username}</strong>,</p>
+                        <p>Deneme API sistemine hoş geldiniz. Hesabınız başarıyla oluşturuldu.</p>
+                        
+                        <p>Hesabınıza giriş yapmak için otomatik oluşturulan şifreniz:</p>
+                        
+                        <div class='password-container'>
+                            {password}
+                        </div>
+                        
+                        <p class='warning'>Bu şifre size sistem tarafından atanmıştır ve şu an sadece siz bilmektesiniz.</p>
+                        <p>Güvenliğiniz için en kısa sürede şifrenizi değiştirmenizi öneririz.</p>
+                        
+                        <a href='{_configuration["AppSettings:WebAppUrl"]}/login' class='button'>Giriş Yap</a>
+                    </div>
+                    <div class='footer'>
+                        <p>Bu e-posta, hesap güvenliğiniz için otomatik olarak gönderilmiştir.</p>
+                        <p>&copy; {DateTime.Now.Year} - Deneme API</p>
+                    </div>
+                </div>
+            </body>
+            </html>";
+        }
+
+        /// <summary>
         /// Genel e-posta gönderme metodu
         /// </summary>
         public async Task SendEmailAsync(string to, string subject, string body)

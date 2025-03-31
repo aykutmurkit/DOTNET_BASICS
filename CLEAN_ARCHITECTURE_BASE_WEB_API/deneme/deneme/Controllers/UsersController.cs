@@ -230,5 +230,76 @@ namespace deneme.Controllers
                 return NotFound();
             }
         }
+
+        /// <summary>
+        /// Random şifre ile kullanıcı oluşturur
+        /// </summary>
+        [HttpPost("random-password")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ApiResponse<UserDto>>> CreateUserWithRandomPassword([FromBody] RandomPasswordUserRequest request)
+        {
+            try
+            {
+                var user = await _userService.CreateUserWithRandomPasswordAsync(request);
+                var response = ApiResponse<UserDto>.Created(user, "Kullanıcı otomatik şifre ile başarıyla oluşturuldu ve e-posta gönderildi");
+                return StatusCode(201, response);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("zaten kullanılıyor"))
+                {
+                    return StatusCode(409, ApiResponse<UserDto>.Conflict(ex.Message));
+                }
+                return BadRequest(ApiResponse<UserDto>.Error(ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Sadece kullanıcı rolünü günceller
+        /// </summary>
+        [HttpPatch("{id}/role")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ApiResponse<UserDto>>> UpdateUserRole(int id, [FromBody] UpdateUserRoleRequest request)
+        {
+            try
+            {
+                var user = await _userService.UpdateUserRoleAsync(id, request);
+                return Ok(ApiResponse<UserDto>.Success(user, "Kullanıcı rolü başarıyla güncellendi"));
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<UserDto>.NotFound(ex.Message));
+                }
+                return BadRequest(ApiResponse<UserDto>.Error(ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Sadece kullanıcı e-posta adresini günceller
+        /// </summary>
+        [HttpPatch("{id}/email")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ApiResponse<UserDto>>> UpdateUserEmail(int id, [FromBody] UpdateUserEmailRequest request)
+        {
+            try
+            {
+                var user = await _userService.UpdateUserEmailAsync(id, request);
+                return Ok(ApiResponse<UserDto>.Success(user, "Kullanıcı e-posta adresi başarıyla güncellendi"));
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<UserDto>.NotFound(ex.Message));
+                }
+                if (ex.Message.Contains("zaten kullanılıyor"))
+                {
+                    return StatusCode(409, ApiResponse<UserDto>.Conflict(ex.Message));
+                }
+                return BadRequest(ApiResponse<UserDto>.Error(ex.Message));
+            }
+        }
     }
 } 
