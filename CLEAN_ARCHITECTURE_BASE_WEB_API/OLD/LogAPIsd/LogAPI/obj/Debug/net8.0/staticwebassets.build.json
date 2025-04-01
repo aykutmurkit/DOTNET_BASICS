@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "46sfL26c0TT4gor0UehOHJh+LL09v3hU9kD2ZgNuLF8=",
+  "Source": "LogAPI",
+  "BasePath": "_content/LogAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogAPI</name>
+    </assembly>
+    <members>
+        <member name="T:LogAPI.API.Controllers.LogsController">
+            <summary>
+            Log kayıtlarını yönetmek için API kontrolcüsü
+            </summary>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.#ctor(LogAPI.Business.Services.Logging.ILogRepository,Microsoft.Extensions.Logging.ILogger{LogAPI.API.Controllers.LogsController})">
+            <summary>
+            LogsController yapıcısı
+            </summary>
+            <param name="logRepository">Log repository</param>
+            <param name="logger">Logger servisi</param>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.GetRequestResponseLogs(System.Int32,System.Int32,System.String)">
+            <summary>
+            İstek/Yanıt loglarının sayfalanmış listesini getirir
+            </summary>
+            <param name="pageNumber">Sayfa numarası (varsayılan: 1)</param>
+            <param name="pageSize">Sayfa başına kayıt sayısı (varsayılan: 20, maksimum: 100)</param>
+            <param name="search">İsteğe bağlı arama terimi</param>
+            <returns>İstek/Yanıt loglarının sayfalanmış listesi</returns>
+            <response code="200">İstek/yanıt logları başarıyla getirildi</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.GetRequestResponseLogById(System.String)">
+            <summary>
+            Belirli bir istek/yanıt logunun detaylarını getirir
+            </summary>
+            <param name="id">Log ID</param>
+            <returns>İstek/Yanıt log detayları</returns>
+            <response code="200">Log başarıyla getirildi</response>
+            <response code="404">Belirtilen ID ile log bulunamadı</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.CleanupRequestLogs(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Belirli bir tarihten daha eski RequestResponse loglarını siler
+            </summary>
+            <param name="olderThanDays">Kaç günden eski logların silineceği (null: tarih filtresi yok)</param>
+            <param name="path">Belirli bir path'e sahip logları silmek için (null: tüm pathler)</param>
+            <returns>Silinen log sayısı</returns>
+            <response code="200">Loglar başarıyla silindi</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.GetApiLogs(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            API loglarının sayfalanmış listesini getirir
+            </summary>
+            <param name="pageNumber">Sayfa numarası (varsayılan: 1)</param>
+            <param name="pageSize">Sayfa başına kayıt sayısı (varsayılan: 20, maksimum: 100)</param>
+            <param name="level">İsteğe bağlı log seviyesi filtresi (Info, Warning, Error)</param>
+            <param name="search">İsteğe bağlı arama terimi</param>
+            <returns>API loglarının sayfalanmış listesi</returns>
+            <response code="200">API logları başarıyla getirildi</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.GetApiLogById(System.String)">
+            <summary>
+            Belirli bir API logunun detaylarını getirir
+            </summary>
+            <param name="id">Log ID</param>
+            <returns>API log detayları</returns>
+            <response code="200">Log başarıyla getirildi</response>
+            <response code="404">Belirtilen ID ile log bulunamadı</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.CleanupApiLogs(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Belirli bir tarihten daha eski API loglarını siler
+            </summary>
+            <param name="olderThanDays">Kaç günden eski logların silineceği (null: tarih filtresi yok)</param>
+            <param name="level">Belirli bir seviyedeki logları silmek için (null: tüm seviyeler)</param>
+            <returns>Silinen log sayısı</returns>
+            <response code="200">Loglar başarıyla silindi</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="M:LogAPI.API.Controllers.LogsController.CleanupAllLogs">
+            <summary>
+            Tüm logları siler
+            </summary>
+            <returns>Silinen toplam log sayısı</returns>
+            <response code="200">Tüm loglar başarıyla silindi</response>
+            <response code="401">Kullanıcı kimliği doğrulanmadı</response>
+            <response code="403">Kullanıcının yeterli yetkisi yok</response>
+            <response code="500">Sunucu hatası</response>
+        </member>
+        <member name="T:LogAPI.Business.Services.Logging.ILogRepository">
+            <summary>
+            Log veritabanı işlemleri için repository interface'i
+            </summary>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.GetRequestResponseLogsAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            İstek/Yanıt loglarını sayfalı şekilde getirir
+            </summary>
+            <param name="pageNumber">Sayfa numarası</param>
+            <param name="pageSize">Sayfa başına kayıt sayısı</param>
+            <param name="search">Arama terimi (isteğe bağlı)</param>
+            <returns>Sayfalanmış istek/yanıt logları</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.GetApiLogsAsync(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            API loglarını sayfalı şekilde getirir
+            </summary>
+            <param name="pageNumber">Sayfa numarası</param>
+            <param name="pageSize">Sayfa başına kayıt sayısı</param>
+            <param name="level">Log seviyesi filtresi (isteğe bağlı)</param>
+            <param name="search">Arama terimi (isteğe bağlı)</param>
+            <returns>Sayfalanmış API logları</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.GetRequestResponseLogByIdAsync(System.String)">
+            <summary>
+            Belirli bir istek/yanıt logunu ID'ye göre getirir
+            </summary>
+            <param name="id">Log ID</param>
+            <returns>İstek/yanıt log detayı</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.GetApiLogByIdAsync(System.String)">
+            <summary>
+            Belirli bir API logunu ID'ye göre getirir
+            </summary>
+            <param name="id">Log ID</param>
+            <returns>API log detayı</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.DeleteRequestResponseLogsAsync(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Belirtilen kriterlere göre istek/yanıt loglarını siler
+            </summary>
+            <param name="olderThan">Bu tarihten eski logları sil (isteğe bağlı)</param>
+            <param name="path">Belirli bir URL yoluna sahip logları sil (isteğe bağlı)</param>
+            <returns>Silinen log sayısı</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.DeleteApiLogsAsync(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Belirtilen kriterlere göre API loglarını siler
+            </summary>
+            <param name="olderThan">Bu tarihten eski logları sil (isteğe bağlı)</param>
+            <param name="level">Belirli seviyedeki logları sil (isteğe bağlı)</param>
+            <returns>Silinen log sayısı</returns>
+        </member>
+        <member name="M:LogAPI.Business.Services.Logging.ILogRepository.DeleteAllLogsAsync">
+            <summary>
+            Tüm log kayıtlarını siler
+            </summary>
+            <returns>Silinen toplam log sayısı</returns>
+        </member>
+        <member name="T:LogAPI.Core.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Servis koleksiyonu için extension metotlarını içerir
+            </summary>
+        </member>
+        <member name="M:LogAPI.Core.Extensions.ServiceCollectionExtensions.AddCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Uygulamanın çekirdek servislerini (MongoDB, Log Repository, vb.) ekler
+            </summary>
+            <param name="services">Servis koleksiyonu</param>
+            <param name="configuration">Uygulama yapılandırması</param>
+            <returns>Güncellenmiş servis koleksiyonu</returns>
+        </member>
+        <member name="M:LogAPI.Core.Extensions.ServiceCollectionExtensions.AddJwtAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            JWT tabanlı kimlik doğrulama servislerini ekler
+            </summary>
+            <param name="services">Servis koleksiyonu</param>
+            <param name="configuration">Uygulama yapılandırması</param>
+            <returns>Güncellenmiş servis koleksiyonu</returns>
+        </member>
+        <member name="T:LogAPI.Core.Extensions.SwaggerExtensions">
+            <summary>
+            Swagger API dokümantasyonu için extension metotlarını içerir
+            </summary>
+        </member>
+        <member name="M:LogAPI.Core.Extensions.SwaggerExtensions.AddSwaggerWithJwtAuth(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Swagger servislerini JWT kimlik doğrulama desteği ile birlikte ekler
+            </summary>
+            <param name="services">Servis koleksiyonu</param>
+            <returns>Güncellenmiş servis koleksiyonu</returns>
+        </member>
+        <member name="M:LogAPI.Core.Extensions.SwaggerExtensions.UseSwaggerWithUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Swagger middleware'ini ve UI'ı yapılandırır
+            </summary>
+            <param name="app">Uygulama builder</param>
+            <returns>Güncellenmiş uygulama builder</returns>
+        </member>
+    </members>
+</doc>

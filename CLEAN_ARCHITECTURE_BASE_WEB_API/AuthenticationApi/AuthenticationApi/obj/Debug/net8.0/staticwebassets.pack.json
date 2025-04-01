@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\password-reset.html"
+    },
+    {
+      "Id": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\two-factor-auth.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AuthenticationApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AuthenticationApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.AuthenticationApi.props",
+      "PackagePath": "build\\AuthenticationApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.AuthenticationApi.props",
+      "PackagePath": "buildMultiTargeting\\AuthenticationApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.AuthenticationApi.props",
+      "PackagePath": "buildTransitive\\AuthenticationApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
