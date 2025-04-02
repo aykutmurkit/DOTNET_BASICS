@@ -20,6 +20,9 @@ namespace DeviceApi.Core.Extensions
                 return new MongoClient(connectionString);
             });
             
+            // JWT Authentication ekle
+            AddJwtAuthentication(services, configuration);
+            
             // HttpContextAccessor ekle
             services.AddHttpContextAccessor();
             
@@ -29,12 +32,11 @@ namespace DeviceApi.Core.Extensions
             return services;
         }
         
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        private static void AddJwtAuthentication(IServiceCollection services, IConfiguration configuration)
         {
-            // JWT doğrulama yapılandırması
             var jwtSettings = configuration.GetSection("JwtSettings");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]);
-
+            
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,7 +44,7 @@ namespace DeviceApi.Core.Extensions
             })
             .AddJwtBearer(options =>
             {
-                options.RequireHttpsMetadata = true;
+                options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -56,8 +58,6 @@ namespace DeviceApi.Core.Extensions
                     ClockSkew = TimeSpan.Zero
                 };
             });
-            
-            return services;
         }
         
         public static IServiceCollection AddCoreLoggingServices(this IServiceCollection services)

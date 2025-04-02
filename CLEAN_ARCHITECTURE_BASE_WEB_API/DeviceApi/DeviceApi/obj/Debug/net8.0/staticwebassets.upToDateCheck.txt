@@ -1,2 +1,0 @@
-wwwroot\assets\templates\email\password-reset.html
-wwwroot\assets\templates\email\two-factor-auth.html

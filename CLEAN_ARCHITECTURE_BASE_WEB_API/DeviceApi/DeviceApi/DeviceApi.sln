@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationApi", "AuthenticationApi.csproj", "{9D39B4E8-E586-312D-C075-C6D3468A2506}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceApi", "DeviceApi.csproj", "{9D39B4E8-E586-312D-C075-C6D3468A2506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

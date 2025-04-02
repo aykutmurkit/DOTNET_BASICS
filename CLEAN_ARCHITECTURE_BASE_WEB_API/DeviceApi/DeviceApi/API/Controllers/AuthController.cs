@@ -1,234 +1,205 @@
-using DeviceApi.Business.Services.Interfaces;
 using Core.Utilities;
-using Entities.Dtos;
+using DeviceApi.API.Models.Auth;
+using DeviceApi.Business.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.RateLimiting;
 using System.Security.Claims;
 
-namespace DeviceApi.Controllers
+namespace DeviceApi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
         }
 
         /// <summary>
         /// Kullanıcı giriş işlemi
         /// </summary>
         [HttpPost("login")]
-        [EnableRateLimiting("api_auth_login")]
-        public async Task<ActionResult<ApiResponse<object>>> Login([FromBody] LoginRequest request)
+        [ProducesResponseType(typeof(ApiResponse<TokenResponse>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 401)]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
+            _logger.LogInformation("Kullanıcı giriş denemesi: {Username}", request.Username);
+            
+            var isValid = await _authService.ValidateUserAsync(request.Username, request.Password);
+            if (!isValid)
+            {
+                _logger.LogWarning("Başarısız giriş denemesi: {Username}", request.Username);
+                return Unauthorized(ApiResponse<object>.Error(null, "Kullanıcı adı veya şifre hatalı"));
+            }
+
             try
             {
-                var result = await _authService.LoginAsync(request);
+                var userInfo = await _authService.GetUserInfoAsync(request.Username);
                 
-                // 2FA gerekiyorsa farklı bir yanıt döndür
-                if (result is TwoFactorRequiredResponse twoFactorResponse)
-                {
-                    return Ok(ApiResponse<TwoFactorRequiredResponse>.Success(twoFactorResponse, "İki faktörlü kimlik doğrulama gerekli", 200));
-                }
+                var (accessToken, accessExpiration) = await _authService.GenerateAccessTokenAsync(
+                    userInfo.UserId, userInfo.Username, userInfo.Email, userInfo.Role);
                 
-                // Normal giriş yanıtı
-                return Ok(ApiResponse<AuthResponse>.Success((AuthResponse)result, "Giriş başarılı"));
+                var (refreshToken, refreshExpiration) = await _authService.GenerateRefreshTokenAsync(userInfo.UserId);
+
+                _logger.LogInformation("Başarılı giriş: {Username}, Role: {Role}", userInfo.Username, userInfo.Role);
+                
+                var response = new TokenResponse
+                {
+                    AccessToken = accessToken,
+                    AccessTokenExpiration = accessExpiration,
+                    RefreshToken = refreshToken,
+                    RefreshTokenExpiration = refreshExpiration,
+                    User = new UserInfo
+                    {
+                        Id = userInfo.UserId,
+                        Username = userInfo.Username,
+                        Email = userInfo.Email,
+                        Role = userInfo.Role
+                    }
+                };
+
+                return Ok(ApiResponse<TokenResponse>.Success(response, "Giriş başarılı"));
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Kullanıcı adı veya şifre"))
-                {
-                    return StatusCode(401, ApiResponse<AuthResponse>.Unauthorized(ex.Message));
-                }
-                return BadRequest(ApiResponse<AuthResponse>.Error(ex.Message));
+                _logger.LogError(ex, "Giriş sırasında bir hata oluştu: {Username}", request.Username);
+                return BadRequest(ApiResponse<object>.Error(null, "Giriş işlemi sırasında bir hata oluştu"));
             }
         }
 
         /// <summary>
-        /// İki faktörlü kimlik doğrulama
-        /// </summary>
-        [HttpPost("verify-2fa")]
-        [EnableRateLimiting("api_auth_verify-2fa")]
-        public async Task<ActionResult<ApiResponse<AuthResponse>>> VerifyTwoFactor([FromBody] TwoFactorVerifyRequest request)
-        {
-            try
-            {
-                var result = await _authService.VerifyTwoFactorAsync(request);
-                return Ok(ApiResponse<AuthResponse>.Success(result, "İki faktörlü kimlik doğrulama başarılı"));
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("Doğrulama kodu geçersiz"))
-                {
-                    return BadRequest(ApiResponse<AuthResponse>.Error(ex.Message));
-                }
-                return StatusCode(500, ApiResponse<AuthResponse>.ServerError(ex.Message));
-            }
-        }
-
-        /// <summary>
-        /// İki faktörlü kimlik doğrulama ayarları
-        /// </summary>
-        [Authorize]
-        [HttpGet("2fa-status")]
-        public async Task<ActionResult<ApiResponse<TwoFactorStatusResponse>>> GetTwoFactorStatus()
-        {
-            try
-            {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var result = await _authService.GetTwoFactorStatusAsync(userId);
-                return Ok(ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA durumu"));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ApiResponse<TwoFactorStatusResponse>.ServerError(ex.Message));
-            }
-        }
-
-        /// <summary>
-        /// İki faktörlü kimlik doğrulama ayarlarını güncelleme
-        /// </summary>
-        [Authorize]
-        [HttpPost("setup-2fa")]
-        public async Task<ActionResult<ApiResponse<TwoFactorStatusResponse>>> SetupTwoFactor([FromBody] TwoFactorSetupRequest request)
-        {
-            try
-            {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var result = await _authService.SetupTwoFactorAsync(userId, request);
-                return Ok(ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA ayarları güncellendi"));
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("Mevcut şifre hatalı"))
-                {
-                    return BadRequest(ApiResponse<TwoFactorStatusResponse>.Error(ex.Message));
-                }
-                if (ex.Message.Contains("sistem tarafından zorunlu"))
-                {
-                    return StatusCode(403, ApiResponse<TwoFactorStatusResponse>.Forbidden(ex.Message));
-                }
-                return StatusCode(500, ApiResponse<TwoFactorStatusResponse>.ServerError(ex.Message));
-            }
-        }
-
-        /// <summary>
-        /// Kullanıcı kayıt işlemi
-        /// </summary>
-        [HttpPost("register")]
-        [EnableRateLimiting("api_auth_register")]
-        public async Task<ActionResult<ApiResponse<AuthResponse>>> Register([FromBody] RegisterRequest request)
-        {
-            try
-            {
-                var result = await _authService.RegisterAsync(request);
-                var response = ApiResponse<AuthResponse>.Created(result, "Kullanıcı başarıyla kaydedildi");
-                return StatusCode(201, response);
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("zaten kullanılıyor"))
-                {
-                    return StatusCode(409, ApiResponse<AuthResponse>.Conflict(ex.Message));
-                }
-                return BadRequest(ApiResponse<AuthResponse>.Error(ex.Message));
-            }
-        }
-
-        /// <summary>
-        /// Token yenileme işlemi
+        /// Access token yenileme
         /// </summary>
         [HttpPost("refresh-token")]
-        public async Task<ActionResult<ApiResponse<AuthResponse>>> RefreshToken([FromBody] RefreshTokenRequest request)
+        [ProducesResponseType(typeof(ApiResponse<TokenResponse>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 400)]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
         {
             try
             {
-                var result = await _authService.RefreshTokenAsync(request);
-                return Ok(ApiResponse<AuthResponse>.Success(result, "Token başarıyla yenilendi"));
+                var principal = _authService.GetPrincipalFromExpiredToken(request.AccessToken);
+                var userId = int.Parse(principal.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var username = principal.FindFirst(ClaimTypes.Name).Value;
+                var email = principal.FindFirst(ClaimTypes.Email).Value;
+                var role = principal.FindFirst(ClaimTypes.Role).Value;
+
+                // Burada refresh token'in veritabanında geçerli olup olmadığı kontrol edilmelidir
+                // Basitleştirmek için şimdilik atlanmıştır
+                
+                var (accessToken, accessExpiration) = await _authService.GenerateAccessTokenAsync(
+                    userId, username, email, role);
+                
+                var (refreshToken, refreshExpiration) = await _authService.GenerateRefreshTokenAsync(userId);
+                
+                _logger.LogInformation("Token yenilendi: {Username}", username);
+
+                var response = new TokenResponse
+                {
+                    AccessToken = accessToken,
+                    AccessTokenExpiration = accessExpiration,
+                    RefreshToken = refreshToken,
+                    RefreshTokenExpiration = refreshExpiration,
+                    User = new UserInfo
+                    {
+                        Id = userId,
+                        Username = username,
+                        Email = email,
+                        Role = role
+                    }
+                };
+
+                return Ok(ApiResponse<TokenResponse>.Success(response, "Token başarıyla yenilendi"));
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Geçersiz") || ex.Message.Contains("süresi dolmuş"))
-                {
-                    return StatusCode(401, ApiResponse<AuthResponse>.Unauthorized(ex.Message));
-                }
-                return BadRequest(ApiResponse<AuthResponse>.Error(ex.Message));
+                _logger.LogError(ex, "Token yenileme sırasında bir hata oluştu");
+                return BadRequest(ApiResponse<object>.Error(null, "Geçersiz token"));
             }
         }
 
         /// <summary>
-        /// Şifre değiştirme işlemi
+        /// Mevcut oturum açmış kullanıcı bilgilerini getirir
         /// </summary>
+        [HttpGet("me")]
         [Authorize]
-        [HttpPost("change-password")]
-        public async Task<ActionResult<ApiResponse<object>>> ChangePassword([FromBody] ChangePasswordRequest request)
+        [ProducesResponseType(typeof(ApiResponse<UserInfo>), 200)]
+        public IActionResult GetCurrentUser()
         {
             try
             {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                await _authService.ChangePasswordAsync(userId, request);
-                return Ok(ApiResponse<object>.Success(null, "Şifre başarıyla değiştirildi"));
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var username = User.FindFirst(ClaimTypes.Name).Value;
+                var email = User.FindFirst(ClaimTypes.Email).Value;
+                var role = User.FindFirst(ClaimTypes.Role).Value;
+
+                _logger.LogInformation("Kullanıcı bilgileri alındı: {Username}, Role: {Role}", username, role);
+
+                var userInfo = new UserInfo
+                {
+                    Id = userId,
+                    Username = username,
+                    Email = email,
+                    Role = role
+                };
+
+                return Ok(ApiResponse<UserInfo>.Success(userInfo, "Kullanıcı bilgileri başarıyla getirildi"));
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Mevcut şifre hatalı"))
-                {
-                    return BadRequest(ApiResponse<object>.Error(ex.Message));
-                }
-                if (ex.Message.Contains("bulunamadı"))
-                {
-                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
-                }
-                return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
+                _logger.LogError(ex, "Kullanıcı bilgileri alınırken bir hata oluştu");
+                return BadRequest(ApiResponse<object>.Error(null, "Kullanıcı bilgileri alınamadı"));
             }
         }
 
         /// <summary>
-        /// Şifre sıfırlama talebi
+        /// Sadece Admin rolüne sahip kullanıcıların erişebileceği örnek bir endpoint
         /// </summary>
-        [HttpPost("forgot-password")]
-        [EnableRateLimiting("api_auth_forgot-password")]
-        public async Task<ActionResult<ApiResponse<object>>> ForgotPassword([FromBody] ForgotPasswordRequest request)
+        [HttpGet("admin-only")]
+        [Authorize(Roles = "Admin")]
+        [ProducesResponseType(typeof(ApiResponse<string>), 200)]
+        public IActionResult AdminOnlyEndpoint()
         {
-            try
-            {
-                await _authService.ForgotPasswordAsync(request);
-                return Ok(ApiResponse<object>.Success(null, "Şifre sıfırlama talimatları e-posta adresinize gönderildi"));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
-            }
+            var username = User.FindFirst(ClaimTypes.Name).Value;
+            _logger.LogInformation("Admin endpoint'ine erişim: {Username}", username);
+            
+            return Ok(ApiResponse<string>.Success("Bu içeriği sadece Admin rolündeki kullanıcılar görebilir", 
+                "Yetkilendirme başarılı"));
         }
-
+        
         /// <summary>
-        /// Şifre sıfırlama işlemi
+        /// Farklı rollere göre farklı içerik dönen bir endpoint örneği
         /// </summary>
-        [HttpPost("reset-password")]
-        public async Task<ActionResult<ApiResponse<object>>> ResetPassword([FromBody] ResetPasswordRequest request)
+        [HttpGet("role-based-content")]
+        [Authorize]
+        [ProducesResponseType(typeof(ApiResponse<string>), 200)]
+        public IActionResult RoleBasedContent()
         {
-            try
+            var username = User.FindFirst(ClaimTypes.Name).Value;
+            var role = User.FindFirst(ClaimTypes.Role).Value;
+            
+            _logger.LogInformation("Rol tabanlı içerik erişimi: {Username}, Role: {Role}", username, role);
+            
+            string content;
+            
+            switch (role)
             {
-                await _authService.ResetPasswordAsync(request);
-                return Ok(ApiResponse<object>.Success(null, "Şifreniz başarıyla sıfırlandı"));
+                case "Admin":
+                    content = "Bu içerik Admin rolü için özelleştirilmiştir.";
+                    break;
+                case "Developer":
+                    content = "Bu içerik Developer rolü için özelleştirilmiştir.";
+                    break;
+                default:
+                    content = "Bu içerik standart kullanıcılar için özelleştirilmiştir.";
+                    break;
             }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("geçersiz") || ex.Message.Contains("süresi dolmuş"))
-                {
-                    return BadRequest(ApiResponse<object>.Error(ex.Message));
-                }
-                if (ex.Message.Contains("bulunamadı"))
-                {
-                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
-                }
-                return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
-            }
+            
+            return Ok(ApiResponse<string>.Success(content, $"{role} rolüne özel içerik"));
         }
     }
 } 

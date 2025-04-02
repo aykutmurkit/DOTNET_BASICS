@@ -2,6 +2,7 @@ using DeviceApi.API.Extensions;
 using DeviceApi.API.Middleware;
 using DeviceApi.Business.Extensions;
 using DeviceApi.Core.Extensions;
+using DeviceApi.Core.Models;
 using DeviceApi.DataAccess.Extensions;
 using Core.Utilities;
 using Microsoft.AspNetCore.RateLimiting;
@@ -11,6 +12,17 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Sunucu port yapılandırmasını oku ve kaydet
+var serverSettingsSection = builder.Configuration.GetSection("ServerSettings");
+builder.Services.Configure<ServerSettings>(serverSettingsSection);
+
+// Port değerlerini al
+var httpPort = serverSettingsSection.GetValue<int>("HttpPort");
+var httpsPort = serverSettingsSection.GetValue<int>("HttpsPort");
+
+// HTTP ve HTTPS port yapılandırması
+builder.WebHost.UseUrls($"http://*:{httpPort}", $"https://*:{httpsPort}");
 
 // Controllers ve API davranış ayarları
 builder.Services.AddControllers(options =>
@@ -83,7 +95,7 @@ builder.Services.AddSwaggerGen(c =>
 // HTTPS yönlendirmesini zorlamak için
 builder.Services.AddHttpsRedirection(options =>
 {
-    options.HttpsPort = 5001;
+    options.HttpsPort = httpsPort;
 });
 
 // DataAccess Layer servisleri
@@ -94,9 +106,6 @@ builder.Services.AddBusinessServices();
 
 // Core layer servisleri
 builder.Services.AddCoreServices(builder.Configuration);
-
-// JWT Authentication
-builder.Services.AddJwtAuthentication(builder.Configuration);
 
 // Rate limiting servisleri
 builder.Services.AddRateLimitingServices(builder.Configuration);
@@ -116,6 +125,10 @@ app.UseHttpsRedirection();
 app.UseRateLimiter();
 
 app.UseAuthentication();
+
+// JWT Claims loglama middleware'ini kullan
+app.UseJwtClaimsLogging();
+
 app.UseAuthorization();
 
 // İstek/yanıt loglama middleware'ini ekle
@@ -152,5 +165,10 @@ if (builder.Configuration.GetValue<bool>("DatabaseSettings:ResetDatabaseOnStartu
         }
     }
 }
+
+// Uygulama başlatıldığında port bilgisini logla
+var appLogger = app.Services.GetRequiredService<ILogger<Program>>();
+appLogger.LogInformation("Uygulama başlatıldı. HTTP Port: {HttpPort}, HTTPS Port: {HttpsPort}", 
+    httpPort, httpsPort);
 
 app.Run();

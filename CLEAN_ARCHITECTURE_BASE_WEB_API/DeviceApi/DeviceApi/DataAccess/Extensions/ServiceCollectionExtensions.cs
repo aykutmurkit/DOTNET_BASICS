@@ -23,7 +23,6 @@ namespace DeviceApi.DataAccess.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             // Repository Services
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStationRepository, StationRepository>();
             services.AddScoped<IPlatformRepository, PlatformRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();

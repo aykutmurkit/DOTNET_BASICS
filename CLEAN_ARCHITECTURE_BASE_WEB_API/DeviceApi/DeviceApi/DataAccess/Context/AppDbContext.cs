@@ -14,15 +14,9 @@ namespace Data.Context
         {
         }
 
-        /// <summary>
-        /// Kullanıcılar tablosu
-        /// </summary>
-        public DbSet<User> Users { get; set; }
+        
 
-        /// <summary>
-        /// Kullanıcı rolleri tablosu
-        /// </summary>
-        public DbSet<UserRole> UserRoles { get; set; }
+        
         
         /// <summary>
         /// İstasyonlar tablosu
