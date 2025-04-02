@@ -27,15 +27,15 @@ namespace Data.Seeding
             // Tüm kullanıcıları tek seferde ekle
             var queryBuilder = new StringBuilder();
             queryBuilder.AppendLine("SET IDENTITY_INSERT [Users] ON;");
-            queryBuilder.AppendLine("INSERT INTO [Users] ([Id], [Username], [Email], [PasswordHash], [PasswordSalt], [RoleId], [CreatedDate], [TwoFactorEnabled], [TwoFactorCodeExpirationMinutes]) VALUES");
+            queryBuilder.AppendLine("INSERT INTO [Users] ([Id], [Username], [Email], [PasswordHash], [PasswordSalt], [RoleId], [CreatedDate], [TwoFactorEnabled], [TwoFactorCodeExpirationMinutes], [FirstName], [LastName], [PhoneNumber], [Language]) VALUES");
 
             // Kullanıcı bilgileri
-            var users = new List<(string username, string email, string password, int roleId, int id)>
+            var users = new List<(string username, string email, string password, int roleId, int id, string firstName, string lastName, string phoneNumber, string language)>
             {
-                ("admin", "admin@example.com", "Admin123!", 3, 1),
-                ("developer", "developer@example.com", "Developer123!", 2, 2),
-                ("user", "user@example.com", "User123!", 1, 3),
-                ("aykut", "aykutmurkit.dev@gmail.com", "aykut1234*", 3, 4)
+                ("admin", "admin@example.com", "Admin123!", 3, 1, "Admin", "User", "+905551112233", "tr"),
+                ("developer", "developer@example.com", "Developer123!", 2, 2, "Developer", "User", "+905551112244", "en"),
+                ("user", "user@example.com", "User123!", 1, 3, "Test", "User", "+905551112255", "tr"),
+                ("aykut", "aykutmurkit.dev@gmail.com", "aykut1234*", 3, 4, "Aykut", "Murkit", "+905551112266", "tr")
             };
 
             // SQL komutunu oluştur
@@ -46,7 +46,7 @@ namespace Data.Seeding
                 string passwordHash = PasswordHelper.HashPassword(user.password, salt);
                 string createdDate = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
-                queryBuilder.Append($"({user.id}, '{user.username}', '{user.email}', '{passwordHash}', '{salt}', {user.roleId}, '{createdDate}', 0, 10)");
+                queryBuilder.Append($"({user.id}, '{user.username}', '{user.email}', '{passwordHash}', '{salt}', {user.roleId}, '{createdDate}', 0, 10, '{user.firstName}', '{user.lastName}', '{user.phoneNumber}', '{user.language}')");
                 
                 if (i < users.Count - 1)
                     queryBuilder.AppendLine(",");

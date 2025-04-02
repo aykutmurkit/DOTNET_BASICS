@@ -1,4 +1,4 @@
-using Business.Interfaces;
+using AuthenticationApi.Business.Services.Interfaces;
 using Core.Security;
 using Core.Utilities;
 using Data.Context;
@@ -8,7 +8,7 @@ using Entities.Dtos;
 using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 
-namespace Business.Services
+namespace AuthenticationApi.Business.Services.Concrete
 {
     /// <summary>
     /// Kimlik doğrulama servisi implementasyonu
@@ -116,15 +116,15 @@ namespace Business.Services
                 await _userRepository.UpdateUserAsync(user);
 
                 // E-posta şablonunu oku ve dinamik değerleri doldur
-                string emailTemplate = System.IO.File.ReadAllText("wwwroot/assets/templates/email/two-factor-auth.html");
+                string emailTemplate = File.ReadAllText("wwwroot/assets/templates/email/two-factor-auth.html");
                 string emailHtml = emailTemplate
                     .Replace("{code}", twoFactorCode)
                     .Replace("{expirationMinutes}", user.TwoFactorCodeExpirationMinutes.ToString());
 
                 // E-posta ile kodu gönder
                 await _emailService.SendEmailAsync(
-                    user.Email, 
-                    "Doğrulama Kodunuz", 
+                    user.Email,
+                    "Doğrulama Kodunuz",
                     emailHtml);
 
                 // 2FA gerektiğini belirten yanıt
@@ -259,7 +259,7 @@ namespace Business.Services
             await _userRepository.UpdateUserAsync(user);
 
             // E-posta şablonunu oku ve dinamik değerleri doldur
-            string emailTemplate = System.IO.File.ReadAllText("wwwroot/assets/templates/email/password-reset.html");
+            string emailTemplate = File.ReadAllText("wwwroot/assets/templates/email/password-reset.html");
             string emailHtml = emailTemplate
                 .Replace("{resetCode}", resetToken)
                 .Replace("{expirationMinutes}", expirationMinutes.ToString());
@@ -331,8 +331,8 @@ namespace Business.Services
             {
                 Enabled = user.TwoFactorEnabled,
                 IsGloballyRequired = globalRequired,
-                Message = user.TwoFactorEnabled 
-                    ? "İki faktörlü kimlik doğrulama başarıyla etkinleştirildi." 
+                Message = user.TwoFactorEnabled
+                    ? "İki faktörlü kimlik doğrulama başarıyla etkinleştirildi."
                     : "İki faktörlü kimlik doğrulama devre dışı bırakıldı."
             };
 
@@ -367,4 +367,4 @@ namespace Business.Services
             };
         }
     }
-} 
+}

@@ -18,7 +18,7 @@ Detaylı bilgi için [N-Tier Mimari Dokümantasyonu](N-Tier-Architecture.md) say
 
 ## Loglama Sistemi
 
-Deneme API, MongoDB tabanlı kapsamlı bir loglama sistemi kullanır. Bu sistem, gelen istekleri, yanıtları ve sistem olaylarını kaydeder ve analiz amacıyla saklar.
+Deneme API, MongoDB tabanlı kapsamlı bir loglama sistemi kullanır. Bu sistem, gelen istekleri, yanıtları ve sistem olaylarını kaydeder ve analiz amacıyla saklar. Loglama sistemi yalnızca dahili olarak çalışır ve harici erişim endpoint'leri bulunmaz.
 
 Detaylı bilgi için [Loglama Sistemi Dokümantasyonu](logging-system.md) sayfasına bakabilirsiniz.
 
@@ -32,14 +32,14 @@ API dokümantasyonu, OpenAPI (Swagger) kullanılarak otomatik olarak oluşturulu
 
 Deneme API, birincil veritabanı olarak SQL Server, loglama için ise MongoDB kullanır. Veritabanı şeması, Entity Framework Core Code-First yaklaşımı ile oluşturulmuştur.
 
-Veritabanı yapılandırması ve migration işlemleri hakkında detaylı bilgi için [Veritabanı Şeması Dokümantasyonu] sayfasına bakabilirsiniz (henüz oluşturulmamıştır).
+Veritabanı yapılandırması ve migration işlemleri hakkında detaylı bilgi için [Veritabanı Şeması Dokümantasyonu](database-configuration.md) sayfasına bakabilirsiniz.
 
 ## Klasör Yapısı Rehberi
 
-Deneme API projesi, N-Tier mimariye uygun olarak aşağıdaki klasör yapısını kullanır:
+Deneme API projesi, yeniden düzenlenmiş klasör yapısıyla N-Tier mimariye uygun olarak aşağıdaki klasör yapısını kullanır:
 
 ```
-deneme/
+AuthenticationApi/
 │
 ├── API/                      # Presentation Layer - API katmanı
 │   ├── Controllers/          # API endpoint'lerini içeren controller'lar
@@ -70,7 +70,7 @@ deneme/
 │   ├── Security/             # Güvenlik ile ilgili sınıflar
 │   ├── Utilities/            # Yardımcı sınıflar ve metotlar
 │   ├── Extensions/           # Genel extension metotları
-│   └── Logging/              # Loglama altyapısı
+│   └── Logging/              # Loglama altyapısı (Controller'sız)
 │
 ├── Documentation/            # Proje dokümantasyonu
 │
@@ -83,11 +83,11 @@ deneme/
 Projenin namespace yapısı, klasör yapısına paralel olarak düzenlenmiştir:
 
 ```
-Deneme.API.*                  # API katmanı namespace'leri
-Deneme.Business.*             # Business katmanı namespace'leri
-Deneme.DataAccess.*           # DataAccess katmanı namespace'leri
-Deneme.Entities.*             # Entity katmanı namespace'leri
-Deneme.Core.*                 # Core katmanı namespace'leri
+AuthenticationApi.API.*                  # API katmanı namespace'leri
+AuthenticationApi.Business.*             # Business katmanı namespace'leri
+AuthenticationApi.DataAccess.*           # DataAccess katmanı namespace'leri
+AuthenticationApi.Entities.*             # Entity katmanı namespace'leri
+AuthenticationApi.Core.*                 # Core katmanı namespace'leri
 ```
 
 ## Katkıda Bulunma

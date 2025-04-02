@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NufQH4E7rgk4rIFnSbOXpHrg4ndJMDpTl0bY5QoktSo=",
+  "Hash": "pyleEe4w7QBlmfZZsxf/8hme/xAPC2L9B+sS21bnByM=",
   "Source": "AuthenticationApi",
   "BasePath": "_content/AuthenticationApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "AuthenticationApi\\wwwroot",
       "Source": "AuthenticationApi",
-      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\",
       "BasePath": "_content/AuthenticationApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "SourceId": "AuthenticationApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\",
       "BasePath": "_content/AuthenticationApi",
       "RelativePath": "assets/templates/email/password-reset#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
     },
     {
-      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "SourceId": "AuthenticationApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\",
       "BasePath": "_content/AuthenticationApi",
       "RelativePath": "assets/templates/email/two-factor-auth#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "assets/templates/email/password-reset.html",
-      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -83,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 18:48:15 GMT"
+          "Value": "Wed, 02 Apr 2025 05:11:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -99,7 +99,7 @@
     },
     {
       "Route": "assets/templates/email/password-reset.ve4ofuvggb.html",
-      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -120,7 +120,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 18:48:15 GMT"
+          "Value": "Wed, 02 Apr 2025 05:11:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -144,7 +144,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.html",
-      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -165,7 +165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 18:48:15 GMT"
+          "Value": "Wed, 02 Apr 2025 05:11:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -181,7 +181,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.ojkunuhez5.html",
-      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\authentication\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -202,7 +202,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 18:48:15 GMT"
+          "Value": "Wed, 02 Apr 2025 05:11:34 GMT"
         },
         {
           "Name": "Cache-Control",

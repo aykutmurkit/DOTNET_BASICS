@@ -2,6 +2,26 @@
 
 Bu belge, Deneme API'de yapılan tüm önemli güncellemeleri, yeni özellikleri ve hata düzeltmelerini kronolojik sırada listeler.
 
+## v1.5.0 - 2024-07-01
+
+### Mimari Değişiklikler
+
+- **Dizin Yapısı Düzenlemesi**:
+  - Proje dizin yapısı reorganize edildi
+  - Daha modüler ve bakımı kolay yapı oluşturuldu
+
+- **Loglama Sisteminde Değişiklikler**:
+  - Loglama kontrolcüsü kaldırıldı
+  - Loglama sistemi artık yalnızca dahili olarak çalışıyor, harici erişim endpoint'leri bulunmuyor
+  - İsteğe bağlı olarak loglar doğrudan MongoDB veritabanından incelenebilir
+
+### İyileştirmeler
+
+- Sistem mimarisi basitleştirildi
+- API güvenliği artırıldı
+- Gereksiz endpoint'ler kaldırıldı
+- Dokümantasyon güncellendi
+
 ## v1.4.0 - 2024-06-15
 
 ### Eklenen Özellikler

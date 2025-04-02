@@ -8,7 +8,6 @@ Bu bölüm, Deneme API'nin loglama sistemi hakkında bilgiler içerir.
 - [Log Tipleri](#log-tipleri)
 - [MongoDB Entegrasyonu](#mongodb-entegrasyonu)
 - [Middleware Yapısı](#middleware-yapısı)
-- [API Endpoints](#api-endpoints)
 - [Yapılandırma](#yapılandırma)
 - [Güvenlik Önlemleri](#güvenlik-önlemleri)
 - [Extension Metotları](#extension-metotları)
@@ -25,7 +24,6 @@ Loglama sistemi şu özellikleri sunar:
 - Hassas verilerin otomatik gizlenmesi
 - Belirli endpoint'leri loglama dışında bırakma
 - Loglar için TTL (Time-To-Live) ile otomatik silme
-- Admin kullanıcıları için log görüntüleme API'leri
 
 ## Log Tipleri
 
@@ -256,77 +254,6 @@ Middleware çalışma sırası:
 8. İstek, yanıt ve ilgili meta verileri bir `RequestResponseLog` nesnesine toplar.
 9. Log nesnesini MongoDB'ye kaydeder.
 
-## API Endpoints
-
-### RequestResponse Logları
-
-```
-GET /api/logs/requests?pageNumber=1&pageSize=20&search=kullanıcı_adı
-```
-
-- **Yetki**: Admin
-- **Parametreler**:
-  - pageNumber: Sayfa numarası (varsayılan: 1)
-  - pageSize: Sayfa başına kayıt sayısı (varsayılan: 20, maksimum: 100)
-  - search: İsteğe bağlı arama terimi (kullanıcı adı, path, request/response gövdesinde arama yapar)
-
-### API Logları
-
-```
-GET /api/logs/api?pageNumber=1&pageSize=20&level=Error&search=hata
-```
-
-- **Yetki**: Admin
-- **Parametreler**:
-  - pageNumber: Sayfa numarası (varsayılan: 1)
-  - pageSize: Sayfa başına kayıt sayısı (varsayılan: 20, maksimum: 100)
-  - level: Log seviyesi filtresi (Info, Warning, Error)
-  - search: İsteğe bağlı arama terimi (mesaj, kullanıcı adı, path üzerinde arama yapar)
-
-### Log Temizleme Endpoints
-
-#### İstek/Yanıt Loglarını Temizle
-
-```
-DELETE /api/logs/requests?olderThanDays=30&path=/api/users
-```
-
-- **Yetki**: Admin
-- **Parametreler**:
-  - olderThanDays: Kaç günden eski logların silineceği (isteğe bağlı)
-  - path: Belirli bir path içeren logları silmek için (isteğe bağlı)
-
-#### API Loglarını Temizle
-
-```
-DELETE /api/logs/api?olderThanDays=30&level=Error
-```
-
-- **Yetki**: Admin
-- **Parametreler**:
-  - olderThanDays: Kaç günden eski logların silineceği (isteğe bağlı)
-  - level: Belirli bir seviyedeki logları silmek için (isteğe bağlı)
-
-#### Tüm Logları Temizle
-
-```
-DELETE /api/logs/all
-```
-
-- **Yetki**: Admin
-- **Açıklama**: Tüm log kayıtlarını siler
-
-### Test Endpoint'leri
-
-```
-GET /api/logs/test
-GET /api/logs/test/warning
-GET /api/logs/test/error
-```
-
-- **Yetki**: Herhangi bir yetkilendirilmiş kullanıcı
-- **Açıklama**: Test amaçlı log kayıtları oluşturur (Info, Warning, Error)
-
 ## Yapılandırma
 
 appsettings.json dosyasında loglama sistemi için aşağıdaki ayarlar kullanılabilir:
@@ -336,7 +263,6 @@ appsettings.json dosyasında loglama sistemi için aşağıdaki ayarlar kullanı
   "DatabaseName": "DenemeApiLogs",
   "ExpireAfterDays": 30,
   "ExcludedPaths": [
-    "/api/logs",
     "/swagger",
     "/health"
   ]
@@ -361,11 +287,9 @@ Loglama sistemi, güvenlik açısından aşağıdaki önlemleri içerir:
 
 1. **Hassas Verilerin Gizlenmesi**: Şifre, token, refreshToken gibi hassas bilgiler otomatik olarak gizlenir ve "***REDACTED***" ile değiştirilir.
 
-2. **Endpoint Filtreleme**: Belirli endpoint'ler (örn. /api/logs, /swagger) loglama dışında bırakılabilir.
+2. **Endpoint Filtreleme**: Belirli endpoint'ler (örn. /swagger, /health) loglama dışında bırakılabilir.
 
-3. **Yetkilendirme**: Log erişim API'leri yalnızca Admin rolüne sahip kullanıcılar tarafından kullanılabilir.
-
-4. **TTL ile Otomatik Silme**: Loglar, belirli bir süre sonra otomatik olarak silinir.
+3. **TTL ile Otomatik Silme**: Loglar, belirli bir süre sonra otomatik olarak silinir.
 
 ## Extension Metotları
 
@@ -447,7 +371,7 @@ app.Run();
 
 ### Log Erişimi ve Analizi
 
-1. **Düzenli İzleme**: Sistem hataları için error loglar düzenli olarak kontrol edilmelidir.
+1. **Düzenli İnceleme**: MongoDB Collection'ları doğrudan inceleyerek sistem hataları için error loglar düzenli olarak kontrol edilmelidir.
 
 2. **Şüpheli Aktivite**: Başarısız kimlik doğrulama denemeleri gibi şüpheli aktiviteler için loglar incelenmelidir.
 

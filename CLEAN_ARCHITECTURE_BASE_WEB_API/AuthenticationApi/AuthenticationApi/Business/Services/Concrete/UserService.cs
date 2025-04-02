@@ -1,4 +1,3 @@
-using Business.Interfaces;
 using Core.Security;
 using Core.Utilities;
 using Data.Context;
@@ -12,8 +11,9 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
+using AuthenticationApi.Business.Services.Interfaces;
 
-namespace Business.Services
+namespace AuthenticationApi.Business.Services.Concrete
 {
     /// <summary>
     /// Kullanıcı servisi implementasyonu
@@ -27,8 +27,8 @@ namespace Business.Services
         private readonly IConfiguration _configuration;
 
         public UserService(
-            IUserRepository userRepository, 
-            ITwoFactorService twoFactorService, 
+            IUserRepository userRepository,
+            ITwoFactorService twoFactorService,
             AppDbContext context,
             EmailService emailService,
             IConfiguration configuration)
@@ -186,22 +186,22 @@ namespace Business.Services
             // Dosyayı memory'ye yükle
             using var memoryStream = new MemoryStream();
             await request.ProfilePicture.CopyToAsync(memoryStream);
-            
+
             // Resim boyutlarını kontrol et
             using var image = Image.FromStream(memoryStream);
-            
+
             // Kare resim kontrolü (yatay ve dikey boyut aynı olmalı)
             if (image.Width != image.Height)
             {
                 throw new Exception("Profil fotoğrafı kare formatta olmalıdır (örn. 200x200).");
             }
-            
+
             // Maksimum boyut kontrolü
             if (image.Width > 1000 || image.Height > 1000)
             {
                 throw new Exception("Profil fotoğrafı maksimum 1000x1000 piksel boyutunda olmalıdır.");
             }
-            
+
             // Dosyayı byte array'e dönüştür ve kaydet
             memoryStream.Position = 0;
             user.ProfilePicture = memoryStream.ToArray();
@@ -234,7 +234,7 @@ namespace Business.Services
             graphics.Clear(Color.Red);
 
             using var memoryStream = new MemoryStream();
-            bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+            bitmap.Save(memoryStream, ImageFormat.Png);
             return memoryStream.ToArray();
         }
 
@@ -249,20 +249,20 @@ namespace Business.Services
             {
                 HasProfilePicture = user.ProfilePicture != null
             };
-            
+
             // Sadece tek kullanıcı görüntülenirken profil fotoğrafını dahil et
             if (includeProfilePicture && user.ProfilePicture != null)
             {
                 profilePictureInfo.Url = $"/api/Users/{user.Id}/profile-picture";
                 profilePictureInfo.Picture = Convert.ToBase64String(user.ProfilePicture);
             }
-            
+
             return new UserDto
             {
                 Id = user.Id,
                 Username = user.Username,
                 Email = user.Email,
-                Role = new RoleInfo 
+                Role = new RoleInfo
                 {
                     Id = user.RoleId,
                     Name = user.Role?.Name ?? "Unknown"
@@ -348,7 +348,7 @@ namespace Business.Services
 
             user.RoleId = request.RoleId;
             await _userRepository.UpdateUserAsync(user);
-            
+
             return MapToUserDto(user, includeProfilePicture: true);
         }
 
@@ -371,7 +371,7 @@ namespace Business.Services
 
             user.Email = request.Email;
             await _userRepository.UpdateUserAsync(user);
-            
+
             return MapToUserDto(user, includeProfilePicture: true);
         }
 
@@ -384,23 +384,23 @@ namespace Business.Services
             const string lowerChars = "abcdefghijkmnopqrstuvwxyz";
             const string numberChars = "0123456789";
             const string specialChars = "!@#$%^&*()_-+=<>?";
-            
+
             var random = new Random();
             var chars = new List<char>();
-            
+
             // En az bir tane her türden karakter ekle
             chars.Add(upperChars[random.Next(upperChars.Length)]);
             chars.Add(lowerChars[random.Next(lowerChars.Length)]);
             chars.Add(numberChars[random.Next(numberChars.Length)]);
             chars.Add(specialChars[random.Next(specialChars.Length)]);
-            
+
             // Geri kalan karakterleri ekle
             var allChars = upperChars + lowerChars + numberChars + specialChars;
             for (int i = chars.Count; i < length; i++)
             {
                 chars.Add(allChars[random.Next(allChars.Length)]);
             }
-            
+
             // Karakterleri karıştır
             for (int i = 0; i < chars.Count; i++)
             {
@@ -409,8 +409,8 @@ namespace Business.Services
                 chars[i] = chars[j];
                 chars[j] = temp;
             }
-            
+
             return new string(chars.ToArray());
         }
     }
-} 
+}

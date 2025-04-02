@@ -1,4 +1,4 @@
-using Business.Interfaces;
+using AuthenticationApi.Business.Services.Interfaces;
 using Core.Utilities;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;

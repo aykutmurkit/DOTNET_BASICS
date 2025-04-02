@@ -3,8 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using AuthenticationApi.Services.Logging;
 using MongoDB.Driver;
+using AuthenticationApi.Business.Services.Concrete;
+using AuthenticationApi.Business.Services.Interfaces;
 
 namespace AuthenticationApi.Core.Extensions
 {

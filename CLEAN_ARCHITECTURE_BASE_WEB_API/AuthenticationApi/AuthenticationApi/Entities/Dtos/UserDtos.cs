@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using AuthenticationApi.Core.Enums;
 
 namespace Entities.Dtos
 {
@@ -24,6 +25,37 @@ namespace Entities.Dtos
         /// Profil fotoğrafı bilgileri
         /// </summary>
         public ProfilePictureInfo ProfilePicture { get; set; }
+
+        /// <summary>
+        /// Kullanıcı profil bilgileri
+        /// </summary>
+        public UserProfileInfo ProfileInfo { get; set; }
+    }
+
+    /// <summary>
+    /// Kullanıcı profil bilgileri
+    /// </summary>
+    public class UserProfileInfo
+    {
+        public string FirstName { get; set; }
+        public string? MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public Gender? Gender { get; set; }
+        public DateTime? Birthday { get; set; }
+        public string? NationalId { get; set; }
+        public string PhoneNumber { get; set; }
+        public string? Address { get; set; }
+        public string Language { get; set; }
+
+        // Şirket bilgileri
+        public string? CompanyName { get; set; }
+        public string? CompanyPosition { get; set; }
+        public string? CompanyDepartment { get; set; }
+        public string? CompanyEmail { get; set; }
+        public string? CompanyPhone { get; set; }
+        public string? CompanyWebsite { get; set; }
+        public string? CompanyAddress { get; set; }
     }
     
     /// <summary>
@@ -83,6 +115,61 @@ namespace Entities.Dtos
         [Required(ErrorMessage = "Rol ID zorunludur")]
         [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
         public int RoleId { get; set; }
+
+        [Required(ErrorMessage = "Ad zorunludur")]
+        [StringLength(50, ErrorMessage = "Ad en fazla 50 karakter olabilir")]
+        public string FirstName { get; set; }
+
+        [StringLength(50, ErrorMessage = "İkinci ad en fazla 50 karakter olabilir")]
+        public string? MiddleName { get; set; }
+
+        [Required(ErrorMessage = "Soyad zorunludur")]
+        [StringLength(50, ErrorMessage = "Soyad en fazla 50 karakter olabilir")]
+        public string LastName { get; set; }
+
+        public Gender? Gender { get; set; }
+
+        public DateTime? Birthday { get; set; }
+
+        [StringLength(30, ErrorMessage = "Kimlik numarası en fazla 30 karakter olabilir")]
+        public string? NationalId { get; set; }
+
+        [Required(ErrorMessage = "Telefon numarası zorunludur")]
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        public string PhoneNumber { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? Address { get; set; }
+
+        [Required(ErrorMessage = "Dil seçimi zorunludur")]
+        [StringLength(10, ErrorMessage = "Dil kodu en fazla 10 karakter olabilir")]
+        public string Language { get; set; }
+
+        // Şirket bilgileri - Opsiyonel
+        [StringLength(100, ErrorMessage = "Şirket adı en fazla 100 karakter olabilir")]
+        public string? CompanyName { get; set; }
+
+        [StringLength(50, ErrorMessage = "Pozisyon en fazla 50 karakter olabilir")]
+        public string? CompanyPosition { get; set; }
+
+        [StringLength(50, ErrorMessage = "Departman en fazla 50 karakter olabilir")]
+        public string? CompanyDepartment { get; set; }
+
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz")]
+        [StringLength(100, ErrorMessage = "E-posta en fazla 100 karakter olabilir")]
+        public string? CompanyEmail { get; set; }
+
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        public string? CompanyPhone { get; set; }
+
+        [Url(ErrorMessage = "Geçerli bir URL giriniz")]
+        [StringLength(100, ErrorMessage = "Web sitesi en fazla 100 karakter olabilir")]
+        public string? CompanyWebsite { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? CompanyAddress { get; set; }
     }
 
     /// <summary>
@@ -101,6 +188,61 @@ namespace Entities.Dtos
         [Required(ErrorMessage = "Rol ID zorunludur")]
         [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
         public int RoleId { get; set; }
+
+        [Required(ErrorMessage = "Ad zorunludur")]
+        [StringLength(50, ErrorMessage = "Ad en fazla 50 karakter olabilir")]
+        public string FirstName { get; set; }
+
+        [StringLength(50, ErrorMessage = "İkinci ad en fazla 50 karakter olabilir")]
+        public string? MiddleName { get; set; }
+
+        [Required(ErrorMessage = "Soyad zorunludur")]
+        [StringLength(50, ErrorMessage = "Soyad en fazla 50 karakter olabilir")]
+        public string LastName { get; set; }
+
+        public Gender? Gender { get; set; }
+
+        public DateTime? Birthday { get; set; }
+
+        [StringLength(30, ErrorMessage = "Kimlik numarası en fazla 30 karakter olabilir")]
+        public string? NationalId { get; set; }
+
+        [Required(ErrorMessage = "Telefon numarası zorunludur")]
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        public string PhoneNumber { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? Address { get; set; }
+
+        [Required(ErrorMessage = "Dil seçimi zorunludur")]
+        [StringLength(10, ErrorMessage = "Dil kodu en fazla 10 karakter olabilir")]
+        public string Language { get; set; }
+
+        // Şirket bilgileri - Opsiyonel
+        [StringLength(100, ErrorMessage = "Şirket adı en fazla 100 karakter olabilir")]
+        public string? CompanyName { get; set; }
+
+        [StringLength(50, ErrorMessage = "Pozisyon en fazla 50 karakter olabilir")]
+        public string? CompanyPosition { get; set; }
+
+        [StringLength(50, ErrorMessage = "Departman en fazla 50 karakter olabilir")]
+        public string? CompanyDepartment { get; set; }
+
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz")]
+        [StringLength(100, ErrorMessage = "E-posta en fazla 100 karakter olabilir")]
+        public string? CompanyEmail { get; set; }
+
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        public string? CompanyPhone { get; set; }
+
+        [Url(ErrorMessage = "Geçerli bir URL giriniz")]
+        [StringLength(100, ErrorMessage = "Web sitesi en fazla 100 karakter olabilir")]
+        public string? CompanyWebsite { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? CompanyAddress { get; set; }
     }
 
     /// <summary>
@@ -116,6 +258,57 @@ namespace Entities.Dtos
 
         [Range(1, int.MaxValue, ErrorMessage = "Geçerli bir rol ID giriniz")]
         public int? RoleId { get; set; }
+
+        [StringLength(50, ErrorMessage = "Ad en fazla 50 karakter olabilir")]
+        public string? FirstName { get; set; }
+
+        [StringLength(50, ErrorMessage = "İkinci ad en fazla 50 karakter olabilir")]
+        public string? MiddleName { get; set; }
+
+        [StringLength(50, ErrorMessage = "Soyad en fazla 50 karakter olabilir")]
+        public string? LastName { get; set; }
+
+        public Gender? Gender { get; set; }
+
+        public DateTime? Birthday { get; set; }
+
+        [StringLength(30, ErrorMessage = "Kimlik numarası en fazla 30 karakter olabilir")]
+        public string? NationalId { get; set; }
+
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        public string? PhoneNumber { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? Address { get; set; }
+
+        [StringLength(10, ErrorMessage = "Dil kodu en fazla 10 karakter olabilir")]
+        public string? Language { get; set; }
+
+        // Şirket bilgileri - Opsiyonel
+        [StringLength(100, ErrorMessage = "Şirket adı en fazla 100 karakter olabilir")]
+        public string? CompanyName { get; set; }
+
+        [StringLength(50, ErrorMessage = "Pozisyon en fazla 50 karakter olabilir")]
+        public string? CompanyPosition { get; set; }
+
+        [StringLength(50, ErrorMessage = "Departman en fazla 50 karakter olabilir")]
+        public string? CompanyDepartment { get; set; }
+
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz")]
+        [StringLength(100, ErrorMessage = "E-posta en fazla 100 karakter olabilir")]
+        public string? CompanyEmail { get; set; }
+
+        [Phone(ErrorMessage = "Geçerli bir telefon numarası giriniz")]
+        [StringLength(20, ErrorMessage = "Telefon numarası en fazla 20 karakter olabilir")]
+        public string? CompanyPhone { get; set; }
+
+        [Url(ErrorMessage = "Geçerli bir URL giriniz")]
+        [StringLength(100, ErrorMessage = "Web sitesi en fazla 100 karakter olabilir")]
+        public string? CompanyWebsite { get; set; }
+
+        [StringLength(200, ErrorMessage = "Adres en fazla 200 karakter olabilir")]
+        public string? CompanyAddress { get; set; }
     }
 
     /// <summary>
