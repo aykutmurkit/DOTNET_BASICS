@@ -1,0 +1,28 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/DeviceApi/assets/templates/email/password-reset.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6321"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 02 Apr 2025 05:11:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DeviceApi/assets/templates/email/password-reset.ve4ofuvggb.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\password-reset.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ve4ofuvggb"},{"Name":"integrity","Value":"sha256-V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0="},{"Name":"label","Value":"_content/DeviceApi/assets/templates/email/password-reset.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6321"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022V8OjG01XhtFFSrllTPHYTaXZ9R6F1sCVXJCJHzDtBd0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 02 Apr 2025 05:11:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DeviceApi/assets/templates/email/two-factor-auth.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\two-factor-auth.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6270"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 02 Apr 2025 05:11:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DeviceApi/assets/templates/email/two-factor-auth.ojkunuhez5.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\templates\email\two-factor-auth.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ojkunuhez5"},{"Name":"integrity","Value":"sha256-fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4="},{"Name":"label","Value":"_content/DeviceApi/assets/templates/email/two-factor-auth.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6270"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fP1OGcOICUnvh1n94K42vbV1Uo4bc5vop\u002BF\u002B0XcFwG4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 02 Apr 2025 05:11:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

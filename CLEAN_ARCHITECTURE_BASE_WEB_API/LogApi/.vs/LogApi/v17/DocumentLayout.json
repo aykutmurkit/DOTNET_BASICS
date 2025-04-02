@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ValidationFilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Core\\Utilities\\ValidationFilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ControllerExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Core\\Utilities\\ControllerExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ApiResponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Core\\Utilities\\ApiResponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Security\\PasswordHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Core\\Security\\PasswordHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Services\\Concrete\\ApiLogService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Business\\Services\\Concrete\\ApiLogService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\RequestResponseLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\API\\Models\\Logs\\RequestResponseLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\PagedResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\API\\Models\\Logs\\PagedResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\ApiLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\API\\Models\\Logs\\ApiLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ValidationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ValidationFilter.cs",
+              "RelativeDocumentMoniker": "LogApi\\Core\\Utilities\\ValidationFilter.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ValidationFilter.cs",
+              "RelativeToolTip": "LogApi\\Core\\Utilities\\ValidationFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:41:49.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ControllerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ControllerExtensions.cs",
+              "RelativeDocumentMoniker": "LogApi\\Core\\Utilities\\ControllerExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ControllerExtensions.cs",
+              "RelativeToolTip": "LogApi\\Core\\Utilities\\ControllerExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:41:10.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PasswordHelper.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Security\\PasswordHelper.cs",
+              "RelativeDocumentMoniker": "LogApi\\Core\\Security\\PasswordHelper.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Security\\PasswordHelper.cs",
+              "RelativeToolTip": "LogApi\\Core\\Security\\PasswordHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:40:59.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "LogApi\\Core\\Utilities\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Utilities\\ApiResponse.cs",
+              "RelativeToolTip": "LogApi\\Core\\Utilities\\ApiResponse.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:40:58.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "LogApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:40:49.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApiLogService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "RelativeDocumentMoniker": "LogApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "RelativeToolTip": "LogApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:40:27.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "LogApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:53.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RequestResponseLog.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\RequestResponseLog.cs",
+              "RelativeDocumentMoniker": "LogApi\\API\\Models\\Logs\\RequestResponseLog.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\RequestResponseLog.cs",
+              "RelativeToolTip": "LogApi\\API\\Models\\Logs\\RequestResponseLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:46.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PagedResult.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\PagedResult.cs",
+              "RelativeDocumentMoniker": "LogApi\\API\\Models\\Logs\\PagedResult.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\PagedResult.cs",
+              "RelativeToolTip": "LogApi\\API\\Models\\Logs\\PagedResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:44.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApiLog.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\ApiLog.cs",
+              "RelativeDocumentMoniker": "LogApi\\API\\Models\\Logs\\ApiLog.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Models\\Logs\\ApiLog.cs",
+              "RelativeToolTip": "LogApi\\API\\Models\\Logs\\ApiLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:42.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RequestResponseLoggingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "RelativeDocumentMoniker": "LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "RelativeToolTip": "LogApi\\API\\Middleware\\RequestResponseLoggingMiddleware.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:30.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApplicationBuilderExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
+              "RelativeDocumentMoniker": "LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
+              "RelativeToolTip": "LogApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:39:23.17Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

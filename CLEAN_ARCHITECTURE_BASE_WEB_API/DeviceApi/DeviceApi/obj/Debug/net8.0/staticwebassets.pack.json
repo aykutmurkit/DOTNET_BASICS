@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\password-reset.html"
+    },
+    {
+      "Id": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\email\\two-factor-auth.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DeviceApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DeviceApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DeviceApi.props",
+      "PackagePath": "build\\DeviceApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DeviceApi.props",
+      "PackagePath": "buildMultiTargeting\\DeviceApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DeviceApi.props",
+      "PackagePath": "buildTransitive\\DeviceApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
