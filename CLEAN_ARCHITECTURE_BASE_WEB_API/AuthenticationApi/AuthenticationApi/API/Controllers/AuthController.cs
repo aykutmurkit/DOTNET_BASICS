@@ -1,4 +1,5 @@
 using AuthenticationApi.Business.Services.Interfaces;
+using AuthenticationApi.Core.Logging;
 using Core.Utilities;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;
@@ -13,10 +14,12 @@ namespace AuthenticationApi.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ILogService _logService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogService logService)
         {
             _authService = authService;
+            _logService = logService;
         }
 
         /// <summary>
@@ -28,19 +31,35 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "Login", request);
+                
                 var result = await _authService.LoginAsync(request);
                 
                 // 2FA gerekiyorsa farklı bir yanıt döndür
                 if (result is TwoFactorRequiredResponse twoFactorResponse)
                 {
-                    return Ok(ApiResponse<TwoFactorRequiredResponse>.Success(twoFactorResponse, "İki faktörlü kimlik doğrulama gerekli", 200));
+                    var response = ApiResponse<TwoFactorRequiredResponse>.Success(twoFactorResponse, "İki faktörlü kimlik doğrulama gerekli", 200);
+                    
+                    // Yanıt logla
+                    _logService.LogResponse(HttpContext, "Auth", "Login", response, 200);
+                    
+                    return Ok(response);
                 }
                 
                 // Normal giriş yanıtı
-                return Ok(ApiResponse<AuthResponse>.Success((AuthResponse)result, "Giriş başarılı"));
+                var successResponse = ApiResponse<AuthResponse>.Success((AuthResponse)result, "Giriş başarılı");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "Login", successResponse, 200);
+                
+                return Ok(successResponse);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "Login", ex);
+                
                 if (ex.Message.Contains("Kullanıcı adı veya şifre"))
                 {
                     return StatusCode(401, ApiResponse<AuthResponse>.Unauthorized(ex.Message));
@@ -58,11 +77,22 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "VerifyTwoFactor", request);
+                
                 var result = await _authService.VerifyTwoFactorAsync(request);
-                return Ok(ApiResponse<AuthResponse>.Success(result, "İki faktörlü kimlik doğrulama başarılı"));
+                var response = ApiResponse<AuthResponse>.Success(result, "İki faktörlü kimlik doğrulama başarılı");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "VerifyTwoFactor", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "VerifyTwoFactor", ex);
+                
                 if (ex.Message.Contains("Doğrulama kodu geçersiz"))
                 {
                     return BadRequest(ApiResponse<AuthResponse>.Error(ex.Message));
@@ -80,12 +110,23 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "GetTwoFactorStatus", null);
+                
                 var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 var result = await _authService.GetTwoFactorStatusAsync(userId);
-                return Ok(ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA durumu"));
+                var response = ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA durumu");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "GetTwoFactorStatus", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "GetTwoFactorStatus", ex);
+                
                 return StatusCode(500, ApiResponse<TwoFactorStatusResponse>.ServerError(ex.Message));
             }
         }
@@ -99,12 +140,23 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "SetupTwoFactor", request);
+                
                 var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 var result = await _authService.SetupTwoFactorAsync(userId, request);
-                return Ok(ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA ayarları güncellendi"));
+                var response = ApiResponse<TwoFactorStatusResponse>.Success(result, "2FA ayarları güncellendi");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "SetupTwoFactor", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "SetupTwoFactor", ex);
+                
                 if (ex.Message.Contains("Mevcut şifre hatalı"))
                 {
                     return BadRequest(ApiResponse<TwoFactorStatusResponse>.Error(ex.Message));
@@ -126,12 +178,22 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "Register", request);
+                
                 var result = await _authService.RegisterAsync(request);
                 var response = ApiResponse<AuthResponse>.Created(result, "Kullanıcı başarıyla kaydedildi");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "Register", response, 201);
+                
                 return StatusCode(201, response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "Register", ex);
+                
                 if (ex.Message.Contains("zaten kullanılıyor"))
                 {
                     return StatusCode(409, ApiResponse<AuthResponse>.Conflict(ex.Message));
@@ -148,11 +210,22 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "RefreshToken", request);
+                
                 var result = await _authService.RefreshTokenAsync(request);
-                return Ok(ApiResponse<AuthResponse>.Success(result, "Token başarıyla yenilendi"));
+                var response = ApiResponse<AuthResponse>.Success(result, "Token başarıyla yenilendi");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "RefreshToken", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "RefreshToken", ex);
+                
                 if (ex.Message.Contains("Geçersiz") || ex.Message.Contains("süresi dolmuş"))
                 {
                     return StatusCode(401, ApiResponse<AuthResponse>.Unauthorized(ex.Message));
@@ -170,12 +243,23 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "ChangePassword", request);
+                
                 var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 await _authService.ChangePasswordAsync(userId, request);
-                return Ok(ApiResponse<object>.Success(null, "Şifre başarıyla değiştirildi"));
+                var response = ApiResponse<object>.Success(null, "Şifre başarıyla değiştirildi");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "ChangePassword", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "ChangePassword", ex);
+                
                 if (ex.Message.Contains("Mevcut şifre hatalı"))
                 {
                     return BadRequest(ApiResponse<object>.Error(ex.Message));
@@ -197,11 +281,22 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "ForgotPassword", request);
+                
                 await _authService.ForgotPasswordAsync(request);
-                return Ok(ApiResponse<object>.Success(null, "Şifre sıfırlama talimatları e-posta adresinize gönderildi"));
+                var response = ApiResponse<object>.Success(null, "Şifre sıfırlama talimatları e-posta adresinize gönderildi");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "ForgotPassword", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "ForgotPassword", ex);
+                
                 return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
             }
         }
@@ -214,11 +309,22 @@ namespace AuthenticationApi.Controllers
         {
             try
             {
+                // İstek logla
+                _logService.LogRequest(HttpContext, "Auth", "ResetPassword", request);
+                
                 await _authService.ResetPasswordAsync(request);
-                return Ok(ApiResponse<object>.Success(null, "Şifreniz başarıyla sıfırlandı"));
+                var response = ApiResponse<object>.Success(null, "Şifreniz başarıyla sıfırlandı");
+                
+                // Yanıt logla
+                _logService.LogResponse(HttpContext, "Auth", "ResetPassword", response, 200);
+                
+                return Ok(response);
             }
             catch (Exception ex)
             {
+                // Hata logla
+                _logService.LogException(HttpContext, "Auth", "ResetPassword", ex);
+                
                 if (ex.Message.Contains("geçersiz") || ex.Message.Contains("süresi dolmuş"))
                 {
                     return BadRequest(ApiResponse<object>.Error(ex.Message));

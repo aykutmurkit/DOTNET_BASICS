@@ -300,3 +300,14 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\Au
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.pdb
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.genruntimeconfig.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi\AuthenticationApi\obj\Debug\net8.0\ref\AuthenticationApi.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.csproj.AssemblyReference.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.AssemblyInfoInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.AssemblyInfo.cs
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.csproj.CoreCompileInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.sourcelink.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\refint\AuthenticationApi.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\CLEAN_ARCHITECTURE_BASE_WEB_API\AuthenticationApi - Kopya\AuthenticationApi\obj\Debug\net8.0\AuthenticationApi.pdb

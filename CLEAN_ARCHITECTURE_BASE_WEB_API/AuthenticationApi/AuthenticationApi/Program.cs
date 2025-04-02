@@ -1,7 +1,6 @@
-using AuthenticationApi.API.Extensions;
-using AuthenticationApi.API.Middleware;
 using AuthenticationApi.Business.Extensions;
 using AuthenticationApi.Core.Extensions;
+using AuthenticationApi.Core.Logging;
 using AuthenticationApi.DataAccess.Extensions;
 using Core.Utilities;
 using Microsoft.AspNetCore.RateLimiting;
@@ -9,8 +8,12 @@ using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Serilog yapılandırması
+builder.Host.UseSerilogWithGraylog();
 
 // Controllers ve API davranış ayarları
 builder.Services.AddControllers(options =>
@@ -103,6 +106,11 @@ builder.Services.AddRateLimitingServices(builder.Configuration);
 
 var app = builder.Build();
 
+// Serilog middleware'ını ekle
+app.UseSerilogRequestLogging(options => {
+    options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -117,9 +125,6 @@ app.UseRateLimiter();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-// İstek/yanıt loglama middleware'ini ekle
-app.UseRequestResponseLogging();
 
 // Endpoint spesifik rate limit'leri uygula
 app.MapControllers().RequireRateLimiting("ip");

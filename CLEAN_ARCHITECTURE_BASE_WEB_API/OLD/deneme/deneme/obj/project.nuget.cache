@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A8QpdygJNGk=",
+  "dgSpecHash": "vvbVNmljVd0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\deneme\\deneme\\deneme.csproj",
+  "projectFilePath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\OLD\\deneme\\deneme\\deneme.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aykut\\.nuget\\packages\\aspnetcoreratelimit\\5.0.0\\aspnetcoreratelimit.5.0.0.nupkg.sha512",
     "C:\\Users\\aykut\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

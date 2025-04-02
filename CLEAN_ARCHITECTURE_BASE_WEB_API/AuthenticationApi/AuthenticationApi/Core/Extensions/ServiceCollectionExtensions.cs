@@ -6,6 +6,7 @@ using System.Text;
 using MongoDB.Driver;
 using AuthenticationApi.Business.Services.Concrete;
 using AuthenticationApi.Business.Services.Interfaces;
+using AuthenticationApi.Core.Logging;
 
 namespace AuthenticationApi.Core.Extensions
 {
@@ -65,6 +66,7 @@ namespace AuthenticationApi.Core.Extensions
             // Loglama servisleri
             services.AddSingleton<ILogRepository, MongoLogRepository>();
             services.AddScoped<IApiLogService, ApiLogService>();
+            services.AddScoped<ILogService, LogService>();
             
             return services;
         }
