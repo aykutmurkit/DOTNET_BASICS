@@ -1,80 +1,144 @@
-# JWT Tabanlı Kimlik Doğrulama
+# JWT Token Doğrulama Dokümantasyonu
 
-Bu dokümanda, DeviceApi'nin JWT (JSON Web Token) tabanlı kimlik doğrulama sistemi açıklanmaktadır.
+Bu doküman, DeviceApi'de JWT (JSON Web Token) token doğrulama sistemini açıklar.
 
-## JWT Yapılandırması
+## İçindekiler
 
-JWT yapılandırması, `appsettings.json` dosyasında aşağıdaki şekilde tanımlanmıştır:
+- [Genel Bakış](#genel-bakış)
+- [JWT Token Yapısı](#jwt-token-yapısı)
+- [Token Doğrulama Mekanizması](#token-doğrulama-mekanizması)
+- [Yetkilendirme](#yetkilendirme)
+- [Güvenlik Önlemleri](#güvenlik-önlemleri)
 
-```json
-"JwtSettings": {
-  "Secret": "VerySecureSecretKey12345678901234567890",
-  "Issuer": "DenemeApi",
-  "Audience": "DenemeApiClient",
-  "AccessTokenExpirationInMinutes": 60,
-  "RefreshTokenExpirationInDays": 7
-}
-```
+## Genel Bakış
 
-## JWT Token İçeriği
+DeviceApi, kullanıcı kimlik doğrulaması için JWT (JSON Web Token) standardını kullanır. API, harici bir kimlik sağlayıcı tarafından üretilen token'ları doğrular ve yetkilendirme kararlarını bu token'lar üzerindeki bilgilere göre verir.
 
-Sistemde oluşturulan JWT token'ları aşağıdaki bilgileri içerir:
+API, authentication (kimlik doğrulama) ve authorization (yetkilendirme) işlemleri için ASP.NET Core'un yerleşik middleware'lerini kullanır.
+
+## JWT Token Yapısı
+
+JWT, üç bölümden oluşur:
+
+1. **Header**: Token türü ve kullanılan algoritma bilgilerini içerir.
+2. **Payload**: Token içindeki claims (iddialar) bilgilerini içerir.
+3. **Signature**: Token'ın bütünlüğünü doğrulamak için kullanılan imza.
+
+DeviceApi, token'ın payload bölümündeki aşağıdaki claims'leri kullanır:
 
 ```json
 {
-  "nameid": "4",         // Kullanıcı ID'si
-  "unique_name": "aykut", // Kullanıcı adı
-  "email": "aykutmurkit.dev@gmail.com", // E-posta adresi
-  "role": "Admin",       // Kullanıcı rolü
-  "nbf": 1743598183,     // Not Before (geçerlilik başlangıç zamanı)
-  "exp": 1743601783,     // Expiration (son geçerlilik zamanı)
-  "iat": 1743598183,     // Issued At (oluşturulma zamanı)
-  "iss": "DenemeApi",    // Issuer (token'ı veren)
-  "aud": "DenemeApiClient" // Audience (hedef kitle)
+  "sub": "1",                                // Subject - Kullanıcı ID
+  "name": "kullanici_adi",                   // Kullanıcı adı
+  "email": "kullanici@mail.com",             // E-posta adresi 
+  "role": "Admin",                           // Kullanıcı rolü
+  "jti": "3f0bd76f-df9d-4885-9730-...",      // Benzersiz token ID
+  "nbf": 1647691200,                         // Not Before - Token geçerlilik başlangıç tarihi
+  "exp": 1647692100,                         // Expiration - Token son kullanma tarihi
+  "iat": 1647691200,                         // Issued At - Token oluşturulma tarihi
+  "iss": "TokenIssuer"                       // Issuer - Token'ı oluşturan sistemin adı
 }
 ```
 
-## Kimlik Doğrulama Servisi
+## Token Doğrulama Mekanizması
 
-Kimlik doğrulama işlemleri, `AuthService` sınıfı tarafından gerçekleştirilir. Bu servis aşağıdaki işlevleri sağlar:
+DeviceApi, JWT token doğrulaması için ASP.NET Core'un `JwtBearer` kimlik doğrulama mekanizmasını kullanır. Bu yapılandırma, `Program.cs` dosyasında şu şekilde tanımlanmıştır:
 
-1. **Access Token Oluşturma**: `GenerateAccessTokenAsync` metodu ile kullanıcı bilgilerine göre kısa süreli erişim tokeni oluşturulur.
-2. **Refresh Token Oluşturma**: `GenerateRefreshTokenAsync` metodu ile access token yenilemek için kullanılan uzun süreli token oluşturulur.
-3. **Token Doğrulama**: `GetPrincipalFromExpiredToken` metodu ile mevcut token'ın içeriği doğrulanır ve claims bilgileri çıkarılır.
-4. **Kullanıcı Doğrulama**: `ValidateUserAsync` metodu ile kullanıcı adı ve şifre doğrulanır.
-5. **Kullanıcı Bilgileri Getirme**: `GetUserInfoAsync` metodu ile kullanıcı detayları alınır.
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = Configuration["TokenSettings:Issuer"],
+            ValidAudience = Configuration["TokenSettings:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(Configuration["TokenSettings:Key"])),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+```
 
-## Auth Controller
+Token doğrulama işlemi şu adımları içerir:
 
-Auth Controller, aşağıdaki endpoint'leri içerir:
+1. API'ye gelen her istek için, `Authorization` başlığında bir Bearer token olup olmadığı kontrol edilir.
+2. Token varsa, imzası doğrulanır (token'ın değiştirilmediğinden emin olmak için).
+3. Token'ın süresi kontrol edilir (süre dolmuşsa reddedilir).
+4. Token'ın issuer ve audience değerleri kontrol edilir (güvenilen bir kaynak tarafından verildiğinden emin olmak için).
+5. Token geçerliyse, içindeki claims (iddialar) HTTP context'ine yüklenir ve istek işlenir.
 
-1. **POST /api/Auth/login**: Kullanıcı giriş işlemi. Başarılı giriş sonrası access ve refresh token döner.
-2. **POST /api/Auth/refresh-token**: Süresi dolmuş access token'ı yenilemek için kullanılır.
-3. **GET /api/Auth/me**: Mevcut oturum açmış kullanıcının bilgilerini getirir.
-4. **GET /api/Auth/admin-only**: Sadece Admin rolündeki kullanıcıların erişebileceği örnek endpoint.
-5. **GET /api/Auth/role-based-content**: Kullanıcı rolüne göre farklı içerik sunan örnek endpoint.
+**Not:** Token'lar harici bir kimlik sağlayıcısından alınmalıdır. DeviceApi, token üretme veya kullanıcı kimlik doğrulama işlemlerini kendisi gerçekleştirmez.
 
-## Rol Tabanlı Yetkilendirme
+## Yetkilendirme
 
-Rol tabanlı yetkilendirme, Controller veya Action seviyesinde `[Authorize(Roles = "Admin,Developer")]` şeklinde tanımlanabilir. 
+Token doğrulandıktan sonra, API'nin farklı bölümlerine erişim yetkilendirmesi (authorization) yapılır. Bu, genellikle controller veya action seviyesinde `[Authorize]` özniteliği kullanılarak gerçekleştirilir.
 
-Örnek olarak:
-- Tüm cihaz işlemleri için en az kullanıcı girişi gereklidir: `[Authorize]`
-- Cihaz oluşturma, güncelleme ve silme işlemleri için Admin veya Developer rolü gereklidir: `[Authorize(Roles = "Admin,Developer")]`
+Rol tabanlı yetkilendirme için:
 
-## Middleware ve Loglama
+```csharp
+[Authorize(Roles = "Admin")]
+public class AdminController : ControllerBase
+{
+    // Sadece Admin rolündeki kullanıcılar erişebilir
+}
 
-Sistem, JWT claim'lerini loglamak için özel bir middleware (`JwtClaimsLoggingMiddleware`) kullanır. Bu middleware, kimlik doğrulaması yapılmış her istek için kullanıcı bilgilerini ve erişilen endpoint'i loglar.
+[Authorize]
+public class DevicesController : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        // Kimliği doğrulanmış tüm kullanıcılar erişebilir
+    }
 
-Ayrıca, her controller action'ında da kullanıcı ID'si ve rolü loglanır, böylece kullanıcıların sistem üzerindeki tüm aktiviteleri kayıt altına alınır.
+    [HttpPost]
+    [Authorize(Roles = "Admin,Developer")]
+    public async Task<IActionResult> Create()
+    {
+        // Sadece Admin veya Developer rolündeki kullanıcılar erişebilir
+    }
+}
+```
 
-## Swagger Entegrasyonu
+Policy tabanlı yetkilendirme için önce politikaları tanımlayın:
 
-Swagger, JWT kimlik doğrulaması ile entegre edilmiştir. API'yi test ederken "Authorize" butonu ile JWT token'ınızı girebilir ve yetkilendirmeli endpoint'leri test edebilirsiniz.
+```csharp
+services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("DeviceManagement", policy => 
+        policy.RequireRole("Admin", "DeviceManager"));
+});
+```
+
+Sonra bu politikaları kullanın:
+
+```csharp
+[Authorize(Policy = "DeviceManagement")]
+public async Task<IActionResult> UpdateDevice(int id)
+{
+    // Sadece DeviceManagement politikasına uygun kullanıcılar erişebilir
+}
+```
 
 ## Güvenlik Önlemleri
 
-1. Token süreleri sınırlıdır (Access token: 60 dakika, Refresh token: 7 gün)
-2. Her token için issuer ve audience doğrulaması yapılır
-3. Admin işlemleri için özel rol gereksinimleri tanımlanmıştır
-4. Token içeriği şifrelenir ve doğrulanır 
+DeviceAPI'nin token doğrulama sistemi, aşağıdaki güvenlik önlemlerini içerir:
+
+1. **Token Süresi Kontrolü**: Süresi dolmuş token'lar otomatik olarak reddedilir.
+
+2. **Sıfır Saat Farkı (Zero Clock Skew)**: Token süre sonu kontrolünde herhangi bir tolerans uygulanmaz.
+
+3. **İmza Doğrulama**: Her token'ın imzası doğrulanarak, içeriğinin değiştirilmediğinden emin olunur.
+
+4. **Issuer ve Audience Kontrolü**: Token'ların güvenilir bir kaynak tarafından verildiği ve bu API için oluşturulduğu doğrulanır.
+
+5. **HTTPS Zorunluluğu**: Tüm API trafiği HTTPS üzerinden yönlendirilir, böylece token'lar ağ üzerinde güvenli bir şekilde taşınır.
+
+6. **Cache-Control Başlıkları**: API yanıtları önbelleğe alınmaz, böylece hassas bilgiler veya token'lar önbellekte tutulmaz.
+
+7. **Rol ve İzin Bazlı Yetkilendirme**: Token içindeki rol ve yetki iddiaları kullanılarak, API endpoint'lerine erişim kontrol edilir. 

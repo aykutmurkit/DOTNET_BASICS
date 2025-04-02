@@ -1,6 +1,6 @@
-# Deneme API Dokümantasyonu
+# DeviceApi Dokümantasyonu
 
-Bu klasör, Deneme API projesi ile ilgili teknik dokümantasyonu içerir.
+Bu klasör, DeviceApi projesi ile ilgili teknik dokümantasyonu içerir.
 
 ## İçindekiler
 
@@ -12,31 +12,36 @@ Bu klasör, Deneme API projesi ile ilgili teknik dokümantasyonu içerir.
 
 ## Mimari Dokümantasyonu
 
-Deneme API, modern .NET 8 teknolojilerini kullanan bir N-Tier (Çok Katmanlı) mimari üzerine inşa edilmiştir. Bu yapı, uygulamayı mantıksal olarak birbirinden ayrılmış katmanlara bölerek, daha modüler, test edilebilir ve bakımı kolay hale getirir.
+DeviceApi, modern .NET 8 teknolojilerini kullanan bir N-Tier (Çok Katmanlı) mimari üzerine inşa edilmiştir. Bu yapı, uygulamayı mantıksal olarak birbirinden ayrılmış katmanlara bölerek, daha modüler, test edilebilir ve bakımı kolay hale getirir.
 
 Detaylı bilgi için [N-Tier Mimari Dokümantasyonu](N-Tier-Architecture.md) sayfasına bakabilirsiniz.
 
 ## Loglama Sistemi
 
-Deneme API, MongoDB tabanlı kapsamlı bir loglama sistemi kullanır. Bu sistem, gelen istekleri, yanıtları ve sistem olaylarını kaydeder ve analiz amacıyla saklar. Loglama sistemi yalnızca dahili olarak çalışır ve harici erişim endpoint'leri bulunmaz.
+DeviceApi, MongoDB tabanlı kapsamlı bir loglama sistemi kullanır. Bu sistem, gelen istekleri, yanıtları ve sistem olaylarını kaydeder ve analiz amacıyla saklar. Loglama sistemi yalnızca dahili olarak çalışır ve harici erişim endpoint'leri bulunmaz.
 
 Detaylı bilgi için [Loglama Sistemi Dokümantasyonu](logging-system.md) sayfasına bakabilirsiniz.
 
 ## API Kullanımı
 
-Deneme API, REST standartlarını takip eden bir API sunar. Tüm istekler JSON formatında veri alır ve döndürür.
+DeviceApi, REST standartlarını takip eden bir API sunar. Tüm istekler JSON formatında veri alır ve döndürür.
 
 API dokümantasyonu, OpenAPI (Swagger) kullanılarak otomatik olarak oluşturulur ve şu adresten erişilebilir: `https://{base-url}/swagger`
 
 ## Veritabanı Şeması
 
-Deneme API, birincil veritabanı olarak SQL Server, loglama için ise MongoDB kullanır. Veritabanı şeması, Entity Framework Core Code-First yaklaşımı ile oluşturulmuştur.
+DeviceApi, birincil veritabanı olarak SQL Server, loglama için ise MongoDB kullanır. Veritabanı şeması, Entity Framework Core Code-First yaklaşımı ile oluşturulmuştur.
+
+DeviceApi şu ana varlıkları içerir:
+- Device (Cihaz)
+- Platform 
+- Station (İstasyon)
 
 Veritabanı yapılandırması ve migration işlemleri hakkında detaylı bilgi için [Veritabanı Şeması Dokümantasyonu](database-configuration.md) sayfasına bakabilirsiniz.
 
 ## Klasör Yapısı Rehberi
 
-Deneme API projesi, yeniden düzenlenmiş klasör yapısıyla N-Tier mimariye uygun olarak aşağıdaki klasör yapısını kullanır:
+DeviceApi projesi, yeniden düzenlenmiş klasör yapısıyla N-Tier mimariye uygun olarak aşağıdaki klasör yapısını kullanır:
 
 ```
 DeviceApi/
@@ -64,6 +69,9 @@ DeviceApi/
 │
 ├── Entities/                 # Entity Layer - Varlık katmanı
 │   ├── Concrete/             # Veritabanı entity'leri
+│   │   ├── Device.cs         # Cihaz varlığı
+│   │   ├── Platform.cs       # Platform varlığı
+│   │   └── Station.cs        # İstasyon varlığı
 │   └── DTOs/                 # Veri Transfer Objeleri
 │
 ├── Core/                     # Core Layer - Çekirdek katmanı

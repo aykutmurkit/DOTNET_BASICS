@@ -1,32 +1,31 @@
 # API Referansı
 
-Bu bölüm, Deneme API'nin tüm endpoint'lerini, parametrelerini ve yanıt formatlarını açıklar.
+Bu bölüm, DeviceApi'nin tüm endpoint'lerini, parametrelerini ve yanıt formatlarını açıklar.
 
 ## İçindekiler
 
 - [Temel URL](#temel-url)
-- [Yetkilendirme](#yetkilendirme)
+- [Kimlik Doğrulama ve Yetkilendirme](#kimlik-doğrulama-ve-yetkilendirme)
 - [Yanıt Formatı](#yanıt-formatı)
 - [Rate Limiting](#rate-limiting)
-- [Kimlik Doğrulama API](#kimlik-doğrulama-api)
-  - [Kullanıcı Kaydı](#kullanıcı-kaydı)
-  - [Kullanıcı Girişi](#kullanıcı-girişi)
-  - [Token Yenileme](#token-yenileme)
-  - [2FA Durumu](#2fa-durumu)
-  - [2FA Ayarları](#2fa-ayarları)
-  - [2FA Doğrulama](#2fa-doğrulama)
-  - [Şifre Sıfırlama İsteği](#şifre-sıfırlama-i̇steği)
-  - [Şifre Sıfırlama](#şifre-sıfırlama)
-- [Kullanıcı API](#kullanıcı-api)
-  - [Tüm Kullanıcıları Listele](#tüm-kullanıcıları-listele)
-  - [Kullanıcı Detayı](#kullanıcı-detayı)
-  - [Kullanıcı Profili](#kullanıcı-profili)
-  - [Kullanıcı Oluştur](#kullanıcı-oluştur)
-  - [Kullanıcı Güncelle](#kullanıcı-güncelle)
-  - [Profil Güncelle](#profil-güncelle)
-  - [Kullanıcı Sil](#kullanıcı-sil)
-  - [Profil Fotoğrafı Yükle](#profil-fotoğrafı-yükle)
-  - [Profil Fotoğrafı Görüntüle](#profil-fotoğrafı-görüntüle)
+- [Cihaz API](#cihaz-api)
+  - [Tüm Cihazları Listele](#tüm-cihazları-listele)
+  - [Cihaz Detayı](#cihaz-detayı)
+  - [Cihaz Oluştur](#cihaz-oluştur)
+  - [Cihaz Güncelle](#cihaz-güncelle)
+  - [Cihaz Sil](#cihaz-sil)
+- [Platform API](#platform-api)
+  - [Tüm Platformları Listele](#tüm-platformları-listele)
+  - [Platform Detayı](#platform-detayı)
+  - [Platform Oluştur](#platform-oluştur)
+  - [Platform Güncelle](#platform-güncelle)
+  - [Platform Sil](#platform-sil)
+- [İstasyon API](#i̇stasyon-api)
+  - [Tüm İstasyonları Listele](#tüm-i̇stasyonları-listele)
+  - [İstasyon Detayı](#i̇stasyon-detayı)
+  - [İstasyon Oluştur](#i̇stasyon-oluştur)
+  - [İstasyon Güncelle](#i̇stasyon-güncelle)
+  - [İstasyon Sil](#i̇stasyon-sil)
 - [Hata Kodları](#hata-kodları)
 
 ## Temel URL
@@ -37,13 +36,23 @@ API'nin temel URL'si:
 https://localhost:7052/api
 ```
 
-## Yetkilendirme
+## Kimlik Doğrulama ve Yetkilendirme
 
-Çoğu endpoint, JWT tabanlı yetkilendirme gerektirir. Yetkilendirme, Authorization başlığında Bearer token olarak sağlanmalıdır:
+DeviceApi, JWT tabanlı kimlik doğrulama kullanır. Kimlik doğrulaması, harici bir kimlik sağlayıcı tarafından gerçekleştirilir.
+
+API'ye erişim için istek başlığında JWT token'ı şu şekilde gönderilmelidir:
 
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
+
+DeviceApi'deki endpoint'ler, rol tabanlı erişim kontrolüne göre korunur:
+
+- **Halka Açık Endpoint'ler**: Herhangi bir kimlik doğrulama gerektirmeyen endpoint'ler (ör. dokümantasyon, sağlık kontrolü)
+- **Kimlik Doğrulamalı Endpoint'ler**: Geçerli bir JWT token gerektiren, ancak özel bir rol gerektirmeyen endpoint'ler
+- **Rol Tabanlı Endpoint'ler**: Belirli rollere (Admin, DeviceManager, vb.) sahip kullanıcılara özel endpoint'ler
+
+Token doğrulama ve yetkilendirme işlemleri hakkında daha detaylı bilgi için [JWT Token Doğrulama Dokümantasyonu](jwt_authentication.md) sayfasına bakabilirsiniz.
 
 ## Yanıt Formatı
 
@@ -76,382 +85,17 @@ Tüm API yanıtları standart bir format kullanır:
 
 ## Rate Limiting
 
-API, istemcilerin yapabilecekleri istek sayısını sınırlamak için rate limiting uygular. Bu, API'nin istikrarını korumak, hizmet reddi (DoS) saldırılarını önlemek ve adil kullanımı sağlamak için tasarlanmıştır.
+API, istemcilerin yapabilecekleri istek sayısını sınırlamak için rate limiting uygular. Rate limit aşıldığında, API 429 (Too Many Requests) hatası döndürür ve "Retry-After" başlığında yeni bir istek yapmadan önce beklenecek saniye sayısını belirtir.
 
-### Genel API Limitleri
+## Cihaz API
 
-- **Genel Limit**: Her IP adresi için dakikada maksimum 200 istek
-- **IP Bazlı Limit**: Her IP adresi için dakikada maksimum 100 istek
+### Tüm Cihazları Listele
 
-### Endpoint Spesifik Limitler
+Sistemdeki tüm cihazları listeler.
 
-| Endpoint | Limit | Periyot | Açıklama |
-|----------|-------|---------|----------|
-| `/api/Auth/login` | 10 | 5 dakika | Maksimum 5 eş zamanlı istek |
-| `/api/Auth/register` | 3 | 10 dakika | Yeni hesap oluşturma limiti |
-| `/api/Auth/forgot-password` | 3 | 30 dakika | Şifre sıfırlama limiti |
-| `/api/Auth/verify-2fa` | 5 | 5 dakika | 2FA doğrulama limiti |
-| `/api/Users/profile-picture` | 10 | 1 dakika | Profil fotoğrafı yükleme limiti |
-
-### Rate Limit Aşıldığında
-
-Rate limit aşıldığında, API aşağıdaki yanıtı döndürür:
-
-- **HTTP Durum Kodu**: 429 (Too Many Requests)
-- **Yanıt Gövdesi**:
-
-```json
-{
-  "statusCode": 429,
-  "isSuccess": false,
-  "message": "İstek limiti aşıldı. Lütfen daha sonra tekrar deneyin.",
-  "retryAfter": 60
-}
-```
-
-### Rate Limiting Başlıkları
-
-API, rate limit durumu hakkında bilgi veren HTTP başlıkları içerir:
-
-- **Retry-After**: Yeni bir istek yapmadan önce beklenecek saniye sayısı
-
-### Rate Limiting En İyi Uygulamalar
-
-- İstek sayısını azaltmak için uygun önbelleğe alma stratejileri kullanın
-- Bir token alırken eksponansiyel geri çekilme uygulamak için `Retry-After` başlığını kullanın
-- Rate limit'e takılma olasılığı yüksek endpoint'ler için iş mantığınızda yeniden deneme mekanizmaları ekleyin
-
-## Kimlik Doğrulama API
-
-### Kullanıcı Kaydı
-
-Yeni bir kullanıcı hesabı oluşturur.
-
-**Endpoint**: `POST /Auth/register`
-
-**Yetki**: Herkese açık
-
-**Rate Limit**: 10 dakikada 3 istek
-
-**İstek**:
-
-```json
-{
-  "username": "ornek_kullanici",
-  "email": "ornek@mail.com",
-  "password": "Guclu_Sifre123!",
-  "confirmPassword": "Guclu_Sifre123!"
-}
-```
-
-**Yanıt** (201 Created):
-
-```json
-{
-  "statusCode": 201,
-  "isSuccess": true,
-  "data": {
-    "accessToken": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expiresAt": "2025-03-30T08:30:00Z"
-    },
-    "refreshToken": {
-      "token": "RZgGVhCO7bqf6zVHRG3fJWMXWJUHd2T3mMdUjx2hHko=",
-      "expiresAt": "2025-04-06T08:30:00Z"
-    },
-    "user": {
-      "id": 5,
-      "username": "ornek_kullanici",
-      "email": "ornek@mail.com",
-      "role": {
-        "id": 1,
-        "name": "User"
-      }
-    }
-  },
-  "message": "Kullanıcı başarıyla kaydedildi"
-}
-```
-
-### Kullanıcı Girişi
-
-Mevcut kullanıcı kimlik bilgileri ile giriş yapar.
-
-**Endpoint**: `POST /Auth/login`
-
-**Yetki**: Herkese açık
-
-**Rate Limit**: 5 dakikada 10 istek
-
-**İstek**:
-
-```json
-{
-  "username": "ornek_kullanici",
-  "password": "Guclu_Sifre123!"
-}
-```
-
-**Yanıt** (200 OK - Normal Giriş):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "accessToken": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expiresAt": "2025-03-30T08:30:00Z"
-    },
-    "refreshToken": {
-      "token": "RZgGVhCO7bqf6zVHRG3fJWMXWJUHd2T3mMdUjx2hHko=",
-      "expiresAt": "2025-04-06T08:30:00Z"
-    },
-    "user": {
-      "id": 5,
-      "username": "ornek_kullanici",
-      "email": "ornek@mail.com",
-      "role": {
-        "id": 1,
-        "name": "User"
-      }
-    }
-  },
-  "message": "Giriş başarılı"
-}
-```
-
-**Yanıt** (200 OK - 2FA Gerekli):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "userId": 5,
-    "email": "ornek@mail.com",
-    "username": "ornek_kullanici",
-    "requiresTwoFactor": true,
-    "message": "İki faktörlü kimlik doğrulama gerekli. E-posta adresinize gönderilen kodu giriniz."
-  },
-  "message": "İki faktörlü kimlik doğrulama gerekli"
-}
-```
-
-### Token Yenileme
-
-Refresh token kullanarak yeni bir access token alır.
-
-**Endpoint**: `POST /Auth/refresh-token`
-
-**Yetki**: Herkese açık
-
-**İstek**:
-
-```json
-{
-  "refreshToken": "RZgGVhCO7bqf6zVHRG3fJWMXWJUHd2T3mMdUjx2hHko="
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "accessToken": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expiresAt": "2025-03-30T08:30:00Z"
-    },
-    "refreshToken": {
-      "token": "YtPR8vF4J9bTwZ3mHsA7qKxDgE5nL1cXoV2iW6yUzNp=",
-      "expiresAt": "2025-04-06T08:30:00Z"
-    },
-    "user": {
-      "id": 5,
-      "username": "ornek_kullanici",
-      "email": "ornek@mail.com",
-      "role": {
-        "id": 1,
-        "name": "User"
-      }
-    }
-  },
-  "message": "Token başarıyla yenilendi"
-}
-```
-
-### 2FA Durumu
-
-Kullanıcının iki faktörlü kimlik doğrulama durumunu getirir.
-
-**Endpoint**: `GET /Auth/2fa-status`
+**Endpoint**: `GET /Devices`
 
 **Yetki**: Kimliği doğrulanmış kullanıcı
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "enabled": true,
-    "isGloballyRequired": false,
-    "message": "İki faktörlü kimlik doğrulama etkin."
-  },
-  "message": "2FA durumu"
-}
-```
-
-### 2FA Ayarları
-
-Kullanıcının iki faktörlü kimlik doğrulama ayarlarını günceller.
-
-**Endpoint**: `POST /Auth/setup-2fa`
-
-**Yetki**: Kimliği doğrulanmış kullanıcı
-
-**İstek**:
-
-```json
-{
-  "enabled": true,
-  "currentPassword": "Kullanici_Sifresi123!"
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "enabled": true,
-    "isGloballyRequired": false,
-    "message": "İki faktörlü kimlik doğrulama başarıyla etkinleştirildi."
-  },
-  "message": "2FA ayarları güncellendi"
-}
-```
-
-### 2FA Doğrulama
-
-İki faktörlü kimlik doğrulama kodunu doğrular ve giriş işlemini tamamlar.
-
-**Endpoint**: `POST /Auth/verify-2fa`
-
-**Yetki**: Herkese açık
-
-**Rate Limit**: 5 dakikada 5 istek
-
-**İstek**:
-
-```json
-{
-  "userId": 5,
-  "code": "123456"
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "accessToken": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expiresAt": "2025-03-30T08:30:00Z"
-    },
-    "refreshToken": {
-      "token": "RZgGVhCO7bqf6zVHRG3fJWMXWJUHd2T3mMdUjx2hHko=",
-      "expiresAt": "2025-04-06T08:30:00Z"
-    },
-    "user": {
-      "id": 5,
-      "username": "ornek_kullanici",
-      "email": "ornek@mail.com",
-      "role": {
-        "id": 1,
-        "name": "User"
-      }
-    }
-  },
-  "message": "İki faktörlü kimlik doğrulama başarılı"
-}
-```
-
-### Şifre Sıfırlama İsteği
-
-Şifre sıfırlama e-postası gönderir.
-
-**Endpoint**: `POST /Auth/forgot-password`
-
-**Yetki**: Herkese açık
-
-**Rate Limit**: 30 dakikada 3 istek
-
-**İstek**:
-
-```json
-{
-  "email": "ornek@mail.com"
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "message": "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi"
-}
-```
-
-### Şifre Sıfırlama
-
-Şifre sıfırlama işlemini tamamlar.
-
-**Endpoint**: `POST /Auth/reset-password`
-
-**Yetki**: Herkese açık
-
-**İstek**:
-
-```json
-{
-  "token": "sifre-sifirlama-token",
-  "email": "ornek@mail.com",
-  "newPassword": "Yeni_Guclu_Sifre123!",
-  "confirmNewPassword": "Yeni_Guclu_Sifre123!"
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "message": "Şifreniz başarıyla değiştirildi"
-}
-```
-
-## Kullanıcı API
-
-### Tüm Kullanıcıları Listele
-
-Tüm kullanıcıları listeler.
-
-**Endpoint**: `GET /Users`
-
-**Yetki**: Admin
 
 **Yanıt** (200 OK):
 
@@ -462,34 +106,40 @@ Tüm kullanıcıları listeler.
   "data": [
     {
       "id": 1,
-      "username": "admin",
-      "email": "admin@example.com",
-      "role": {
-        "id": 3,
-        "name": "Admin"
-      },
-      "createdDate": "2025-03-30T01:41:29.0298257",
-      "twoFactor": {
-        "enabled": false,
-        "required": false
-      },
-      "profilePicture": {
-        "hasProfilePicture": false
+      "name": "Kamera 1",
+      "ip": "192.168.1.100",
+      "port": 8080,
+      "latitude": 41.0082,
+      "longitude": 28.9784,
+      "platform": {
+        "id": 1,
+        "name": "Güvenlik Platformu"
       }
     },
-    // ... diğer kullanıcılar
+    {
+      "id": 2,
+      "name": "Sensör 1",
+      "ip": "192.168.1.101",
+      "port": 8081,
+      "latitude": 41.0089,
+      "longitude": 28.9789,
+      "platform": {
+        "id": 2,
+        "name": "Çevre İzleme Platformu"
+      }
+    }
   ],
-  "message": "Kullanıcılar başarıyla getirildi"
+  "message": "Cihazlar başarıyla listelendi"
 }
 ```
 
-### Kullanıcı Detayı
+### Cihaz Detayı
 
-Belirli bir kullanıcının detaylarını getirir.
+Belirli bir cihazın detaylarını getirir.
 
-**Endpoint**: `GET /Users/{id}`
+**Endpoint**: `GET /Devices/{id}`
 
-**Yetki**: Admin, Developer, veya kendi profilini görüntüleyen kullanıcı
+**Yetki**: Kimliği doğrulanmış kullanıcı
 
 **Yanıt** (200 OK):
 
@@ -499,54 +149,25 @@ Belirli bir kullanıcının detaylarını getirir.
   "isSuccess": true,
   "data": {
     "id": 1,
-    "username": "admin",
-    "email": "admin@example.com",
-    "role": {
-      "id": 3,
-      "name": "Admin"
-    },
-    "createdDate": "2025-03-30T01:41:29.0298257",
-    "lastLoginDate": "2025-03-30T01:42:10.1234567",
-    "twoFactor": {
-      "enabled": false,
-      "required": false
-    },
-    "profilePicture": {
-      "hasProfilePicture": true,
-      "url": "/api/Users/1/profile-picture",
-      "picture": "base64_encoded_image_data"
+    "name": "Kamera 1",
+    "ip": "192.168.1.100",
+    "port": 8080,
+    "latitude": 41.0082,
+    "longitude": 28.9784,
+    "platform": {
+      "id": 1,
+      "name": "Güvenlik Platformu"
     }
   },
-  "message": "Kullanıcı başarıyla getirildi"
+  "message": "Cihaz başarıyla getirildi"
 }
 ```
 
-### Kullanıcı Profili
+### Cihaz Oluştur
 
-Giriş yapmış kullanıcının profilini getirir.
+Yeni bir cihaz oluşturur.
 
-**Endpoint**: `GET /Users/profile`
-
-**Yetki**: Kimliği doğrulanmış kullanıcı
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    // Kullanıcı detayları (Kullanıcı Detayı endpoint'i ile aynı format)
-  },
-  "message": "Profil başarıyla getirildi"
-}
-```
-
-### Kullanıcı Oluştur
-
-Yeni bir kullanıcı oluşturur.
-
-**Endpoint**: `POST /Users`
+**Endpoint**: `POST /Devices`
 
 **Yetki**: Admin
 
@@ -554,10 +175,12 @@ Yeni bir kullanıcı oluşturur.
 
 ```json
 {
-  "username": "yeni_kullanici",
-  "email": "yeni@example.com",
-  "password": "Guclu_Sifre123!",
-  "roleId": 1
+  "name": "Kamera 2",
+  "ip": "192.168.1.102",
+  "port": 8082,
+  "latitude": 41.0090,
+  "longitude": 28.9790,
+  "platformId": 1
 }
 ```
 
@@ -568,33 +191,26 @@ Yeni bir kullanıcı oluşturur.
   "statusCode": 201,
   "isSuccess": true,
   "data": {
-    "id": 5,
-    "username": "yeni_kullanici",
-    "email": "yeni@example.com",
-    "role": {
+    "id": 3,
+    "name": "Kamera 2",
+    "ip": "192.168.1.102",
+    "port": 8082,
+    "latitude": 41.0090,
+    "longitude": 28.9790,
+    "platform": {
       "id": 1,
-      "name": "User"
-    },
-    "createdDate": "2025-03-30T02:15:10.1234567",
-    "twoFactor": {
-      "enabled": false,
-      "required": false
-    },
-    "profilePicture": {
-      "hasProfilePicture": true,
-      "url": "/api/Users/5/profile-picture",
-      "picture": "base64_encoded_image_data"
+      "name": "Güvenlik Platformu"
     }
   },
-  "message": "Kullanıcı başarıyla oluşturuldu"
+  "message": "Cihaz başarıyla oluşturuldu"
 }
 ```
 
-### Random Şifre ile Kullanıcı Oluşturma
+### Cihaz Güncelle
 
-Rastgele güçlü bir şifre ile yeni bir kullanıcı hesabı oluşturur ve şifre bilgisini kullanıcının e-posta adresine gönderir.
+Var olan bir cihazı günceller.
 
-**Endpoint**: `POST /Users/random-password`
+**Endpoint**: `PUT /Devices/{id}`
 
 **Yetki**: Admin
 
@@ -602,9 +218,139 @@ Rastgele güçlü bir şifre ile yeni bir kullanıcı hesabı oluşturur ve şif
 
 ```json
 {
-  "username": "yeni_kullanici",
-  "email": "yeni@example.com",
-  "roleId": 1
+  "name": "Kamera 2 - Güncellendi",
+  "ip": "192.168.1.102",
+  "port": 8082,
+  "latitude": 41.0091,
+  "longitude": 28.9791,
+  "platformId": 1
+}
+```
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 3,
+    "name": "Kamera 2 - Güncellendi",
+    "ip": "192.168.1.102",
+    "port": 8082,
+    "latitude": 41.0091,
+    "longitude": 28.9791,
+    "platform": {
+      "id": 1,
+      "name": "Güvenlik Platformu"
+    }
+  },
+  "message": "Cihaz başarıyla güncellendi"
+}
+```
+
+### Cihaz Sil
+
+Bir cihazı sistemden siler.
+
+**Endpoint**: `DELETE /Devices/{id}`
+
+**Yetki**: Admin
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": null,
+  "message": "Cihaz başarıyla silindi"
+}
+```
+
+## Platform API
+
+### Tüm Platformları Listele
+
+Sistemdeki tüm platformları listeler.
+
+**Endpoint**: `GET /Platforms`
+
+**Yetki**: Kimliği doğrulanmış kullanıcı
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Güvenlik Platformu",
+      "description": "Güvenlik kameraları ve sensörlerini içeren platform"
+    },
+    {
+      "id": 2,
+      "name": "Çevre İzleme Platformu",
+      "description": "Çevre sensörlerini içeren platform"
+    }
+  ],
+  "message": "Platformlar başarıyla listelendi"
+}
+```
+
+### Platform Detayı
+
+Belirli bir platformun detaylarını getirir.
+
+**Endpoint**: `GET /Platforms/{id}`
+
+**Yetki**: Kimliği doğrulanmış kullanıcı
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 1,
+    "name": "Güvenlik Platformu",
+    "description": "Güvenlik kameraları ve sensörlerini içeren platform",
+    "devices": [
+      {
+        "id": 1,
+        "name": "Kamera 1",
+        "ip": "192.168.1.100",
+        "port": 8080
+      },
+      {
+        "id": 3,
+        "name": "Kamera 2 - Güncellendi",
+        "ip": "192.168.1.102",
+        "port": 8082
+      }
+    ]
+  },
+  "message": "Platform başarıyla getirildi"
+}
+```
+
+### Platform Oluştur
+
+Yeni bir platform oluşturur.
+
+**Endpoint**: `POST /Platforms`
+
+**Yetki**: Admin
+
+**İstek**:
+
+```json
+{
+  "name": "Trafik İzleme Platformu",
+  "description": "Trafik kameraları ve sensörlerini içeren platform"
 }
 ```
 
@@ -615,199 +361,180 @@ Rastgele güçlü bir şifre ile yeni bir kullanıcı hesabı oluşturur ve şif
   "statusCode": 201,
   "isSuccess": true,
   "data": {
-    "id": 5,
-    "username": "yeni_kullanici",
-    "email": "yeni@example.com",
-    "role": {
+    "id": 3,
+    "name": "Trafik İzleme Platformu",
+    "description": "Trafik kameraları ve sensörlerini içeren platform"
+  },
+  "message": "Platform başarıyla oluşturuldu"
+}
+```
+
+### Platform Güncelle
+
+Var olan bir platformu günceller.
+
+**Endpoint**: `PUT /Platforms/{id}`
+
+**Yetki**: Admin
+
+**İstek**:
+
+```json
+{
+  "name": "Trafik İzleme Platformu - Güncellendi",
+  "description": "Trafik kameraları ve sensörlerini içeren güncellenmiş platform"
+}
+```
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 3,
+    "name": "Trafik İzleme Platformu - Güncellendi",
+    "description": "Trafik kameraları ve sensörlerini içeren güncellenmiş platform"
+  },
+  "message": "Platform başarıyla güncellendi"
+}
+```
+
+### Platform Sil
+
+Bir platformu sistemden siler.
+
+**Endpoint**: `DELETE /Platforms/{id}`
+
+**Yetki**: Admin
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": null,
+  "message": "Platform başarıyla silindi"
+}
+```
+
+## İstasyon API
+
+### Tüm İstasyonları Listele
+
+Sistemdeki tüm istasyonları listeler.
+
+**Endpoint**: `GET /Stations`
+
+**Yetki**: Kimliği doğrulanmış kullanıcı
+
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": [
+    {
       "id": 1,
-      "name": "User"
+      "name": "İstasyon 1",
+      "description": "Ana kontrol istasyonu",
+      "latitude": 41.0082,
+      "longitude": 28.9784
     },
-    "createdDate": "2025-03-30T02:15:10.1234567",
-    "twoFactor": {
-      "enabled": false,
-      "required": false
-    },
-    "profilePicture": {
-      "hasProfilePicture": false
+    {
+      "id": 2,
+      "name": "İstasyon 2",
+      "description": "Yedek kontrol istasyonu",
+      "latitude": 40.9896,
+      "longitude": 29.0233
     }
-  },
-  "message": "Kullanıcı otomatik şifre ile başarıyla oluşturuldu ve e-posta gönderildi"
+  ],
+  "message": "İstasyonlar başarıyla listelendi"
 }
 ```
 
-### Kullanıcı Güncelle
+### İstasyon Detayı
 
-Belirli bir kullanıcıyı günceller.
+Belirli bir istasyonun detaylarını getirir.
 
-**Endpoint**: `PUT /Users/{id}`
-
-**Yetki**: Admin
-
-**İstek**:
-
-```json
-{
-  "username": "guncel_kullanici",
-  "email": "guncel@example.com",
-  "roleId": 2
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "id": 5,
-    "username": "guncel_kullanici",
-    "email": "guncel@example.com",
-    "role": {
-      "id": 2,
-      "name": "Developer"
-    },
-    // ... diğer kullanıcı özellikleri
-  },
-  "message": "Kullanıcı başarıyla güncellendi"
-}
-```
-
-### Kullanıcı Rolünü Güncelleme
-
-Belirli bir kullanıcının yalnızca rol bilgisini günceller.
-
-**Endpoint**: `PATCH /Users/{id}/role`
-
-**Yetki**: Admin
-
-**İstek**:
-
-```json
-{
-  "roleId": 2
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "id": 5,
-    "username": "ornek_kullanici",
-    "email": "ornek@example.com",
-    "role": {
-      "id": 2,
-      "name": "Developer"
-    },
-    // ... diğer kullanıcı özellikleri
-  },
-  "message": "Kullanıcı rolü başarıyla güncellendi"
-}
-```
-
-### Kullanıcı E-posta Adresini Güncelleme
-
-Belirli bir kullanıcının yalnızca e-posta adresini günceller.
-
-**Endpoint**: `PATCH /Users/{id}/email`
-
-**Yetki**: Admin
-
-**İstek**:
-
-```json
-{
-  "email": "yeni_email@example.com"
-}
-```
-
-**Yanıt** (200 OK):
-
-```json
-{
-  "statusCode": 200,
-  "isSuccess": true,
-  "data": {
-    "id": 5,
-    "username": "ornek_kullanici",
-    "email": "yeni_email@example.com",
-    "role": {
-      "id": 1,
-      "name": "User"
-    },
-    // ... diğer kullanıcı özellikleri
-  },
-  "message": "Kullanıcı e-posta adresi başarıyla güncellendi"
-}
-```
-
-### Profil Güncelle
-
-Giriş yapmış kullanıcının profilini günceller.
-
-**Endpoint**: `PUT /Users/profile`
+**Endpoint**: `GET /Stations/{id}`
 
 **Yetki**: Kimliği doğrulanmış kullanıcı
 
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": {
+    "id": 1,
+    "name": "İstasyon 1",
+    "description": "Ana kontrol istasyonu",
+    "latitude": 41.0082,
+    "longitude": 28.9784
+  },
+  "message": "İstasyon başarıyla getirildi"
+}
+```
+
+### İstasyon Oluştur
+
+Yeni bir istasyon oluşturur.
+
+**Endpoint**: `POST /Stations`
+
+**Yetki**: Admin
+
 **İstek**:
 
 ```json
 {
-  "username": "kullanici_yeni_ad",
-  "email": "yeni_email@example.com"
+  "name": "İstasyon 3",
+  "description": "Mobil kontrol istasyonu",
+  "latitude": 41.0522,
+  "longitude": 28.9913
 }
 ```
 
-**Yanıt** (200 OK):
+**Yanıt** (201 Created):
 
 ```json
 {
-  "statusCode": 200,
+  "statusCode": 201,
   "isSuccess": true,
   "data": {
-    // Güncellenmiş kullanıcı bilgileri
+    "id": 3,
+    "name": "İstasyon 3",
+    "description": "Mobil kontrol istasyonu",
+    "latitude": 41.0522,
+    "longitude": 28.9913
   },
-  "message": "Profil başarıyla güncellendi"
+  "message": "İstasyon başarıyla oluşturuldu"
 }
 ```
 
-### Kullanıcı Sil
+### İstasyon Güncelle
 
-Belirli bir kullanıcıyı siler.
+Var olan bir istasyonu günceller.
 
-**Endpoint**: `DELETE /Users/{id}`
+**Endpoint**: `PUT /Stations/{id}`
 
 **Yetki**: Admin
 
-**Yanıt** (204 No Content):
+**İstek**:
 
 ```json
 {
-  "statusCode": 204,
-  "isSuccess": true,
-  "message": "Kullanıcı başarıyla silindi"
+  "name": "İstasyon 3 - Güncellendi",
+  "description": "Mobil kontrol istasyonu - Güncellendi",
+  "latitude": 41.0523,
+  "longitude": 28.9914
 }
 ```
-
-### Profil Fotoğrafı Yükle
-
-Kullanıcı profil fotoğrafı yükler.
-
-**Endpoint**: `POST /Users/profile-picture`
-
-**Yetki**: Kimliği doğrulanmış kullanıcı
-
-**Rate Limit**: 1 dakikada 10 istek
-
-**İstek**: `multipart/form-data` formatında dosya
-
-| Alan Adı | Tür | Açıklama |
-|----------|-----|----------|
-| ProfilePicture | File | Kare formatta (ör. 200x200), maksimum 1000x1000 piksel boyutunda resim dosyası |
 
 **Yanıt** (200 OK):
 
@@ -816,35 +543,44 @@ Kullanıcı profil fotoğrafı yükler.
   "statusCode": 200,
   "isSuccess": true,
   "data": {
-    // Kullanıcının güncel profil bilgileri
+    "id": 3,
+    "name": "İstasyon 3 - Güncellendi",
+    "description": "Mobil kontrol istasyonu - Güncellendi",
+    "latitude": 41.0523,
+    "longitude": 28.9914
   },
-  "message": "Profil fotoğrafı başarıyla yüklendi"
+  "message": "İstasyon başarıyla güncellendi"
 }
 ```
 
-### Profil Fotoğrafı Görüntüle
+### İstasyon Sil
 
-Kullanıcının profil fotoğrafını resim formatında döndürür.
+Bir istasyonu sistemden siler.
 
-**Endpoint**: `GET /Users/{id}/profile-picture`
+**Endpoint**: `DELETE /Stations/{id}`
 
-**Yetki**: Herkese açık
+**Yetki**: Admin
 
-**Yanıt**: `image/png` formatında resim dosyası
+**Yanıt** (200 OK):
+
+```json
+{
+  "statusCode": 200,
+  "isSuccess": true,
+  "data": null,
+  "message": "İstasyon başarıyla silindi"
+}
+```
 
 ## Hata Kodları
 
-| HTTP Kodu | Açıklama | Olası Sebepler |
-|-----------|---------|----------------|
-| 400 | Bad Request | Geçersiz istek formatı, eksik veya hatalı parametreler |
-| 401 | Unauthorized | Geçersiz veya süresi dolmuş token, 2FA doğrulama gerekli |
-| 403 | Forbidden | Yetkisiz erişim girişimi, rol yetersizliği |
-| 404 | Not Found | Kaynak bulunamadı (kullanıcı, profil fotoğrafı, vb.) |
-| 409 | Conflict | Aynı kullanıcı adı veya e-posta zaten kullanımda |
-| 422 | Unprocessable Entity | Doğrulama hatası (şifre kriterleri, e-posta formatı, vb.) |
-| 429 | Too Many Requests | İstek limiti aşıldı, rate limiting |
-| 500 | Internal Server Error | Sunucu taraflı hata |
-
----
-
-Bu API referansı, Deneme API'nin tüm endpoint'lerini ve kullanım detaylarını içerir. İlave yardım veya örnekler için [Kullanım Örnekleri](./examples.md) bölümüne bakabilirsiniz. 
+| HTTP Kodu | Açıklama |
+|-----------|----------|
+| 400 | Bad Request - İstek formatı geçersiz |
+| 401 | Unauthorized - Kimlik doğrulama gerekiyor |
+| 403 | Forbidden - Yetkisiz erişim |
+| 404 | Not Found - Kaynak bulunamadı |
+| 409 | Conflict - Çakışma (örn. aynı isimde cihaz zaten var) |
+| 422 | Unprocessable Entity - Geçersiz veri |
+| 429 | Too Many Requests - Rate limit aşıldı |
+| 500 | Internal Server Error - Sunucu hatası | 

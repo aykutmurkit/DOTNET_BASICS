@@ -1,6 +1,6 @@
 # N-Tier Mimari Dokümantasyonu
 
-Bu doküman, Deneme API'nin N-Tier (Çok Katmanlı) mimari yapısını açıklar.
+Bu doküman, DeviceApi'nin N-Tier (Çok Katmanlı) mimari yapısını açıklar.
 
 ## İçindekiler
 
@@ -19,16 +19,16 @@ Bu doküman, Deneme API'nin N-Tier (Çok Katmanlı) mimari yapısını açıklar
 
 ## Genel Bakış
 
-Deneme API, modern bir yazılım geliştirme yaklaşımı olan N-Tier (Çok Katmanlı) mimari üzerine inşa edilmiştir. Bu mimari, uygulamayı mantıksal ve fiziksel olarak birbirinden ayrılmış katmanlara bölerek, daha modüler, test edilebilir, bakımı daha kolay ve ölçeklenebilir hale getirir.
+DeviceApi, modern bir yazılım geliştirme yaklaşımı olan N-Tier (Çok Katmanlı) mimari üzerine inşa edilmiştir. Bu mimari, uygulamayı mantıksal ve fiziksel olarak birbirinden ayrılmış katmanlara bölerek, daha modüler, test edilebilir, bakımı daha kolay ve ölçeklenebilir hale getirir.
 
 N-Tier mimari, her katmanın belirli bir sorumluluğu olduğu ve sadece kendinden bir alt katmanla iletişim kurabildiği bir yapıdır. Bu sayede, herhangi bir katmanda yapılan değişiklikler diğer katmanları minimum etkileyecektir.
 
 ## Projenin Katmanlı Yapısı
 
-Deneme API projesi, klasör bazlı N-Tier mimarisi kullanılarak aşağıdaki katmanlardan oluşmaktadır:
+DeviceApi projesi, klasör bazlı N-Tier mimarisi kullanılarak aşağıdaki katmanlardan oluşmaktadır:
 
 ```
-deneme/
+DeviceApi/
 │
 ├── API/                      # Presentation Layer
 │   ├── Controllers/          # API endpoint'lerini içeren controller'lar
@@ -53,6 +53,9 @@ deneme/
 │
 ├── Entities/                 # Entity Layer
 │   ├── Concrete/             # Veritabanı entity'leri
+│   │   ├── Device.cs         # Cihaz varlığı
+│   │   ├── Platform.cs       # Platform varlığı  
+│   │   └── Station.cs        # İstasyon varlığı
 │   └── DTOs/                 # Veri Transfer Objeleri
 │
 ├── Core/                     # Core Layer
@@ -70,11 +73,11 @@ deneme/
 Projenin namespace yapısı, klasör yapısına paralel olarak düzenlenmiştir:
 
 ```
-Deneme.API.*                  # API katmanı namespace'leri
-Deneme.Business.*             # Business katmanı namespace'leri
-Deneme.DataAccess.*           # DataAccess katmanı namespace'leri
-Deneme.Entities.*             # Entity katmanı namespace'leri
-Deneme.Core.*                 # Core katmanı namespace'leri
+DeviceApi.API.*                  # API katmanı namespace'leri
+DeviceApi.Business.*             # Business katmanı namespace'leri
+DeviceApi.DataAccess.*           # DataAccess katmanı namespace'leri
+DeviceApi.Entities.*             # Entity katmanı namespace'leri
+DeviceApi.Core.*                 # Core katmanı namespace'leri
 ```
 
 ## Katmanlar Arası İletişim
@@ -111,21 +114,37 @@ API katmanı, uygulamanın en dış katmanıdır ve kullanıcılarla doğrudan e
 ```csharp
 [Route("api/[controller]")]
 [ApiController]
-public class UsersController : ControllerBase
+public class DevicesController : ControllerBase
 {
-    private readonly IUserService _userService;
+    private readonly IDeviceService _deviceService;
 
-    public UsersController(IUserService userService)
+    public DevicesController(IDeviceService deviceService)
     {
-        _userService = userService;
+        _deviceService = deviceService;
     }
 
     [HttpGet]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetAllUsers()
+    [Authorize]
+    public async Task<IActionResult> GetAllDevices()
     {
-        var users = await _userService.GetAllUsersAsync();
-        return Ok(ApiResponse<List<UserDto>>.Success(users, "Kullanıcılar başarıyla getirildi"));
+        var devices = await _deviceService.GetAllDevicesAsync();
+        return Ok(ApiResponse<List<DeviceDto>>.Success(devices, "Cihazlar başarıyla getirildi"));
+    }
+    
+    [HttpGet("{id}")]
+    [Authorize]
+    public async Task<IActionResult> GetDeviceById(int id)
+    {
+        var device = await _deviceService.GetDeviceByIdAsync(id);
+        return Ok(ApiResponse<DeviceDto>.Success(device, "Cihaz başarıyla getirildi"));
+    }
+    
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> CreateDevice(CreateDeviceRequest request)
+    {
+        var device = await _deviceService.CreateDeviceAsync(request);
+        return Created($"/api/devices/{device.Id}", ApiResponse<DeviceDto>.Success(device, "Cihaz başarıyla oluşturuldu", 201));
     }
     
     // ... Diğer action metotları
@@ -174,11 +193,13 @@ Business katmanı, uygulamanın iş mantığını içerir ve veritabanı işleml
 ### Örnek Servis Arayüzü
 
 ```csharp
-public interface IUserService
+public interface IDeviceService
 {
-    Task<List<UserDto>> GetAllUsersAsync();
-    Task<UserDto> GetUserByIdAsync(int id);
-    Task<UserDto> CreateUserAsync(CreateUserRequest request);
+    Task<List<DeviceDto>> GetAllDevicesAsync();
+    Task<DeviceDto> GetDeviceByIdAsync(int id);
+    Task<DeviceDto> CreateDeviceAsync(CreateDeviceRequest request);
+    Task<DeviceDto> UpdateDeviceAsync(int id, UpdateDeviceRequest request);
+    Task DeleteDeviceAsync(int id);
     // ... Diğer metotlar
 }
 ```
@@ -186,22 +207,87 @@ public interface IUserService
 ### Örnek Servis İmplementasyonu
 
 ```csharp
-public class UserService : IUserService
+public class DeviceService : IDeviceService
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IDeviceRepository _deviceRepository;
+    private readonly IPlatformRepository _platformRepository;
 
-    public UserService(IUserRepository userRepository)
+    public DeviceService(IDeviceRepository deviceRepository, IPlatformRepository platformRepository)
     {
-        _userRepository = userRepository;
+        _deviceRepository = deviceRepository;
+        _platformRepository = platformRepository;
     }
 
-    public async Task<List<UserDto>> GetAllUsersAsync()
+    public async Task<List<DeviceDto>> GetAllDevicesAsync()
     {
-        var users = await _userRepository.GetAllUsersAsync();
-        return users.Select(MapToUserDto).ToList();
+        var devices = await _deviceRepository.GetAllAsync(include: d => d.Platform);
+        return devices.Select(MapToDeviceDto).ToList();
+    }
+    
+    public async Task<DeviceDto> GetDeviceByIdAsync(int id)
+    {
+        var device = await _deviceRepository.GetByIdAsync(id, include: d => d.Platform);
+        if (device == null)
+        {
+            throw new NotFoundException($"ID {id} ile cihaz bulunamadı");
+        }
+        
+        return MapToDeviceDto(device);
+    }
+    
+    public async Task<DeviceDto> CreateDeviceAsync(CreateDeviceRequest request)
+    {
+        // Platform varlığının kontrolü
+        var platform = await _platformRepository.GetByIdAsync(request.PlatformId);
+        if (platform == null)
+        {
+            throw new NotFoundException($"ID {request.PlatformId} ile platform bulunamadı");
+        }
+        
+        // IP ve port çiftinin benzersiz olup olmadığını kontrol et
+        if (await _deviceRepository.AnyAsync(d => d.Ip == request.Ip && d.Port == request.Port))
+        {
+            throw new ConflictException($"{request.Ip}:{request.Port} IP-port kombinasyonu zaten kullanımda");
+        }
+        
+        // Yeni cihaz oluştur
+        var device = new Device
+        {
+            Name = request.Name,
+            Ip = request.Ip,
+            Port = request.Port,
+            Latitude = request.Latitude,
+            Longitude = request.Longitude,
+            PlatformId = request.PlatformId
+        };
+        
+        await _deviceRepository.AddAsync(device);
+        
+        // Eklenen cihazı ID ve platform bilgisiyle birlikte getir
+        var createdDevice = await _deviceRepository.GetByIdAsync(device.Id, include: d => d.Platform);
+        
+        return MapToDeviceDto(createdDevice);
     }
     
     // ... Diğer metotlar
+    
+    private DeviceDto MapToDeviceDto(Device device)
+    {
+        return new DeviceDto
+        {
+            Id = device.Id,
+            Name = device.Name,
+            Ip = device.Ip,
+            Port = device.Port,
+            Latitude = device.Latitude,
+            Longitude = device.Longitude,
+            Platform = device.Platform != null ? new PlatformDto
+            {
+                Id = device.Platform.Id,
+                Name = device.Platform.Name
+            } : null
+        };
+    }
 }
 ```
 
@@ -213,8 +299,10 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddBusinessServices(this IServiceCollection services)
     {
         // Service registrations
+        services.AddScoped<IDeviceService, DeviceService>();
+        services.AddScoped<IPlatformService, PlatformService>();
+        services.AddScoped<IStationService, StationService>();
         services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<IUserService, UserService>();
         
         return services;
     }
@@ -236,11 +324,14 @@ DataAccess katmanı, veritabanı işlemlerini gerçekleştirir ve veritabanı il
 ### Örnek Repository Arayüzü
 
 ```csharp
-public interface IUserRepository
+public interface IDeviceRepository
 {
-    Task<List<User>> GetAllUsersAsync();
-    Task<User> GetUserByIdAsync(int id);
-    Task AddUserAsync(User user);
+    Task<List<Device>> GetAllAsync(Expression<Func<Device, object>> include = null);
+    Task<Device> GetByIdAsync(int id, Expression<Func<Device, object>> include = null);
+    Task<bool> AnyAsync(Expression<Func<Device, bool>> predicate);
+    Task AddAsync(Device device);
+    Task UpdateAsync(Device device);
+    Task DeleteAsync(Device device);
     // ... Diğer metotlar
 }
 ```
@@ -248,21 +339,48 @@ public interface IUserRepository
 ### Örnek Repository İmplementasyonu
 
 ```csharp
-public class UserRepository : IUserRepository
+public class DeviceRepository : IDeviceRepository
 {
     private readonly AppDbContext _context;
 
-    public UserRepository(AppDbContext context)
+    public DeviceRepository(AppDbContext context)
     {
         _context = context;
     }
 
-    public async Task<List<User>> GetAllUsersAsync()
+    public async Task<List<Device>> GetAllAsync(Expression<Func<Device, object>> include = null)
     {
-        return await _context.Users
-            .Include(u => u.UserRole)
-            .AsNoTracking()
-            .ToListAsync();
+        IQueryable<Device> query = _context.Devices;
+        
+        if (include != null)
+        {
+            query = query.Include(include);
+        }
+        
+        return await query.AsNoTracking().ToListAsync();
+    }
+    
+    public async Task<Device> GetByIdAsync(int id, Expression<Func<Device, object>> include = null)
+    {
+        IQueryable<Device> query = _context.Devices;
+        
+        if (include != null)
+        {
+            query = query.Include(include);
+        }
+        
+        return await query.FirstOrDefaultAsync(d => d.Id == id);
+    }
+    
+    public async Task<bool> AnyAsync(Expression<Func<Device, bool>> predicate)
+    {
+        return await _context.Devices.AnyAsync(predicate);
+    }
+    
+    public async Task AddAsync(Device device)
+    {
+        await _context.Devices.AddAsync(device);
+        await _context.SaveChangesAsync();
     }
     
     // ... Diğer metotlar
@@ -281,7 +399,9 @@ public static class ServiceCollectionExtensions
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         
         // Repository registrations
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IDeviceRepository, DeviceRepository>();
+        services.AddScoped<IPlatformRepository, PlatformRepository>();
+        services.AddScoped<IStationRepository, StationRepository>();
         
         return services;
     }
@@ -290,45 +410,150 @@ public static class ServiceCollectionExtensions
 
 ## Entity Katmanı
 
-Entity katmanı, veritabanı varlıklarını ve veri transfer objelerini (DTO) içerir.
+Entity katmanı, veritabanında bulunan tabloları temsil eden sınıfları içerir. Bu katman, diğer katmanlardan daha az değişen ve en kararlı katmandır.
 
 ### Temel Bileşenler
 
-- **Concrete**: Entity Framework entity sınıfları.
-- **DTOs**: Veri transfer objeleri.
+- **Concrete**: Veritabanı tablolarını temsil eden entity sınıfları.
+- **DTOs**: Katmanlar arası veri taşıma görevini üstlenen Data Transfer Object sınıfları.
 
-### Örnek Entity
+### Entity Sınıfları
 
+DeviceApi'de şu temel entity sınıfları bulunmaktadır:
+
+1. **Device (Cihaz)**: Sistemdeki cihazları temsil eder.
 ```csharp
-public class User
+public class Device
 {
+    [Key]
     public int Id { get; set; }
-    public string Username { get; set; }
-    public string Email { get; set; }
-    public string PasswordHash { get; set; }
-    public string PasswordSalt { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime? LastLoginDate { get; set; }
     
-    // Navigasyon özellikleri
-    public int UserRoleId { get; set; }
-    public UserRole UserRole { get; set; }
+    [Required]
+    [MaxLength(100)]
+    public string Name { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string Ip { get; set; }
+    
+    [Required]
+    public int Port { get; set; }
+    
+    public double Latitude { get; set; }
+    
+    public double Longitude { get; set; }
+    
+    [Required]
+    public int PlatformId { get; set; }
+    
+    [ForeignKey("PlatformId")]
+    public Platform Platform { get; set; }
 }
 ```
 
-### Örnek DTO
+2. **Platform**: Cihazların bağlı olduğu platformları temsil eder.
+```csharp
+public class Platform
+{
+    [Key]
+    public int Id { get; set; }
+    
+    [Required]
+    [MaxLength(100)]
+    public string Name { get; set; }
+    
+    [MaxLength(500)]
+    public string Description { get; set; }
+    
+    public ICollection<Device> Devices { get; set; }
+}
+```
+
+3. **Station (İstasyon)**: İstasyonları temsil eden entity.
+```csharp
+public class Station
+{
+    [Key]
+    public int Id { get; set; }
+    
+    [Required]
+    [MaxLength(100)]
+    public string Name { get; set; }
+    
+    [MaxLength(500)]
+    public string Description { get; set; }
+    
+    public double Latitude { get; set; }
+    
+    public double Longitude { get; set; }
+}
+```
+
+### DTO Örnekleri
+
+DTO sınıfları, entity sınıflarının API katmanı ile Business katmanı arasında taşınmasını sağlayan veri modellerini içerir.
 
 ```csharp
-public class UserDto
+// Device ilgili DTO'lar
+public class DeviceDto
 {
     public int Id { get; set; }
-    public string Username { get; set; }
-    public string Email { get; set; }
-    public RoleDto Role { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime? LastLoginDate { get; set; }
-    public TwoFactorDto TwoFactor { get; set; }
-    public ProfilePictureDto ProfilePicture { get; set; }
+    public string Name { get; set; }
+    public string Ip { get; set; }
+    public int Port { get; set; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+    public PlatformDto Platform { get; set; }
+}
+
+public class CreateDeviceRequest
+{
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
+    
+    [Required]
+    [StringLength(50)]
+    [RegularExpression(@"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", ErrorMessage = "Geçerli bir IP adresi giriniz")]
+    public string Ip { get; set; }
+    
+    [Required]
+    [Range(1, 65535)]
+    public int Port { get; set; }
+    
+    [Range(-90, 90)]
+    public double Latitude { get; set; }
+    
+    [Range(-180, 180)]
+    public double Longitude { get; set; }
+    
+    [Required]
+    public int PlatformId { get; set; }
+}
+
+public class UpdateDeviceRequest
+{
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
+    
+    [Required]
+    [StringLength(50)]
+    [RegularExpression(@"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", ErrorMessage = "Geçerli bir IP adresi giriniz")]
+    public string Ip { get; set; }
+    
+    [Required]
+    [Range(1, 65535)]
+    public int Port { get; set; }
+    
+    [Range(-90, 90)]
+    public double Latitude { get; set; }
+    
+    [Range(-180, 180)]
+    public double Longitude { get; set; }
+    
+    [Required]
+    public int PlatformId { get; set; }
 }
 ```
 
@@ -374,31 +599,6 @@ public class ApiResponse<T>
             Errors = errors,
             Message = message
         };
-    }
-}
-```
-
-### Core Layer Extension Örneği
-
-```csharp
-public static class ServiceCollectionExtensions
-{
-    public static IServiceCollection AddCoreServices(this IServiceCollection services, IConfiguration configuration)
-    {
-        // MongoDB için client
-        services.AddSingleton<IMongoClient>(_ => 
-        {
-            var connectionString = configuration.GetConnectionString("MongoDb");
-            return new MongoClient(connectionString);
-        });
-        
-        // HttpContextAccessor ekle
-        services.AddHttpContextAccessor();
-        
-        // Loglama servisleri
-        services.AddLoggingServices();
-        
-        return services;
     }
 }
 ```
@@ -452,20 +652,20 @@ N-Tier mimaride, katmanlar arası bağımlılıklar Dependency Injection (DI) pa
 
 ### Bağımlılık Enjeksiyonu Yaşam Döngüsü Türleri
 
-Deneme API, aşağıdaki DI yaşam döngüsü türlerini kullanır:
+DeviceApi, aşağıdaki DI yaşam döngüsü türlerini kullanır:
 
 1. **Singleton**: Uygulama yaşam döngüsü boyunca tek bir örnek oluşturulur
    - Örnek: `IMongoClient`, `ILogRepository`
 
 2. **Scoped**: HTTP isteği başına bir örnek oluşturulur
-   - Örnek: `IUserService`, `IUserRepository`, `AppDbContext`
+   - Örnek: `IDeviceService`, `IPlatformService`, `IDeviceRepository`, `AppDbContext`
 
 3. **Transient**: Her ihtiyaç duyulduğunda yeni bir örnek oluşturulur
    - Örnek: Durum tutmayan utility sınıfları
 
 ## Middleware Yapısı
 
-Deneme API, HTTP istek/yanıt pipeline'ını yapılandırmak için çeşitli middleware'ler kullanır. Bu middleware'ler, `Program.cs` dosyasında aşağıdaki sırada yapılandırılır:
+DeviceApi, HTTP istek/yanıt pipeline'ını yapılandırmak için çeşitli middleware'ler kullanır. Bu middleware'ler, `Program.cs` dosyasında aşağıdaki sırada yapılandırılır:
 
 1. Exception Handling
 2. HTTPS Redirection
@@ -483,7 +683,21 @@ Bu middleware, HTTP isteklerini ve yanıtlarını loglamak için kullanılır:
 ```csharp
 public class RequestResponseLoggingMiddleware
 {
-    // ... constructor ve field'lar
+    private readonly RequestDelegate _next;
+    private readonly ILogger<RequestResponseLoggingMiddleware> _logger;
+    private readonly RecyclableMemoryStreamManager _recyclableMemoryStreamManager;
+    private readonly string[] _excludedPaths;
+
+    public RequestResponseLoggingMiddleware(
+        RequestDelegate next,
+        ILogger<RequestResponseLoggingMiddleware> logger,
+        IConfiguration configuration)
+    {
+        _next = next;
+        _logger = logger;
+        _recyclableMemoryStreamManager = new RecyclableMemoryStreamManager();
+        _excludedPaths = configuration.GetSection("LogSettings:ExcludedPaths").Get<string[]>() ?? Array.Empty<string>();
+    }
 
     public async Task InvokeAsync(HttpContext context)
     {
@@ -597,4 +811,4 @@ public static class ServiceCollectionExtensions
 
 ---
 
-Bu dokümantasyon, N-Tier mimarisi hakkında genel bir bakış sağlar ve Deneme API'nin mimari yapısını, katmanlarını ve bileşenlerini açıklar. Geliştiriciler, bu yapıyı anlayarak uygulamayı daha kolay genişletebilir ve bakımını yapabilir. 
+Bu dokümantasyon, N-Tier mimarisi hakkında genel bir bakış sağlar ve DeviceApi'nin mimari yapısını, katmanlarını ve bileşenlerini açıklar. Geliştiriciler, bu yapıyı anlayarak uygulamayı daha kolay genişletebilir ve bakımını yapabilir. 
