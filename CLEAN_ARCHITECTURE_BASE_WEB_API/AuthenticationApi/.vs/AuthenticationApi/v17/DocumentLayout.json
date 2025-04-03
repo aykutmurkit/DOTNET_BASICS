@@ -1,81 +1,81 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\",
+  "WorkspaceRootPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\authenticationapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\authenticationapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\authenticationapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\authenticationapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\seeding\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\dataaccess\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\dataaccess\\seeding\\userroleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\enums\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\enums\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\core\\enums\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\core\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\entities\\concrete\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\entities\\concrete\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\entities\\concrete\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\apilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\apilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\services\\concrete\\apilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\interfaces\\iapilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\interfaces\\iapilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\services\\interfaces\\iapilogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\aykut\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\authenticationapi\\authenticationapi\\business\\services\\concrete\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthenticationApi\\AuthenticationApi.csproj|solutionrelative:authenticationapi\\business\\services\\concrete\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -86,39 +86,39 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AuthenticationApi\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Properties\\launchSettings.json",
               "RelativeToolTip": "AuthenticationApi\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-04-02T13:12:27.194Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AuthenticationApi",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\AuthenticationApi.csproj",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\AuthenticationApi.csproj",
               "RelativeDocumentMoniker": "AuthenticationApi\\AuthenticationApi.csproj",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\AuthenticationApi.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\AuthenticationApi.csproj",
               "RelativeToolTip": "AuthenticationApi\\AuthenticationApi.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-04-02T13:12:24.397Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\appsettings.json",
               "RelativeDocumentMoniker": "AuthenticationApi\\appsettings.json",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\appsettings.json",
               "RelativeToolTip": "AuthenticationApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -126,23 +126,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\AuthController.cs",
               "RelativeToolTip": "AuthenticationApi\\API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T06:27:14.829Z"
+              "WhenOpened": "2025-04-02T06:27:14.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
               "RelativeToolTip": "AuthenticationApi\\Business\\Services\\Concrete\\UserService.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -150,23 +151,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\API\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\API\\Controllers\\UsersController.cs",
               "RelativeToolTip": "AuthenticationApi\\API\\Controllers\\UsersController.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T07:09:57.466Z"
+              "WhenOpened": "2025-04-02T07:09:57.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeToolTip": "AuthenticationApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -174,11 +176,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Program.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Program.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Program.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Program.cs",
               "RelativeToolTip": "AuthenticationApi\\Program.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAAAJsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -186,11 +188,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeToolTip": "AuthenticationApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -198,11 +200,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
               "RelativeToolTip": "AuthenticationApi\\DataAccess\\Context\\AppDbContext.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAkwCMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -212,9 +214,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "UserSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
               "RelativeToolTip": "AuthenticationApi\\DataAccess\\Seeding\\UserSeeder.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -224,9 +226,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "Gender.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Gender.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Gender.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Core\\Enums\\Gender.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Gender.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Gender.cs",
               "RelativeToolTip": "AuthenticationApi\\Core\\Enums\\Gender.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -236,9 +238,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Entities\\Concrete\\User.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Entities\\Concrete\\User.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Entities\\Concrete\\User.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Entities\\Concrete\\User.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Entities\\Concrete\\User.cs",
               "RelativeToolTip": "AuthenticationApi\\Entities\\Concrete\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -248,9 +250,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "Language.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Language.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Language.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Core\\Enums\\Language.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Language.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Enums\\Language.cs",
               "RelativeToolTip": "AuthenticationApi\\Core\\Enums\\Language.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -260,9 +262,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "UserRoleSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
               "RelativeToolTip": "AuthenticationApi\\DataAccess\\Seeding\\UserRoleSeeder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -272,9 +274,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeToolTip": "AuthenticationApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -284,9 +286,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
               "RelativeToolTip": "AuthenticationApi\\Business\\Services\\Concrete\\AuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -296,9 +298,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "ApiLogService.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
               "RelativeToolTip": "AuthenticationApi\\Business\\Services\\Concrete\\ApiLogService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -308,9 +310,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "IApiLogService.cs",
-              "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
               "RelativeDocumentMoniker": "AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
-              "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\AuthenticationApi\\AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
               "RelativeToolTip": "AuthenticationApi\\Business\\Services\\Interfaces\\IApiLogService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

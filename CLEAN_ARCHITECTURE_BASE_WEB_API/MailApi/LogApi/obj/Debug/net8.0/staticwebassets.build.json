@@ -1,27 +1,27 @@
 {
   "Version": 1,
-  "Hash": "xxVz1qkwt7wsI2yyi7+dpOYqDQmlY/Mn0CAgbgScu6M=",
-  "Source": "LogApi",
-  "BasePath": "_content/LogApi",
+  "Hash": "M27GZXRkroeJLXPnaNmHbFBs1XzLrYd3yj7NOVusNNQ=",
+  "Source": "MailApi",
+  "BasePath": "_content/MailApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "LogApi\\wwwroot",
-      "Source": "LogApi",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\",
-      "BasePath": "_content/LogApi",
+      "Name": "MailApi\\wwwroot",
+      "Source": "MailApi",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\",
+      "BasePath": "_content/MailApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
-      "SourceId": "LogApi",
+      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "SourceId": "MailApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\",
-      "BasePath": "_content/LogApi",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\",
+      "BasePath": "_content/MailApi",
       "RelativePath": "assets/templates/email/password-reset#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -38,11 +38,11 @@
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
     },
     {
-      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
-      "SourceId": "LogApi",
+      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "SourceId": "MailApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\",
-      "BasePath": "_content/LogApi",
+      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\",
+      "BasePath": "_content/MailApi",
       "RelativePath": "assets/templates/email/two-factor-auth#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "assets/templates/email/password-reset.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -99,7 +99,7 @@
     },
     {
       "Route": "assets/templates/email/password-reset.ve4ofuvggb.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -144,7 +144,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -181,7 +181,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.ojkunuhez5.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\LogApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\CLEAN_ARCHITECTURE_BASE_WEB_API\\MailApi\\LogApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {

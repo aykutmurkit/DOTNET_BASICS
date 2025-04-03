@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\MailApi.csproj|solutionrelative:logapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\LogApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\mailapi\\logapi\\api\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\LogApi.csproj|solutionrelative:logapi\\api\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\MailApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\mailapi\\logapi\\api\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\MailApi.csproj|solutionrelative:logapi\\api\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\LogApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\mailapi\\logapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\LogApi.csproj|solutionrelative:logapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\MailApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\clean_architecture_base_web_api\\mailapi\\logapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|LogApi\\MailApi.csproj|solutionrelative:logapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,8 +47,7 @@
               "RelativeToolTip": "LogApi\\API\\Controllers\\LogsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T10:04:23.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T10:04:23.935Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "LogApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-02T08:54:54.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T08:54:54.784Z"
             }
           ]
         }

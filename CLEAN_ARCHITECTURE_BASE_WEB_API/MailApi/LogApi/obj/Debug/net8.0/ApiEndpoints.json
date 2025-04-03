@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.TwoFactorStatusResponse, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.TwoFactorStatusResponse, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -113,7 +113,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -139,7 +139,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -191,7 +191,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.TwoFactorStatusResponse, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.TwoFactorStatusResponse, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -217,7 +217,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.AuthResponse, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -376,7 +376,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -402,7 +402,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -428,7 +428,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -459,7 +459,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -516,7 +516,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -563,7 +563,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -583,7 +583,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -609,7 +609,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -661,7 +661,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, LogApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.UserDto, MailApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
