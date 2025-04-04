@@ -1,6 +1,7 @@
 using AuthApi.Business.Services.Interfaces;
 using Core.Utilities;
 using Entities.Dtos;
+using LogLib.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -15,10 +16,12 @@ namespace AuthApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogService _logService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ILogService logService)
         {
             _userService = userService;
+            _logService = logService;
         }
 
         /// <summary>
@@ -28,13 +31,34 @@ namespace AuthApi.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<List<UserDto>>>> GetAllUsers()
         {
+            await _logService.LogInfoAsync(
+                message: "Tüm kullanıcılar listeleniyor", 
+                source: "UsersController.GetAllUsers",
+                userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                userName: User.FindFirstValue(ClaimTypes.Name));
+                
             try
             {
                 var users = await _userService.GetAllUsersAsync();
+                
+                await _logService.LogInfoAsync(
+                    message: $"{users.Count} kullanıcı listelendi", 
+                    source: "UsersController.GetAllUsers",
+                    data: new { Count = users.Count },
+                    userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    userName: User.FindFirstValue(ClaimTypes.Name));
+                    
                 return Ok(ApiResponse<List<UserDto>>.Success(users, "Kullanıcılar başarıyla getirildi"));
             }
             catch (Exception ex)
             {
+                await _logService.LogErrorAsync(
+                    message: "Kullanıcı listeleme hatası", 
+                    source: "UsersController.GetAllUsers",
+                    exception: ex,
+                    userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    userName: User.FindFirstValue(ClaimTypes.Name));
+                    
                 return StatusCode(500, ApiResponse<List<UserDto>>.ServerError(ex.Message));
             }
         }
@@ -46,11 +70,24 @@ namespace AuthApi.Controllers
         [Authorize(Roles = "Admin,Developer")]
         public async Task<ActionResult<ApiResponse<UserDto>>> GetUserById(int id)
         {
+            await _logService.LogInfoAsync(
+                message: $"ID: {id} olan kullanıcı sorgulanıyor", 
+                source: "UsersController.GetUserById",
+                data: new { UserId = id },
+                userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                userName: User.FindFirstValue(ClaimTypes.Name));
+                
             try
             {
                 var user = await _userService.GetUserByIdAsync(id);
                 if (user == null)
                 {
+                    await _logService.LogWarningAsync(
+                        message: $"ID: {id} olan kullanıcı bulunamadı", 
+                        source: "UsersController.GetUserById",
+                        userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                        userName: User.FindFirstValue(ClaimTypes.Name));
+                        
                     return NotFound(ApiResponse<UserDto>.NotFound($"ID: {id} olan kullanıcı bulunamadı"));
                 }
 
@@ -59,13 +96,32 @@ namespace AuthApi.Controllers
 
                 if (!isAdmin && currentUserId != id)
                 {
+                    await _logService.LogWarningAsync(
+                        message: $"Yetkisiz kullanıcı erişim denemesi - ID: {currentUserId}, Erişim istenilen ID: {id}", 
+                        source: "UsersController.GetUserById",
+                        userId: currentUserId.ToString(),
+                        userName: User.FindFirstValue(ClaimTypes.Name));
+                        
                     return StatusCode(403, ApiResponse<UserDto>.Forbidden("Başka bir kullanıcının bilgilerini görüntüleme yetkiniz yok"));
                 }
 
+                await _logService.LogInfoAsync(
+                    message: $"ID: {id} olan kullanıcı başarıyla getirildi", 
+                    source: "UsersController.GetUserById",
+                    userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    userName: User.FindFirstValue(ClaimTypes.Name));
+                    
                 return Ok(ApiResponse<UserDto>.Success(user, "Kullanıcı başarıyla getirildi"));
             }
             catch (Exception ex)
             {
+                await _logService.LogErrorAsync(
+                    message: $"ID: {id} olan kullanıcıyı getirme hatası", 
+                    source: "UsersController.GetUserById",
+                    exception: ex,
+                    userId: User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    userName: User.FindFirstValue(ClaimTypes.Name));
+                    
                 return StatusCode(500, ApiResponse<UserDto>.ServerError(ex.Message));
             }
         }
@@ -196,15 +252,51 @@ namespace AuthApi.Controllers
         [EnableRateLimiting("api_users_profile-picture")]
         public async Task<ActionResult<ApiResponse<object>>> UploadProfilePicture([FromForm] UploadProfilePictureRequest request)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+            
+            await _logService.LogInfoAsync(
+                message: "Profil fotoğrafı yükleme isteği", 
+                source: "UsersController.UploadProfilePicture",
+                data: new { FileSize = request.File?.Length, FileName = request.File?.FileName },
+                userId: userId,
+                userName: userName);
+                
             try
             {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                await _userService.UploadProfilePictureAsync(userId, request);
+                if (request.File == null || request.File.Length == 0)
+                {
+                    await _logService.LogWarningAsync(
+                        message: "Boş profil fotoğrafı yükleme denemesi", 
+                        source: "UsersController.UploadProfilePicture",
+                        userId: userId,
+                        userName: userName);
+                        
+                    return BadRequest(ApiResponse<object>.Error("Geçerli bir dosya seçiniz"));
+                }
+
+                var userIdFromClaim = int.Parse(userId);
+                await _userService.UpdateProfilePictureAsync(userIdFromClaim, request.File);
+                
+                await _logService.LogInfoAsync(
+                    message: "Profil fotoğrafı başarıyla yüklendi", 
+                    source: "UsersController.UploadProfilePicture",
+                    data: new { FileSize = request.File.Length, FileName = request.File.FileName },
+                    userId: userId,
+                    userName: userName);
+                    
                 return Ok(ApiResponse<object>.Success(null, "Profil fotoğrafı başarıyla yüklendi"));
             }
             catch (Exception ex)
             {
-                return BadRequest(ApiResponse<object>.Error(ex.Message));
+                await _logService.LogErrorAsync(
+                    message: "Profil fotoğrafı yükleme hatası", 
+                    source: "UsersController.UploadProfilePicture",
+                    exception: ex,
+                    userId: userId,
+                    userName: userName);
+                    
+                return StatusCode(500, ApiResponse<object>.ServerError(ex.Message));
             }
         }
 

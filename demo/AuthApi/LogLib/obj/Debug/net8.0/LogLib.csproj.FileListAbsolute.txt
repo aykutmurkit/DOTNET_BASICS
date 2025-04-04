@@ -10,3 +10,6 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\obj\Debug\net8
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\obj\Debug\net8.0\refint\LogLib.dll
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\obj\Debug\net8.0\LogLib.pdb
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\obj\Debug\net8.0\ref\LogLib.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\obj\Debug\net8.0\LogLib.csproj.AssemblyReference.cache
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\bin\Debug\net8.0\Configuration\Settings\settings.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\LogLib\bin\Debug\net8.0\API.xml

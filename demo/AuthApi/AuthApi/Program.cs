@@ -3,6 +3,7 @@ using AuthApi.Business.Extensions;
 using AuthApi.Core.Extensions;
 using AuthApi.DataAccess.Extensions;
 using Core.Utilities;
+using LogLib.Extensions;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
@@ -93,6 +94,9 @@ builder.Services.AddBusinessServices();
 
 // Core layer servisleri
 builder.Services.AddCoreServices(builder.Configuration);
+
+// LogLib servislerini ekle
+builder.Services.AddLogLib(builder.Configuration);
 
 // JWT Authentication
 builder.Services.AddJwtAuthentication(builder.Configuration);

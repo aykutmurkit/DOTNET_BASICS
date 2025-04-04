@@ -11,10 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("LogLib")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("İsbak")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © İsbak 2023")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("Advanced logging library with MongoDB integration")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bac65e45ede66f450cad53db5ad511bb1ae6bf2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e47f33ed30d27af4e1546575e8b29ca8b71b89d")]
 [assembly: System.Reflection.AssemblyProductAttribute("LogLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LogLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

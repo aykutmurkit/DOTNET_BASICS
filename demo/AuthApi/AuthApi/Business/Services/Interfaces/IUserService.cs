@@ -1,5 +1,6 @@
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.AspNetCore.Http;
 
 namespace AuthApi.Business.Services.Interfaces
 {
@@ -51,7 +52,12 @@ namespace AuthApi.Business.Services.Interfaces
         /// <summary>
         /// Profil fotoğrafı yükler
         /// </summary>
-        Task UploadProfilePictureAsync(int userId, UploadProfilePictureRequest request);
+        Task UploadProfilePictureAsync(int userId, IFormFile file);
+
+        /// <summary>
+        /// Profil fotoğrafını günceller
+        /// </summary>
+        Task UpdateProfilePictureAsync(int userId, IFormFile file);
 
         /// <summary>
         /// Profil fotoğrafını getirir

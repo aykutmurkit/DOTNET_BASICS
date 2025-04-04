@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogLib</name>
+    </assembly>
+    <members>
+        <member name="T:LogLib.Configuration.Settings.LogSettings">
+            <summary>
+            Loglama yapılandırma ayarları
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.ConnectionString">
+            <summary>
+            MongoDB bağlantı dizesi
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.DatabaseName">
+            <summary>
+            MongoDB veritabanı adı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.CollectionName">
+            <summary>
+            MongoDB koleksiyon adı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.RetentionDays">
+            <summary>
+            Log kayıtlarının saklanma süresi (gün)
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.ApplicationName">
+            <summary>
+            Uygulama adı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.Environment">
+            <summary>
+            Çalışma ortamı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.MinimumLevel">
+            <summary>
+            Minimum log seviyesi (Trace, Debug, Information, Warning, Error, Critical)
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.MaskSensitiveData">
+            <summary>
+            Hassas bilgilerin maskelenip maskelenmeyeceği
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.EnableAsyncLogging">
+            <summary>
+            Log kaydetme işleminin asenkron olarak mı çalışacağı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.EnableHttpLogging">
+            <summary>
+            HTTP istek ve yanıtlarının loglanıp loglanmayacağı
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.EnableGraylog">
+            <summary>
+            GrayLog entegrasyonu etkinleştirilsin mi
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.GraylogHost">
+            <summary>
+            GrayLog sunucu adresi
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.GraylogPort">
+            <summary>
+            GrayLog port numarası
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.EnableElkStack">
+            <summary>
+            ELK Stack entegrasyonu etkinleştirilsin mi
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.ElasticsearchUrl">
+            <summary>
+            Elasticsearch URL'si
+            </summary>
+        </member>
+        <member name="P:LogLib.Configuration.Settings.LogSettings.ElasticsearchIndex">
+            <summary>
+            Elasticsearch indeks adı
+            </summary>
+        </member>
+        <member name="T:LogLib.Core.Interfaces.ILogRepository">
+            <summary>
+            Log veritabanı erişim arayüzü
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogRepository.CreateLogAsync(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Yeni bir log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogRepository.DeleteOldLogsAsync(System.DateTime)">
+            <summary>
+            Belirtilen tarihten daha eski log kayıtlarını siler
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogRepository.GetLogsAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Belirtilen filtrelere göre log kayıtlarını getirir
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogRepository.DeleteAllLogsAsync">
+            <summary>
+            Tüm log kayıtlarını siler
+            </summary>
+        </member>
+        <member name="T:LogLib.Core.Interfaces.ILogService">
+            <summary>
+            Interface for logging operations.
+            </summary>
+            <remarks>
+            Provides methods for logging at different severity levels.
+            Version: 1.0.0
+            Author: R&amp;D Engineer Aykut Mürkit, İsbak
+            </remarks>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogInfoAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Creates a log entry at Information level.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogWarningAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Creates a log entry at Warning level.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogErrorAsync(System.String,System.String,System.Exception,System.String,System.String,System.String)">
+            <summary>
+            Creates a log entry at Error level.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogDebugAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Creates a log entry at Debug level.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogCriticalAsync(System.String,System.String,System.Exception,System.String,System.String,System.String)">
+            <summary>
+            Creates a log entry at Critical level.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.CleanupLogsAsync(System.DateTime)">
+            <summary>
+            Deletes log entries older than the specified date.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.GetLogsAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Retrieves logs with pagination support.
+            </summary>
+        </member>
+        <member name="M:LogLib.Core.Interfaces.ILogService.LogHttpAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.String,System.String,System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Logs HTTP request/response information.
+            </summary>
+        </member>
+        <member name="T:LogLib.Core.Models.LogEntry">
+            <summary>
+            Log entry model stored in MongoDB.
+            </summary>
+            <remarks>
+            Version: 1.0.0
+            Author: R&amp;D Engineer Aykut Mürkit, İsbak
+            </remarks>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Id">
+            <summary>
+            MongoDB belge kimliği
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Timestamp">
+            <summary>
+            Loglamanın gerçekleştiği zaman (UTC)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Level">
+            <summary>
+            Log seviyesi (Info, Error, Warning, Debug vb.)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Message">
+            <summary>
+            Log mesajı
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Source">
+            <summary>
+            Loglamayı oluşturan kaynak (sınıf/metod adı)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.UserId">
+            <summary>
+            İşlemi gerçekleştiren kullanıcının ID'si (varsa)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.UserName">
+            <summary>
+            İşlemi gerçekleştiren kullanıcının adı (varsa)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.UserEmail">
+            <summary>
+            İşlemi gerçekleştiren kullanıcının email adresi (varsa)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.TraceId">
+            <summary>
+            İsteğin trace ID'si (correlation için)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Data">
+            <summary>
+            İlgili ek veri (parametreler, exception detayı vb.)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.IpAddress">
+            <summary>
+            İsteğin geldiği IP adresi
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.ApplicationName">
+            <summary>
+            Uygulama adı
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Environment">
+            <summary>
+            Ortam (Development, Production, Staging vb.)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.HttpMethod">
+            <summary>
+            Varsa HTTP isteği metodu (GET, POST, PUT, DELETE vb.)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.HttpPath">
+            <summary>
+            Varsa HTTP isteği yolu
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.StatusCode">
+            <summary>
+            HTTP durum kodu (varsa)
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Duration">
+            <summary>
+            İşlem süresi (milisaniye)
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext">
+            <summary>
+            MongoDB database connection context for log storage.
+            </summary>
+            <remarks>
+            Provides MongoDB connectivity with custom serialization for JObject data.
+            Version: 1.0.0
+            Author: R&amp;D Engineer Aykut Mürkit, İsbak
+            </remarks>
+        </member>
+        <member name="M:LogLib.Data.Context.MongoDbContext.#ctor(Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.Extensions.Logging.ILogger{LogLib.Data.Context.MongoDbContext})">
+            <summary>
+            MongoDB bağlantısını başlatır
+            </summary>
+        </member>
+        <member name="P:LogLib.Data.Context.MongoDbContext.LogEntries">
+            <summary>
+            LogEntry koleksiyonunu döndürür, bağlantı yoksa null döner
+            </summary>
+        </member>
+        <member name="P:LogLib.Data.Context.MongoDbContext.IsConnected">
+            <summary>
+            MongoDB bağlantı durumunu kontrol eder
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Context.MongoDbContext.ConfigureMongoSerialization">
+            <summary>
+            Configures MongoDB serialization settings globally.
+            </summary>
+            <remarks>
+            Custom serializers for JObject and JArray types to handle serialization without type discriminators.
+            Adds a custom convention to disable type information in MongoDB serialization.
+            Version: 1.0.0
+            Author: R&amp;D Engineer Aykut Mürkit, İsbak
+            </remarks>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext.JObjectSerializer">
+            <summary>
+            JObject türünü MongoDB'ye serileştiren özel serileştirici
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext.JArraySerializer">
+            <summary>
+            JArray türünü MongoDB'ye serileştiren özel serileştirici
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext.BsonDocumentSerializer">
+            <summary>
+            CustomObjectSerializer - JObject ve dinamik türleri düzgün şekilde serileştiren özel serileştirici
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext.CustomSerializationProvider">
+            <summary>
+            Tür ayrımcısını devre dışı bırakan özel bir serileştirme sağlayıcısı
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Context.MongoDbContext.DiscriminatorConvention">
+            <summary>
+            Tip diskriminatörlerini devre dışı bırakan özel convention
+            </summary>
+        </member>
+        <member name="T:LogLib.Data.Repositories.MongoLogRepository">
+            <summary>
+            MongoDB için log repository implementasyonu
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.#ctor(LogLib.Data.Context.MongoDbContext,Microsoft.Extensions.Logging.ILogger{LogLib.Data.Repositories.MongoLogRepository})">
+            <summary>
+            MongoDB log repository constructor
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.CreateLogAsync(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.DeleteOldLogsAsync(System.DateTime)">
+            <summary>
+            Belirtilen tarihten daha eski log kayıtlarını siler
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.GetLogsAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Belirtilen filtrelere göre log kayıtlarını getirir
+            </summary>
+        </member>
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.DeleteAllLogsAsync">
+            <summary>
+            Tüm log kayıtlarını siler
+            </summary>
+        </member>
+        <member name="T:LogLib.Extensions.ServiceCollectionExtensions">
+            <summary>
+            LogLib servislerinin DI container'a kaydedilmesi için extension metotları
+            </summary>
+        </member>
+        <member name="M:LogLib.Extensions.ServiceCollectionExtensions.AddLogLib(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            LogLib servislerini DI container'a kaydeder
+            </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="T:LogLib.Services.Concrete.GraylogService">
+            <summary>
+            Graylog service to send logs in GELF format over TCP
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.#ctor(Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.Extensions.Logging.ILogger{LogLib.Services.Concrete.GraylogService})">
+            <summary>
+            GraylogService constructor
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.SendLogAsync(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Send a log entry to Graylog in GELF format
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ConvertToGelf(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Convert LogEntry to GELF format
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.SendGelfMessageAsync(System.String)">
+            <summary>
+            Send GELF message to Graylog TCP input
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ToUnixTimestamp(System.DateTime)">
+            <summary>
+            Convert DateTime to Unix timestamp (seconds since epoch)
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ConvertLogLevelToSyslog(System.String)">
+            <summary>
+            Convert log level to syslog severity level as used by GELF
+            0 = Emergency, 1 = Alert, 2 = Critical, 3 = Error, 4 = Warning, 5 = Notice, 6 = Informational, 7 = Debug
+            </summary>
+        </member>
+        <member name="T:LogLib.Services.Concrete.GraylogService.GelfMessage">
+            <summary>
+            GELF message structure according to the specification
+            </summary>
+        </member>
+        <member name="T:LogLib.Services.Concrete.LogService">
+            <summary>
+            Log servisi implementasyonu
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.#ctor(LogLib.Core.Interfaces.ILogRepository,Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Logging.ILogger{LogLib.Services.Concrete.LogService},LogLib.Services.Concrete.GraylogService)">
+            <summary>
+            LogService constructor
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogInfoAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Bilgi seviyesinde log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogWarningAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Uyarı seviyesinde log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogErrorAsync(System.String,System.String,System.Exception,System.String,System.String,System.String)">
+            <summary>
+            Hata seviyesinde log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogDebugAsync(System.String,System.String,System.Object,System.String,System.String,System.String)">
+            <summary>
+            Debug seviyesinde log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogCriticalAsync(System.String,System.String,System.Exception,System.String,System.String,System.String)">
+            <summary>
+            Kritik seviyesinde log kaydı oluşturur
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.CleanupLogsAsync(System.DateTime)">
+            <summary>
+            Belirtilen tarihten daha eski log kayıtlarını siler
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.GetLogsAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Log kayıtlarını sayfalı olarak alır
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.LogHttpAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.String,System.String,System.String,System.String,System.Object,System.Object)">
+            <summary>
+            HTTP istek/yanıt loglaması için
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.CreateLogAsync(System.String,System.String,System.String,System.Object,System.Exception,System.String,System.String,System.String)">
+            <summary>
+            Genel log oluşturma metodu
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.ProcessDataForLogging(System.Object,System.Exception,System.Boolean)">
+            <summary>
+            Veriyi MongoDB serileştirmesi için uygun formata dönüştürür
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.MaskSensitiveDataInJson(System.String)">
+            <summary>
+            JSON içindeki hassas verileri maskeler
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.LogService.MaskSensitiveData(System.Object)">
+            <summary>
+            Hassas verileri maskeler (artık kullanılmıyor - yerine ProcessDataForLogging kullanılıyor)
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -12,6 +12,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using AuthApi.Business.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace AuthApi.Business.Services.Concrete
 {
@@ -169,7 +170,7 @@ namespace AuthApi.Business.Services.Concrete
         /// <summary>
         /// Profil fotoğrafı yükler
         /// </summary>
-        public async Task UploadProfilePictureAsync(int userId, UploadProfilePictureRequest request)
+        public async Task UploadProfilePictureAsync(int userId, IFormFile file)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
             if (user == null)
@@ -178,14 +179,14 @@ namespace AuthApi.Business.Services.Concrete
             }
 
             // Dosya tipini kontrol et (sadece resim dosyaları)
-            if (!request.ProfilePicture.ContentType.StartsWith("image/"))
+            if (!file.ContentType.StartsWith("image/"))
             {
                 throw new Exception("Sadece resim dosyaları yüklenebilir.");
             }
 
             // Dosyayı memory'ye yükle
             using var memoryStream = new MemoryStream();
-            await request.ProfilePicture.CopyToAsync(memoryStream);
+            await file.CopyToAsync(memoryStream);
 
             // Resim boyutlarını kontrol et
             using var image = Image.FromStream(memoryStream);
@@ -207,6 +208,14 @@ namespace AuthApi.Business.Services.Concrete
             user.ProfilePicture = memoryStream.ToArray();
 
             await _userRepository.UpdateUserAsync(user);
+        }
+
+        /// <summary>
+        /// Profil fotoğrafını günceller
+        /// </summary>
+        public async Task UpdateProfilePictureAsync(int userId, IFormFile file)
+        {
+            await UploadProfilePictureAsync(userId, file);
         }
 
         /// <summary>

@@ -337,6 +337,6 @@ namespace Entities.Dtos
     public class UploadProfilePictureRequest
     {
         [Required(ErrorMessage = "Profil fotoğrafı zorunludur")]
-        public IFormFile ProfilePicture { get; set; }
+        public IFormFile File { get; set; }
     }
 } 

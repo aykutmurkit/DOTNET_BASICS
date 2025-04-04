@@ -1,0 +1,20 @@
+{
+  "LogSettings": {
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "LogsDb",
+    "CollectionName": "Logs",
+    "RetentionDays": 30,
+    "ApplicationName": "AuthApi",
+    "Environment": "Development",
+    "MinimumLevel": "Information",
+    "MaskSensitiveData": true,
+    "EnableAsyncLogging": true,
+    "EnableHttpLogging": true,
+    "EnableGraylog": false,
+    "GraylogHost": "localhost",
+    "GraylogPort": 12201,
+    "EnableElkStack": false,
+    "ElasticsearchUrl": "http://localhost:9200",
+    "ElasticsearchIndex": "logs"
+  }
+} 

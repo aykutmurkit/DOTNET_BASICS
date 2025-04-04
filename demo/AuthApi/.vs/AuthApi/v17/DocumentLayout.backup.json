@@ -3,16 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\authapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|solutionrelative:authapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5930AF86-FC51-4C62-9F9F-4241712CBAAC}|PerfLib\\PerfLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\perflib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5930AF86-FC51-4C62-9F9F-4241712CBAAC}|PerfLib\\PerfLib.csproj|solutionrelative:perflib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\loglib\\data\\context\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|solutionrelative:loglib\\data\\context\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\loglib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|solutionrelative:loglib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\authapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|solutionrelative:authapi\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\authapi\\authapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|AuthApi\\AuthApi.csproj|solutionrelative:authapi\\authapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\loglib\\documentation\\technical-guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|solutionrelative:loglib\\documentation\\technical-guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\loglib\\loglib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{13FB55D5-8185-4767-81C9-A5E419BE32FA}|LogLib\\LogLib.csproj|solutionrelative:loglib\\loglib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5930AF86-FC51-4C62-9F9F-4241712CBAAC}|PerfLib\\PerfLib.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\authapi\\perflib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5930AF86-FC51-4C62-9F9F-4241712CBAAC}|PerfLib\\PerfLib.csproj|solutionrelative:perflib\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,19 +46,97 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAJMTAAAAAAAAAAAtwKoTAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-04-04T08:55:21.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "AuthApi\\API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "AuthApi\\API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAADwvyIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T05:56:31.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthApi",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\AuthApi.csproj",
+              "RelativeDocumentMoniker": "AuthApi\\AuthApi.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\AuthApi.csproj",
+              "RelativeToolTip": "AuthApi\\AuthApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-04T07:42:34.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "technical-guide.md",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Documentation\\technical-guide.md",
+              "RelativeDocumentMoniker": "LogLib\\Documentation\\technical-guide.md",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Documentation\\technical-guide.md",
+              "RelativeToolTip": "LogLib\\Documentation\\technical-guide.md",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-04-04T07:37:18.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LogLib",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\LogLib.csproj",
+              "RelativeDocumentMoniker": "LogLib\\LogLib.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\LogLib.csproj",
+              "RelativeToolTip": "LogLib\\LogLib.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-04T07:37:04.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\Program.cs",
               "RelativeDocumentMoniker": "AuthApi\\Program.cs",
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\AuthApi\\Program.cs",
               "RelativeToolTip": "AuthApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAAJ4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T05:26:24.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "MongoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Data\\Context\\MongoDbContext.cs",
+              "RelativeDocumentMoniker": "LogLib\\Data\\Context\\MongoDbContext.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Data\\Context\\MongoDbContext.cs",
+              "RelativeToolTip": "LogLib\\Data\\Context\\MongoDbContext.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAADwv/cAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T07:37:15.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\PerfLib\\Class1.cs",
               "RelativeDocumentMoniker": "PerfLib\\Class1.cs",
@@ -47,21 +144,7 @@
               "RelativeToolTip": "PerfLib\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T05:16:26.907Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Class1.cs",
-              "RelativeDocumentMoniker": "LogLib\\Class1.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\AuthApi\\LogLib\\Class1.cs",
-              "RelativeToolTip": "LogLib\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T05:15:44.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T05:16:26.907Z"
             }
           ]
         }

@@ -154,7 +154,6 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.AssemblyInfoInputs.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.AssemblyInfo.cs
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.csproj.CoreCompileInputs.cache
-C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.sourcelink.json
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.dll
@@ -296,7 +295,12 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AuthApi.props
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AuthApi.props
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.csproj.Up2Date
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.genruntimeconfig.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\ref\AuthApi.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\bin\Debug\net8.0\Configuration\Settings\settings.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\bin\Debug\net8.0\LogLib.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\bin\Debug\net8.0\LogLib.pdb
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\AuthApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\AuthApi\AuthApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
