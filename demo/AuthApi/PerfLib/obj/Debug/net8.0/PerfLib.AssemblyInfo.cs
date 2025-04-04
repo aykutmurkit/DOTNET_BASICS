@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PerfLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e47f33ed30d27af4e1546575e8b29ca8b71b89d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+311265e5b54111abfdd1fd910f6ba5fbb59e1ca1")]
 [assembly: System.Reflection.AssemblyProductAttribute("PerfLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PerfLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

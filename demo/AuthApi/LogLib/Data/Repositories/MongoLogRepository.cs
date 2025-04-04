@@ -33,7 +33,7 @@ namespace LogLib.Data.Repositories
         /// <summary>
         /// Log kaydı oluşturur
         /// </summary>
-        public async Task CreateLogAsync(LogEntry logEntry)
+        public async Task SaveLogAsync(LogEntry logEntry)
         {
             if (!IsMongoAvailable())
             {

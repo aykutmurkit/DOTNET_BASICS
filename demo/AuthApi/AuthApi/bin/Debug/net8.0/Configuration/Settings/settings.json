@@ -10,7 +10,7 @@
     "MaskSensitiveData": true,
     "EnableAsyncLogging": true,
     "EnableHttpLogging": true,
-    "EnableGraylog": true,
+    "EnableGraylog": false,
     "GraylogHost": "localhost",
     "GraylogPort": 12201,
     "EnableElkStack": false,

@@ -106,5 +106,25 @@ namespace LogLib.Core.Models
         /// İşlem süresi (milisaniye)
         /// </summary>
         public long? Duration { get; set; }
+        
+        /// <summary>
+        /// HTTP durum kodu (varsa) - StatusCode ile aynı, uyumluluk için
+        /// </summary>
+        public int? HttpStatusCode { get; set; }
+        
+        /// <summary>
+        /// İşlem süresi (milisaniye) - Duration ile aynı, uyumluluk için
+        /// </summary>
+        public long? HttpDurationMs { get; set; }
+        
+        /// <summary>
+        /// HTTP isteği verisi
+        /// </summary>
+        public object? Request { get; set; }
+        
+        /// <summary>
+        /// HTTP yanıt verisi
+        /// </summary>
+        public object? Response { get; set; }
     }
 } 

@@ -102,6 +102,10 @@ namespace LogLib.Extensions
                 options.RetentionDays = logSettings.RetentionDays;
                 options.MaskSensitiveData = logSettings.MaskSensitiveData;
                 options.EnableAsyncLogging = logSettings.EnableAsyncLogging;
+                options.EnableHttpLogging = logSettings.EnableHttpLogging;
+                options.EnableGraylog = logSettings.EnableGraylog;
+                options.GraylogHost = logSettings.GraylogHost;
+                options.GraylogPort = logSettings.GraylogPort;
             });
             
             // HttpContextAccessor
@@ -112,6 +116,12 @@ namespace LogLib.Extensions
             
             // Repository
             services.AddSingleton<ILogRepository, MongoLogRepository>();
+            
+            // Graylog service (conditional registration)
+            services.AddSingleton<GraylogService>();
+            
+            // GraylogTester service
+            //services.AddSingleton<Services.GraylogTester>();
             
             // LogService
             services.AddScoped<ILogService, LogService>();

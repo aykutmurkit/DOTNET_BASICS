@@ -13,7 +13,7 @@ namespace LogLib.Core.Interfaces
         /// <summary>
         /// Yeni bir log kaydı oluşturur
         /// </summary>
-        Task CreateLogAsync(LogEntry logEntry);
+        Task SaveLogAsync(LogEntry logEntry);
         
         /// <summary>
         /// Belirtilen tarihten daha eski log kayıtlarını siler

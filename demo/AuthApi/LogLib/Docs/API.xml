@@ -94,7 +94,7 @@
             Log veritabanı erişim arayüzü
             </summary>
         </member>
-        <member name="M:LogLib.Core.Interfaces.ILogRepository.CreateLogAsync(LogLib.Core.Models.LogEntry)">
+        <member name="M:LogLib.Core.Interfaces.ILogRepository.SaveLogAsync(LogLib.Core.Models.LogEntry)">
             <summary>
             Yeni bir log kaydı oluşturur
             </summary>
@@ -258,6 +258,26 @@
             İşlem süresi (milisaniye)
             </summary>
         </member>
+        <member name="P:LogLib.Core.Models.LogEntry.HttpStatusCode">
+            <summary>
+            HTTP durum kodu (varsa) - StatusCode ile aynı, uyumluluk için
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.HttpDurationMs">
+            <summary>
+            İşlem süresi (milisaniye) - Duration ile aynı, uyumluluk için
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Request">
+            <summary>
+            HTTP isteği verisi
+            </summary>
+        </member>
+        <member name="P:LogLib.Core.Models.LogEntry.Response">
+            <summary>
+            HTTP yanıt verisi
+            </summary>
+        </member>
         <member name="T:LogLib.Data.Context.MongoDbContext">
             <summary>
             MongoDB database connection context for log storage.
@@ -329,7 +349,7 @@
             MongoDB log repository constructor
             </summary>
         </member>
-        <member name="M:LogLib.Data.Repositories.MongoLogRepository.CreateLogAsync(LogLib.Core.Models.LogEntry)">
+        <member name="M:LogLib.Data.Repositories.MongoLogRepository.SaveLogAsync(LogLib.Core.Models.LogEntry)">
             <summary>
             Log kaydı oluşturur
             </summary>
@@ -362,12 +382,53 @@
             <param name="configuration">IConfiguration</param>
             <returns>IServiceCollection</returns>
         </member>
+        <member name="T:LogLib.Services.Concrete.GraylogService">
+            <summary>
+            Graylog service to send logs in GELF format over TCP
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.#ctor(Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.Extensions.Logging.ILogger{LogLib.Services.Concrete.GraylogService})">
+            <summary>
+            GraylogService constructor
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.SendLogAsync(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Send a log entry to Graylog in GELF format
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ConvertToGelf(LogLib.Core.Models.LogEntry)">
+            <summary>
+            Convert LogEntry to GELF format
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.SendGelfMessageAsync(System.String)">
+            <summary>
+            Send GELF message to Graylog TCP input
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ToUnixTimestamp(System.DateTime)">
+            <summary>
+            Convert DateTime to Unix timestamp (seconds since epoch)
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.Concrete.GraylogService.ConvertLogLevelToSyslog(System.String)">
+            <summary>
+            Convert log level to syslog severity level as used by GELF
+            0 = Emergency, 1 = Alert, 2 = Critical, 3 = Error, 4 = Warning, 5 = Notice, 6 = Informational, 7 = Debug
+            </summary>
+        </member>
+        <member name="T:LogLib.Services.Concrete.GraylogService.GelfMessage">
+            <summary>
+            GELF message structure according to the specification
+            </summary>
+        </member>
         <member name="T:LogLib.Services.Concrete.LogService">
             <summary>
             Log servisi implementasyonu
             </summary>
         </member>
-        <member name="M:LogLib.Services.Concrete.LogService.#ctor(LogLib.Core.Interfaces.ILogRepository,Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Logging.ILogger{LogLib.Services.Concrete.LogService})">
+        <member name="M:LogLib.Services.Concrete.LogService.#ctor(LogLib.Core.Interfaces.ILogRepository,Microsoft.Extensions.Options.IOptions{LogLib.Configuration.Settings.LogSettings},Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Logging.ILogger{LogLib.Services.Concrete.LogService},LogLib.Services.Concrete.GraylogService)">
             <summary>
             LogService constructor
             </summary>
@@ -409,12 +470,12 @@
         </member>
         <member name="M:LogLib.Services.Concrete.LogService.LogHttpAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int64},System.String,System.String,System.String,System.String,System.Object,System.Object)">
             <summary>
-            HTTP istek/yanıt loglaması için
+            HTTP istek ve yanıtları için log kaydı oluşturur
             </summary>
         </member>
         <member name="M:LogLib.Services.Concrete.LogService.CreateLogAsync(System.String,System.String,System.String,System.Object,System.Exception,System.String,System.String,System.String)">
             <summary>
-            Genel log oluşturma metodu
+            Yeni bir log girdisi oluşturur ve kaydeder
             </summary>
         </member>
         <member name="M:LogLib.Services.Concrete.LogService.ProcessDataForLogging(System.Object,System.Exception,System.Boolean)">
@@ -431,6 +492,19 @@
             <summary>
             Hassas verileri maskeler (artık kullanılmıyor - yerine ProcessDataForLogging kullanılıyor)
             </summary>
+        </member>
+        <member name="T:LogLib.Services.GraylogTester">
+            <summary>
+            Graylog bağlantısını test etmek için yardımcı sınıf
+            </summary>
+        </member>
+        <member name="M:LogLib.Services.GraylogTester.TestConnectionAsync(System.String,System.Int32)">
+            <summary>
+            Graylog sunucusuna test bağlantısı yapar
+            </summary>
+            <param name="host">Graylog sunucu adresi</param>
+            <param name="port">Graylog GELF TCP port</param>
+            <returns>Bağlantı başarılı ise true, değilse false</returns>
         </member>
     </members>
 </doc>

@@ -26,6 +26,7 @@ namespace LogLib.Services.Concrete
         private readonly LogSettings _logSettings;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<LogService> _logger;
+        private readonly GraylogService _graylogService;
 
         /// <summary>
         /// LogService constructor
@@ -34,12 +35,14 @@ namespace LogLib.Services.Concrete
             ILogRepository logRepository,
             IOptions<LogSettings> logSettingsOptions,
             IHttpContextAccessor httpContextAccessor,
-            ILogger<LogService> logger)
+            ILogger<LogService> logger,
+            GraylogService graylogService)
         {
             _logRepository = logRepository;
             _logSettings = logSettingsOptions.Value;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
+            _graylogService = graylogService;
         }
 
         /// <summary>
@@ -110,65 +113,82 @@ namespace LogLib.Services.Concrete
         }
 
         /// <summary>
-        /// HTTP istek/yanıt loglaması için
+        /// HTTP istek ve yanıtları için log kaydı oluşturur
         /// </summary>
         public async Task LogHttpAsync(
-            string path, 
-            string method, 
-            int? statusCode, 
-            long? durationMs, 
+            string path,
+            string method,
+            int? statusCode,
+            long? durationMs,
             string traceId,
-            string userId = null, 
-            string userName = null, 
-            string ipAddress = null, 
-            object requestData = null, 
+            string userId = null,
+            string userName = null,
+            string ipAddress = null,
+            object requestData = null,
             object responseData = null)
         {
             if (!_logSettings.EnableHttpLogging)
-            {
                 return;
-            }
 
-            var logEntry = new LogEntry
+            try
             {
-                Level = "Info",
-                Message = $"HTTP {method} {path} - Status: {statusCode}",
-                Source = "HttpRequest",
-                TraceId = traceId,
-                UserId = userId,
-                UserName = userName,
-                IpAddress = ipAddress,
-                HttpMethod = method,
-                HttpPath = path,
-                StatusCode = statusCode,
-                Duration = durationMs,
-                ApplicationName = _logSettings.ApplicationName,
-                Environment = _logSettings.Environment,
-                Data = new
+                var logEntry = new LogEntry
                 {
+                    Level = statusCode.HasValue && statusCode.Value >= 400 ? "Warning" : "Info",
+                    Message = $"HTTP {method} {path} - {statusCode} ({durationMs}ms)",
+                    Source = "HttpRequest",
+                    Timestamp = DateTime.UtcNow,
+                    TraceId = traceId,
+                    UserId = userId,
+                    UserName = userName,
+                    IpAddress = ipAddress,
+                    ApplicationName = _logSettings.ApplicationName,
+                    Environment = _logSettings.Environment,
+                    HttpPath = path,
+                    HttpMethod = method,
+                    HttpStatusCode = statusCode,
+                    HttpDurationMs = durationMs,
                     Request = _logSettings.MaskSensitiveData ? MaskSensitiveData(requestData) : requestData,
                     Response = _logSettings.MaskSensitiveData ? MaskSensitiveData(responseData) : responseData
-                }
-            };
+                };
 
-            await _logRepository.CreateLogAsync(logEntry);
-            _logger.LogInformation($"HTTP {method} {path} completed in {durationMs}ms with status {statusCode}");
+                // Asenkron veya senkron olarak logla
+                if (_logSettings.EnableAsyncLogging)
+                {
+                    _ = Task.Run(async () => 
+                    {
+                        await _logRepository.SaveLogAsync(logEntry);
+                        
+                        // Graylog'a da gönder (eğer etkinse)
+                        if (_logSettings.EnableGraylog)
+                        {
+                            await _graylogService.SendLogAsync(logEntry);
+                        }
+                    });
+                }
+                else
+                {
+                    await _logRepository.SaveLogAsync(logEntry);
+                    
+                    // Graylog'a da gönder (eğer etkinse)
+                    if (_logSettings.EnableGraylog)
+                    {
+                        await _graylogService.SendLogAsync(logEntry);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"HTTP log oluşturulurken hata: {ex.Message}");
+            }
         }
 
         #region Private Methods
 
         /// <summary>
-        /// Genel log oluşturma metodu
+        /// Yeni bir log girdisi oluşturur ve kaydeder
         /// </summary>
-        private async Task CreateLogAsync(
-            string level,
-            string message,
-            string source,
-            object data,
-            Exception exception = null,
-            string userId = null,
-            string userName = null,
-            string userEmail = null)
+        private async Task CreateLogAsync(string level, string message, string source, object data, Exception exception, string userId, string userName, string userEmail)
         {
             try
             {
@@ -212,31 +232,34 @@ namespace LogLib.Services.Concrete
                     HttpMethod = httpContext?.Request?.Method
                 };
 
+                // Asenkron logging aktifse, Task.Run ile arka plana at
                 if (_logSettings.EnableAsyncLogging)
                 {
-                    // Asenkron loglama - uygulama akışını bloklamaz
-                    _ = Task.Run(async () =>
+                    _ = Task.Run(async () => 
                     {
-                        try
+                        await _logRepository.SaveLogAsync(logEntry);
+                        
+                        // Graylog'a da gönder (eğer etkinse)
+                        if (_logSettings.EnableGraylog)
                         {
-                            await _logRepository.CreateLogAsync(logEntry);
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError(ex, "Asenkron loglama hatası");
+                            await _graylogService.SendLogAsync(logEntry);
                         }
                     });
                 }
                 else
                 {
-                    // Senkron loglama
-                    await _logRepository.CreateLogAsync(logEntry);
+                    await _logRepository.SaveLogAsync(logEntry);
+                    
+                    // Graylog'a da gönder (eğer etkinse)
+                    if (_logSettings.EnableGraylog)
+                    {
+                        await _graylogService.SendLogAsync(logEntry);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                // Log oluşturulurken hata olursa, en azından konsola yazdır
-                _logger.LogError(ex, "Log kaydı oluşturulurken hata oluştu");
+                _logger.LogError(ex, $"Log oluşturulurken hata: {ex.Message}");
             }
         }
 
