@@ -1,0 +1,11 @@
+{
+  "runtimeOptions": {
+    "configProperties": {
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
+    },
+    "mainMethod": {
+      "Assembly": "DeviceApi"
+    },
+    "launchSettingsProfile": "DeviceApi"
+  }
+} 

@@ -1,0 +1,9 @@
+{
+  "JwtSettings": {
+    "Secret": "VerySecureSecretKey12345678901234567890",
+    "Issuer": "DenemeApi",
+    "Audience": "DenemeApiClient",
+    "AccessTokenExpirationInMinutes": 660,
+    "RefreshTokenExpirationInDays": 7
+  }
+} 

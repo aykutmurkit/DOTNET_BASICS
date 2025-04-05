@@ -1,0 +1,14 @@
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.deps.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.pdb
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.AssemblyInfoInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.AssemblyInfo.cs
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.sourcelink.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\refint\JWTVerifyLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.pdb
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\ref\JWTVerifyLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrarySettings.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.csproj.AssemblyReference.cache
