@@ -105,8 +105,7 @@
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
               "RelativeToolTip": "DeviceApi\\DeviceApi.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-02T15:21:46.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:21:46.891Z"
             },
             {
               "$type": "Document",
@@ -154,8 +153,7 @@
               "RelativeToolTip": "DeviceApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-02T12:48:22.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T12:48:22.789Z"
             },
             {
               "$type": "Document",
@@ -167,8 +165,7 @@
               "RelativeToolTip": "DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA0wBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T12:56:54.593Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T12:56:54.593Z"
             },
             {
               "$type": "Document",
@@ -178,7 +175,7 @@
               "RelativeDocumentMoniker": "DeviceApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
               "RelativeToolTip": "DeviceApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T11:52:03.826Z",
               "EditorCaption": ""
@@ -193,21 +190,19 @@
               "RelativeToolTip": "DeviceApi\\Properties\\launchSettings.json",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-02T15:21:54.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:21:54.032Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DeviceApi",
+              "Title": "DeviceApi.csproj",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
               "RelativeDocumentMoniker": "DeviceApi\\DeviceApi.csproj",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
               "RelativeToolTip": "DeviceApi\\DeviceApi.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-05T09:08:21.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T09:08:21.327Z"
             },
             {
               "$type": "Document",
@@ -219,21 +214,19 @@
               "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrarySettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-05T09:52:31.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T09:52:31.351Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "JWTVerifyLibrary",
+              "Title": "JWTVerifyLibrary.csproj",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "ToolTip": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-05T09:30:03.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T09:30:03.22Z"
             },
             {
               "$type": "Document",
@@ -245,8 +238,7 @@
               "RelativeToolTip": "JWTVerifyLibrary\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T08:50:01.965Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T08:50:01.965Z"
             },
             {
               "$type": "Document",
