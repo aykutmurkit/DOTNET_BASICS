@@ -17,8 +17,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
     <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,11 +28,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JWTVerifyLibrary\JWTVerifyLibrary.csproj" />
+    <ProjectReference Include="..\RateLimitLibrary\RateLimitLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="JWTVerifyLibrarySettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

@@ -1,0 +1,26 @@
+{
+  "RateLimitSettings": {
+    "EnableGlobalRateLimit": true,
+    "GlobalRateLimitPeriod": "1m",
+    "GlobalRateLimitRequests": 10,
+    "IpRateLimiting": {
+      "EnableIpRateLimiting": true,
+      "IpRateLimitPeriod": "1m",
+      "IpRateLimitRequests": 100
+    },
+    "EndpointLimits": [
+      {
+        "Endpoint": "/api/Auth/login",
+        "Period": "5m",
+        "Limit": 10,
+        "EnableConcurrencyLimit": true,
+        "ConcurrencyLimit": 5
+      },
+      {
+        "Endpoint": "/api/Device",
+        "Period": "10m",
+        "Limit": 3
+      }
+    ]
+  }
+} 

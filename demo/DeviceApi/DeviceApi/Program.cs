@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using JWTVerifyLibrary.Extensions;
+using RateLimitLibrary.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -97,8 +98,8 @@ builder.Services.AddBusinessServices();
 // Core layer servisleri
 builder.Services.AddCoreServices(builder.Configuration);
 
-// Rate limiting servisleri
-builder.Services.AddRateLimitingServices(builder.Configuration);
+// Rate limiting servisleri - RateLimitLibrary'den gelen extension metotları kullanarak
+builder.Services.AddRateLimiting(builder.Configuration);
 
 var app = builder.Build();
 
@@ -111,8 +112,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Rate limiting middleware'ini ekle
-app.UseRateLimiter();
+// Rate limiting middleware'ini ekle - RateLimitLibrary'den
+app.UseRateLimiting();
 
 // JWT doğrulama middleware'ini kullan
 app.UseJwtVerification();

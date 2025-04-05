@@ -448,7 +448,6 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\n
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DeviceApi.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DeviceApi.props
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.csproj.Up2Date
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\refint\DeviceApi.dll
@@ -456,3 +455,7 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\n
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.genruntimeconfig.cache
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\ref\DeviceApi.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\JWTVerifyLibrarySettings.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrarySettings.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrary.pdb
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

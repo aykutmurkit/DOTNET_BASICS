@@ -1,0 +1,13 @@
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\bin\Debug\net8.0\RateLimitLibrarySettings.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\bin\Debug\net8.0\RateLimitLibrary.deps.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\bin\Debug\net8.0\RateLimitLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\bin\Debug\net8.0\RateLimitLibrary.pdb
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.AssemblyInfoInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.AssemblyInfo.cs
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.csproj.CoreCompileInputs.cache
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.sourcelink.json
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\refint\RateLimitLibrary.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\RateLimitLibrary.pdb
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\RateLimitLibrary\obj\Debug\net8.0\ref\RateLimitLibrary.dll
