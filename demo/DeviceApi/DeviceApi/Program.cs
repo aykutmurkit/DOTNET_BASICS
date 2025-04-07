@@ -1,11 +1,8 @@
 using DeviceApi.API.Extensions;
-using DeviceApi.API.Middleware;
 using DeviceApi.Business.Extensions;
 using DeviceApi.Core.Extensions;
 using DeviceApi.DataAccess.Extensions;
 using Core.Utilities;
-using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;

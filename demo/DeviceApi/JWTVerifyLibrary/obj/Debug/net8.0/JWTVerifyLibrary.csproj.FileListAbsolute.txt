@@ -12,3 +12,17 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\ref\JWTVerifyLibrary.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrarySettings.json
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.csproj.AssemblyReference.cache
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrarySettings.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.deps.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\bin\Debug\net8.0\JWTVerifyLibrary.pdb
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.csproj.AssemblyReference.cache
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.AssemblyInfoInputs.cache
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.AssemblyInfo.cs
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.sourcelink.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\refint\JWTVerifyLibrary.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\JWTVerifyLibrary.pdb
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\JWTVerifyLibrary\obj\Debug\net8.0\ref\JWTVerifyLibrary.dll
