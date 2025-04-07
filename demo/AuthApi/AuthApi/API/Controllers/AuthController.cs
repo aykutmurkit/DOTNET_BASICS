@@ -1,7 +1,7 @@
 using AuthApi.Business.Services.Interfaces;
 using Core.Utilities;
 using Entities.Dtos;
-using LogLib.Core.Interfaces;
+using LogLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;

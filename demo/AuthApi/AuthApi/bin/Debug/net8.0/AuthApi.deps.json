@@ -9,7 +9,7 @@
       "AuthApi/1.0.0": {
         "dependencies": {
           "AspNetCoreRateLimit": "5.0.0",
-          "LogLib": "1.0.0",
+          "LogLibrary": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
           "Microsoft.AspNetCore.JsonPatch": "9.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
@@ -1255,7 +1255,7 @@
           }
         }
       },
-      "LogLib/1.0.0": {
+      "LogLibrary/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -1271,7 +1271,7 @@
           "System.Security.Claims": "4.3.0"
         },
         "runtime": {
-          "LogLib.dll": {
+          "LogLibrary.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -2195,7 +2195,7 @@
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
-    "LogLib/1.0.0": {
+    "LogLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

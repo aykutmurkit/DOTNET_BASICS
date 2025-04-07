@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi", "AuthApi\AuthApi.csproj", "{2F17049F-5203-4825-8AA4-DA5AD1957B14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi", "..\AuthAPI\AuthApi\AuthApi.csproj", "{2F17049F-5203-4825-8AA4-DA5AD1957B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLib", "LogLib\LogLib.csproj", "{13FB55D5-8185-4767-81C9-A5E419BE32FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerfLib", "PerfLib\PerfLib.csproj", "{5930AF86-FC51-4C62-9F9F-4241712CBAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLibrary", "..\AuthAPI\LogLibrary\LogLibrary.csproj", "{13FB55D5-8185-4767-81C9-A5E419BE32FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{13FB55D5-8185-4767-81C9-A5E419BE32FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13FB55D5-8185-4767-81C9-A5E419BE32FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13FB55D5-8185-4767-81C9-A5E419BE32FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5930AF86-FC51-4C62-9F9F-4241712CBAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5930AF86-FC51-4C62-9F9F-4241712CBAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5930AF86-FC51-4C62-9F9F-4241712CBAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5930AF86-FC51-4C62-9F9F-4241712CBAAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
