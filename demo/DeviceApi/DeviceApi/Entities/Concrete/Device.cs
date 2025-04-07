@@ -43,5 +43,8 @@ namespace Entities.Concrete
         
         // One-to-One ilişki - BitmapScreenMessage
         public BitmapScreenMessage BitmapScreenMessage { get; set; }
+        
+        // One-to-One ilişki - PeriodicMessage
+        public PeriodicMessage PeriodicMessage { get; set; }
     }
 } 

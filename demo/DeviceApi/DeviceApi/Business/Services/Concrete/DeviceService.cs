@@ -430,6 +430,29 @@ namespace DeviceApi.Business.Services.Concrete
                 };
             }
             
+            // PeriodicMessage bilgilerini ekle
+            if (device.PeriodicMessage != null)
+            {
+                deviceDto.PeriodicMessage = new PeriodicMessageDto
+                {
+                    Id = device.PeriodicMessage.Id,
+                    TemperatureLevel = device.PeriodicMessage.TemperatureLevel,
+                    HumidityLevel = device.PeriodicMessage.HumidityLevel,
+                    GasLevel = device.PeriodicMessage.GasLevel,
+                    FrontLightLevel = device.PeriodicMessage.FrontLightLevel,
+                    BackLightLevel = device.PeriodicMessage.BackLightLevel,
+                    LedFailureCount = device.PeriodicMessage.LedFailureCount,
+                    CabinStatus = device.PeriodicMessage.CabinStatus,
+                    FanStatus = device.PeriodicMessage.FanStatus,
+                    ShowStatus = device.PeriodicMessage.ShowStatus,
+                    Rs232Status = device.PeriodicMessage.Rs232Status,
+                    PowerSupplyStatus = device.PeriodicMessage.PowerSupplyStatus,
+                    CreatedAt = device.PeriodicMessage.CreatedAt,
+                    UpdatedAt = device.PeriodicMessage.UpdatedAt,
+                    DeviceId = device.PeriodicMessage.DeviceId
+                };
+            }
+            
             return deviceDto;
         }
     }

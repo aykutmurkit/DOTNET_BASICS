@@ -57,6 +57,11 @@ namespace Data.Context
         /// Bitmap Ekran Mesajlar tablosu
         /// </summary>
         public DbSet<BitmapScreenMessage> BitmapScreenMessages { get; set; }
+        
+        /// <summary>
+        /// Periyodik Mesajlar tablosu
+        /// </summary>
+        public DbSet<PeriodicMessage> PeriodicMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

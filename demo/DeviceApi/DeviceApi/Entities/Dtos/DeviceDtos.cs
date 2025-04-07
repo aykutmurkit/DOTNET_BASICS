@@ -23,6 +23,8 @@ namespace Entities.Dtos
         public ScrollingScreenMessageDto ScrollingScreenMessage { get; set; }
         // Bitmap ekran mesaj
         public BitmapScreenMessageDto BitmapScreenMessage { get; set; }
+        // Periyodik mesaj
+        public PeriodicMessageDto PeriodicMessage { get; set; }
     }
 
     /// <summary>
@@ -63,6 +65,9 @@ namespace Entities.Dtos
         
         // Bitmap ekran mesaj (opsiyonel)
         public CreateBitmapScreenMessageRequest BitmapScreenMessage { get; set; }
+        
+        // Periyodik mesaj (opsiyonel)
+        public CreatePeriodicMessageRequest PeriodicMessage { get; set; }
     }
 
     /// <summary>
@@ -103,5 +108,8 @@ namespace Entities.Dtos
         
         // Bitmap ekran mesaj (opsiyonel)
         public UpdateBitmapScreenMessageRequest BitmapScreenMessage { get; set; }
+        
+        // Periyodik mesaj (opsiyonel)
+        public UpdatePeriodicMessageRequest PeriodicMessage { get; set; }
     }
 } 

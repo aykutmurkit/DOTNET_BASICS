@@ -16,6 +16,7 @@ Seeder sınıfları aşağıdaki sıra ile çalışır:
 | 6 | FullScreenMessageSeeder | 40 | Tam ekran mesajları oluşturur (Cihazlara bağlı) |
 | 7 | ScrollingScreenMessageSeeder | 41 | Kayan ekran mesajları oluşturur (Cihazlara bağlı) |
 | 8 | BitmapScreenMessageSeeder | 42 | Bitmap ekran mesajları oluşturur (Cihazlara bağlı) |
+| 9 | PeriodicMessageSeeder | 43 | Periyodik mesajları oluşturur (Cihazlara bağlı) |
 
 ## Seeder İşlem Akışı
 
@@ -78,6 +79,13 @@ Seeding işlemi şu adımlarla gerçekleşir:
 - Her cihaz için Türkçe ve İngilizce bitmap formatında görsel içerikleri oluşturur
 - Base64 kodlu bitmap görselleri içeren örnek veriler ekler
 
+### 9. PeriodicMessageSeeder (Order: 43)
+- Periyodik mesajları oluşturur
+- İlk 3 cihaz için durum ve sensör verilerini içeren mesajlar ekler
+- BitmapScreenMessageSeeder'dan sonra çalışır
+- Her cihaz için sıcaklık, nem, gaz seviyesi, ışık seviyeleri, LED arızaları, kabin durumu, fan durumu, gösterge durumu, RS232 durumu ve güç kaynağı durumu içeren veriler ekler
+- Cihaz durum ve sensör bilgilerini içeren örnek periyodik mesajlar oluşturur
+
 ## Veri İlişkileri
 
 ```
@@ -86,17 +94,20 @@ Seeding işlemi şu adımlarla gerçekleşir:
                      │                ├─── Cihaz 1 ────┬─── Cihaz Ayarları 1
                      │                │                ├─── Tam Ekran Mesaj 1
                      │                │                ├─── Kayan Ekran Mesaj 1
-                     │                │                └─── Bitmap Ekran Mesaj 1
+                     │                │                ├─── Bitmap Ekran Mesaj 1
+                     │                │                └─── Periyodik Mesaj 1
                      │                └─── Cihaz 2 ────┬─── Cihaz Ayarları 2
                      │                                 ├─── Tam Ekran Mesaj 2
                      │                                 ├─── Kayan Ekran Mesaj 2
-                     │                                 └─── Bitmap Ekran Mesaj 2
+                     │                                 ├─── Bitmap Ekran Mesaj 2
+                     │                                 └─── Periyodik Mesaj 2
                      │
                      └── Platform 2───┬─── Prediction 2 (2 tren bilgisi)
                                       ├─── Cihaz 3 ────┬─── Cihaz Ayarları 3
                                       │                ├─── Tam Ekran Mesaj 3
                                       │                ├─── Kayan Ekran Mesaj 3
-                                      │                └─── Bitmap Ekran Mesaj 3
+                                      │                ├─── Bitmap Ekran Mesaj 3
+                                      │                └─── Periyodik Mesaj 3
                                       └─── Cihaz 4 ────── Cihaz Ayarları 4
 ```
 

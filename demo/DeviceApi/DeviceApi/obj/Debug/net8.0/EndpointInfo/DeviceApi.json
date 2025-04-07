@@ -1570,6 +1570,380 @@
         }
       }
     },
+    "/api/PeriodicMessages": {
+      "get": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoListApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoListApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoListApiResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePeriodicMessageRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePeriodicMessageRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePeriodicMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/PeriodicMessages/{id}": {
+      "get": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePeriodicMessageRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePeriodicMessageRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePeriodicMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/PeriodicMessages/by-device/{deviceId}": {
+      "get": {
+        "tags": [
+          "PeriodicMessages"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodicMessageDtoApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse`1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Platforms": {
       "get": {
         "tags": [
@@ -3221,6 +3595,9 @@
           },
           "bitmapScreenMessage": {
             "$ref": "#/components/schemas/CreateBitmapScreenMessageRequest"
+          },
+          "periodicMessage": {
+            "$ref": "#/components/schemas/CreatePeriodicMessageRequest"
           }
         },
         "additionalProperties": false
@@ -3315,6 +3692,69 @@
             "maxLength": 255,
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePeriodicMessageRequest": {
+        "required": [
+          "backLightLevel",
+          "cabinStatus",
+          "deviceId",
+          "fanStatus",
+          "frontLightLevel",
+          "gasLevel",
+          "humidityLevel",
+          "ledFailureCount",
+          "powerSupplyStatus",
+          "rs232Status",
+          "showStatus",
+          "temperatureLevel"
+        ],
+        "type": "object",
+        "properties": {
+          "temperatureLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "humidityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gasLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "frontLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ledFailureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cabinStatus": {
+            "type": "boolean"
+          },
+          "fanStatus": {
+            "type": "boolean"
+          },
+          "showStatus": {
+            "type": "boolean"
+          },
+          "rs232Status": {
+            "type": "boolean"
+          },
+          "powerSupplyStatus": {
+            "type": "boolean"
+          },
+          "deviceId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3502,6 +3942,9 @@
           },
           "bitmapScreenMessage": {
             "$ref": "#/components/schemas/BitmapScreenMessageDto"
+          },
+          "periodicMessage": {
+            "$ref": "#/components/schemas/PeriodicMessageDto"
           }
         },
         "additionalProperties": false
@@ -3805,6 +4248,132 @@
             "type": "boolean"
           },
           "data": {
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PeriodicMessageDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "humidityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gasLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "frontLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ledFailureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cabinStatus": {
+            "type": "boolean"
+          },
+          "fanStatus": {
+            "type": "boolean"
+          },
+          "showStatus": {
+            "type": "boolean"
+          },
+          "rs232Status": {
+            "type": "boolean"
+          },
+          "powerSupplyStatus": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deviceId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PeriodicMessageDtoApiResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PeriodicMessageDto"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PeriodicMessageDtoListApiResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PeriodicMessageDto"
+            },
             "nullable": true
           },
           "errors": {
@@ -4330,6 +4899,9 @@
           },
           "bitmapScreenMessage": {
             "$ref": "#/components/schemas/UpdateBitmapScreenMessageRequest"
+          },
+          "periodicMessage": {
+            "$ref": "#/components/schemas/UpdatePeriodicMessageRequest"
           }
         },
         "additionalProperties": false
@@ -4424,6 +4996,64 @@
             "maxLength": 255,
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePeriodicMessageRequest": {
+        "required": [
+          "backLightLevel",
+          "cabinStatus",
+          "fanStatus",
+          "frontLightLevel",
+          "gasLevel",
+          "humidityLevel",
+          "ledFailureCount",
+          "powerSupplyStatus",
+          "rs232Status",
+          "showStatus",
+          "temperatureLevel"
+        ],
+        "type": "object",
+        "properties": {
+          "temperatureLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "humidityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gasLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "frontLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backLightLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ledFailureCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cabinStatus": {
+            "type": "boolean"
+          },
+          "fanStatus": {
+            "type": "boolean"
+          },
+          "showStatus": {
+            "type": "boolean"
+          },
+          "rs232Status": {
+            "type": "boolean"
+          },
+          "powerSupplyStatus": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
