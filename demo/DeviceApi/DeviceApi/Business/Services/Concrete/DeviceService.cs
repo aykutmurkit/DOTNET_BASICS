@@ -402,6 +402,20 @@ namespace DeviceApi.Business.Services.Concrete
                 };
             }
             
+            // ScrollingScreenMessage bilgilerini ekle
+            if (device.ScrollingScreenMessage != null)
+            {
+                deviceDto.ScrollingScreenMessage = new ScrollingScreenMessageDto
+                {
+                    Id = device.ScrollingScreenMessage.Id,
+                    TurkishLine = device.ScrollingScreenMessage.TurkishLine,
+                    EnglishLine = device.ScrollingScreenMessage.EnglishLine,
+                    CreatedAt = device.ScrollingScreenMessage.CreatedAt,
+                    UpdatedAt = device.ScrollingScreenMessage.UpdatedAt,
+                    DeviceId = device.ScrollingScreenMessage.DeviceId
+                };
+            }
+            
             return deviceDto;
         }
     }

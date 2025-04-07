@@ -29,6 +29,7 @@ namespace DeviceApi.DataAccess.Extensions
             services.AddScoped<IDeviceSettingsRepository, DeviceSettingsRepository>();
             services.AddScoped<IPredictionRepository, PredictionRepository>();
             services.AddScoped<IFullScreenMessageRepository, FullScreenMessageRepository>();
+            services.AddScoped<IScrollingScreenMessageRepository, ScrollingScreenMessageRepository>();
 
        
 

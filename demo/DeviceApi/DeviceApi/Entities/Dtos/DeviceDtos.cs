@@ -19,6 +19,8 @@ namespace Entities.Dtos
         public DeviceSettingsDto Settings { get; set; }
         // Tam ekran mesaj
         public FullScreenMessageDto FullScreenMessage { get; set; }
+        // Kayan ekran mesaj
+        public ScrollingScreenMessageDto ScrollingScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -53,6 +55,9 @@ namespace Entities.Dtos
         
         // Tam ekran mesaj (opsiyonel)
         public CreateFullScreenMessageRequest FullScreenMessage { get; set; }
+        
+        // Kayan ekran mesaj (opsiyonel)
+        public CreateScrollingScreenMessageRequest ScrollingScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -87,5 +92,8 @@ namespace Entities.Dtos
         
         // Tam ekran mesaj (opsiyonel)
         public UpdateFullScreenMessageRequest FullScreenMessage { get; set; }
+        
+        // Kayan ekran mesaj (opsiyonel)
+        public UpdateScrollingScreenMessageRequest ScrollingScreenMessage { get; set; }
     }
 } 

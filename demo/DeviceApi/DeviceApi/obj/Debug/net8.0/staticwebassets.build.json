@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hxhsFQGyKQi9Ka19K9YO/cA72k14GKZVglQ4FOQ7p8E=",
+  "Hash": "5q8qDhvUu/YJZ7t/9waX2qd1HJbGgEE9FRjFBMZwApk=",
   "Source": "DeviceApi",
   "BasePath": "_content/DeviceApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "DeviceApi\\wwwroot",
       "Source": "DeviceApi",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
       "BasePath": "_content/DeviceApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "SourceId": "DeviceApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
       "BasePath": "_content/DeviceApi",
       "RelativePath": "assets/templates/email/password-reset#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\templates\\email\\password-reset.html"
     },
     {
-      "Identity": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "Identity": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "SourceId": "DeviceApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\",
       "BasePath": "_content/DeviceApi",
       "RelativePath": "assets/templates/email/two-factor-auth#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "assets/templates/email/password-reset.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -83,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 05:35:37 GMT"
+          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -99,7 +99,7 @@
     },
     {
       "Route": "assets/templates/email/password-reset.ve4ofuvggb.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\password-reset.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -120,7 +120,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 05:35:37 GMT"
+          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -144,7 +144,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -165,7 +165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 05:35:37 GMT"
+          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -181,7 +181,7 @@
     },
     {
       "Route": "assets/templates/email/two-factor-auth.ojkunuhez5.html",
-      "AssetFile": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
+      "AssetFile": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\wwwroot\\assets\\templates\\email\\two-factor-auth.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -202,7 +202,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 05:35:37 GMT"
+          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
         },
         {
           "Name": "Cache-Control",

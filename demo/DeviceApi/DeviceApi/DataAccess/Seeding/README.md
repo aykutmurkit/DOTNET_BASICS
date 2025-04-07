@@ -14,6 +14,7 @@ Seeder sınıfları aşağıdaki sıra ile çalışır:
 | 4 | DeviceSeeder | 5 | Cihaz verilerini oluşturur (Platformlara bağlı) |
 | 5 | DeviceSettingSeeder | 6 | Cihaz ayarlarını oluşturur (Cihazlara bağlı) |
 | 6 | FullScreenMessageSeeder | 40 | Tam ekran mesajları oluşturur (Cihazlara bağlı) |
+| 7 | ScrollingScreenMessageSeeder | 41 | Kayan ekran mesajları oluşturur (Cihazlara bağlı) |
 
 ## Seeder İşlem Akışı
 
@@ -62,19 +63,29 @@ Seeding işlemi şu adımlarla gerçekleşir:
 - DeviceSeeder'dan sonra çalışır çünkü mesajlar cihazlara bağlıdır
 - Farklı Türkçe ve İngilizce mesaj içerikleri ile örnek veriler oluşturur
 
+### 7. ScrollingScreenMessageSeeder (Order: 41)
+- Kayan ekran mesajları oluşturur
+- İlk 3 cihaz için farklı mesajlar ekler
+- FullScreenMessageSeeder'dan sonra çalışır
+- Her cihaz için Türkçe ve İngilizce tek satırlık kayan mesaj içerikleri oluşturur
+- Metro kuralları ve bilgilerini içeren örnek metinler ekler
+
 ## Veri İlişkileri
 
 ```
 İstasyon (Station) 1─┐
                      ├── Platform 1───┬─── Prediction 1 (3 tren bilgisi)
                      │                ├─── Cihaz 1 ────┬─── Cihaz Ayarları 1
-                     │                │                └─── Tam Ekran Mesaj 1
+                     │                │                ├─── Tam Ekran Mesaj 1
+                     │                │                └─── Kayan Ekran Mesaj 1
                      │                └─── Cihaz 2 ────┬─── Cihaz Ayarları 2
-                     │                                 └─── Tam Ekran Mesaj 2
+                     │                                 ├─── Tam Ekran Mesaj 2
+                     │                                 └─── Kayan Ekran Mesaj 2
                      │
                      └── Platform 2───┬─── Prediction 2 (2 tren bilgisi)
                                       ├─── Cihaz 3 ────┬─── Cihaz Ayarları 3
-                                      │                └─── Tam Ekran Mesaj 3
+                                      │                ├─── Tam Ekran Mesaj 3
+                                      │                └─── Kayan Ekran Mesaj 3
                                       └─── Cihaz 4 ────── Cihaz Ayarları 4
 ```
 

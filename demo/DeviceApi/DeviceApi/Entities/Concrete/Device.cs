@@ -37,5 +37,8 @@ namespace Entities.Concrete
         
         // One-to-One ilişki - FullScreenMessage
         public FullScreenMessage FullScreenMessage { get; set; }
+        
+        // One-to-One ilişki - ScrollingScreenMessage
+        public ScrollingScreenMessage ScrollingScreenMessage { get; set; }
     }
 } 

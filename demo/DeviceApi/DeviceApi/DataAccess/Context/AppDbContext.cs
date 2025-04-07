@@ -47,6 +47,11 @@ namespace Data.Context
         /// Tam Ekran Mesajlar tablosu
         /// </summary>
         public DbSet<FullScreenMessage> FullScreenMessages { get; set; }
+        
+        /// <summary>
+        /// Kayan Ekran Mesajlar tablosu
+        /// </summary>
+        public DbSet<ScrollingScreenMessage> ScrollingScreenMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
