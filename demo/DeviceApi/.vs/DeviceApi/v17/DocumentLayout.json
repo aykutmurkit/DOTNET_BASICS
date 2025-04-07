@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\loglibrarysettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\jwtverifylibrarysettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\jwtverifylibrarysettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\deviceapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\deviceapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -44,10 +52,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\deviceapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\deviceapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\jwtverifylibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,8 +97,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JWTVerifyLibrarySettings.json",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\JWTVerifyLibrarySettings.json",
+              "RelativeDocumentMoniker": "DeviceApi\\JWTVerifyLibrarySettings.json",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\JWTVerifyLibrarySettings.json",
+              "RelativeToolTip": "DeviceApi\\JWTVerifyLibrarySettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-07T07:19:57.867Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -103,27 +120,14 @@
               "RelativeDocumentMoniker": "DeviceApi\\LogLibrarySettings.json",
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\LogLibrarySettings.json",
               "RelativeToolTip": "DeviceApi\\LogLibrarySettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-04-07T07:13:03.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\Program.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
-              "RelativeToolTip": "DeviceApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T13:02:42.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "RateLimitLibrarySettings.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrarySettings.json",
               "RelativeDocumentMoniker": "RateLimitLibrary\\RateLimitLibrarySettings.json",
@@ -135,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
@@ -147,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Context\\AppDbContext.cs",
@@ -159,7 +163,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "DeviceApi.csproj",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
+              "RelativeDocumentMoniker": "DeviceApi\\DeviceApi.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
+              "RelativeToolTip": "DeviceApi\\DeviceApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-05T09:08:21.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Program.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
+              "RelativeToolTip": "DeviceApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T13:02:42.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "DevicesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\DevicesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\DevicesController.cs",
@@ -167,12 +196,11 @@
               "RelativeToolTip": "DeviceApi\\API\\Controllers\\DevicesController.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAgwDkAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T12:10:59.035Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T12:10:59.035Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
@@ -184,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\Class1.cs",
               "RelativeDocumentMoniker": "RateLimitLibrary\\Class1.cs",
@@ -196,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\appsettings.json",
               "RelativeDocumentMoniker": "DeviceApi\\appsettings.json",
@@ -208,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
@@ -220,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ApplicationBuilderExtensions.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Extensions\\ApplicationBuilderExtensions.cs",
@@ -232,18 +260,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DeviceApi",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
               "RelativeDocumentMoniker": "DeviceApi\\DeviceApi.csproj",
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
               "RelativeToolTip": "DeviceApi\\DeviceApi.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-02T15:21:46.891Z"
+              "WhenOpened": "2025-04-02T15:21:46.891Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "runtimeconfig.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Properties\\runtimeconfig.json",
               "RelativeDocumentMoniker": "DeviceApi\\Properties\\runtimeconfig.json",
@@ -255,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "DeviceApi\\Properties\\launchSettings.json",
@@ -267,19 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DeviceApi.csproj",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
-              "RelativeDocumentMoniker": "DeviceApi\\DeviceApi.csproj",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
-              "RelativeToolTip": "DeviceApi\\DeviceApi.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-05T09:08:21.327Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "JWTVerifyLibrarySettings.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrarySettings.json",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrarySettings.json",
@@ -291,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "JWTVerifyLibrary.csproj",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
@@ -299,11 +316,12 @@
               "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-05T09:30:03.22Z"
+              "WhenOpened": "2025-04-05T09:30:03.22Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\Class1.cs",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\Class1.cs",
@@ -315,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
@@ -327,7 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "StationsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\StationsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\StationsController.cs",
@@ -339,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "PlatformsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\PlatformsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\PlatformsController.cs",
