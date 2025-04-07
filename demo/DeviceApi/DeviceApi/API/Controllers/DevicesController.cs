@@ -4,6 +4,7 @@ using Entities.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using LogLibrary.Core.Interfaces;
 
 namespace DeviceApi.API.Controllers
 {
@@ -14,11 +15,16 @@ namespace DeviceApi.API.Controllers
     {
         private readonly IDeviceService _deviceService;
         private readonly ILogger<DevicesController> _logger;
+        private readonly ILogService _logService;
 
-        public DevicesController(IDeviceService deviceService, ILogger<DevicesController> logger)
+        public DevicesController(
+            IDeviceService deviceService, 
+            ILogger<DevicesController> logger,
+            ILogService logService)
         {
             _deviceService = deviceService;
             _logger = logger;
+            _logService = logService;
         }
 
         /// <summary>
@@ -30,7 +36,12 @@ namespace DeviceApi.API.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-            _logger.LogInformation("GetAllDevices çağrıldı: UserId: {UserId}, Role: {Role}", userId, userRole);
+            
+            // Use LogLibrary to log the request
+            await _logService.LogInfoAsync(
+                "GetAllDevices çağrıldı", 
+                "DevicesController.GetAllDevices", 
+                new { UserId = userId, Role = userRole });
             
             var devices = await _deviceService.GetAllDevicesAsync();
             return Ok(new ApiResponse<List<DeviceDto>>
@@ -50,12 +61,22 @@ namespace DeviceApi.API.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-            _logger.LogInformation("GetDeviceById çağrıldı: DeviceId: {DeviceId}, UserId: {UserId}, Role: {Role}", id, userId, userRole);
+            
+            // Use LogLibrary to log the request
+            await _logService.LogInfoAsync(
+                "GetDeviceById çağrıldı", 
+                "DevicesController.GetDeviceById", 
+                new { DeviceId = id, UserId = userId, Role = userRole });
             
             var device = await _deviceService.GetDeviceByIdAsync(id);
             if (device == null)
             {
-                _logger.LogWarning("DeviceId {DeviceId} bulunamadı: UserId: {UserId}, Role: {Role}", id, userId, userRole);
+                // Log warning with LogLibrary
+                await _logService.LogWarningAsync(
+                    "DeviceId bulunamadı", 
+                    "DevicesController.GetDeviceById", 
+                    new { DeviceId = id, UserId = userId, Role = userRole });
+                
                 return NotFound(new ApiResponse<object>
                 {
                     IsSuccess = false,
@@ -121,11 +142,24 @@ namespace DeviceApi.API.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-            _logger.LogInformation("CreateDevice çağrıldı: UserId: {UserId}, Role: {Role}", userId, userRole);
+            
+            // Log the request
+            await _logService.LogInfoAsync(
+                "CreateDevice çağrıldı", 
+                "DevicesController.CreateDevice", 
+                new { UserId = userId, Role = userRole });
             
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning("Geçersiz model durumu: UserId: {UserId}, Role: {Role}", userId, userRole);
+                // Log warning about invalid model
+                await _logService.LogWarningAsync(
+                    "Geçersiz model durumu", 
+                    "DevicesController.CreateDevice", 
+                    new { UserId = userId, Role = userRole, ModelErrors = ModelState.Values
+                        .SelectMany(v => v.Errors)
+                        .Select(e => e.ErrorMessage)
+                        .ToList() });
+                
                 return BadRequest(new ApiResponse<object>
                 {
                     IsSuccess = false,
@@ -136,8 +170,12 @@ namespace DeviceApi.API.Controllers
             try
             {
                 var createdDevice = await _deviceService.CreateDeviceAsync(request);
-                _logger.LogInformation("Cihaz oluşturuldu: DeviceId: {DeviceId}, UserId: {UserId}, Role: {Role}",
-                    createdDevice.Id, userId, userRole);
+                
+                // Log success
+                await _logService.LogInfoAsync(
+                    "Cihaz oluşturuldu", 
+                    "DevicesController.CreateDevice", 
+                    new { DeviceId = createdDevice.Id, UserId = userId, Role = userRole });
                     
                 return CreatedAtAction(nameof(GetDeviceById), new { id = createdDevice.Id }, new ApiResponse<DeviceDto>
                 {
@@ -147,7 +185,14 @@ namespace DeviceApi.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Cihaz oluşturulurken hata: UserId: {UserId}, Role: {Role}", userId, userRole);
+                // Log error
+                await _logService.LogErrorAsync(
+                    "Cihaz oluşturulurken hata", 
+                    "DevicesController.CreateDevice", 
+                    ex,
+                    userId,
+                    userRole);
+                
                 return BadRequest(new ApiResponse<object>
                 {
                     IsSuccess = false,

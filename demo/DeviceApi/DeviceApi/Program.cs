@@ -8,12 +8,20 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using JWTVerifyLibrary.Extensions;
 using RateLimitLibrary.Extensions;
+using LogLibrary.Extensions;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure logging for console only
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+
+// Add LogLibrary service with custom settings file
+var logLibrarySettings = new ConfigurationBuilder()
+    .AddJsonFile("LogLibrarySettings.json", optional: false, reloadOnChange: true)
+    .Build();
+builder.Services.AddLogLibrary(logLibrarySettings);
 
 // Controllers ve API davranış ayarları
 builder.Services.AddControllers(options =>

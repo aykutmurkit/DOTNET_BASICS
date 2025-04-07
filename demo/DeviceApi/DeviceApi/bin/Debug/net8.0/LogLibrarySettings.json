@@ -1,0 +1,16 @@
+{
+  "LogSettings": {
+    "ApplicationName": "DeviceApi",
+    "Environment": "Development",
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "DeviceApiLogs",
+    "CollectionName": "Logs",
+    "RetentionDays": 30,
+    "MaskSensitiveData": true,
+    "EnableAsyncLogging": true,
+    "EnableHttpLogging": true,
+    "EnableGraylog": true,
+    "GraylogHost": "localhost",
+    "GraylogPort": 12201
+  }
+} 

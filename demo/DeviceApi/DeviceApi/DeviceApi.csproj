@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -31,11 +31,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JWTVerifyLibrary\JWTVerifyLibrary.csproj" />
+    <ProjectReference Include="..\LogLibrary\LogLibrary.csproj" />
     <ProjectReference Include="..\RateLimitLibrary\RateLimitLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="JWTVerifyLibrarySettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="LogLibrarySettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
