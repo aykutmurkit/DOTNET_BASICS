@@ -21,6 +21,8 @@ namespace Entities.Dtos
         public FullScreenMessageDto FullScreenMessage { get; set; }
         // Kayan ekran mesaj
         public ScrollingScreenMessageDto ScrollingScreenMessage { get; set; }
+        // Bitmap ekran mesaj
+        public BitmapScreenMessageDto BitmapScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -58,6 +60,9 @@ namespace Entities.Dtos
         
         // Kayan ekran mesaj (opsiyonel)
         public CreateScrollingScreenMessageRequest ScrollingScreenMessage { get; set; }
+        
+        // Bitmap ekran mesaj (opsiyonel)
+        public CreateBitmapScreenMessageRequest BitmapScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -95,5 +100,8 @@ namespace Entities.Dtos
         
         // Kayan ekran mesaj (opsiyonel)
         public UpdateScrollingScreenMessageRequest ScrollingScreenMessage { get; set; }
+        
+        // Bitmap ekran mesaj (opsiyonel)
+        public UpdateBitmapScreenMessageRequest BitmapScreenMessage { get; set; }
     }
 } 

@@ -25,6 +25,7 @@ namespace Data.Repositories
                 .Include(d => d.Settings)
                 .Include(d => d.FullScreenMessage)
                 .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -37,6 +38,7 @@ namespace Data.Repositories
                 .Include(d => d.Settings)
                 .Include(d => d.FullScreenMessage)
                 .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
@@ -48,6 +50,7 @@ namespace Data.Repositories
                 .Include(d => d.Settings)
                 .Include(d => d.FullScreenMessage)
                 .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
                 .Where(d => d.PlatformId == platformId)
                 .ToListAsync();
         }
@@ -60,6 +63,7 @@ namespace Data.Repositories
                 .Include(d => d.Settings)
                 .Include(d => d.FullScreenMessage)
                 .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
                 .Where(d => d.Platform.StationId == stationId)
                 .ToListAsync();
         }

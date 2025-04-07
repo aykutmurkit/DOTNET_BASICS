@@ -416,6 +416,20 @@ namespace DeviceApi.Business.Services.Concrete
                 };
             }
             
+            // BitmapScreenMessage bilgilerini ekle
+            if (device.BitmapScreenMessage != null)
+            {
+                deviceDto.BitmapScreenMessage = new BitmapScreenMessageDto
+                {
+                    Id = device.BitmapScreenMessage.Id,
+                    TurkishBitmap = device.BitmapScreenMessage.TurkishBitmap,
+                    EnglishBitmap = device.BitmapScreenMessage.EnglishBitmap,
+                    CreatedAt = device.BitmapScreenMessage.CreatedAt,
+                    UpdatedAt = device.BitmapScreenMessage.UpdatedAt,
+                    DeviceId = device.BitmapScreenMessage.DeviceId
+                };
+            }
+            
             return deviceDto;
         }
     }

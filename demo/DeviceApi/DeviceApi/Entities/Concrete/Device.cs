@@ -40,5 +40,8 @@ namespace Entities.Concrete
         
         // One-to-One ilişki - ScrollingScreenMessage
         public ScrollingScreenMessage ScrollingScreenMessage { get; set; }
+        
+        // One-to-One ilişki - BitmapScreenMessage
+        public BitmapScreenMessage BitmapScreenMessage { get; set; }
     }
 } 

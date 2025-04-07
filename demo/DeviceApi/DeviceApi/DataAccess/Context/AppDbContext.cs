@@ -52,6 +52,11 @@ namespace Data.Context
         /// Kayan Ekran Mesajlar tablosu
         /// </summary>
         public DbSet<ScrollingScreenMessage> ScrollingScreenMessages { get; set; }
+        
+        /// <summary>
+        /// Bitmap Ekran Mesajlar tablosu
+        /// </summary>
+        public DbSet<BitmapScreenMessage> BitmapScreenMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
