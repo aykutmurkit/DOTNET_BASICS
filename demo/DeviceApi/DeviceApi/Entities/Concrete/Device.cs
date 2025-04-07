@@ -34,5 +34,8 @@ namespace Entities.Concrete
         
         // One-to-One ilişki - DeviceSettings
         public DeviceSettings Settings { get; set; }
+        
+        // One-to-One ilişki - FullScreenMessage
+        public FullScreenMessage FullScreenMessage { get; set; }
     }
 } 

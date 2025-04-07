@@ -17,6 +17,8 @@ namespace Entities.Dtos
         public string PlatformStationName { get; set; }
         // Cihaz ayarları
         public DeviceSettingsDto Settings { get; set; }
+        // Tam ekran mesaj
+        public FullScreenMessageDto FullScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -48,6 +50,9 @@ namespace Entities.Dtos
         // Cihaz ayarları
         [Required]
         public CreateDeviceSettingsRequest Settings { get; set; }
+        
+        // Tam ekran mesaj (opsiyonel)
+        public CreateFullScreenMessageRequest FullScreenMessage { get; set; }
     }
 
     /// <summary>
@@ -79,5 +84,8 @@ namespace Entities.Dtos
         // Cihaz ayarları
         [Required]
         public UpdateDeviceSettingsRequest Settings { get; set; }
+        
+        // Tam ekran mesaj (opsiyonel)
+        public UpdateFullScreenMessageRequest FullScreenMessage { get; set; }
     }
 } 

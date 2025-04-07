@@ -13,6 +13,7 @@ Seeder sınıfları aşağıdaki sıra ile çalışır:
 | 3 | PredictionSeeder | 5 | Tren tahmin verilerini oluşturur (Platformlara bağlı) |
 | 4 | DeviceSeeder | 5 | Cihaz verilerini oluşturur (Platformlara bağlı) |
 | 5 | DeviceSettingSeeder | 6 | Cihaz ayarlarını oluşturur (Cihazlara bağlı) |
+| 6 | FullScreenMessageSeeder | 40 | Tam ekran mesajları oluşturur (Cihazlara bağlı) |
 
 ## Seeder İşlem Akışı
 
@@ -55,16 +56,25 @@ Seeding işlemi şu adımlarla gerçekleşir:
 - DeviceSeeder'dan sonra çalışır çünkü ayarlar cihazlara bağlıdır
 - SQL komutu ile `IDENTITY_INSERT` kullanarak ID'leri belirler
 
+### 6. FullScreenMessageSeeder (Order: 40)
+- Tam ekran mesajları oluşturur
+- İlk 3 cihaz için farklı mesajlar ekler
+- DeviceSeeder'dan sonra çalışır çünkü mesajlar cihazlara bağlıdır
+- Farklı Türkçe ve İngilizce mesaj içerikleri ile örnek veriler oluşturur
+
 ## Veri İlişkileri
 
 ```
 İstasyon (Station) 1─┐
                      ├── Platform 1───┬─── Prediction 1 (3 tren bilgisi)
-                     │                ├─── Cihaz 1 ────── Cihaz Ayarları 1
-                     │                └─── Cihaz 2 ────── Cihaz Ayarları 2
+                     │                ├─── Cihaz 1 ────┬─── Cihaz Ayarları 1
+                     │                │                └─── Tam Ekran Mesaj 1
+                     │                └─── Cihaz 2 ────┬─── Cihaz Ayarları 2
+                     │                                 └─── Tam Ekran Mesaj 2
                      │
                      └── Platform 2───┬─── Prediction 2 (2 tren bilgisi)
-                                      ├─── Cihaz 3 ────── Cihaz Ayarları 3
+                                      ├─── Cihaz 3 ────┬─── Cihaz Ayarları 3
+                                      │                └─── Tam Ekran Mesaj 3
                                       └─── Cihaz 4 ────── Cihaz Ayarları 4
 ```
 

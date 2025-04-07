@@ -43,6 +43,11 @@ namespace Data.Context
         /// </summary>
         public DbSet<Prediction> Predictions { get; set; }
 
+        /// <summary>
+        /// Tam Ekran Mesajlar tablosu
+        /// </summary>
+        public DbSet<FullScreenMessage> FullScreenMessages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

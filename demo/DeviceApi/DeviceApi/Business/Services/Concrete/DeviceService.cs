@@ -14,6 +14,7 @@ namespace DeviceApi.Business.Services.Concrete
         private readonly IPlatformRepository _platformRepository;
         private readonly IStationRepository _stationRepository;
         private readonly IDeviceSettingsRepository _deviceSettingsRepository;
+        private readonly IFullScreenMessageRepository _fullScreenMessageRepository;
 
         /// <summary>
         /// DeviceService sınıfının constructor'ı
@@ -22,16 +23,19 @@ namespace DeviceApi.Business.Services.Concrete
         /// <param name="platformRepository">Platform veritabanı işlemleri için repository</param>
         /// <param name="stationRepository">İstasyon veritabanı işlemleri için repository</param>
         /// <param name="deviceSettingsRepository">Cihaz ayarları veritabanı işlemleri için repository</param>
+        /// <param name="fullScreenMessageRepository">Tam ekran mesaj veritabanı işlemleri için repository</param>
         public DeviceService(
             IDeviceRepository deviceRepository, 
             IPlatformRepository platformRepository, 
             IStationRepository stationRepository,
-            IDeviceSettingsRepository deviceSettingsRepository)
+            IDeviceSettingsRepository deviceSettingsRepository,
+            IFullScreenMessageRepository fullScreenMessageRepository)
         {
             _deviceRepository = deviceRepository;
             _platformRepository = platformRepository;
             _stationRepository = stationRepository;
             _deviceSettingsRepository = deviceSettingsRepository;
+            _fullScreenMessageRepository = fullScreenMessageRepository;
         }
 
         /// <summary>
@@ -174,6 +178,26 @@ namespace DeviceApi.Business.Services.Concrete
                 await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
             }
             
+            // FullScreenMessage kaydet
+            if (request.FullScreenMessage != null)
+            {
+                var fullScreenMessage = new FullScreenMessage
+                {
+                    TurkishLine1 = request.FullScreenMessage.TurkishLine1,
+                    TurkishLine2 = request.FullScreenMessage.TurkishLine2,
+                    TurkishLine3 = request.FullScreenMessage.TurkishLine3,
+                    TurkishLine4 = request.FullScreenMessage.TurkishLine4,
+                    EnglishLine1 = request.FullScreenMessage.EnglishLine1,
+                    EnglishLine2 = request.FullScreenMessage.EnglishLine2,
+                    EnglishLine3 = request.FullScreenMessage.EnglishLine3,
+                    EnglishLine4 = request.FullScreenMessage.EnglishLine4,
+                    CreatedAt = DateTime.Now,
+                    DeviceId = device.Id
+                };
+                
+                await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
+            }
+            
             // İlişkileri içeren device nesnesini çek
             var createdDevice = await _deviceRepository.GetDeviceByIdAsync(device.Id);
             return await MapToDeviceDtoAsync(createdDevice);
@@ -253,6 +277,47 @@ namespace DeviceApi.Business.Services.Concrete
                 }
             }
             
+            // FullScreenMessage güncelle
+            if (request.FullScreenMessage != null)
+            {
+                var fullScreenMessage = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(id);
+                
+                if (fullScreenMessage == null)
+                {
+                    // Mesaj yoksa yeni kayıt ekle
+                    fullScreenMessage = new FullScreenMessage
+                    {
+                        DeviceId = id,
+                        TurkishLine1 = request.FullScreenMessage.TurkishLine1,
+                        TurkishLine2 = request.FullScreenMessage.TurkishLine2,
+                        TurkishLine3 = request.FullScreenMessage.TurkishLine3,
+                        TurkishLine4 = request.FullScreenMessage.TurkishLine4,
+                        EnglishLine1 = request.FullScreenMessage.EnglishLine1,
+                        EnglishLine2 = request.FullScreenMessage.EnglishLine2,
+                        EnglishLine3 = request.FullScreenMessage.EnglishLine3,
+                        EnglishLine4 = request.FullScreenMessage.EnglishLine4,
+                        CreatedAt = DateTime.Now
+                    };
+                    
+                    await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
+                }
+                else
+                {
+                    // Mevcut mesajı güncelle
+                    fullScreenMessage.TurkishLine1 = request.FullScreenMessage.TurkishLine1;
+                    fullScreenMessage.TurkishLine2 = request.FullScreenMessage.TurkishLine2;
+                    fullScreenMessage.TurkishLine3 = request.FullScreenMessage.TurkishLine3;
+                    fullScreenMessage.TurkishLine4 = request.FullScreenMessage.TurkishLine4;
+                    fullScreenMessage.EnglishLine1 = request.FullScreenMessage.EnglishLine1;
+                    fullScreenMessage.EnglishLine2 = request.FullScreenMessage.EnglishLine2;
+                    fullScreenMessage.EnglishLine3 = request.FullScreenMessage.EnglishLine3;
+                    fullScreenMessage.EnglishLine4 = request.FullScreenMessage.EnglishLine4;
+                    fullScreenMessage.ModifiedAt = DateTime.Now;
+                    
+                    await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(fullScreenMessage);
+                }
+            }
+            
             // İlişkileri içeren device nesnesini çek
             var updatedDevice = await _deviceRepository.GetDeviceByIdAsync(id);
             return await MapToDeviceDtoAsync(updatedDevice);
@@ -301,20 +366,39 @@ namespace DeviceApi.Business.Services.Concrete
             };
             
             // DeviceSettings bilgilerini ekle
-            var deviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByDeviceIdAsync(device.Id);
-            if (deviceSettings != null)
+            if (device.Settings != null)
             {
                 deviceDto.Settings = new DeviceSettingsDto
                 {
-                    Id = deviceSettings.Id,
-                    ApnName = deviceSettings.ApnName,
-                    ApnUsername = deviceSettings.ApnUsername,
-                    ApnPassword = deviceSettings.ApnPassword,
-                    ServerIP = deviceSettings.ServerIP,
-                    TcpPort = deviceSettings.TcpPort,
-                    UdpPort = deviceSettings.UdpPort,
-                    FtpStatus = deviceSettings.FtpStatus,
-                    DeviceId = deviceSettings.DeviceId
+                    Id = device.Settings.Id,
+                    ApnName = device.Settings.ApnName,
+                    ApnUsername = device.Settings.ApnUsername,
+                    ApnPassword = device.Settings.ApnPassword,
+                    ServerIP = device.Settings.ServerIP,
+                    TcpPort = device.Settings.TcpPort,
+                    UdpPort = device.Settings.UdpPort,
+                    FtpStatus = device.Settings.FtpStatus,
+                    DeviceId = device.Settings.DeviceId
+                };
+            }
+            
+            // FullScreenMessage bilgilerini ekle
+            if (device.FullScreenMessage != null)
+            {
+                deviceDto.FullScreenMessage = new FullScreenMessageDto
+                {
+                    Id = device.FullScreenMessage.Id,
+                    TurkishLine1 = device.FullScreenMessage.TurkishLine1,
+                    TurkishLine2 = device.FullScreenMessage.TurkishLine2,
+                    TurkishLine3 = device.FullScreenMessage.TurkishLine3,
+                    TurkishLine4 = device.FullScreenMessage.TurkishLine4,
+                    EnglishLine1 = device.FullScreenMessage.EnglishLine1,
+                    EnglishLine2 = device.FullScreenMessage.EnglishLine2,
+                    EnglishLine3 = device.FullScreenMessage.EnglishLine3,
+                    EnglishLine4 = device.FullScreenMessage.EnglishLine4,
+                    CreatedAt = device.FullScreenMessage.CreatedAt,
+                    ModifiedAt = device.FullScreenMessage.ModifiedAt,
+                    DeviceId = device.FullScreenMessage.DeviceId
                 };
             }
             

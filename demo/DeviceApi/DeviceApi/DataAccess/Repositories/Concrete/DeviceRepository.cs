@@ -23,6 +23,7 @@ namespace Data.Repositories
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
                 .Include(d => d.Settings)
+                .Include(d => d.FullScreenMessage)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -33,6 +34,7 @@ namespace Data.Repositories
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
                 .Include(d => d.Settings)
+                .Include(d => d.FullScreenMessage)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
@@ -42,6 +44,7 @@ namespace Data.Repositories
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
                 .Include(d => d.Settings)
+                .Include(d => d.FullScreenMessage)
                 .Where(d => d.PlatformId == platformId)
                 .ToListAsync();
         }
@@ -52,6 +55,7 @@ namespace Data.Repositories
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
                 .Include(d => d.Settings)
+                .Include(d => d.FullScreenMessage)
                 .Where(d => d.Platform.StationId == stationId)
                 .ToListAsync();
         }
