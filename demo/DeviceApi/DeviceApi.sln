@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateLimitLibrary", "RateLim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLibrary", "LogLibrary\LogLibrary.csproj", "{42CFEA7A-995A-4FC4-9E1C-6895B52A3003}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPListenerLibrary", "TCPListenerLibrary\TCPListenerLibrary.csproj", "{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{42CFEA7A-995A-4FC4-9E1C-6895B52A3003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42CFEA7A-995A-4FC4-9E1C-6895B52A3003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42CFEA7A-995A-4FC4-9E1C-6895B52A3003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

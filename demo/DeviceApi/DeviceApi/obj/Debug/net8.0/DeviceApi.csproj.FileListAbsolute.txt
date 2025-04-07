@@ -623,3 +623,6 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrary.dll
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrary.pdb
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrarySettings.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerSettings.json
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerLibrary.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerLibrary.pdb

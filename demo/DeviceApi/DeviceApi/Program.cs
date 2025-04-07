@@ -10,6 +10,7 @@ using JWTVerifyLibrary.Extensions;
 using RateLimitLibrary.Extensions;
 using LogLibrary.Extensions;
 using Microsoft.Extensions.Configuration;
+using TCPListenerLibrary.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,6 +97,9 @@ builder.Services.AddSwaggerGen(c =>
 
 // DataAccess Layer servisleri
 builder.Services.AddDataAccessServices(builder.Configuration);
+
+// TCP Listener servisi ekle
+builder.Services.AddTcpListener(builder.Configuration);
 
 // Business Layer servisleri
 builder.Services.AddBusinessServices();

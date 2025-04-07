@@ -33,6 +33,7 @@
     <ProjectReference Include="..\JWTVerifyLibrary\JWTVerifyLibrary.csproj" />
     <ProjectReference Include="..\LogLibrary\LogLibrary.csproj" />
     <ProjectReference Include="..\RateLimitLibrary\RateLimitLibrary.csproj" />
+    <ProjectReference Include="..\TCPListenerLibrary\TCPListenerLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPListenerLibrary", "TCPListenerLibrary.csproj", "{770B54AF-79AD-2A1B-9959-EDF6AF4F27AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{770B54AF-79AD-2A1B-9959-EDF6AF4F27AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770B54AF-79AD-2A1B-9959-EDF6AF4F27AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770B54AF-79AD-2A1B-9959-EDF6AF4F27AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770B54AF-79AD-2A1B-9959-EDF6AF4F27AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24BB586F-0DB6-420B-9232-94664295E2E1}
+	EndGlobalSection
+EndGlobal
