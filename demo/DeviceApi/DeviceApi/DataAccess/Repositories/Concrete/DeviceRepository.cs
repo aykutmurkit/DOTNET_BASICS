@@ -22,6 +22,7 @@ namespace Data.Repositories
             return await _context.Devices
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -31,6 +32,7 @@ namespace Data.Repositories
             return await _context.Devices
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
@@ -39,6 +41,7 @@ namespace Data.Repositories
             return await _context.Devices
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
                 .Where(d => d.PlatformId == platformId)
                 .ToListAsync();
         }
@@ -48,6 +51,7 @@ namespace Data.Repositories
             return await _context.Devices
                 .Include(d => d.Platform)
                     .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
                 .Where(d => d.Platform.StationId == stationId)
                 .ToListAsync();
         }

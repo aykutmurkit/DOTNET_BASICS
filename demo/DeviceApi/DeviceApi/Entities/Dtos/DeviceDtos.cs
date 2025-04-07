@@ -15,6 +15,8 @@ namespace Entities.Dtos
         public double Longitude { get; set; }
         public int PlatformId { get; set; }
         public string PlatformStationName { get; set; }
+        // Cihaz ayarları
+        public DeviceSettingsDto Settings { get; set; }
     }
 
     /// <summary>
@@ -42,6 +44,10 @@ namespace Entities.Dtos
         
         [Required]
         public int PlatformId { get; set; }
+        
+        // Cihaz ayarları
+        [Required]
+        public CreateDeviceSettingsRequest Settings { get; set; }
     }
 
     /// <summary>
@@ -69,5 +75,9 @@ namespace Entities.Dtos
         
         [Required]
         public int PlatformId { get; set; }
+        
+        // Cihaz ayarları
+        [Required]
+        public UpdateDeviceSettingsRequest Settings { get; set; }
     }
 } 

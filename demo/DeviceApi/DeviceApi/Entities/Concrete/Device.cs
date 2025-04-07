@@ -31,5 +31,8 @@ namespace Entities.Concrete
         
         [ForeignKey("PlatformId")]
         public Platform Platform { get; set; }
+        
+        // One-to-One ilişki - DeviceSettings
+        public DeviceSettings Settings { get; set; }
     }
 } 

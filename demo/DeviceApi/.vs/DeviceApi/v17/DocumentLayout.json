@@ -1,12 +1,172 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\jwtverifylibrary\\jwtverifylibrary.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|solutionrelative:jwtverifylibrary\\jwtverifylibrary.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\jwtverifylibrary\\jwtverifylibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|solutionrelative:jwtverifylibrary\\jwtverifylibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\services\\concrete\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\services\\concrete\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\entities\\concrete\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\entities\\concrete\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\entities\\concrete\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\entities\\concrete\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\entities\\concrete\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\entities\\concrete\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}|TCPListenerLibrary\\TCPListenerLibrary.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\tcplistenerlibrary\\tcplistenerlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C6DEBADF-F73A-4B92-B8F9-24AED98B05CD}|TCPListenerLibrary\\TCPListenerLibrary.csproj|solutionrelative:tcplistenerlibrary\\tcplistenerlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JWTVerifyLibrary",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-07T08:24:32.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JWTVerifyLibrary",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-07T08:24:28.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:23:06.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:20:33.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeviceService.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
+              "RelativeToolTip": "DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwCsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:20:29.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Station.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Station.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Station.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Station.cs",
+              "RelativeToolTip": "DeviceApi\\Entities\\Concrete\\Station.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:05:46.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Platform.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Platform.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Platform.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Platform.cs",
+              "RelativeToolTip": "DeviceApi\\Entities\\Concrete\\Platform.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:05:44.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Device.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Device.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Device.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Device.cs",
+              "RelativeToolTip": "DeviceApi\\Entities\\Concrete\\Device.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:05:39.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TCPListenerLibrary",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
+              "RelativeDocumentMoniker": "TCPListenerLibrary\\TCPListenerLibrary.csproj",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
+              "RelativeToolTip": "TCPListenerLibrary\\TCPListenerLibrary.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-07T07:58:16.657Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

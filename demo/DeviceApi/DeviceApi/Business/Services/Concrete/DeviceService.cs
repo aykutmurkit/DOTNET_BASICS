@@ -6,27 +6,58 @@ using Entities.Dtos;
 namespace DeviceApi.Business.Services.Concrete
 {
     /// <summary>
-    /// Cihaz servisi implementasyonu
+    /// Cihaz işlemlerini yöneten servis sınıfı
     /// </summary>
     public class DeviceService : IDeviceService
     {
         private readonly IDeviceRepository _deviceRepository;
         private readonly IPlatformRepository _platformRepository;
         private readonly IStationRepository _stationRepository;
+        private readonly IDeviceSettingsRepository _deviceSettingsRepository;
 
-        public DeviceService(IDeviceRepository deviceRepository, IPlatformRepository platformRepository, IStationRepository stationRepository)
+        /// <summary>
+        /// DeviceService sınıfının constructor'ı
+        /// </summary>
+        /// <param name="deviceRepository">Cihaz veritabanı işlemleri için repository</param>
+        /// <param name="platformRepository">Platform veritabanı işlemleri için repository</param>
+        /// <param name="stationRepository">İstasyon veritabanı işlemleri için repository</param>
+        /// <param name="deviceSettingsRepository">Cihaz ayarları veritabanı işlemleri için repository</param>
+        public DeviceService(
+            IDeviceRepository deviceRepository, 
+            IPlatformRepository platformRepository, 
+            IStationRepository stationRepository,
+            IDeviceSettingsRepository deviceSettingsRepository)
         {
             _deviceRepository = deviceRepository;
             _platformRepository = platformRepository;
             _stationRepository = stationRepository;
+            _deviceSettingsRepository = deviceSettingsRepository;
         }
 
+        /// <summary>
+        /// Tüm cihazları getirir
+        /// </summary>
+        /// <returns>Cihaz listesi</returns>
         public async Task<List<DeviceDto>> GetAllDevicesAsync()
         {
             var devices = await _deviceRepository.GetAllDevicesAsync();
-            return devices.Select(MapToDeviceDto).ToList();
+            var deviceDtos = new List<DeviceDto>();
+            
+            foreach (var device in devices)
+            {
+                var deviceDto = await MapToDeviceDtoAsync(device);
+                deviceDtos.Add(deviceDto);
+            }
+            
+            return deviceDtos;
         }
 
+        /// <summary>
+        /// Belirtilen ID'ye sahip cihazı getirir
+        /// </summary>
+        /// <param name="id">Cihaz ID'si</param>
+        /// <returns>Cihaz bilgileri</returns>
+        /// <exception cref="Exception">Cihaz bulunamazsa fırlatılır</exception>
         public async Task<DeviceDto> GetDeviceByIdAsync(int id)
         {
             var device = await _deviceRepository.GetDeviceByIdAsync(id);
@@ -35,9 +66,15 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz bulunamadı.");
             }
 
-            return MapToDeviceDto(device);
+            return await MapToDeviceDtoAsync(device);
         }
         
+        /// <summary>
+        /// Belirtilen platforma ait tüm cihazları getirir
+        /// </summary>
+        /// <param name="platformId">Platform ID'si</param>
+        /// <returns>Platforma ait cihaz listesi</returns>
+        /// <exception cref="Exception">Platform bulunamazsa fırlatılır</exception>
         public async Task<List<DeviceDto>> GetDevicesByPlatformIdAsync(int platformId)
         {
             // Platform var mı kontrol et
@@ -48,9 +85,23 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             var devices = await _deviceRepository.GetDevicesByPlatformIdAsync(platformId);
-            return devices.Select(MapToDeviceDto).ToList();
+            var deviceDtos = new List<DeviceDto>();
+            
+            foreach (var device in devices)
+            {
+                var deviceDto = await MapToDeviceDtoAsync(device);
+                deviceDtos.Add(deviceDto);
+            }
+            
+            return deviceDtos;
         }
         
+        /// <summary>
+        /// Belirtilen istasyona ait tüm cihazları getirir
+        /// </summary>
+        /// <param name="stationId">İstasyon ID'si</param>
+        /// <returns>İstasyona ait cihaz listesi</returns>
+        /// <exception cref="Exception">İstasyon bulunamazsa fırlatılır</exception>
         public async Task<List<DeviceDto>> GetDevicesByStationIdAsync(int stationId)
         {
             // İstasyon var mı kontrol et
@@ -61,9 +112,23 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             var devices = await _deviceRepository.GetDevicesByStationIdAsync(stationId);
-            return devices.Select(MapToDeviceDto).ToList();
+            var deviceDtos = new List<DeviceDto>();
+            
+            foreach (var device in devices)
+            {
+                var deviceDto = await MapToDeviceDtoAsync(device);
+                deviceDtos.Add(deviceDto);
+            }
+            
+            return deviceDtos;
         }
 
+        /// <summary>
+        /// Yeni bir cihaz oluşturur
+        /// </summary>
+        /// <param name="request">Cihaz oluşturma isteği</param>
+        /// <returns>Oluşturulan cihaz bilgileri</returns>
+        /// <exception cref="Exception">Platform bulunamazsa veya IP/Port kombinasyonu kullanılıyorsa fırlatılır</exception>
         public async Task<DeviceDto> CreateDeviceAsync(CreateDeviceRequest request)
         {
             // Platform var mı kontrol et
@@ -91,11 +156,36 @@ namespace DeviceApi.Business.Services.Concrete
 
             await _deviceRepository.AddDeviceAsync(device);
             
+            // DeviceSettings kaydet
+            if (request.Settings != null)
+            {
+                var deviceSettings = new DeviceSettings
+                {
+                    ApnName = request.Settings.ApnName,
+                    ApnUsername = request.Settings.ApnUsername,
+                    ApnPassword = request.Settings.ApnPassword,
+                    ServerIP = request.Settings.ServerIP,
+                    TcpPort = request.Settings.TcpPort,
+                    UdpPort = request.Settings.UdpPort,
+                    FtpStatus = request.Settings.FtpStatus,
+                    DeviceId = device.Id
+                };
+                
+                await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
+            }
+            
             // İlişkileri içeren device nesnesini çek
             var createdDevice = await _deviceRepository.GetDeviceByIdAsync(device.Id);
-            return MapToDeviceDto(createdDevice);
+            return await MapToDeviceDtoAsync(createdDevice);
         }
 
+        /// <summary>
+        /// Mevcut bir cihazı günceller
+        /// </summary>
+        /// <param name="id">Güncellenecek cihazın ID'si</param>
+        /// <param name="request">Cihaz güncelleme isteği</param>
+        /// <returns>Güncellenen cihaz bilgileri</returns>
+        /// <exception cref="Exception">Cihaz veya platform bulunamazsa veya IP/Port kombinasyonu kullanılıyorsa fırlatılır</exception>
         public async Task<DeviceDto> UpdateDeviceAsync(int id, UpdateDeviceRequest request)
         {
             var device = await _deviceRepository.GetDeviceByIdAsync(id);
@@ -126,11 +216,53 @@ namespace DeviceApi.Business.Services.Concrete
 
             await _deviceRepository.UpdateDeviceAsync(device);
             
+            // DeviceSettings güncelle
+            if (request.Settings != null)
+            {
+                var deviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByDeviceIdAsync(id);
+                
+                if (deviceSettings == null)
+                {
+                    // Ayarlar yoksa yeni kayıt ekle
+                    deviceSettings = new DeviceSettings
+                    {
+                        DeviceId = id,
+                        ApnName = request.Settings.ApnName,
+                        ApnUsername = request.Settings.ApnUsername,
+                        ApnPassword = request.Settings.ApnPassword,
+                        ServerIP = request.Settings.ServerIP,
+                        TcpPort = request.Settings.TcpPort,
+                        UdpPort = request.Settings.UdpPort,
+                        FtpStatus = request.Settings.FtpStatus
+                    };
+                    
+                    await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
+                }
+                else
+                {
+                    // Mevcut ayarları güncelle
+                    deviceSettings.ApnName = request.Settings.ApnName;
+                    deviceSettings.ApnUsername = request.Settings.ApnUsername;
+                    deviceSettings.ApnPassword = request.Settings.ApnPassword;
+                    deviceSettings.ServerIP = request.Settings.ServerIP;
+                    deviceSettings.TcpPort = request.Settings.TcpPort;
+                    deviceSettings.UdpPort = request.Settings.UdpPort;
+                    deviceSettings.FtpStatus = request.Settings.FtpStatus;
+                    
+                    await _deviceSettingsRepository.UpdateDeviceSettingsAsync(deviceSettings);
+                }
+            }
+            
             // İlişkileri içeren device nesnesini çek
             var updatedDevice = await _deviceRepository.GetDeviceByIdAsync(id);
-            return MapToDeviceDto(updatedDevice);
+            return await MapToDeviceDtoAsync(updatedDevice);
         }
 
+        /// <summary>
+        /// Belirtilen ID'ye sahip cihazı siler
+        /// </summary>
+        /// <param name="id">Silinecek cihazın ID'si</param>
+        /// <exception cref="Exception">Cihaz bulunamazsa fırlatılır</exception>
         public async Task DeleteDeviceAsync(int id)
         {
             var device = await _deviceRepository.GetDeviceByIdAsync(id);
@@ -142,7 +274,12 @@ namespace DeviceApi.Business.Services.Concrete
             await _deviceRepository.DeleteDeviceAsync(id);
         }
 
-        private DeviceDto MapToDeviceDto(Device device)
+        /// <summary>
+        /// Device nesnesini DeviceDto'ya dönüştürür
+        /// </summary>
+        /// <param name="device">Dönüştürülecek Device nesnesi</param>
+        /// <returns>Dönüştürülmüş DeviceDto nesnesi</returns>
+        private async Task<DeviceDto> MapToDeviceDtoAsync(Device device)
         {
             string stationName = "Bilinmiyor";
             
@@ -151,7 +288,7 @@ namespace DeviceApi.Business.Services.Concrete
                 stationName = device.Platform.Station.Name;
             }
             
-            return new DeviceDto
+            var deviceDto = new DeviceDto
             {
                 Id = device.Id,
                 Name = device.Name,
@@ -162,6 +299,26 @@ namespace DeviceApi.Business.Services.Concrete
                 PlatformId = device.PlatformId,
                 PlatformStationName = stationName
             };
+            
+            // DeviceSettings bilgilerini ekle
+            var deviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByDeviceIdAsync(device.Id);
+            if (deviceSettings != null)
+            {
+                deviceDto.Settings = new DeviceSettingsDto
+                {
+                    Id = deviceSettings.Id,
+                    ApnName = deviceSettings.ApnName,
+                    ApnUsername = deviceSettings.ApnUsername,
+                    ApnPassword = deviceSettings.ApnPassword,
+                    ServerIP = deviceSettings.ServerIP,
+                    TcpPort = deviceSettings.TcpPort,
+                    UdpPort = deviceSettings.UdpPort,
+                    FtpStatus = deviceSettings.FtpStatus,
+                    DeviceId = deviceSettings.DeviceId
+                };
+            }
+            
+            return deviceDto;
         }
     }
 } 

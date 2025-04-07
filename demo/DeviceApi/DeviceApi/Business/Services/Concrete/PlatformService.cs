@@ -128,7 +128,28 @@ namespace DeviceApi.Business.Services.Concrete
                     Longitude = d.Longitude,
                     PlatformId = d.PlatformId,
                     PlatformStationName = platform.Station?.Name ?? "Bilinmiyor"
-                }).ToList() ?? new List<DeviceDto>()
+                }).ToList() ?? new List<DeviceDto>(),
+                Prediction = platform.Prediction != null ? new PredictionDto
+                {
+                    Id = platform.Prediction.Id,
+                    StationName = platform.Prediction.StationName,
+                    Direction = platform.Prediction.Direction,
+                    Train1 = platform.Prediction.Train1,
+                    Line1 = platform.Prediction.Line1,
+                    Destination1 = platform.Prediction.Destination1,
+                    Time1 = platform.Prediction.Time1,
+                    Train2 = platform.Prediction.Train2,
+                    Line2 = platform.Prediction.Line2,
+                    Destination2 = platform.Prediction.Destination2,
+                    Time2 = platform.Prediction.Time2,
+                    Train3 = platform.Prediction.Train3,
+                    Line3 = platform.Prediction.Line3,
+                    Destination3 = platform.Prediction.Destination3,
+                    Time3 = platform.Prediction.Time3,
+                    ForecastGenerationAt = platform.Prediction.ForecastGenerationAt,
+                    CreatedAt = platform.Prediction.CreatedAt,
+                    PlatformId = platform.Prediction.PlatformId
+                } : null
             };
         }
     }

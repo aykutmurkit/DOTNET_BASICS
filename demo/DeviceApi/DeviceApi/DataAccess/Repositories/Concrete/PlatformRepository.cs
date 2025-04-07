@@ -22,6 +22,7 @@ namespace Data.Repositories
             return await _context.Platforms
                 .Include(p => p.Station)
                 .Include(p => p.Devices)
+                .Include(p => p.Prediction)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -31,18 +32,22 @@ namespace Data.Repositories
             return await _context.Platforms
                 .Include(p => p.Station)
                 .Include(p => p.Devices)
+                .Include(p => p.Prediction)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Platform> GetPlatformByIdAsync(int id)
         {
-            return await _context.Platforms.FindAsync(id);
+            return await _context.Platforms
+                .Include(p => p.Prediction)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<List<Platform>> GetPlatformsByStationIdAsync(int stationId)
         {
             return await _context.Platforms
                 .Include(p => p.Devices)
+                .Include(p => p.Prediction)
                 .Where(p => p.StationId == stationId)
                 .ToListAsync();
         }

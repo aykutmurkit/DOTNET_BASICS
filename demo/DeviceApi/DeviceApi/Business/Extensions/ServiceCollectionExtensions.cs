@@ -16,6 +16,7 @@ namespace DeviceApi.Business.Extensions
             services.AddScoped<IStationService, StationService>();
             services.AddScoped<IPlatformService, PlatformService>();
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IDeviceSettingsService, DeviceSettingsService>();
             
             // Utility servisleri
             services.AddScoped<EmailService>();

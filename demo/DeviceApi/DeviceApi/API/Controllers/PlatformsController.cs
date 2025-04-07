@@ -1,8 +1,10 @@
 using Core.Utilities;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Dtos;
+using LogLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace DeviceApi.API.Controllers
 {
@@ -12,50 +14,69 @@ namespace DeviceApi.API.Controllers
     public class PlatformsController : ControllerBase
     {
         private readonly IPlatformService _platformService;
+        private readonly ILogService _logService;
+        private readonly ILogger<PlatformsController> _logger;
 
-        public PlatformsController(IPlatformService platformService)
+        public PlatformsController(
+            IPlatformService platformService,
+            ILogService logService,
+            ILogger<PlatformsController> logger)
         {
             _platformService = platformService;
+            _logService = logService;
+            _logger = logger;
         }
 
         /// <summary>
-        /// Tüm platformları getirir
+        /// Tüm platformları cihazları ve tahminleri ile birlikte getirir
         /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(ApiResponse<List<PlatformDto>>), 200)]
         public async Task<IActionResult> GetAllPlatforms()
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "GetAllPlatforms çağrıldı", 
+                "PlatformsController.GetAllPlatforms", 
+                new { UserId = userId, Role = userRole });
+            
             var platforms = await _platformService.GetAllPlatformsAsync();
-            return Ok(new ApiResponse<List<PlatformDto>>
-            {
-                Data = platforms,
-                Message = "Platformlar başarıyla getirildi"
-            });
+            
+            return Ok(ApiResponse<List<PlatformDto>>.Success(platforms, "Platformlar başarıyla getirildi"));
         }
 
         /// <summary>
-        /// ID'ye göre platform getirir
+        /// ID'ye göre platform getirir, cihazları ve tahmini ile birlikte
         /// </summary>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ApiResponse<PlatformDto>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
         public async Task<IActionResult> GetPlatformById(int id)
         {
-            var platform = await _platformService.GetPlatformByIdAsync(id);
-            if (platform == null)
-            {
-                return NotFound(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = "Platform bulunamadı"
-                });
-            }
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
             
-            return Ok(new ApiResponse<PlatformDto>
+            await _logService.LogInfoAsync(
+                "GetPlatformById çağrıldı", 
+                "PlatformsController.GetPlatformById", 
+                new { PlatformId = id, UserId = userId, Role = userRole });
+            
+            try 
             {
-                Data = platform,
-                Message = "Platform başarıyla getirildi"
-            });
+                var platform = await _platformService.GetPlatformByIdAsync(id);
+                return Ok(ApiResponse<PlatformDto>.Success(platform, "Platform başarıyla getirildi"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    "Platform bulunamadı", 
+                    "PlatformsController.GetPlatformById", 
+                    new { PlatformId = id, Error = ex.Message, UserId = userId, Role = userRole });
+                
+                return NotFound(ApiResponse<object>.NotFound("Platform bulunamadı"));
+            }
         }
 
         /// <summary>
@@ -65,12 +86,28 @@ namespace DeviceApi.API.Controllers
         [ProducesResponseType(typeof(ApiResponse<List<PlatformDto>>), 200)]
         public async Task<IActionResult> GetPlatformsByStationId(int stationId)
         {
-            var platforms = await _platformService.GetPlatformsByStationIdAsync(stationId);
-            return Ok(new ApiResponse<List<PlatformDto>>
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "GetPlatformsByStationId çağrıldı", 
+                "PlatformsController.GetPlatformsByStationId", 
+                new { StationId = stationId, UserId = userId, Role = userRole });
+            
+            try 
             {
-                Data = platforms,
-                Message = $"İstasyon (ID: {stationId}) platformları başarıyla getirildi"
-            });
+                var platforms = await _platformService.GetPlatformsByStationIdAsync(stationId);
+                return Ok(ApiResponse<List<PlatformDto>>.Success(platforms, $"İstasyon (ID: {stationId}) platformları başarıyla getirildi"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    "İstasyon bulunamadı", 
+                    "PlatformsController.GetPlatformsByStationId", 
+                    new { StationId = stationId, Error = ex.Message, UserId = userId, Role = userRole });
+                
+                return NotFound(ApiResponse<object>.NotFound("İstasyon bulunamadı"));
+            }
         }
 
         /// <summary>
@@ -82,31 +119,49 @@ namespace DeviceApi.API.Controllers
         [ProducesResponseType(typeof(ApiResponse<>), 400)]
         public async Task<IActionResult> CreatePlatform([FromBody] CreatePlatformRequest request)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "CreatePlatform çağrıldı", 
+                "PlatformsController.CreatePlatform", 
+                new { UserId = userId, Role = userRole });
+            
             if (!ModelState.IsValid)
             {
-                return BadRequest(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = "Geçersiz veri"
-                });
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                );
+                
+                await _logService.LogWarningAsync(
+                    "Geçersiz model durumu", 
+                    "PlatformsController.CreatePlatform", 
+                    new { Errors = errors, UserId = userId, Role = userRole });
+                
+                return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
 
             try
             {
                 var createdPlatform = await _platformService.CreatePlatformAsync(request);
-                return CreatedAtAction(nameof(GetPlatformById), new { id = createdPlatform.Id }, new ApiResponse<PlatformDto>
-                {
-                    Data = createdPlatform,
-                    Message = "Platform başarıyla oluşturuldu"
-                });
+                
+                await _logService.LogInfoAsync(
+                    "Platform oluşturuldu", 
+                    "PlatformsController.CreatePlatform", 
+                    new { PlatformId = createdPlatform.Id, UserId = userId, Role = userRole });
+                
+                var response = ApiResponse<PlatformDto>.Created(createdPlatform, "Platform başarıyla oluşturuldu");
+                return CreatedAtAction(nameof(GetPlatformById), new { id = createdPlatform.Id }, response);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = ex.Message
-                });
+                await _logService.LogWarningAsync(
+                    "Platform oluşturulamadı", 
+                    "PlatformsController.CreatePlatform", 
+                    new { Error = ex.Message, UserId = userId, Role = userRole });
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
         }
 
@@ -120,40 +175,53 @@ namespace DeviceApi.API.Controllers
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
         public async Task<IActionResult> UpdatePlatform(int id, [FromBody] UpdatePlatformRequest request)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "UpdatePlatform çağrıldı", 
+                "PlatformsController.UpdatePlatform", 
+                new { PlatformId = id, UserId = userId, Role = userRole });
+            
             if (!ModelState.IsValid)
             {
-                return BadRequest(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = "Geçersiz veri"
-                });
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                );
+                
+                await _logService.LogWarningAsync(
+                    "Geçersiz model durumu", 
+                    "PlatformsController.UpdatePlatform", 
+                    new { PlatformId = id, Errors = errors, UserId = userId, Role = userRole });
+                
+                return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
 
             try
             {
                 var updatedPlatform = await _platformService.UpdatePlatformAsync(id, request);
-                return Ok(new ApiResponse<PlatformDto>
-                {
-                    Data = updatedPlatform,
-                    Message = "Platform başarıyla güncellendi"
-                });
+                
+                await _logService.LogInfoAsync(
+                    "Platform güncellendi", 
+                    "PlatformsController.UpdatePlatform", 
+                    new { PlatformId = id, UserId = userId, Role = userRole });
+                
+                return Ok(ApiResponse<PlatformDto>.Success(updatedPlatform, "Platform başarıyla güncellendi"));
             }
             catch (Exception ex)
             {
+                await _logService.LogWarningAsync(
+                    "Platform güncellenemedi", 
+                    "PlatformsController.UpdatePlatform", 
+                    new { PlatformId = id, Error = ex.Message, UserId = userId, Role = userRole });
+                
                 if (ex.Message.Contains("bulunamadı"))
                 {
-                    return NotFound(new ApiResponse<object>
-                    {
-                        IsSuccess = false,
-                        Message = ex.Message
-                    });
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
                 }
                 
-                return BadRequest(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = ex.Message
-                });
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
         }
 
@@ -166,30 +234,38 @@ namespace DeviceApi.API.Controllers
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
         public async Task<IActionResult> DeletePlatform(int id)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "DeletePlatform çağrıldı", 
+                "PlatformsController.DeletePlatform", 
+                new { PlatformId = id, UserId = userId, Role = userRole });
+            
             try
             {
                 await _platformService.DeletePlatformAsync(id);
-                return Ok(new ApiResponse<object>
-                {
-                    Message = "Platform başarıyla silindi"
-                });
+                
+                await _logService.LogInfoAsync(
+                    "Platform silindi", 
+                    "PlatformsController.DeletePlatform", 
+                    new { PlatformId = id, UserId = userId, Role = userRole });
+                
+                return Ok(ApiResponse<object>.NoContent("Platform başarıyla silindi"));
             }
             catch (Exception ex)
             {
+                await _logService.LogWarningAsync(
+                    "Platform silinemedi", 
+                    "PlatformsController.DeletePlatform", 
+                    new { PlatformId = id, Error = ex.Message, UserId = userId, Role = userRole });
+                
                 if (ex.Message.Contains("bulunamadı"))
                 {
-                    return NotFound(new ApiResponse<object>
-                    {
-                        IsSuccess = false,
-                        Message = ex.Message
-                    });
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
                 }
                 
-                return BadRequest(new ApiResponse<object>
-                {
-                    IsSuccess = false,
-                    Message = ex.Message
-                });
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
         }
     }

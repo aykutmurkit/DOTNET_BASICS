@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © İsbak 2025")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Advanced logging library with MongoDB integration")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3434bd88d662f32dda115e36663c8e1f1b73c210")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8efc7a07b02b64536437292b3ce36cd865923362")]
 [assembly: System.Reflection.AssemblyProductAttribute("LogLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LogLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

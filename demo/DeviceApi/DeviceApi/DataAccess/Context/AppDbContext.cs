@@ -33,6 +33,16 @@ namespace Data.Context
         /// </summary>
         public DbSet<Device> Devices { get; set; }
 
+        /// <summary>
+        /// Cihaz Ayarları tablosu
+        /// </summary>
+        public DbSet<DeviceSettings> DeviceSettings { get; set; }
+
+        /// <summary>
+        /// Tren Tahminleri tablosu
+        /// </summary>
+        public DbSet<Prediction> Predictions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

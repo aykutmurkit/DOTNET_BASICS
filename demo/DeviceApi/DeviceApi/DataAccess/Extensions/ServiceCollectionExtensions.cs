@@ -26,6 +26,10 @@ namespace DeviceApi.DataAccess.Extensions
             services.AddScoped<IStationRepository, StationRepository>();
             services.AddScoped<IPlatformRepository, PlatformRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();
+            services.AddScoped<IDeviceSettingsRepository, DeviceSettingsRepository>();
+            services.AddScoped<IPredictionRepository, PredictionRepository>();
+
+       
 
             // Seeding servisleri
             services.AddScoped<DatabaseSeeder>();

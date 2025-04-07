@@ -13,6 +13,7 @@ namespace Entities.Dtos
         public int StationId { get; set; }
         public string StationName { get; set; }
         public List<DeviceDto> Devices { get; set; }
+        public PredictionDto Prediction { get; set; }
     }
 
     /// <summary>

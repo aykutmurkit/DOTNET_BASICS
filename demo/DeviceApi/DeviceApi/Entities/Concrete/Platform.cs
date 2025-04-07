@@ -23,5 +23,8 @@ namespace Entities.Concrete
         
         // Device ilişkisi - One-to-Many
         public ICollection<Device> Devices { get; set; }
+        
+        // Prediction ilişkisi - One-to-One
+        public Prediction Prediction { get; set; }
     }
 } 
