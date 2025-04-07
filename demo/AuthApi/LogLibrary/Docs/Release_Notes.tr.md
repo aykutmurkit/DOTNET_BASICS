@@ -1,6 +1,6 @@
 # LogLibrary Sürüm Notları
 
-## Versiyon 1.0.0 (Ekim 2023)
+## Versiyon 1.0.0 (Nisan 2025)
 
 **Yazar:** AR-GE Mühendisi Aykut Mürkit, İsbak
 
@@ -34,4 +34,4 @@
 
 ---
 
-© İsbak, 2023. Tüm hakları saklıdır. 
+© İsbak, 2025. Tüm hakları saklıdır. 

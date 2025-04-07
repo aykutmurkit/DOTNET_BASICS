@@ -141,4 +141,4 @@ LogLibrary is designed to be extensible:
 
 ---
 
-© İsbak, 2023. All rights reserved. 
+© İsbak, 2025. All rights reserved. 

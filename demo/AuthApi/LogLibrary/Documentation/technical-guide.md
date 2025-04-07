@@ -159,7 +159,7 @@ LogLibrary, MongoDB'de aşağıdaki şemayı kullanır:
 ```javascript
 {
   "_id" : ObjectId("..."),
-  "timestamp" : ISODate("2023-05-01T10:15:30Z"),
+  "timestamp" : ISODate("2025-05-01T10:15:30Z"),
   "level" : "Info",
   "message" : "Kullanıcı giriş yaptı",
   "source" : "AuthController.Login",

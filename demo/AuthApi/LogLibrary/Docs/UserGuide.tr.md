@@ -145,4 +145,4 @@ Performans optimizasyonu için:
 
 ---
 
-© İsbak, 2023. Tüm hakları saklıdır. 
+© İsbak, 2025. Tüm hakları saklıdır. 
