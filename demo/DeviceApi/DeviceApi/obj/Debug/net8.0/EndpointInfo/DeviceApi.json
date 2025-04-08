@@ -4317,7 +4317,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "updatedAt": {
+          "forecastedAt": {
             "type": "string",
             "format": "date-time",
             "nullable": true

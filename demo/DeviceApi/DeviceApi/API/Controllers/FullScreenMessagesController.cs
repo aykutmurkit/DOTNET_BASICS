@@ -1,6 +1,5 @@
 using Core.Utilities;
-using Data.Interfaces;
-using Entities.Concrete;
+using DeviceApi.Business.Services.Interfaces;
 using Entities.Dtos;
 using LogLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -14,19 +13,16 @@ namespace DeviceApi.API.Controllers
     [Authorize]
     public class FullScreenMessagesController : ControllerBase
     {
-        private readonly IFullScreenMessageRepository _fullScreenMessageRepository;
-        private readonly IDeviceRepository _deviceRepository;
+        private readonly IFullScreenMessageService _fullScreenMessageService;
         private readonly ILogger<FullScreenMessagesController> _logger;
         private readonly ILogService _logService;
 
         public FullScreenMessagesController(
-            IFullScreenMessageRepository fullScreenMessageRepository,
-            IDeviceRepository deviceRepository,
+            IFullScreenMessageService fullScreenMessageService,
             ILogger<FullScreenMessagesController> logger,
             ILogService logService)
         {
-            _fullScreenMessageRepository = fullScreenMessageRepository;
-            _deviceRepository = deviceRepository;
+            _fullScreenMessageService = fullScreenMessageService;
             _logger = logger;
             _logService = logService;
         }
@@ -46,10 +42,9 @@ namespace DeviceApi.API.Controllers
                 "FullScreenMessagesController.GetAllFullScreenMessages", 
                 new { UserId = userId, Role = userRole });
             
-            var messages = await _fullScreenMessageRepository.GetAllFullScreenMessagesAsync();
-            var messageDtos = messages.Select(MapToFullScreenMessageDto).ToList();
+            var messages = await _fullScreenMessageService.GetAllFullScreenMessagesAsync();
             
-            return Ok(ApiResponse<List<FullScreenMessageDto>>.Success(messageDtos, "Tam ekran mesajlar başarıyla getirildi"));
+            return Ok(ApiResponse<List<FullScreenMessageDto>>.Success(messages, "Tam ekran mesajlar başarıyla getirildi"));
         }
 
         /// <summary>
@@ -68,19 +63,20 @@ namespace DeviceApi.API.Controllers
                 "FullScreenMessagesController.GetFullScreenMessageById", 
                 new { MessageId = id, UserId = userId, Role = userRole });
             
-            var message = await _fullScreenMessageRepository.GetFullScreenMessageByIdAsync(id);
-            if (message == null)
+            try
+            {
+                var message = await _fullScreenMessageService.GetFullScreenMessageByIdAsync(id);
+                return Ok(ApiResponse<FullScreenMessageDto>.Success(message, "Tam ekran mesaj başarıyla getirildi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
                     "Tam ekran mesaj bulunamadı", 
                     "FullScreenMessagesController.GetFullScreenMessageById", 
                     new { MessageId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tam ekran mesaj bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            var messageDto = MapToFullScreenMessageDto(message);
-            return Ok(ApiResponse<FullScreenMessageDto>.Success(messageDto, "Tam ekran mesaj başarıyla getirildi"));
         }
 
         /// <summary>
@@ -99,31 +95,20 @@ namespace DeviceApi.API.Controllers
                 "FullScreenMessagesController.GetFullScreenMessageByDeviceId", 
                 new { DeviceId = deviceId, UserId = userId, Role = userRole });
             
-            // Önce cihazın var olduğunu kontrol et
-            var device = await _deviceRepository.GetDeviceByIdAsync(deviceId);
-            if (device == null)
+            try
+            {
+                var message = await _fullScreenMessageService.GetFullScreenMessageByDeviceIdAsync(deviceId);
+                return Ok(ApiResponse<FullScreenMessageDto>.Success(message, "Tam ekran mesaj başarıyla getirildi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Cihaz bulunamadı", 
+                    ex.Message, 
                     "FullScreenMessagesController.GetFullScreenMessageByDeviceId", 
                     new { DeviceId = deviceId, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Cihaz bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            var message = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(deviceId);
-            if (message == null)
-            {
-                await _logService.LogWarningAsync(
-                    "Cihaz için tam ekran mesaj bulunamadı", 
-                    "FullScreenMessagesController.GetFullScreenMessageByDeviceId", 
-                    new { DeviceId = deviceId, UserId = userId, Role = userRole });
-                
-                return NotFound(ApiResponse<object>.NotFound("Cihaz için tam ekran mesaj bulunamadı"));
-            }
-            
-            var messageDto = MapToFullScreenMessageDto(message);
-            return Ok(ApiResponse<FullScreenMessageDto>.Success(messageDto, "Tam ekran mesaj başarıyla getirildi"));
         }
 
         /// <summary>
@@ -159,56 +144,27 @@ namespace DeviceApi.API.Controllers
                 return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
             
-            // Cihaz var mı kontrol et
-            var device = await _deviceRepository.GetDeviceByIdAsync(deviceId);
-            if (device == null)
+            try
+            {
+                var createdMessage = await _fullScreenMessageService.CreateFullScreenMessageAsync(deviceId, request);
+                
+                var response = ApiResponse<FullScreenMessageDto>.Created(createdMessage, "Tam ekran mesaj başarıyla oluşturuldu");
+                return CreatedAtAction(nameof(GetFullScreenMessageById), new { id = createdMessage.Id }, response);
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Cihaz bulunamadı", 
+                    ex.Message, 
                     "FullScreenMessagesController.CreateFullScreenMessage", 
                     new { DeviceId = deviceId, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Cihaz bulunamadı"));
-            }
-            
-            // Cihaz için zaten bir mesaj var mı kontrol et
-            var existingMessage = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(deviceId);
-            if (existingMessage != null)
-            {
-                await _logService.LogWarningAsync(
-                    "Cihaz için zaten bir tam ekran mesaj mevcut", 
-                    "FullScreenMessagesController.CreateFullScreenMessage", 
-                    new { DeviceId = deviceId, ExistingMessageId = existingMessage.Id, UserId = userId, Role = userRole });
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
                 
-                return BadRequest(ApiResponse<object>.Error("Bu cihaz için zaten bir tam ekran mesaj mevcut. Güncelleme yapabilirsiniz."));
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
-            
-            // Yeni mesaj oluştur
-            var message = new FullScreenMessage
-            {
-                TurkishLine1 = request.TurkishLine1,
-                TurkishLine2 = request.TurkishLine2,
-                TurkishLine3 = request.TurkishLine3,
-                TurkishLine4 = request.TurkishLine4,
-                EnglishLine1 = request.EnglishLine1,
-                EnglishLine2 = request.EnglishLine2,
-                EnglishLine3 = request.EnglishLine3,
-                EnglishLine4 = request.EnglishLine4,
-                CreatedAt = DateTime.Now,
-                DeviceId = deviceId
-            };
-            
-            await _fullScreenMessageRepository.AddFullScreenMessageAsync(message);
-            
-            await _logService.LogInfoAsync(
-                "Tam ekran mesaj oluşturuldu", 
-                "FullScreenMessagesController.CreateFullScreenMessage", 
-                new { MessageId = message.Id, DeviceId = deviceId, UserId = userId, Role = userRole });
-            
-            var messageDto = MapToFullScreenMessageDto(message);
-            var response = ApiResponse<FullScreenMessageDto>.Created(messageDto, "Tam ekran mesaj başarıyla oluşturuldu");
-            
-            return CreatedAtAction(nameof(GetFullScreenMessageById), new { id = message.Id }, response);
         }
 
         /// <summary>
@@ -244,45 +200,32 @@ namespace DeviceApi.API.Controllers
                 return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
             
-            // Mesaj var mı kontrol et
-            var existingMessage = await _fullScreenMessageRepository.GetFullScreenMessageByIdAsync(id);
-            if (existingMessage == null)
+            try
+            {
+                var updatedMessage = await _fullScreenMessageService.UpdateFullScreenMessageAsync(id, request);
+                return Ok(ApiResponse<FullScreenMessageDto>.Success(updatedMessage, "Tam ekran mesaj başarıyla güncellendi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Tam ekran mesaj bulunamadı", 
+                    ex.Message, 
                     "FullScreenMessagesController.UpdateFullScreenMessage", 
                     new { MessageId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tam ekran mesaj bulunamadı"));
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
-            
-            // Mesajı güncelle
-            existingMessage.TurkishLine1 = request.TurkishLine1;
-            existingMessage.TurkishLine2 = request.TurkishLine2;
-            existingMessage.TurkishLine3 = request.TurkishLine3;
-            existingMessage.TurkishLine4 = request.TurkishLine4;
-            existingMessage.EnglishLine1 = request.EnglishLine1;
-            existingMessage.EnglishLine2 = request.EnglishLine2;
-            existingMessage.EnglishLine3 = request.EnglishLine3;
-            existingMessage.EnglishLine4 = request.EnglishLine4;
-            existingMessage.ModifiedAt = DateTime.Now;
-            
-            await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(existingMessage);
-            
-            await _logService.LogInfoAsync(
-                "Tam ekran mesaj güncellendi", 
-                "FullScreenMessagesController.UpdateFullScreenMessage", 
-                new { MessageId = id, UserId = userId, Role = userRole });
-            
-            var messageDto = MapToFullScreenMessageDto(existingMessage);
-            return Ok(ApiResponse<FullScreenMessageDto>.Success(messageDto, "Tam ekran mesaj başarıyla güncellendi"));
         }
 
         /// <summary>
-        /// Bir tam ekran mesajı siler
+        /// Tam ekran mesaj siler
         /// </summary>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
         public async Task<IActionResult> DeleteFullScreenMessage(int id)
@@ -295,47 +238,20 @@ namespace DeviceApi.API.Controllers
                 "FullScreenMessagesController.DeleteFullScreenMessage", 
                 new { MessageId = id, UserId = userId, Role = userRole });
             
-            var message = await _fullScreenMessageRepository.GetFullScreenMessageByIdAsync(id);
-            if (message == null)
+            try
+            {
+                await _fullScreenMessageService.DeleteFullScreenMessageAsync(id);
+                return Ok(ApiResponse<object>.Success("Tam ekran mesaj başarıyla silindi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Tam ekran mesaj bulunamadı", 
+                    ex.Message, 
                     "FullScreenMessagesController.DeleteFullScreenMessage", 
                     new { MessageId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tam ekran mesaj bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            await _fullScreenMessageRepository.DeleteFullScreenMessageAsync(id);
-            
-            await _logService.LogInfoAsync(
-                "Tam ekran mesaj silindi", 
-                "FullScreenMessagesController.DeleteFullScreenMessage", 
-                new { MessageId = id, UserId = userId, Role = userRole });
-            
-            return Ok(ApiResponse<object>.NoContent("Tam ekran mesaj başarıyla silindi"));
-        }
-
-        /// <summary>
-        /// FullScreenMessage nesnesini FullScreenMessageDto'ya dönüştürür
-        /// </summary>
-        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message)
-        {
-            return new FullScreenMessageDto
-            {
-                Id = message.Id,
-                TurkishLine1 = message.TurkishLine1,
-                TurkishLine2 = message.TurkishLine2,
-                TurkishLine3 = message.TurkishLine3,
-                TurkishLine4 = message.TurkishLine4,
-                EnglishLine1 = message.EnglishLine1,
-                EnglishLine2 = message.EnglishLine2,
-                EnglishLine3 = message.EnglishLine3,
-                EnglishLine4 = message.EnglishLine4,
-                CreatedAt = message.CreatedAt,
-                ModifiedAt = message.ModifiedAt,
-                DeviceId = message.DeviceId
-            };
         }
     }
 } 

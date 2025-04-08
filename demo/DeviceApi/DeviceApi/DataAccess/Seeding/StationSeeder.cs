@@ -10,11 +10,6 @@ namespace Data.Seeding
     /// </summary>
     public class StationSeeder : ISeeder
     {
-        /// <summary>
-        /// İstasyonlar, platform ve cihazlardan önce oluşturulmalıdır
-        /// </summary>
-        public int Order => 3; // UserRoles ve Users'dan sonra
-
         public async Task SeedAsync(AppDbContext context)
         {
             // İstasyonlar zaten varsa işlem yapma

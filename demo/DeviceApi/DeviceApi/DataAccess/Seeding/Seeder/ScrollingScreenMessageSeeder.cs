@@ -10,11 +10,7 @@ namespace Data.Seeding
     /// </summary>
     public class ScrollingScreenMessageSeeder : ISeeder
     {
-        /// <summary>
-        /// Bu seeder'ın çalışma sırası (DeviceSeeder'dan sonra çalışmalı)
-        /// </summary>
-        public int Order => 41; // FullScreenMessageSeeder'dan hemen sonra
-
+       
         /// <summary>
         /// Seed işlemini gerçekleştirir
         /// </summary>

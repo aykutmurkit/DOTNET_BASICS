@@ -21,6 +21,10 @@ namespace DeviceApi.Business.Extensions
             services.AddScoped<IBitmapScreenMessageService, BitmapScreenMessageService>();
             services.AddScoped<IPeriodicMessageService, PeriodicMessageService>();
             
+            // Yeni eklenen servisler
+            services.AddScoped<IFullScreenMessageService, FullScreenMessageService>();
+            services.AddScoped<IPredictionService, PredictionService>();
+            
             // Utility servisleri
             services.AddScoped<EmailService>();
             

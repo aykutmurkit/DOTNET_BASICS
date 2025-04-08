@@ -10,9 +10,6 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceSeeder : ISeeder
     {
-        // Seeder çalışma sırası - önce Platform oluşmalı (2), sonra Device (3)
-        public int Order => 5; // PlatformSeeder'dan (Order=4) sonra çalışsın
-
         public async Task SeedAsync(AppDbContext context)
         {
             if (await context.Devices.AnyAsync())

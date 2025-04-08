@@ -448,7 +448,7 @@ namespace DeviceApi.Business.Services.Concrete
                     Rs232Status = device.PeriodicMessage.Rs232Status,
                     PowerSupplyStatus = device.PeriodicMessage.PowerSupplyStatus,
                     CreatedAt = device.PeriodicMessage.CreatedAt,
-                    UpdatedAt = device.PeriodicMessage.UpdatedAt,
+                    ForecastedAt = device.PeriodicMessage.ForecastedAt,
                     DeviceId = device.PeriodicMessage.DeviceId
                 };
             }

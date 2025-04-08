@@ -1,7 +1,5 @@
 using Core.Utilities;
-using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
-using Entities.Concrete;
 using Entities.Dtos;
 using LogLibrary.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -15,19 +13,16 @@ namespace DeviceApi.API.Controllers
     [Authorize]
     public class PredictionsController : ControllerBase
     {
-        private readonly IPredictionRepository _predictionRepository;
-        private readonly IPlatformRepository _platformRepository;
+        private readonly IPredictionService _predictionService;
         private readonly ILogger<PredictionsController> _logger;
         private readonly ILogService _logService;
 
         public PredictionsController(
-            IPredictionRepository predictionRepository,
-            IPlatformRepository platformRepository,
+            IPredictionService predictionService,
             ILogger<PredictionsController> logger,
             ILogService logService)
         {
-            _predictionRepository = predictionRepository;
-            _platformRepository = platformRepository;
+            _predictionService = predictionService;
             _logger = logger;
             _logService = logService;
         }
@@ -47,10 +42,9 @@ namespace DeviceApi.API.Controllers
                 "PredictionsController.GetAllPredictions", 
                 new { UserId = userId, Role = userRole });
             
-            var predictions = await _predictionRepository.GetAllPredictionsAsync();
-            var predictionDtos = predictions.Select(MapToPredictionDto).ToList();
+            var predictions = await _predictionService.GetAllPredictionsAsync();
             
-            return Ok(ApiResponse<List<PredictionDto>>.Success(predictionDtos, "Tren tahminleri başarıyla getirildi"));
+            return Ok(ApiResponse<List<PredictionDto>>.Success(predictions, "Tren tahminleri başarıyla getirildi"));
         }
 
         /// <summary>
@@ -69,19 +63,20 @@ namespace DeviceApi.API.Controllers
                 "PredictionsController.GetPredictionById", 
                 new { PredictionId = id, UserId = userId, Role = userRole });
             
-            var prediction = await _predictionRepository.GetPredictionByIdAsync(id);
-            if (prediction == null)
+            try
+            {
+                var prediction = await _predictionService.GetPredictionByIdAsync(id);
+                return Ok(ApiResponse<PredictionDto>.Success(prediction, "Tren tahmini başarıyla getirildi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
                     "Tahmin bulunamadı", 
                     "PredictionsController.GetPredictionById", 
                     new { PredictionId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tren tahmini bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            var predictionDto = MapToPredictionDto(prediction);
-            return Ok(ApiResponse<PredictionDto>.Success(predictionDto, "Tren tahmini başarıyla getirildi"));
         }
 
         /// <summary>
@@ -100,31 +95,20 @@ namespace DeviceApi.API.Controllers
                 "PredictionsController.GetPredictionByPlatformId", 
                 new { PlatformId = platformId, UserId = userId, Role = userRole });
             
-            // Önce platformun var olduğunu kontrol et
-            var platform = await _platformRepository.GetPlatformByIdAsync(platformId);
-            if (platform == null)
+            try
+            {
+                var prediction = await _predictionService.GetPredictionByPlatformIdAsync(platformId);
+                return Ok(ApiResponse<PredictionDto>.Success(prediction, "Tren tahmini başarıyla getirildi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Platform bulunamadı", 
+                    ex.Message, 
                     "PredictionsController.GetPredictionByPlatformId", 
                     new { PlatformId = platformId, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Platform bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            var prediction = await _predictionRepository.GetPredictionByPlatformIdAsync(platformId);
-            if (prediction == null)
-            {
-                await _logService.LogWarningAsync(
-                    "Platform için tahmin bulunamadı", 
-                    "PredictionsController.GetPredictionByPlatformId", 
-                    new { PlatformId = platformId, UserId = userId, Role = userRole });
-                
-                return NotFound(ApiResponse<object>.NotFound("Platform için tren tahmini bulunamadı"));
-            }
-            
-            var predictionDto = MapToPredictionDto(prediction);
-            return Ok(ApiResponse<PredictionDto>.Success(predictionDto, "Tren tahmini başarıyla getirildi"));
         }
 
         /// <summary>
@@ -160,63 +144,27 @@ namespace DeviceApi.API.Controllers
                 return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
             
-            // Platform var mı kontrol et
-            var platform = await _platformRepository.GetPlatformByIdAsync(platformId);
-            if (platform == null)
+            try
+            {
+                var createdPrediction = await _predictionService.CreatePredictionAsync(platformId, request);
+                
+                var response = ApiResponse<PredictionDto>.Created(createdPrediction, "Tren tahmini başarıyla oluşturuldu");
+                return CreatedAtAction(nameof(GetPredictionById), new { id = createdPrediction.Id }, response);
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Platform bulunamadı", 
+                    ex.Message, 
                     "PredictionsController.CreatePrediction", 
                     new { PlatformId = platformId, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Platform bulunamadı"));
-            }
-            
-            // Platform için zaten bir tahmin var mı kontrol et
-            var existingPrediction = await _predictionRepository.GetPredictionByPlatformIdAsync(platformId);
-            if (existingPrediction != null)
-            {
-                await _logService.LogWarningAsync(
-                    "Platform için zaten bir tahmin mevcut", 
-                    "PredictionsController.CreatePrediction", 
-                    new { PlatformId = platformId, ExistingPredictionId = existingPrediction.Id, UserId = userId, Role = userRole });
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
                 
-                return BadRequest(ApiResponse<object>.Error("Bu platform için zaten bir tren tahmini mevcut. Güncelleme yapabilirsiniz."));
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
-            
-            // Yeni tahmin oluştur
-            var prediction = new Prediction
-            {
-                StationName = request.StationName,
-                Direction = request.Direction,
-                Train1 = request.Train1,
-                Line1 = request.Line1,
-                Destination1 = request.Destination1,
-                Time1 = request.Time1,
-                Train2 = request.Train2,
-                Line2 = request.Line2,
-                Destination2 = request.Destination2,
-                Time2 = request.Time2,
-                Train3 = request.Train3,
-                Line3 = request.Line3,
-                Destination3 = request.Destination3,
-                Time3 = request.Time3,
-                ForecastGenerationAt = DateTime.Now,
-                CreatedAt = DateTime.Now,
-                PlatformId = platformId
-            };
-            
-            await _predictionRepository.AddPredictionAsync(prediction);
-            
-            await _logService.LogInfoAsync(
-                "Tren tahmini oluşturuldu", 
-                "PredictionsController.CreatePrediction", 
-                new { PredictionId = prediction.Id, PlatformId = platformId, UserId = userId, Role = userRole });
-            
-            var predictionDto = MapToPredictionDto(prediction);
-            var response = ApiResponse<PredictionDto>.Created(predictionDto, "Tren tahmini başarıyla oluşturuldu");
-            
-            return CreatedAtAction(nameof(GetPredictionById), new { id = prediction.Id }, response);
         }
 
         /// <summary>
@@ -252,51 +200,32 @@ namespace DeviceApi.API.Controllers
                 return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
             
-            // Tahmin var mı kontrol et
-            var existingPrediction = await _predictionRepository.GetPredictionByIdAsync(id);
-            if (existingPrediction == null)
+            try
+            {
+                var updatedPrediction = await _predictionService.UpdatePredictionAsync(id, request);
+                return Ok(ApiResponse<PredictionDto>.Success(updatedPrediction, "Tren tahmini başarıyla güncellendi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Tahmin bulunamadı", 
+                    ex.Message, 
                     "PredictionsController.UpdatePrediction", 
                     new { PredictionId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tren tahmini bulunamadı"));
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
-            
-            // Tahmini güncelle
-            existingPrediction.StationName = request.StationName;
-            existingPrediction.Direction = request.Direction;
-            existingPrediction.Train1 = request.Train1;
-            existingPrediction.Line1 = request.Line1;
-            existingPrediction.Destination1 = request.Destination1;
-            existingPrediction.Time1 = request.Time1;
-            existingPrediction.Train2 = request.Train2;
-            existingPrediction.Line2 = request.Line2;
-            existingPrediction.Destination2 = request.Destination2;
-            existingPrediction.Time2 = request.Time2;
-            existingPrediction.Train3 = request.Train3;
-            existingPrediction.Line3 = request.Line3;
-            existingPrediction.Destination3 = request.Destination3;
-            existingPrediction.Time3 = request.Time3;
-            existingPrediction.ForecastGenerationAt = DateTime.Now;
-            
-            await _predictionRepository.UpdatePredictionAsync(existingPrediction);
-            
-            await _logService.LogInfoAsync(
-                "Tren tahmini güncellendi", 
-                "PredictionsController.UpdatePrediction", 
-                new { PredictionId = id, UserId = userId, Role = userRole });
-            
-            var predictionDto = MapToPredictionDto(existingPrediction);
-            return Ok(ApiResponse<PredictionDto>.Success(predictionDto, "Tren tahmini başarıyla güncellendi"));
         }
 
         /// <summary>
-        /// Bir tren tahminini siler
+        /// Tren tahmini siler
         /// </summary>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
         public async Task<IActionResult> DeletePrediction(int id)
@@ -309,53 +238,20 @@ namespace DeviceApi.API.Controllers
                 "PredictionsController.DeletePrediction", 
                 new { PredictionId = id, UserId = userId, Role = userRole });
             
-            var prediction = await _predictionRepository.GetPredictionByIdAsync(id);
-            if (prediction == null)
+            try
+            {
+                await _predictionService.DeletePredictionAsync(id);
+                return Ok(ApiResponse<object>.Success("Tren tahmini başarıyla silindi"));
+            }
+            catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Tahmin bulunamadı", 
+                    ex.Message, 
                     "PredictionsController.DeletePrediction", 
                     new { PredictionId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound("Tren tahmini bulunamadı"));
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
-            
-            await _predictionRepository.DeletePredictionAsync(id);
-            
-            await _logService.LogInfoAsync(
-                "Tren tahmini silindi", 
-                "PredictionsController.DeletePrediction", 
-                new { PredictionId = id, UserId = userId, Role = userRole });
-            
-            return Ok(ApiResponse<object>.NoContent("Tren tahmini başarıyla silindi"));
-        }
-
-        /// <summary>
-        /// Prediction nesnesini PredictionDto'ya dönüştürür
-        /// </summary>
-        private PredictionDto MapToPredictionDto(Prediction prediction)
-        {
-            return new PredictionDto
-            {
-                Id = prediction.Id,
-                StationName = prediction.StationName,
-                Direction = prediction.Direction,
-                Train1 = prediction.Train1,
-                Line1 = prediction.Line1,
-                Destination1 = prediction.Destination1,
-                Time1 = prediction.Time1,
-                Train2 = prediction.Train2,
-                Line2 = prediction.Line2,
-                Destination2 = prediction.Destination2,
-                Time2 = prediction.Time2,
-                Train3 = prediction.Train3,
-                Line3 = prediction.Line3,
-                Destination3 = prediction.Destination3,
-                Time3 = prediction.Time3,
-                ForecastGenerationAt = prediction.ForecastGenerationAt,
-                CreatedAt = prediction.CreatedAt,
-                PlatformId = prediction.PlatformId
-            };
         }
     }
 } 

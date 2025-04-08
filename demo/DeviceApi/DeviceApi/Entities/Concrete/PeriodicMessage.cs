@@ -46,7 +46,7 @@ namespace Entities.Concrete
         
         public DateTime CreatedAt { get; set; }
         
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? ForecastedAt { get; set; }
         
         [Required]
         public int DeviceId { get; set; }

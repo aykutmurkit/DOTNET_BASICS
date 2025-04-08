@@ -10,11 +10,7 @@ namespace Data.Seeding
     /// </summary>
     public class BitmapScreenMessageSeeder : ISeeder
     {
-        /// <summary>
-        /// Bu seeder'ın çalışma sırası (ScrollingScreenMessageSeeder'dan sonra çalışmalı)
-        /// </summary>
-        public int Order => 42; // ScrollingScreenMessageSeeder'dan hemen sonra
-
+       
         /// <summary>
         /// Seed işlemini gerçekleştirir
         /// </summary>

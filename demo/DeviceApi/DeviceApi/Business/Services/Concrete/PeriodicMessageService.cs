@@ -127,7 +127,7 @@ namespace DeviceApi.Business.Services.Concrete
             periodicMessage.ShowStatus = request.ShowStatus;
             periodicMessage.Rs232Status = request.Rs232Status;
             periodicMessage.PowerSupplyStatus = request.PowerSupplyStatus;
-            periodicMessage.UpdatedAt = DateTime.Now;
+            periodicMessage.ForecastedAt = DateTime.Now;
 
             await _periodicMessageRepository.UpdatePeriodicMessageAsync(periodicMessage);
             return MapToDto(periodicMessage);
@@ -167,7 +167,7 @@ namespace DeviceApi.Business.Services.Concrete
                 Rs232Status = periodicMessage.Rs232Status,
                 PowerSupplyStatus = periodicMessage.PowerSupplyStatus,
                 CreatedAt = periodicMessage.CreatedAt,
-                UpdatedAt = periodicMessage.UpdatedAt,
+                ForecastedAt = periodicMessage.ForecastedAt,
                 DeviceId = periodicMessage.DeviceId
             };
         }

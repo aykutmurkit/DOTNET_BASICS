@@ -10,11 +10,7 @@ namespace Data.Seeding
     /// </summary>
     public class PeriodicMessageSeeder : ISeeder
     {
-        /// <summary>
-        /// Bu seeder'ın çalışma sırası (BitmapScreenMessageSeeder'dan sonra çalışmalı)
-        /// </summary>
-        public int Order => 43; // BitmapScreenMessageSeeder'dan hemen sonra
-
+       
         /// <summary>
         /// Seed işlemini gerçekleştirir
         /// </summary>
@@ -33,13 +29,13 @@ namespace Data.Seeding
             
             // Örnek veriler
             queryBuilder.AppendLine(@"
-INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [UpdatedAt], [DeviceId])
+INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [ForecastedAt ], [DeviceId])
 VALUES (1, 28, 65, 12, 80, 75, 0, 1, 1, 1, 1, 1, GETDATE(), NULL, 1);
 
-INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [UpdatedAt], [DeviceId])
+INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [ForecastedAt ], [DeviceId])
 VALUES (2, 29, 70, 15, 90, 85, 2, 1, 1, 1, 0, 1, GETDATE(), NULL, 2);
 
-INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [UpdatedAt], [DeviceId])
+INSERT INTO [PeriodicMessages] ([Id], [TemperatureLevel], [HumidityLevel], [GasLevel], [FrontLightLevel], [BackLightLevel], [LedFailureCount], [CabinStatus], [FanStatus], [ShowStatus], [Rs232Status], [PowerSupplyStatus], [CreatedAt], [ForecastedAt ], [DeviceId])
 VALUES (3, 26, 62, 10, 75, 70, 1, 1, 0, 1, 1, 1, GETDATE(), NULL, 3);
             ");
             

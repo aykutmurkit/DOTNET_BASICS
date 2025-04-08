@@ -10,7 +10,10 @@ namespace Data.Seeding
         /// <summary>
         /// Seed etme sirasini belirler. Dusuk sayilar once calisir.
         /// </summary>
-        int Order { get; }
+        /// <remarks>
+        /// Bu property SeederExtensions.GetOrder() metodu ile otomatik olarak alınabilir.
+        /// </remarks>
+        int Order => this.GetOrder();
 
         /// <summary>
         /// Seed islemini gerceklestirir

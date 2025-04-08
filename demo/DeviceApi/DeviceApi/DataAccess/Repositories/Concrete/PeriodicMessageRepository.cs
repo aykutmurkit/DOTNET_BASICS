@@ -48,7 +48,7 @@ namespace Data.Repositories
 
         public async Task UpdatePeriodicMessageAsync(PeriodicMessage periodicMessage)
         {
-            periodicMessage.UpdatedAt = DateTime.Now;
+            periodicMessage.ForecastedAt = DateTime.Now;
             _context.PeriodicMessages.Update(periodicMessage);
             await _context.SaveChangesAsync();
         }

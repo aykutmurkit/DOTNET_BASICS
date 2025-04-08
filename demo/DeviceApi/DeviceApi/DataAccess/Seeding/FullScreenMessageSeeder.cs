@@ -9,11 +9,7 @@ namespace Data.Seeding
     /// </summary>
     public class FullScreenMessageSeeder : ISeeder
     {
-        /// <summary>
-        /// Seeder çalışma sırası - DeviceSeeder'dan sonra çalışmalı
-        /// </summary>
-        public int Order => 40;
-
+       
         public async Task SeedAsync(AppDbContext context)
         {
             // Zaten mesaj var mı kontrol et

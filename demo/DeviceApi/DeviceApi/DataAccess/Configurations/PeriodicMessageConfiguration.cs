@@ -35,7 +35,7 @@ namespace Data.Configurations
             
             // Opsiyonel alanlar
             builder.Property(p => p.CreatedAt).IsRequired();
-            builder.Property(p => p.UpdatedAt).IsRequired(false);
+            builder.Property(p => p.ForecastedAt).IsRequired(false);
             
             // Device ile one-to-one ilişki
             builder.HasOne(p => p.Device)

@@ -10,11 +10,7 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceSettingSeeder : ISeeder
     {
-        /// <summary>
-        /// Cihaz ayarları, cihazlardan sonra oluşturulmalıdır
-        /// </summary>
-        public int Order => 6; // DeviceSeeder'dan (Order=5) sonra çalışsın
-        
+      
         public async Task SeedAsync(AppDbContext context)
         {
             // Cihaz ayarları zaten varsa işlem yapma

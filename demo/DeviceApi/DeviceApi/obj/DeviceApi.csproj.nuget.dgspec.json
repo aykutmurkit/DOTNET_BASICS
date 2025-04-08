@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj": {}
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj": {
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
+        "projectUniqueName": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
         "projectName": "DeviceApi",
-        "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
-        "packagesPath": "C:\\Users\\aykut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\obj\\",
+        "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DeviceApi.csproj",
+        "packagesPath": "C:\\Users\\amurkit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\aykut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amurkit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,7 +25,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNuGets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -34,17 +33,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj": {
-                "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj"
+              "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj": {
+                "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj"
               },
-              "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj": {
-                "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj"
+              "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj": {
+                "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj"
               },
-              "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj": {
-                "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj"
+              "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj": {
+                "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj"
               },
-              "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj": {
-                "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj"
+              "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj": {
+                "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj"
               }
             }
           }
@@ -57,7 +56,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -135,24 +134,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj": {
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
         "projectName": "JWTVerifyLibrary",
-        "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
-        "packagesPath": "C:\\Users\\aykut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\obj\\",
+        "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
+        "packagesPath": "C:\\Users\\amurkit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\aykut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amurkit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -160,7 +159,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNuGets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -179,7 +177,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -224,24 +222,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj": {
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj",
         "projectName": "LogLibrary",
-        "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj",
-        "packagesPath": "C:\\Users\\aykut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\obj\\",
+        "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\LogLibrary.csproj",
+        "packagesPath": "C:\\Users\\amurkit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\LogLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\aykut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amurkit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -249,7 +247,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNuGets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -268,7 +265,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -341,24 +338,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj": {
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj",
         "projectName": "RateLimitLibrary",
-        "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj",
-        "packagesPath": "C:\\Users\\aykut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\obj\\",
+        "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\RateLimitLibrary.csproj",
+        "packagesPath": "C:\\Users\\amurkit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\RateLimitLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\aykut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amurkit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -366,7 +363,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNuGets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -385,7 +381,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -430,24 +426,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj": {
+    "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
         "projectName": "TCPListenerLibrary",
-        "projectPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
-        "packagesPath": "C:\\Users\\aykut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\obj\\",
+        "projectPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\TCPListenerLibrary.csproj",
+        "packagesPath": "C:\\Users\\amurkit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\TCPListenerLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\aykut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amurkit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -455,7 +451,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNuGets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -474,7 +469,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -527,7 +522,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,11 +10,7 @@ namespace Data.Seeding
     /// </summary>
     public class PredictionSeeder : ISeeder
     {
-        /// <summary>
-        /// Tahminler, platformlardan sonra cihazlardan önce oluşturulmalıdır
-        /// </summary>
-        public int Order => 5; // DeviceSeeder ile aynı sırada olabilir (5)
-
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // Tahminler zaten varsa işlem yapma
