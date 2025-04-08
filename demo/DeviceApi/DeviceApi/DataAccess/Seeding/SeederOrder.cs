@@ -16,12 +16,13 @@ namespace Data.Seeding
         // Cihazlar
         Devices = 5,
         DeviceSettings = 6,
+        DeviceStatuses = 7,
         
         // Mesajlar ve tahminler
-        Predictions = 7,
-        FullScreenMessages = 8,
-        ScrollingScreenMessages = 9,
-        BitmapScreenMessages = 10,
-        PeriodicMessages = 11
+        Predictions = 8,
+        FullScreenMessages = 9,
+        ScrollingScreenMessages = 10,
+        BitmapScreenMessages = 11,
+        PeriodicMessages = 12
     }
 } 

@@ -116,7 +116,18 @@ namespace DeviceApi.Business.Services.Concrete
                         Latitude = d.Latitude,
                         Longitude = d.Longitude,
                         PlatformId = d.PlatformId,
-                        PlatformStationName = station.Name
+                        PlatformStationName = station.Name,
+                        Status = d.Status != null ? new DeviceStatusDto
+                        {
+                            Id = d.Status.Id,
+                            FullScreenMessageStatus = d.Status.FullScreenMessageStatus,
+                            ScrollingScreenMessageStatus = d.Status.ScrollingScreenMessageStatus,
+                            BitmapScreenMessageStatus = d.Status.BitmapScreenMessageStatus,
+                            DeviceId = d.Status.DeviceId,
+                            DeviceName = d.Name,
+                            CreatedAt = d.Status.CreatedAt,
+                            UpdatedAt = d.Status.UpdatedAt
+                        } : null
                     }).ToList() ?? new List<DeviceDto>()
                 }).ToList() ?? new List<PlatformDto>()
             };

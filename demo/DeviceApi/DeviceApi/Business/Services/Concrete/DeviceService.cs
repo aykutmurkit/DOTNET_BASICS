@@ -382,6 +382,22 @@ namespace DeviceApi.Business.Services.Concrete
                 };
             }
             
+            // DeviceStatus bilgilerini ekle
+            if (device.Status != null)
+            {
+                deviceDto.Status = new DeviceStatusDto
+                {
+                    Id = device.Status.Id,
+                    FullScreenMessageStatus = device.Status.FullScreenMessageStatus,
+                    ScrollingScreenMessageStatus = device.Status.ScrollingScreenMessageStatus,
+                    BitmapScreenMessageStatus = device.Status.BitmapScreenMessageStatus,
+                    DeviceId = device.Status.DeviceId,
+                    DeviceName = device.Name,
+                    CreatedAt = device.Status.CreatedAt,
+                    UpdatedAt = device.Status.UpdatedAt
+                };
+            }
+            
             // FullScreenMessage bilgilerini ekle
             if (device.FullScreenMessage != null)
             {

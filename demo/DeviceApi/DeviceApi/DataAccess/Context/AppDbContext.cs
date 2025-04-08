@@ -42,6 +42,11 @@ namespace Data.Context
         /// Cihaz Ayarları tablosu
         /// </summary>
         public DbSet<DeviceSettings> DeviceSettings { get; set; }
+        
+        /// <summary>
+        /// Cihaz Durum tablosu
+        /// </summary>
+        public DbSet<DeviceStatus> DeviceStatuses { get; set; }
 
         /// <summary>
         /// Tren Tahminleri tablosu
