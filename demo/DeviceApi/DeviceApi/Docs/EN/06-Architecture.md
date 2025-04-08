@@ -262,6 +262,73 @@ The architecture facilitates comprehensive testing:
 - **Performance Tests**: For load and stress testing
 - **Mocking**: Interfaces throughout the system allow for mocking
 
+## Database Seeding Architecture
+
+DeviceApi uses an advanced database seeding mechanism. This mechanism enables automatic generation of test, development, and demo data when the application is first initialized or when the database is reset.
+
+### Seeding Components
+
+The seeding architecture consists of the following components:
+
+1. **ISeeder Interface**: The basic contract implemented by all seeder classes
+2. **DatabaseSeeder**: The main class that coordinates and runs all seeders
+3. **Specific Seeder Classes**: Specialized seeders for each data model
+4. **SeederOrder Enum**: Constants that determine the execution order of seeding operations
+5. **SeederExtensions**: Helper methods that facilitate seeding operations
+
+### Working Principles
+
+The seeding architecture works according to the following principles:
+
+1. **Sequential Execution**: Seeders run in a specific order to properly establish database relationships
+2. **Idempotent Design**: Seeding operations can be repeated, the same data is not added multiple times
+3. **Hierarchical Relationships**: Data is created from top to bottom according to the data model hierarchy (Station->Platform->Device)
+4. **Performance Optimization**: Bulk data insertion and SQL-level IDENTITY_INSERT for fast data loading
+
+### Architectural Flow
+
+The seeding process architecture is designed as follows:
+
+```
+┌─────────────────────┐       ┌───────────────────┐
+│                     │       │                   │
+│  Program.cs         │       │  appsettings.json │
+│  (Seed initiator)   │       │  (Configuration)  │
+│                     │       │                   │
+└──────────┬──────────┘       └─────────┬─────────┘
+           │                            │
+           │                            │
+           ▼                            ▼
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│              DatabaseSeeder                     │
+│         (Find and run seeders)                  │
+│                                                 │
+└───────────────────────┬─────────────────────────┘
+                        │
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+        ▼               ▼               ▼
+┌────────────────┐ ┌────────────┐ ┌────────────────┐
+│                │ │            │ │                │
+│ Base Seeders   │ │ Core Data  │ │ Relational     │
+│ (Enums, Consts)│ │ (Station)  │ │ Data           │
+│                │ │            │ │ (Device, Msg)  │
+└────────────────┘ └────────────┘ └────────────────┘
+```
+
+### Integration Points
+
+The seeding architecture integrates with the following components:
+
+- **EF Core**: Seed data is added via EF Core context or directly with SQL
+- **Logging**: Seeding operations are logged in detail using LogLibrary
+- **Dependency Injection**: DatabaseSeeder is accessible via the DI system
+- **Configuration**: Seeding behavior can be configured via appsettings.json
+
+For more comprehensive information about the seeding architecture, see: [Database Seeding Process](07-Seeding-Process.md)
+
 ---
 
-[◀ Data Models](05-Data-Models.md) | [Home](README.md) | [Next: Configuration ▶](07-Configuration.md) 
+[◀ Data Models](05-Data-Models.md) | [Home](README.md) | [Next: Configuration ▶](08-Configuration.md) 

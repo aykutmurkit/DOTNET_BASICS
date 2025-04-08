@@ -18,6 +18,8 @@ DeviceApi, IoT cihazlarını ve verilerini yönetmek için tasarlanmış kapsaml
 - [API Uç Noktaları](04-API-Uc-Noktalari.md)
 - [Kimlik Doğrulama](05-Kimlik-Dogrulama.md)
 - [Veri Modelleri](06-Veri-Modelleri.md)
+- [Mimari Yapı](06-Mimari-Yapi.md)
+- [Veritabanı Seeding Süreci](Seeding-Sureci.md)
 - [Yapılandırma](07-Yapilandirma.md)
 - [Hata Yönetimi](08-Hata-Yonetimi.md)
 - [Performans Optimizasyonu](09-Performans-Optimizasyonu.md)

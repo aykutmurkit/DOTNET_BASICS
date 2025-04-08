@@ -262,6 +262,73 @@ Mimari, kapsamlı testleri kolaylaştırır:
 - **Performans Testleri**: Yük ve stres testi için
 - **Taklit Etme (Mocking)**: Sistemdeki arayüzler taklit etmeye olanak tanır
 
+## Veritabanı Başlatma (Seeding) Mimarisi
+
+DeviceApi, gelişmiş bir veritabanı seed mekanizması kullanır. Bu mekanizma, uygulama ilk başlatıldığında veya veritabanı yeniden yapılandırıldığında test, geliştirme ve demo amaçlı verilerin otomatik olarak oluşturulmasını sağlar.
+
+### Seed Bileşenleri
+
+Seeding mimarisi aşağıdaki bileşenlerden oluşur:
+
+1. **ISeeder Interface**: Tüm seeder sınıflarının uygulaması gereken temel sözleşme
+2. **DatabaseSeeder**: Tüm seeder'ları koordisyon içinde çalıştıran ana sınıf
+3. **Spesifik Seeder Sınıfları**: Her bir veri modeli için özelleştirilmiş seeder'lar
+4. **SeederOrder Enum**: Seed işlemlerinin çalışma sırasını belirleyen sabitler
+5. **SeederExtensions**: Seed işlemlerini kolaylaştıran yardımcı metodlar
+
+### Çalışma Prensibi
+
+Seeding mimarisi aşağıdaki prensiplere göre çalışır:
+
+1. **Sıralı Çalışma**: Seeder'lar, veritabanı ilişkilerini doğru şekilde kurmak için belirli bir sırada çalışır
+2. **İdempotent Yapı**: Seed işlemleri tekrar edilebilir, aynı veri birden fazla kez eklenmez
+3. **Hiyerarşik İlişkiler**: Veri modeli hiyerarşisine uygun olarak (İstasyon->Platform->Cihaz) yukarıdan aşağıya doğru veri oluşturulur
+4. **Performans Optimizasyonu**: Toplu veri ekleme ve SQL düzeyinde IDENTITY_INSERT kullanarak hızlı veri yükleme
+
+### Mimari Akış
+
+Seed işlem sürecinin mimarisi şu şekilde tasarlanmıştır:
+
+```
+┌─────────────────────┐       ┌───────────────────┐
+│                     │       │                   │
+│  Program.cs         │       │  appsettings.json │
+│  (Seed başlatıcı)   │       │  (Yapılandırma)   │
+│                     │       │                   │
+└──────────┬──────────┘       └─────────┬─────────┘
+           │                            │
+           │                            │
+           ▼                            ▼
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│              DatabaseSeeder                     │
+│        (Seeder'ları bulma ve çalıştırma)       │
+│                                                 │
+└───────────────────────┬─────────────────────────┘
+                        │
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+        ▼               ▼               ▼
+┌────────────────┐ ┌────────────┐ ┌────────────────┐
+│                │ │            │ │                │
+│ Temel Seeder'lar│ │ Ana Veriler│ │ İlişkisel      │
+│ (Enum, Sabitler)│ │ (İstasyon) │ │ Veriler        │
+│                │ │            │ │ (Cihaz, Mesaj) │
+└────────────────┘ └────────────┘ └────────────────┘
+```
+
+### Entegrasyon Noktaları
+
+Seed mimarisi şu bileşenlerle entegre olur:
+
+- **EF Core**: Seed verileri EF Core context üzerinden veya doğrudan SQL ile eklenir
+- **Logging**: Seed işlemleri LogLibrary ile detaylı şekilde loglanır
+- **Dependency Injection**: DatabaseSeeder DI sistemi üzerinden erişilebilir
+- **Yapılandırma**: Seed davranışı appsettings.json üzerinden yapılandırılabilir
+
+Kapsamlı seed mimarisi hakkında daha fazla bilgi için: [Veritabanı Seeding Süreci](../TR/Seeding-Sureci.md)
+
 ---
 
 [◀ Veri Modelleri](05-Veri-Modelleri.md) | [Ana Sayfa](README.md) | [İleri: Yapılandırma ▶](07-Yapilandirma.md) 
