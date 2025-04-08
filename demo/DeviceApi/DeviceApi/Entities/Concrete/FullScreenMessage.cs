@@ -21,6 +21,17 @@ namespace Entities.Concrete
         public string EnglishLine3 { get; set; }
         public string EnglishLine4 { get; set; }
         
+        /// <summary>
+        /// Mesaj hizalama türü - Foreign Key
+        /// </summary>
+        public int AlignmentTypeId { get; set; }
+        
+        /// <summary>
+        /// Mesaj hizalama türü - Navigation property
+        /// </summary>
+        [ForeignKey("AlignmentTypeId")]
+        public AlignmentType AlignmentType { get; set; }
+        
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         

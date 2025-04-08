@@ -19,6 +19,11 @@ namespace Data.Context
         
         
         /// <summary>
+        /// Hizalama Türleri tablosu
+        /// </summary>
+        public DbSet<AlignmentType> AlignmentTypes { get; set; }
+        
+        /// <summary>
         /// İstasyonlar tablosu
         /// </summary>
         public DbSet<Station> Stations { get; set; }

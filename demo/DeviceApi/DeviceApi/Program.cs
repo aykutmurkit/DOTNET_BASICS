@@ -3,6 +3,7 @@ using DeviceApi.Business.Extensions;
 using DeviceApi.Core.Extensions;
 using DeviceApi.DataAccess.Extensions;
 using Core.Utilities;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -56,8 +57,8 @@ builder.Services.AddControllers(options =>
 {
     // JSON yanıtlarda null değerli özellikleri gizle
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-    // Enum değerlerini string olarak dön
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    // Enum değerlerini sayısal olarak dön - true parametresi sayısal değer kullanılmasını sağlar
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, true));
 });
 
 // JWT doğrulama servisi ekle - bu JWT doğrulamasını JWTVerifyLibrary kullanarak yapacak

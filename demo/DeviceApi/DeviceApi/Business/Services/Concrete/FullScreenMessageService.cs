@@ -13,15 +13,18 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IFullScreenMessageRepository _fullScreenMessageRepository;
         private readonly IDeviceRepository _deviceRepository;
+        private readonly IAlignmentTypeRepository _alignmentTypeRepository;
         private readonly ILogService _logService;
 
         public FullScreenMessageService(
             IFullScreenMessageRepository fullScreenMessageRepository,
             IDeviceRepository deviceRepository,
+            IAlignmentTypeRepository alignmentTypeRepository,
             ILogService logService)
         {
             _fullScreenMessageRepository = fullScreenMessageRepository;
             _deviceRepository = deviceRepository;
+            _alignmentTypeRepository = alignmentTypeRepository;
             _logService = logService;
         }
 
@@ -31,7 +34,16 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<FullScreenMessageDto>> GetAllFullScreenMessagesAsync()
         {
             var messages = await _fullScreenMessageRepository.GetAllFullScreenMessagesAsync();
-            return messages.Select(MapToFullScreenMessageDto).ToList();
+            
+            // Her mesaj için AlignmentType bilgisini yükle
+            var result = new List<FullScreenMessageDto>();
+            foreach (var message in messages)
+            {
+                var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
+                result.Add(MapToFullScreenMessageDto(message, alignmentType));
+            }
+            
+            return result;
         }
 
         /// <summary>
@@ -45,7 +57,8 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Tam ekran mesaj bulunamadı");
             }
             
-            return MapToFullScreenMessageDto(message);
+            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
+            return MapToFullScreenMessageDto(message, alignmentType);
         }
         
         /// <summary>
@@ -66,7 +79,8 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz için tam ekran mesaj bulunamadı");
             }
             
-            return MapToFullScreenMessageDto(message);
+            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
+            return MapToFullScreenMessageDto(message, alignmentType);
         }
 
         /// <summary>
@@ -88,6 +102,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu cihaz için zaten bir tam ekran mesaj mevcut. Güncelleme yapabilirsiniz.");
             }
             
+            // Alignment type kontrolü
+            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(request.AlignmentTypeId);
+            if (alignmentType == null)
+            {
+                throw new Exception("Belirtilen hizalama türü bulunamadı");
+            }
+            
             // Yeni mesaj oluştur
             var message = new FullScreenMessage
             {
@@ -99,6 +120,7 @@ namespace DeviceApi.Business.Services.Concrete
                 EnglishLine2 = request.EnglishLine2,
                 EnglishLine3 = request.EnglishLine3,
                 EnglishLine4 = request.EnglishLine4,
+                AlignmentTypeId = request.AlignmentTypeId,
                 CreatedAt = DateTime.Now,
                 DeviceId = deviceId
             };
@@ -110,7 +132,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "FullScreenMessageService.CreateFullScreenMessage", 
                 new { MessageId = message.Id, DeviceId = deviceId });
             
-            return MapToFullScreenMessageDto(message);
+            return MapToFullScreenMessageDto(message, alignmentType);
         }
 
         /// <summary>
@@ -125,6 +147,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Güncellenecek tam ekran mesaj bulunamadı");
             }
             
+            // Alignment type kontrolü
+            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(request.AlignmentTypeId);
+            if (alignmentType == null)
+            {
+                throw new Exception("Belirtilen hizalama türü bulunamadı");
+            }
+            
             // Mesajı güncelle
             existingMessage.TurkishLine1 = request.TurkishLine1;
             existingMessage.TurkishLine2 = request.TurkishLine2;
@@ -134,6 +163,7 @@ namespace DeviceApi.Business.Services.Concrete
             existingMessage.EnglishLine2 = request.EnglishLine2;
             existingMessage.EnglishLine3 = request.EnglishLine3;
             existingMessage.EnglishLine4 = request.EnglishLine4;
+            existingMessage.AlignmentTypeId = request.AlignmentTypeId;
             existingMessage.ModifiedAt = DateTime.Now;
             
             await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(existingMessage);
@@ -143,7 +173,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "FullScreenMessageService.UpdateFullScreenMessage", 
                 new { MessageId = id });
             
-            return MapToFullScreenMessageDto(existingMessage);
+            return MapToFullScreenMessageDto(existingMessage, alignmentType);
         }
 
         /// <summary>
@@ -169,7 +199,7 @@ namespace DeviceApi.Business.Services.Concrete
         /// <summary>
         /// Entity'den DTO'ya dönüşüm
         /// </summary>
-        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message)
+        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message, AlignmentType alignmentType)
         {
             return new FullScreenMessageDto
             {
@@ -182,6 +212,12 @@ namespace DeviceApi.Business.Services.Concrete
                 EnglishLine2 = message.EnglishLine2,
                 EnglishLine3 = message.EnglishLine3,
                 EnglishLine4 = message.EnglishLine4,
+                Alignment = alignmentType != null ? new AlignmentValueDto
+                {
+                    Id = alignmentType.Id,
+                    Key = alignmentType.Key,
+                    Name = alignmentType.Name
+                } : null,
                 DeviceId = message.DeviceId,
                 CreatedAt = message.CreatedAt,
                 ModifiedAt = message.ModifiedAt
