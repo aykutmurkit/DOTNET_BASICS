@@ -329,6 +329,69 @@ The seeding architecture integrates with the following components:
 
 For more comprehensive information about the seeding architecture, see: [Database Seeding Process](07-Seeding-Process.md)
 
+### BitmapScreenMessage
+
+Bitmap screen messages are used to manage bitmap format messages that will be displayed on devices.
+
+#### Entity Structure
+
+```csharp
+public class BitmapScreenMessage
+{
+    public int Id { get; set; }
+    public string TurkishBitmap { get; set; }
+    public string EnglishBitmap { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public ICollection<Device> Devices { get; set; }
+}
+```
+
+#### DTOs
+
+- `BitmapScreenMessageDto`: DTO used for listing
+- `CreateBitmapScreenMessageRequest`: DTO used for creation
+- `UpdateBitmapScreenMessageRequest`: DTO used for updating
+- `AssignBitmapScreenMessageRequest`: DTO used for assigning messages to devices
+
+#### Repository
+
+The `IBitmapScreenMessageRepository` interface contains the following methods:
+
+- `GetAllBitmapScreenMessagesAsync()`: Gets all bitmap screen messages
+- `GetBitmapScreenMessageByIdAsync(int id)`: Gets a bitmap screen message by ID
+- `GetBitmapScreenMessageByDeviceIdAsync(int deviceId)`: Gets a bitmap screen message by device ID
+- `GetDevicesByBitmapScreenMessageIdAsync(int bitmapScreenMessageId)`: Gets all devices associated with a message
+- `AddBitmapScreenMessageAsync(BitmapScreenMessage bitmapScreenMessage)`: Adds a bitmap screen message
+- `UpdateBitmapScreenMessageAsync(BitmapScreenMessage bitmapScreenMessage)`: Updates a bitmap screen message
+- `DeleteBitmapScreenMessageAsync(int id)`: Deletes a bitmap screen message
+- `AssignMessageToDeviceAsync(int deviceId, int bitmapScreenMessageId)`: Assigns a message to a device
+- `UnassignMessageFromDeviceAsync(int deviceId)`: Removes message association from a device
+
+#### Service
+
+The `IBitmapScreenMessageService` interface contains the following methods:
+
+- `GetAllBitmapScreenMessagesAsync()`: Gets all bitmap screen messages
+- `GetBitmapScreenMessageByIdAsync(int id)`: Gets a bitmap screen message by ID
+- `GetBitmapScreenMessageByDeviceIdAsync(int deviceId)`: Gets a bitmap screen message by device ID
+- `CreateBitmapScreenMessageAsync(CreateBitmapScreenMessageRequest request)`: Creates a new bitmap screen message
+- `UpdateBitmapScreenMessageAsync(int id, UpdateBitmapScreenMessageRequest request)`: Updates a bitmap screen message
+- `DeleteBitmapScreenMessageAsync(int id)`: Deletes a bitmap screen message
+- `AssignMessageToDeviceAsync(AssignBitmapScreenMessageRequest request)`: Assigns a message to a device
+- `UnassignMessageFromDeviceAsync(int deviceId)`: Removes message association from a device
+
+#### Controller
+
+The `BitmapScreenMessagesController` contains the following endpoints:
+
+- `GET /api/BitmapScreenMessages`: Gets all bitmap screen messages
+- `GET /api/BitmapScreenMessages/{id}`: Gets a bitmap screen message by ID
+- `GET /api/BitmapScreenMessages/by-device/{deviceId}`: Gets a bitmap screen message by device ID
+- `POST /api/BitmapScreenMessages`: Creates a new bitmap screen message
+- `PUT /api/BitmapScreenMessages/{id}`: Updates a bitmap screen message
+- `DELETE /api/BitmapScreenMessages/{id}`: Deletes a bitmap screen message
+
 ---
 
 [◀ Data Models](05-Data-Models.md) | [Home](README.md) | [Next: Configuration ▶](08-Configuration.md) 

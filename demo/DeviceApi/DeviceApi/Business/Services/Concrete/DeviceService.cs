@@ -452,7 +452,7 @@ namespace DeviceApi.Business.Services.Concrete
                     EnglishBitmap = device.BitmapScreenMessage.EnglishBitmap,
                     CreatedAt = device.BitmapScreenMessage.CreatedAt,
                     UpdatedAt = device.BitmapScreenMessage.UpdatedAt,
-                    DeviceId = device.BitmapScreenMessage.DeviceId
+                    DeviceIds = new List<int> { device.Id }
                 };
             }
             

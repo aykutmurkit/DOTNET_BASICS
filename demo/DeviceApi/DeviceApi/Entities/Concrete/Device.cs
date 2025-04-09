@@ -50,7 +50,10 @@ namespace Entities.Concrete
         [ForeignKey("ScrollingScreenMessageId")]
         public ScrollingScreenMessage ScrollingScreenMessage { get; set; }
         
-        // One-to-One ilişki - BitmapScreenMessage
+        // Many-to-One ilişki - BitmapScreenMessage (Çoklu cihaz aynı mesajı kullanabilir)
+        public int? BitmapScreenMessageId { get; set; }
+        
+        [ForeignKey("BitmapScreenMessageId")]
         public BitmapScreenMessage BitmapScreenMessage { get; set; }
         
         // One-to-One ilişki - PeriodicMessage

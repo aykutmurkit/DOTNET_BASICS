@@ -27,6 +27,7 @@ namespace Data.Configurations
             builder.Property(d => d.PlatformId).IsRequired();
             builder.Property(d => d.FullScreenMessageId).IsRequired(false);
             builder.Property(d => d.ScrollingScreenMessageId).IsRequired(false);
+            builder.Property(d => d.BitmapScreenMessageId).IsRequired(false);
             
             // İlişkiler
             builder.HasOne(d => d.Platform)
@@ -45,6 +46,13 @@ namespace Data.Configurations
             builder.HasOne(d => d.ScrollingScreenMessage)
                 .WithMany(s => s.Devices)
                 .HasForeignKey(d => d.ScrollingScreenMessageId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+                
+            // BitmapScreenMessage ile Many-to-One ilişki
+            builder.HasOne(d => d.BitmapScreenMessage)
+                .WithMany(b => b.Devices)
+                .HasForeignKey(d => d.BitmapScreenMessageId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .IsRequired(false);
         }

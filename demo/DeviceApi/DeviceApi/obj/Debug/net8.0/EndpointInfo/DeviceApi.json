@@ -4659,9 +4659,13 @@
             "format": "date-time",
             "nullable": true
           },
-          "deviceId": {
-            "type": "integer",
-            "format": "int32"
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4751,7 +4755,6 @@
       },
       "CreateBitmapScreenMessageRequest": {
         "required": [
-          "deviceId",
           "englishBitmap",
           "turkishBitmap"
         ],
@@ -4764,10 +4767,6 @@
           "englishBitmap": {
             "minLength": 1,
             "type": "string"
-          },
-          "deviceId": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

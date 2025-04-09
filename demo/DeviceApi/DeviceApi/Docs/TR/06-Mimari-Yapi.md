@@ -329,6 +329,69 @@ Seed mimarisi şu bileşenlerle entegre olur:
 
 Kapsamlı seed mimarisi hakkında daha fazla bilgi için: [Veritabanı Seeding Süreci](../TR/Seeding-Sureci.md)
 
+### BitmapScreenMessage
+
+Bitmap ekran mesajları, cihazlarda gösterilecek bitmap formatındaki mesajları yönetmek için kullanılır.
+
+#### Entity Yapısı
+
+```csharp
+public class BitmapScreenMessage
+{
+    public int Id { get; set; }
+    public string TurkishBitmap { get; set; }
+    public string EnglishBitmap { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public ICollection<Device> Devices { get; set; }
+}
+```
+
+#### DTO'lar
+
+- `BitmapScreenMessageDto`: Listeleme için kullanılan DTO
+- `CreateBitmapScreenMessageRequest`: Oluşturma için kullanılan DTO
+- `UpdateBitmapScreenMessageRequest`: Güncelleme için kullanılan DTO
+- `AssignBitmapScreenMessageRequest`: Cihaza mesaj atama için kullanılan DTO
+
+#### Repository
+
+`IBitmapScreenMessageRepository` arayüzü aşağıdaki metodları içerir:
+
+- `GetAllBitmapScreenMessagesAsync()`: Tüm bitmap ekran mesajlarını getirir
+- `GetBitmapScreenMessageByIdAsync(int id)`: ID'ye göre bitmap ekran mesajı getirir
+- `GetBitmapScreenMessageByDeviceIdAsync(int deviceId)`: Cihaz ID'sine göre bitmap ekran mesajı getirir
+- `GetDevicesByBitmapScreenMessageIdAsync(int bitmapScreenMessageId)`: Bir mesaja bağlı tüm cihazları getirir
+- `AddBitmapScreenMessageAsync(BitmapScreenMessage bitmapScreenMessage)`: Bitmap ekran mesajı ekler
+- `UpdateBitmapScreenMessageAsync(BitmapScreenMessage bitmapScreenMessage)`: Bitmap ekran mesajı günceller
+- `DeleteBitmapScreenMessageAsync(int id)`: Bitmap ekran mesajı siler
+- `AssignMessageToDeviceAsync(int deviceId, int bitmapScreenMessageId)`: Cihaza mesaj atar
+- `UnassignMessageFromDeviceAsync(int deviceId)`: Cihazdan mesaj bağlantısını kaldırır
+
+#### Service
+
+`IBitmapScreenMessageService` arayüzü aşağıdaki metodları içerir:
+
+- `GetAllBitmapScreenMessagesAsync()`: Tüm bitmap ekran mesajlarını getirir
+- `GetBitmapScreenMessageByIdAsync(int id)`: ID'ye göre bitmap ekran mesajı getirir
+- `GetBitmapScreenMessageByDeviceIdAsync(int deviceId)`: Cihaz ID'sine göre bitmap ekran mesajı getirir
+- `CreateBitmapScreenMessageAsync(CreateBitmapScreenMessageRequest request)`: Yeni bitmap ekran mesajı oluşturur
+- `UpdateBitmapScreenMessageAsync(int id, UpdateBitmapScreenMessageRequest request)`: Bitmap ekran mesajını günceller
+- `DeleteBitmapScreenMessageAsync(int id)`: Bitmap ekran mesajını siler
+- `AssignMessageToDeviceAsync(AssignBitmapScreenMessageRequest request)`: Cihaza mesaj atar
+- `UnassignMessageFromDeviceAsync(int deviceId)`: Cihazdan mesaj bağlantısını kaldırır
+
+#### Controller
+
+`BitmapScreenMessagesController` aşağıdaki endpoint'leri içerir:
+
+- `GET /api/BitmapScreenMessages`: Tüm bitmap ekran mesajlarını getirir
+- `GET /api/BitmapScreenMessages/{id}`: ID'ye göre bitmap ekran mesajı getirir
+- `GET /api/BitmapScreenMessages/by-device/{deviceId}`: Cihaz ID'sine göre bitmap ekran mesajı getirir
+- `POST /api/BitmapScreenMessages`: Yeni bitmap ekran mesajı oluşturur
+- `PUT /api/BitmapScreenMessages/{id}`: Bitmap ekran mesajını günceller
+- `DELETE /api/BitmapScreenMessages/{id}`: Bitmap ekran mesajını siler
+
 ---
 
 [◀ Veri Modelleri](05-Veri-Modelleri.md) | [Ana Sayfa](README.md) | [İleri: Yapılandırma ▶](07-Yapilandirma.md) 

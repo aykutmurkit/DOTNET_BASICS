@@ -27,14 +27,11 @@ namespace Data.Configurations
             builder.Property(b => b.CreatedAt).IsRequired();
             builder.Property(b => b.UpdatedAt).IsRequired(false);
             
-            // Cihaz ilişkisi
-            builder.Property(b => b.DeviceId).IsRequired();
-            
-            // Device ile one-to-one ilişki
-            builder.HasOne(b => b.Device)
+            // Many-to-One ilişki (bir mesajı birden fazla cihaz kullanabilir)
+            builder.HasMany(b => b.Devices)
                 .WithOne(d => d.BitmapScreenMessage)
-                .HasForeignKey<BitmapScreenMessage>(b => b.DeviceId)
-                .OnDelete(DeleteBehavior.Cascade); // Device silinince BitmapScreenMessage de silinecek
+                .HasForeignKey(d => d.BitmapScreenMessageId)
+                .OnDelete(DeleteBehavior.SetNull); // BitmapScreenMessage silinirse cihazların ilişkisi null olacak
         }
     }
 } 

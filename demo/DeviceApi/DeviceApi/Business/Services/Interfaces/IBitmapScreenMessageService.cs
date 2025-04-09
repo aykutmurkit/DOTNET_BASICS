@@ -21,6 +21,11 @@ namespace DeviceApi.Business.Services.Interfaces
         /// Cihaz ID'sine göre bitmap ekran mesajı getirir
         /// </summary>
         Task<BitmapScreenMessageDto> GetBitmapScreenMessageByDeviceIdAsync(int deviceId);
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        Task<List<int>> GetDeviceIdsByBitmapScreenMessageIdAsync(int bitmapScreenMessageId);
 
         /// <summary>
         /// Bitmap ekran mesajı oluşturur
@@ -36,5 +41,15 @@ namespace DeviceApi.Business.Services.Interfaces
         /// Bitmap ekran mesajı siler
         /// </summary>
         Task DeleteBitmapScreenMessageAsync(int id);
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        Task AssignMessageToDeviceAsync(AssignBitmapScreenMessageRequest request);
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        Task UnassignMessageFromDeviceAsync(int deviceId);
     }
 } 

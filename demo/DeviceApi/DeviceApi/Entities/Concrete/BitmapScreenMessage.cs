@@ -8,23 +8,37 @@ namespace Entities.Concrete
     /// </summary>
     public class BitmapScreenMessage
     {
+        /// <summary>
+        /// Mesaj ID'si
+        /// </summary>
         [Key]
         public int Id { get; set; }
         
-        [Required]
+        /// <summary>
+        /// Türkçe bitmap içeriği
+        /// </summary>
+        [Required(ErrorMessage = "Türkçe bitmap içeriği zorunludur")]
         public string TurkishBitmap { get; set; }
         
-        [Required]
+        /// <summary>
+        /// İngilizce bitmap içeriği
+        /// </summary>
+        [Required(ErrorMessage = "İngilizce bitmap içeriği zorunludur")]
         public string EnglishBitmap { get; set; }
         
+        /// <summary>
+        /// Oluşturulma tarihi
+        /// </summary>
         public DateTime CreatedAt { get; set; }
         
+        /// <summary>
+        /// Güncellenme tarihi
+        /// </summary>
         public DateTime? UpdatedAt { get; set; }
         
-        [Required]
-        public int DeviceId { get; set; }
-        
-        [ForeignKey("DeviceId")]
-        public Device Device { get; set; }
+        /// <summary>
+        /// Bu mesajı kullanan cihazlar (Many-to-One ilişki)
+        /// </summary>
+        public ICollection<Device> Devices { get; set; } = new List<Device>();
     }
 } 

@@ -27,7 +27,16 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<BitmapScreenMessageDto>> GetAllBitmapScreenMessagesAsync()
         {
             var messages = await _bitmapScreenMessageRepository.GetAllBitmapScreenMessagesAsync();
-            return messages.Select(m => MapToDto(m)).ToList();
+            var result = new List<BitmapScreenMessageDto>();
+            
+            foreach (var message in messages)
+            {
+                // Mesaja bağlı cihazları getir
+                var devices = await _bitmapScreenMessageRepository.GetDevicesByBitmapScreenMessageIdAsync(message.Id);
+                result.Add(MapToDto(message, devices));
+            }
+            
+            return result;
         }
 
         /// <summary>
@@ -40,8 +49,11 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 throw new Exception("Bitmap ekran mesajı bulunamadı.");
             }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _bitmapScreenMessageRepository.GetDevicesByBitmapScreenMessageIdAsync(id);
 
-            return MapToDto(message);
+            return MapToDto(message, devices);
         }
 
         /// <summary>
@@ -61,8 +73,28 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 throw new Exception("Bu cihaza ait bitmap ekran mesajı bulunamadı.");
             }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _bitmapScreenMessageRepository.GetDevicesByBitmapScreenMessageIdAsync(message.Id);
 
-            return MapToDto(message);
+            return MapToDto(message, devices);
+        }
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        public async Task<List<int>> GetDeviceIdsByBitmapScreenMessageIdAsync(int bitmapScreenMessageId)
+        {
+            // Mesajın var olduğunu kontrol et
+            var message = await _bitmapScreenMessageRepository.GetBitmapScreenMessageByIdAsync(bitmapScreenMessageId);
+            if (message == null)
+            {
+                throw new Exception("Bitmap ekran mesajı bulunamadı.");
+            }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _bitmapScreenMessageRepository.GetDevicesByBitmapScreenMessageIdAsync(bitmapScreenMessageId);
+            return devices.Select(d => d.Id).ToList();
         }
 
         /// <summary>
@@ -70,30 +102,15 @@ namespace DeviceApi.Business.Services.Concrete
         /// </summary>
         public async Task<BitmapScreenMessageDto> CreateBitmapScreenMessageAsync(CreateBitmapScreenMessageRequest request)
         {
-            // Cihaz var mı kontrol et
-            var device = await _deviceRepository.GetDeviceByIdAsync(request.DeviceId);
-            if (device == null)
-            {
-                throw new Exception("Cihaz bulunamadı.");
-            }
-
-            // Cihazın zaten bitmap ekran mesajı var mı kontrol et
-            var existingMessage = await _bitmapScreenMessageRepository.GetBitmapScreenMessageByDeviceIdAsync(request.DeviceId);
-            if (existingMessage != null)
-            {
-                throw new Exception("Bu cihaza ait zaten bir bitmap ekran mesajı bulunmaktadır.");
-            }
-
             var bitmapScreenMessage = new BitmapScreenMessage
             {
                 TurkishBitmap = request.TurkishBitmap,
                 EnglishBitmap = request.EnglishBitmap,
-                DeviceId = request.DeviceId,
                 CreatedAt = DateTime.Now
             };
 
             await _bitmapScreenMessageRepository.AddBitmapScreenMessageAsync(bitmapScreenMessage);
-            return MapToDto(bitmapScreenMessage);
+            return MapToDto(bitmapScreenMessage, new List<Device>());
         }
 
         /// <summary>
@@ -112,7 +129,11 @@ namespace DeviceApi.Business.Services.Concrete
             bitmapScreenMessage.UpdatedAt = DateTime.Now;
 
             await _bitmapScreenMessageRepository.UpdateBitmapScreenMessageAsync(bitmapScreenMessage);
-            return MapToDto(bitmapScreenMessage);
+            
+            // Güncellenen mesaja bağlı cihazları getir
+            var devices = await _bitmapScreenMessageRepository.GetDevicesByBitmapScreenMessageIdAsync(id);
+            
+            return MapToDto(bitmapScreenMessage, devices);
         }
 
         /// <summary>
@@ -128,11 +149,47 @@ namespace DeviceApi.Business.Services.Concrete
 
             await _bitmapScreenMessageRepository.DeleteBitmapScreenMessageAsync(id);
         }
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        public async Task AssignMessageToDeviceAsync(AssignBitmapScreenMessageRequest request)
+        {
+            // Cihaz ve mesajın var olduğunu kontrol et
+            var device = await _deviceRepository.GetDeviceByIdAsync(request.DeviceId);
+            if (device == null)
+            {
+                throw new Exception("Cihaz bulunamadı.");
+            }
+            
+            var message = await _bitmapScreenMessageRepository.GetBitmapScreenMessageByIdAsync(request.BitmapScreenMessageId);
+            if (message == null)
+            {
+                throw new Exception("Bitmap ekran mesajı bulunamadı.");
+            }
+            
+            await _bitmapScreenMessageRepository.AssignMessageToDeviceAsync(request.DeviceId, request.BitmapScreenMessageId);
+        }
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        public async Task UnassignMessageFromDeviceAsync(int deviceId)
+        {
+            // Cihazın var olduğunu kontrol et
+            var device = await _deviceRepository.GetDeviceByIdAsync(deviceId);
+            if (device == null)
+            {
+                throw new Exception("Cihaz bulunamadı.");
+            }
+            
+            await _bitmapScreenMessageRepository.UnassignMessageFromDeviceAsync(deviceId);
+        }
 
         /// <summary>
         /// BitmapScreenMessage entity'sini BitmapScreenMessageDto'ya dönüştürür
         /// </summary>
-        private BitmapScreenMessageDto MapToDto(BitmapScreenMessage bitmapScreenMessage)
+        private BitmapScreenMessageDto MapToDto(BitmapScreenMessage bitmapScreenMessage, List<Device> devices)
         {
             return new BitmapScreenMessageDto
             {
@@ -141,7 +198,7 @@ namespace DeviceApi.Business.Services.Concrete
                 EnglishBitmap = bitmapScreenMessage.EnglishBitmap,
                 CreatedAt = bitmapScreenMessage.CreatedAt,
                 UpdatedAt = bitmapScreenMessage.UpdatedAt,
-                DeviceId = bitmapScreenMessage.DeviceId
+                DeviceIds = devices.Select(d => d.Id).ToList()
             };
         }
     }

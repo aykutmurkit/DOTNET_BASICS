@@ -23,6 +23,11 @@ namespace Data.Interfaces
         Task<BitmapScreenMessage> GetBitmapScreenMessageByDeviceIdAsync(int deviceId);
         
         /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        Task<List<Device>> GetDevicesByBitmapScreenMessageIdAsync(int bitmapScreenMessageId);
+        
+        /// <summary>
         /// Bitmap ekran mesajı ekler
         /// </summary>
         Task AddBitmapScreenMessageAsync(BitmapScreenMessage bitmapScreenMessage);
@@ -36,5 +41,15 @@ namespace Data.Interfaces
         /// Bitmap ekran mesajı siler
         /// </summary>
         Task DeleteBitmapScreenMessageAsync(int id);
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        Task AssignMessageToDeviceAsync(int deviceId, int bitmapScreenMessageId);
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        Task UnassignMessageFromDeviceAsync(int deviceId);
     }
 } 

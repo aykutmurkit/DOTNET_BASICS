@@ -30,6 +30,7 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Tüm bitmap ekran mesajlarını getirir
         /// </summary>
+        /// <returns>Başarılı durumda 200 OK ve bitmap ekran mesajları listesi</returns>
         [HttpGet]
         [ProducesResponseType(typeof(ApiResponse<List<BitmapScreenMessageDto>>), 200)]
         public async Task<IActionResult> GetAllBitmapScreenMessages()
@@ -49,6 +50,8 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// ID'ye göre bitmap ekran mesajı getirir
         /// </summary>
+        /// <param name="id">Bitmap ekran mesaj ID'si</param>
+        /// <returns>Başarılı durumda 200 OK ve bitmap ekran mesajı, bulunamazsa 404 Not Found</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ApiResponse<BitmapScreenMessageDto>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
@@ -81,6 +84,8 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Cihaz ID'sine göre bitmap ekran mesajı getirir
         /// </summary>
+        /// <param name="deviceId">Cihaz ID'si</param>
+        /// <returns>Başarılı durumda 200 OK ve bitmap ekran mesajı, bulunamazsa 404 Not Found</returns>
         [HttpGet("by-device/{deviceId}")]
         [ProducesResponseType(typeof(ApiResponse<BitmapScreenMessageDto>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
@@ -113,6 +118,8 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Yeni bitmap ekran mesajı oluşturur
         /// </summary>
+        /// <param name="request">Bitmap ekran mesaj oluşturma isteği</param>
+        /// <returns>Başarılı durumda 201 Created ve oluşturulan bitmap ekran mesajı, hata durumunda 400 Bad Request</returns>
         [HttpPost]
         [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<BitmapScreenMessageDto>), 201)]
@@ -148,7 +155,7 @@ namespace DeviceApi.API.Controllers
                 await _logService.LogInfoAsync(
                     "Bitmap ekran mesajı oluşturuldu",
                     "BitmapScreenMessagesController.CreateBitmapScreenMessage",
-                    new { MessageId = createdMessage.Id, DeviceId = request.DeviceId, UserId = userId, Role = userRole });
+                    new { MessageId = createdMessage.Id, UserId = userId, Role = userRole });
 
                 var response = ApiResponse<BitmapScreenMessageDto>.Created(createdMessage, "Bitmap ekran mesajı başarıyla oluşturuldu");
                 return CreatedAtAction(nameof(GetBitmapScreenMessageById), new { id = createdMessage.Id }, response);
@@ -169,6 +176,9 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Bitmap ekran mesajını günceller
         /// </summary>
+        /// <param name="id">Bitmap ekran mesaj ID'si</param>
+        /// <param name="request">Bitmap ekran mesaj güncelleme isteği</param>
+        /// <returns>Başarılı durumda 200 OK ve güncellenen bitmap ekran mesajı, bulunamazsa 404 Not Found, hata durumunda 400 Bad Request</returns>
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<BitmapScreenMessageDto>), 200)]
@@ -230,6 +240,8 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Bitmap ekran mesajını siler
         /// </summary>
+        /// <param name="id">Bitmap ekran mesaj ID'si</param>
+        /// <returns>Başarılı durumda 204 No Content, bulunamazsa 404 Not Found</returns>
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<object>), 204)]

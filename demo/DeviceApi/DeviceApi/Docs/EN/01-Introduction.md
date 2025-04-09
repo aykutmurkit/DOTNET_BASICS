@@ -8,95 +8,56 @@
 
 ## What is DeviceApi?
 
-DeviceApi is a modern RESTful API designed to simplify the management of IoT (Internet of Things) devices and their associated data. Built on ASP.NET Core, it provides a comprehensive solution for device registration, monitoring, control, and data collection in an IoT ecosystem.
+DeviceApi is a comprehensive API platform developed for the management, monitoring, and control of IoT devices. This platform supports various device types and provides centralized management for them.
 
-At its core, DeviceApi serves as a bridge between physical IoT devices and the applications that need to interact with them. It abstracts away the complexities of device communication protocols, data storage, and security concerns, providing a clean, consistent interface for developers.
+## Core Features
 
-## Key Concepts
+- **Device Management**: Registration, configuration, and monitoring of devices
+- **Message Management**: 
+  - Full screen messages
+  - Scrolling screen messages
+  - Bitmap screen messages
+  - Periodic messages
+- **Platform Management**: Management and configuration of device platforms
+- **Station Management**: Management of stations and connected devices
+- **Security**: JWT-based authentication and role-based authorization
+- **Logging**: Comprehensive logging and monitoring features
+- **API Documentation**: Detailed API documentation with Swagger/OpenAPI
 
-### Devices
-
-In the context of DeviceApi, a "device" represents any IoT hardware that can connect to the internet and communicate with the API. Each device has:
-
-- A unique identifier
-- Metadata (manufacturer, model, firmware version, etc.)
-- Status information (online/offline, battery level, etc.)
-- Configuration settings
-- Associated data records
-
-### Data Points
-
-Devices generate data, which is captured as "data points." These can include:
-
-- Sensor readings (temperature, humidity, pressure, etc.)
-- State changes (door open/closed, motion detected, etc.)
-- Operational metrics (uptime, signal strength, etc.)
-- Alert conditions
-
-### Groups and Hierarchies
-
-Devices can be organized into logical groups, allowing for:
-
-- Organizational separation (by department, location, function, etc.)
-- Batch operations (update all devices in a group)
-- Access control (limit which users can see which groups)
-- Aggregated reporting
-
-### Users and Roles
-
-The API supports role-based access control with:
-
-- Different permission levels (admin, operator, viewer, etc.)
-- Multi-tenant isolation
-- Audit logging of user actions
-
-## Architecture Overview
-
-DeviceApi follows a clean, layered architecture:
-
-1. **API Layer**: HTTP endpoints for client applications
-2. **Service Layer**: Business logic and workflows
-3. **Data Access Layer**: Repository pattern for data operations
-4. **Core Domain**: Entity definitions and business rules
-
-### Technology Stack
+## Technology Stack
 
 - **Framework**: ASP.NET Core 8.0
-- **Authentication**: JWT-based with refresh tokens
-- **Database**: Entity Framework Core with SQL Server
+- **ORM**: Entity Framework Core 8.0
+- **Database**: Microsoft SQL Server
+- **Caching**: Memory Cache and Redis
+- **Authentication**: JWT
+- **Validation**: FluentValidation
+- **Object Mapping**: AutoMapper
 - **Documentation**: Swagger/OpenAPI
-- **Logging**: Serilog with structured logging
-- **Messaging**: Optional integration with Azure Service Bus or RabbitMQ
-- **Caching**: Distributed caching with Redis
+- **Testing**: xUnit, Moq, and FluentAssertions
 
-## Why DeviceApi?
+## Target Audience
 
-### Problems Solved
+- **Developers**: Those developing applications using the API
+- **System Administrators**: Those managing and configuring the platform
+- **Operators**: Users managing devices and messages
 
-DeviceApi addresses several common challenges in IoT device management:
+## Documentation Structure
 
-- **Scalability**: Designed to handle thousands of devices and millions of data points
-- **Security**: Comprehensive authentication, authorization, and data protection
-- **Interoperability**: Standard REST interface works with any client that speaks HTTP
-- **Flexibility**: Customizable device types and data schemas
-- **Reliability**: Built with fault tolerance and recovery in mind
+1. **Introduction**: Overview and basic concepts
+2. **Installation**: Development environment setup
+3. **Quick Start**: Basic usage examples
+4. **Architecture**: System architecture and components
+5. **Data Models**: Database schema and relationships
+6. **Configuration**: System configuration options
+7. **Seeding Process**: Database initial data
+8. **Versioning**: API versioning strategy
+9. **Best Practices**: Development and usage recommendations
 
-### Use Cases
+## License
 
-DeviceApi is ideal for:
-
-- **Smart Building Management**: Monitor and control HVAC, lighting, access control
-- **Industrial IoT**: Track factory equipment, monitor production lines
-- **Environmental Monitoring**: Collect data from distributed sensor networks
-- **Fleet Management**: Track vehicle telemetry and maintenance needs
-- **Smart City Infrastructure**: Manage street lighting, parking sensors, etc.
-
-## Getting Started
-
-The fastest way to understand DeviceApi is to see it in action. The [Quick Start](03-Quick-Start.md) guide will walk you through setting up a development environment and making your first API calls.
-
-For a complete list of endpoints and their functionality, refer to the [API Endpoints](04-API-Endpoints.md) documentation.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-[◀ Home](README.md) | [Next: Installation ▶](02-Installation.md) 
+[Next: Installation ▶](02-Installation.md) 

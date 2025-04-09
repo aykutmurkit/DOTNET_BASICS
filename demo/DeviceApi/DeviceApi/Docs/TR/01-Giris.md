@@ -8,95 +8,56 @@
 
 ## DeviceApi Nedir?
 
-DeviceApi, IoT (Nesnelerin İnterneti) cihazlarının ve bunlarla ilişkili verilerin yönetimini basitleştirmek için tasarlanmış modern bir RESTful API'dir. ASP.NET Core üzerine inşa edilmiş olup, bir IoT ekosisteminde cihaz kaydı, izleme, kontrol ve veri toplama için kapsamlı bir çözüm sunar.
+DeviceApi, IoT cihazlarının yönetimi, izlenmesi ve kontrolü için geliştirilmiş kapsamlı bir API platformudur. Bu platform, çeşitli cihaz türlerini destekler ve bunların merkezi yönetimini sağlar.
 
-Özünde DeviceApi, fiziksel IoT cihazları ile bunlarla etkileşime girmesi gereken uygulamalar arasında bir köprü görevi görür. Cihaz iletişim protokollerinin, veri depolamanın ve güvenlik endişelerinin karmaşıklıklarını soyutlayarak geliştiricilere temiz, tutarlı bir arayüz sağlar.
+## Temel Özellikler
 
-## Temel Kavramlar
+- **Cihaz Yönetimi**: Cihazların kaydı, yapılandırması ve izlenmesi
+- **Mesaj Yönetimi**: 
+  - Tam ekran mesajları
+  - Kaydırma ekran mesajları
+  - Bitmap ekran mesajları
+  - Periyodik mesajlar
+- **Platform Yönetimi**: Cihaz platformlarının yönetimi ve yapılandırması
+- **İstasyon Yönetimi**: İstasyonların ve bağlı cihazların yönetimi
+- **Güvenlik**: JWT tabanlı kimlik doğrulama ve rol tabanlı yetkilendirme
+- **Loglama**: Kapsamlı loglama ve izleme özellikleri
+- **API Dokümantasyonu**: Swagger/OpenAPI ile detaylı API dokümantasyonu
 
-### Cihazlar
-
-DeviceApi bağlamında, "cihaz", internete bağlanabilen ve API ile iletişim kurabilen herhangi bir IoT donanımını temsil eder. Her cihazın şunları vardır:
-
-- Benzersiz bir tanımlayıcı
-- Meta veriler (üretici, model, donanım yazılımı sürümü vb.)
-- Durum bilgisi (çevrimiçi/çevrimdışı, pil seviyesi vb.)
-- Yapılandırma ayarları
-- İlişkili veri kayıtları
-
-### Veri Noktaları
-
-Cihazlar, "veri noktaları" olarak yakalanan veriler üretir. Bunlar şunları içerebilir:
-
-- Sensör okumaları (sıcaklık, nem, basınç vb.)
-- Durum değişiklikleri (kapı açık/kapalı, hareket algılandı vb.)
-- İşletimsel metrikler (çalışma süresi, sinyal gücü vb.)
-- Uyarı koşulları
-
-### Gruplar ve Hiyerarşiler
-
-Cihazlar, aşağıdakilere izin veren mantıksal gruplara düzenlenebilir:
-
-- Organizasyonel ayrım (departman, konum, işlev vb. göre)
-- Toplu işlemler (bir gruptaki tüm cihazları güncelleme)
-- Erişim kontrolü (hangi kullanıcıların hangi grupları görebileceğini sınırlama)
-- Toplu raporlama
-
-### Kullanıcılar ve Roller
-
-API, şunlara sahip rol tabanlı erişim kontrolünü destekler:
-
-- Farklı izin seviyeleri (yönetici, operatör, görüntüleyici vb.)
-- Çok kiracılı izolasyon
-- Kullanıcı eylemlerinin denetim günlüğü
-
-## Mimari Genel Bakış
-
-DeviceApi, temiz, katmanlı bir mimariyi takip eder:
-
-1. **API Katmanı**: İstemci uygulamaları için HTTP uç noktaları
-2. **Servis Katmanı**: İş mantığı ve iş akışları
-3. **Veri Erişim Katmanı**: Veri işlemleri için repository pattern
-4. **Çekirdek Alan**: Varlık tanımları ve iş kuralları
-
-### Teknoloji Yığını
+## Teknoloji Yığını
 
 - **Framework**: ASP.NET Core 8.0
-- **Kimlik Doğrulama**: Yenileme tokenleri ile JWT tabanlı
-- **Veritabanı**: SQL Server ile Entity Framework Core
+- **ORM**: Entity Framework Core 8.0
+- **Veritabanı**: Microsoft SQL Server
+- **Önbellekleme**: Memory Cache ve Redis
+- **Kimlik Doğrulama**: JWT
+- **Doğrulama**: FluentValidation
+- **Nesne Mapping**: AutoMapper
 - **Dokümantasyon**: Swagger/OpenAPI
-- **Loglama**: Yapılandırılmış loglama ile Serilog
-- **Mesajlaşma**: Azure Service Bus veya RabbitMQ ile opsiyonel entegrasyon
-- **Önbellek**: Redis ile dağıtılmış önbellek
+- **Test**: xUnit, Moq ve FluentAssertions
 
-## Neden DeviceApi?
+## Hedef Kitle
 
-### Çözülen Sorunlar
+- **Geliştiriciler**: API'yi kullanarak uygulama geliştirenler
+- **Sistem Yöneticileri**: Platformu yöneten ve yapılandıranlar
+- **Operatörler**: Cihazları ve mesajları yöneten kullanıcılar
 
-DeviceApi, IoT cihaz yönetimindeki birkaç yaygın zorluğu ele alır:
+## Dokümantasyon Yapısı
 
-- **Ölçeklenebilirlik**: Binlerce cihaz ve milyonlarca veri noktasını ele alacak şekilde tasarlanmıştır
-- **Güvenlik**: Kapsamlı kimlik doğrulama, yetkilendirme ve veri koruma
-- **Birlikte Çalışabilirlik**: Standart REST arayüzü, HTTP konuşan herhangi bir istemci ile çalışır
-- **Esneklik**: Özelleştirilebilir cihaz türleri ve veri şemaları
-- **Güvenilirlik**: Hata toleransı ve kurtarma düşünülerek inşa edilmiştir
+1. **Giriş**: Genel bakış ve temel kavramlar
+2. **Kurulum**: Geliştirme ortamı kurulumu
+3. **Hızlı Başlangıç**: Temel kullanım örnekleri
+4. **Mimari Yapı**: Sistem mimarisi ve bileşenleri
+5. **Veri Modelleri**: Veritabanı şeması ve ilişkileri
+6. **Yapılandırma**: Sistem yapılandırma seçenekleri
+7. **Seeding Süreci**: Veritabanı başlangıç verileri
+8. **Versiyonlama**: API versiyonlama stratejisi
+9. **En İyi Uygulamalar**: Geliştirme ve kullanım önerileri
 
-### Kullanım Durumları
+## Lisans
 
-DeviceApi şunlar için idealdir:
-
-- **Akıllı Bina Yönetimi**: HVAC, aydınlatma, erişim kontrolünü izleme ve kontrol etme
-- **Endüstriyel IoT**: Fabrika ekipmanını takip etme, üretim hatlarını izleme
-- **Çevresel İzleme**: Dağıtılmış sensör ağlarından veri toplama
-- **Filo Yönetimi**: Araç telemetrisi ve bakım ihtiyaçlarını takip etme
-- **Akıllı Şehir Altyapısı**: Sokak aydınlatması, park sensörleri vb. yönetimi
-
-## Başlangıç
-
-DeviceApi'yi anlamanın en hızlı yolu, onu eylem halinde görmektir. [Hızlı Başlangıç](03-Hizli-Baslangic.md) kılavuzu, bir geliştirme ortamı kurma ve ilk API çağrılarınızı yapma konusunda size rehberlik edecektir.
-
-Uç noktaların ve işlevlerinin tam listesi için [API Uç Noktaları](04-API-Uc-Noktalari.md) dokümantasyonuna bakın.
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
 
 ---
 
-[◀ Ana Sayfa](README.md) | [İleri: Kurulum ▶](02-Kurulum.md) 
+[İleri: Kurulum ▶](02-Kurulum.md) 

@@ -2,294 +2,246 @@
 
 **Version:** 1.0.0  
 **Author:** R&D Engineer Aykut Mürkit  
-**Company:** ISBAK 2025
+**Company:** İSBAK 2025
 
 ---
 
-This guide will help you get started with DeviceApi quickly, showing you how to perform common operations and interact with the API.
+## API Overview
 
-## Prerequisites
+DeviceApi is a RESTful API developed for managing IoT devices. This guide will help you get started quickly with the API.
 
-Before starting, ensure you have:
+## Basic Endpoints
 
-- Completed the [Installation](02-Installation.md) steps
-- A text editor or IDE for editing code
-- A REST client like Postman, cURL, or similar
-- Basic understanding of REST APIs and HTTP methods
-
-## Running the API
-
-1. Start the API server:
-
-   ```bash
-   cd DeviceApi
-   dotnet run
-   ```
-
-2. The server will start on `https://localhost:5001` by default
-
-3. Open a browser and navigate to `https://localhost:5001/swagger` to see the Swagger UI with all available endpoints
-
-## Authentication
-
-Most endpoints require authentication. Let's start by obtaining an authentication token:
-
-### Step 1: Register a New User
+### Authentication
 
 ```http
-POST /api/auth/register
+POST /api/Auth/login
 Content-Type: application/json
 
 {
-  "username": "demo_user",
-  "email": "demo@example.com",
-  "password": "SecureP@ssw0rd123",
-  "firstName": "Demo",
-  "lastName": "User"
+  "username": "admin",
+  "password": "admin123"
 }
 ```
 
-### Step 2: Login to Get a JWT Token
+### Device Management
 
 ```http
-POST /api/auth/login
+# List all devices
+GET /api/Devices
+
+# Add new device
+POST /api/Devices
 Content-Type: application/json
 
 {
-  "email": "demo@example.com",
-  "password": "SecureP@ssw0rd123"
+  "name": "Test Device",
+  "ip": "192.168.1.100",
+  "port": 8080,
+  "platformId": 1
 }
-```
 
-The response will contain your JWT token:
-
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "refreshToken": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "expiresIn": 3600
-}
-```
-
-### Step 3: Use the Token in Subsequent Requests
-
-Include the token in the Authorization header as a Bearer token:
-
-```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
-
-## Working with Devices
-
-### Registering a New Device
-
-```http
-POST /api/devices
+# Update device
+PUT /api/Devices/{id}
 Content-Type: application/json
-Authorization: Bearer your-token-here
 
 {
-  "name": "Temperature Sensor 1",
-  "deviceType": "TEMPERATURE_SENSOR",
-  "serialNumber": "TS-2025-001",
-  "firmwareVersion": "1.0.0",
-  "macAddress": "AA:BB:CC:DD:EE:FF",
-  "location": {
-    "latitude": 41.0082,
-    "longitude": 28.9784,
-    "address": "Istanbul, Turkey",
-    "floor": 3,
-    "room": "Server Room"
-  },
-  "properties": {
-    "maxTemperature": 85,
-    "minTemperature": -40,
-    "accuracyLevel": "high"
-  }
+  "name": "Updated Device",
+  "ip": "192.168.1.101",
+  "port": 8081
 }
 ```
 
-### Retrieving All Devices
+### Message Management
+
+#### Full Screen Messages
 
 ```http
-GET /api/devices?page=1&pageSize=10
-Authorization: Bearer your-token-here
-```
+# List all full screen messages
+GET /api/FullScreenMessages
 
-Response:
-
-```json
-{
-  "totalItems": 1,
-  "items": [
-    {
-      "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
-      "name": "Temperature Sensor 1",
-      "deviceType": "TEMPERATURE_SENSOR",
-      "serialNumber": "TS-2025-001",
-      "status": "ACTIVE",
-      "createdAt": "2025-04-05T08:15:30Z",
-      "lastConnectedAt": "2025-04-05T08:15:30Z"
-    }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "totalPages": 1
-}
-```
-
-### Retrieving Device Details
-
-```http
-GET /api/devices/d290f1ee-6c54-4b01-90e6-d701748f0851
-Authorization: Bearer your-token-here
-```
-
-### Updating a Device
-
-```http
-PUT /api/devices/d290f1ee-6c54-4b01-90e6-d701748f0851
+# Add new full screen message
+POST /api/FullScreenMessages
 Content-Type: application/json
-Authorization: Bearer your-token-here
 
 {
-  "name": "Temperature Sensor 1 - Updated",
-  "firmwareVersion": "1.0.1",
-  "status": "MAINTENANCE",
-  "properties": {
-    "maxTemperature": 90,
-    "minTemperature": -40,
-    "accuracyLevel": "high"
-  }
+  "turkishMessage": "Hello World",
+  "englishMessage": "Hello World"
 }
 ```
 
-### Deleting a Device
+#### Scrolling Screen Messages
 
 ```http
-DELETE /api/devices/d290f1ee-6c54-4b01-90e6-d701748f0851
-Authorization: Bearer your-token-here
-```
+# List all scrolling screen messages
+GET /api/ScrollingScreenMessages
 
-## Working with Device Data
-
-### Sending Data from a Device
-
-```http
-POST /api/devices/d290f1ee-6c54-4b01-90e6-d701748f0851/data
+# Add new scrolling screen message
+POST /api/ScrollingScreenMessages
 Content-Type: application/json
-Authorization: Bearer your-token-here
 
 {
-  "timestamp": "2025-04-05T10:15:30Z",
-  "readings": {
-    "temperature": 24.5,
-    "humidity": 45.2,
-    "batteryLevel": 78
-  },
-  "alerts": ["LOW_BATTERY"]
+  "turkishLines": ["Line 1", "Line 2"],
+  "englishLines": ["Line 1", "Line 2"]
 }
 ```
 
-### Retrieving Device Data History
+#### Bitmap Screen Messages
 
 ```http
-GET /api/devices/d290f1ee-6c54-4b01-90e6-d701748f0851/data?startDate=2025-04-01T00:00:00Z&endDate=2025-04-05T23:59:59Z&page=1&pageSize=100
-Authorization: Bearer your-token-here
-```
+# List all bitmap screen messages
+GET /api/BitmapScreenMessages
 
-## Using Filtering, Sorting, and Pagination
-
-The API supports filtering, sorting, and pagination for collection endpoints:
-
-### Filtering
-
-```http
-GET /api/devices?deviceType=TEMPERATURE_SENSOR&status=ACTIVE
-Authorization: Bearer your-token-here
-```
-
-### Sorting
-
-```http
-GET /api/devices?sortBy=name&sortOrder=asc
-Authorization: Bearer your-token-here
-```
-
-### Pagination
-
-```http
-GET /api/devices?page=2&pageSize=25
-Authorization: Bearer your-token-here
-```
-
-## Working with Device Groups
-
-### Creating a Device Group
-
-```http
-POST /api/groups
+# Add new bitmap screen message
+POST /api/BitmapScreenMessages
 Content-Type: application/json
-Authorization: Bearer your-token-here
 
 {
-  "name": "Server Room Sensors",
-  "description": "All sensors in the server room",
-  "devices": [
-    "d290f1ee-6c54-4b01-90e6-d701748f0851"
-  ]
+  "turkishBitmap": "base64_encoded_bitmap",
+  "englishBitmap": "base64_encoded_bitmap"
 }
 ```
 
-### Adding Devices to a Group
+#### Periodic Messages
 
 ```http
-POST /api/groups/f47ac10b-58cc-4372-a567-0e02b2c3d479/devices
+# List all periodic messages
+GET /api/PeriodicMessages
+
+# Add new periodic message
+POST /api/PeriodicMessages
 Content-Type: application/json
-Authorization: Bearer your-token-here
 
 {
-  "deviceIds": [
-    "7bba9078-8d1f-462d-81ef-24962acfe9b5",
-    "32c3e9b5-0b5e-4f2d-8b9d-15a1f901aa3c"
-  ]
+  "message": "Periodic Message",
+  "startTime": "2024-01-01T00:00:00",
+  "endTime": "2024-12-31T23:59:59",
+  "intervalInMinutes": 60
 }
+```
+
+## Example Usage Scenarios
+
+### Scenario 1: Adding Device and Assigning Message
+
+1. Add a new device
+2. Assign a full screen message to the device
+3. Check device status
+
+```http
+# 1. Add device
+POST /api/Devices
+{
+  "name": "New Device",
+  "ip": "192.168.1.100",
+  "port": 8080,
+  "platformId": 1
+}
+
+# 2. Create full screen message
+POST /api/FullScreenMessages
+{
+  "turkishMessage": "Welcome",
+  "englishMessage": "Welcome"
+}
+
+# 3. Assign message to device
+POST /api/Devices/{deviceId}/assign-message
+{
+  "messageId": 1,
+  "messageType": "FullScreen"
+}
+
+# 4. Check device status
+GET /api/Devices/{deviceId}/status
+```
+
+### Scenario 2: Multiple Message Management
+
+1. Create different types of messages
+2. Assign messages to devices
+3. Monitor message statuses
+
+```http
+# 1. Create different types of messages
+POST /api/FullScreenMessages
+{
+  "turkishMessage": "Full Screen Message",
+  "englishMessage": "Full Screen Message"
+}
+
+POST /api/ScrollingScreenMessages
+{
+  "turkishLines": ["Scroll 1", "Scroll 2"],
+  "englishLines": ["Scroll 1", "Scroll 2"]
+}
+
+POST /api/BitmapScreenMessages
+{
+  "turkishBitmap": "base64_encoded_bitmap",
+  "englishBitmap": "base64_encoded_bitmap"
+}
+
+# 2. Assign messages to devices
+POST /api/Devices/{deviceId}/assign-message
+{
+  "messageId": 1,
+  "messageType": "FullScreen"
+}
+
+POST /api/Devices/{deviceId}/assign-message
+{
+  "messageId": 1,
+  "messageType": "ScrollingScreen"
+}
+
+# 3. Check message statuses
+GET /api/Devices/{deviceId}/messages
 ```
 
 ## Error Handling
 
-The API returns standard HTTP status codes along with descriptive error messages:
+The API uses standard HTTP status codes and error messages:
+
+- `200 OK`: Operation successful
+- `201 Created`: Resource successfully created
+- `400 Bad Request`: Invalid request
+- `401 Unauthorized`: Authentication required
+- `403 Forbidden`: Unauthorized access
+- `404 Not Found`: Resource not found
+- `500 Internal Server Error`: Server error
+
+Example error response:
 
 ```json
 {
-  "status": 400,
-  "message": "Invalid request parameters",
+  "success": false,
+  "message": "Device not found",
   "errors": [
     {
-      "field": "name",
-      "message": "Name is required"
+      "code": "DeviceNotFound",
+      "description": "Device with specified ID not found"
     }
-  ],
-  "timestamp": "2025-04-05T10:30:45Z",
-  "path": "/api/devices"
+  ]
 }
 ```
 
+## Security
+
+To access the API:
+
+1. Get a JWT token using the `/api/Auth/login` endpoint
+2. Send the token in the `Authorization` header:
+   ```
+   Authorization: Bearer your_jwt_token
+   ```
+
 ## Next Steps
 
-Now that you're familiar with the basic operations of DeviceApi, you can:
-
-1. Explore the complete [API Endpoints](04-API-Endpoints.md) documentation
-2. Learn about [Authentication](05-Authentication.md) in detail
-3. Understand the [Data Models](06-Data-Models.md)
-4. Check out [Configuration](07-Configuration.md) options
-
-For advanced topics, see:
-
-- [Performance Optimization](09-Performance-Optimization.md)
-- [Security](10-Security.md)
-- [Deployment](11-Deployment.md)
+1. Review the [Architecture](06-Architecture.md) document
+2. Learn about [Data Models](05-Data-Models.md)
+3. Read the [Best Practices](09-Best-Practices.md) guide
 
 ---
 
-[◀ Installation](02-Installation.md) | [Home](README.md) | [Next: API Endpoints ▶](04-API-Endpoints.md) 
+[◀ Installation](02-Installation.md) | [Next: Data Models ▶](05-Data-Models.md) 
