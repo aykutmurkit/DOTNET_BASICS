@@ -11,9 +11,6 @@ namespace Data.Seeding
     /// </summary>
     public class FullScreenMessageSeeder : ISeeder
     {
-        // SeederOrder'a göre AlignmentTypeSeeder'dan sonra çalışmalı
-        public int Order => 8;
-       
         public async Task SeedAsync(AppDbContext context)
         {
             // Zaten mesaj var mı kontrol et
@@ -90,11 +87,11 @@ namespace Data.Seeding
             // AlignmentTypes'ları alalım
             var alignmentTypes = await context.AlignmentTypes.ToListAsync();
             
-            // SQL komutu ile IDENTITY_INSERT kullanarak ID'leri belirterek veri ekleme
+            // Önce FullScreenMessages tablosuna veri ekle
             var queryBuilder = new StringBuilder();
             queryBuilder.AppendLine("SET IDENTITY_INSERT [FullScreenMessages] ON;");
             
-            for (int i = 0; i < Math.Min(devices.Count, 3); i++)
+            for (int i = 0; i < 3; i++)
             {
                 // İlk iki mesaj için Center (ID: 1), üçüncü mesaj için Left (ID: 2) hizalama türü kullan
                 int alignmentTypeId = i < 2 ? 1 : 2;
@@ -104,7 +101,7 @@ namespace Data.Seeding
                 (
                     [Id], [TurkishLine1], [TurkishLine2], [TurkishLine3], [TurkishLine4], 
                     [EnglishLine1], [EnglishLine2], [EnglishLine3], [EnglishLine4], 
-                    [AlignmentTypeId], [CreatedAt], [DeviceId]
+                    [AlignmentTypeId], [CreatedAt]
                 ) 
                 VALUES 
                 (
@@ -118,14 +115,25 @@ namespace Data.Seeding
                     N'{englishMessages[i].Line3}', 
                     N'{englishMessages[i].Line4}', 
                     {alignmentTypeId}, 
-                    GETDATE(), 
-                    {devices[i].Id}
+                    GETDATE()
                 );");
             }
             
             queryBuilder.AppendLine("SET IDENTITY_INSERT [FullScreenMessages] OFF;");
             
             await context.Database.ExecuteSqlRawAsync(queryBuilder.ToString());
+            
+            // Şimdi cihazlara mesajları atayalım
+            for (int i = 0; i < devices.Count && i < 3; i++)
+            {
+                // İlk iki cihaz birinci mesaja, üçüncü cihaz ikinci mesaja bağlansın
+                int messageId = i < 2 ? 1 : 2;
+                
+                var device = devices[i];
+                device.FullScreenMessageId = messageId;
+            }
+            
+            await context.SaveChangesAsync();
             
             // Context cache'ini temizle
             foreach (var entry in context.ChangeTracker.Entries())

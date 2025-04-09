@@ -27,14 +27,11 @@ namespace Data.Configurations
             builder.Property(s => s.CreatedAt).IsRequired();
             builder.Property(s => s.UpdatedAt).IsRequired(false);
             
-            // Cihaz ilişkisi
-            builder.Property(s => s.DeviceId).IsRequired();
-            
-            // Device ile one-to-one ilişki
-            builder.HasOne(s => s.Device)
+            // Many-to-One ilişki (bir mesajı birden fazla cihaz kullanabilir)
+            builder.HasMany(s => s.Devices)
                 .WithOne(d => d.ScrollingScreenMessage)
-                .HasForeignKey<ScrollingScreenMessage>(s => s.DeviceId)
-                .OnDelete(DeleteBehavior.Cascade); // Device silinince ScrollingScreenMessage de silinecek
+                .HasForeignKey(d => d.ScrollingScreenMessageId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 } 

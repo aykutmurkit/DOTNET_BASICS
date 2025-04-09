@@ -27,7 +27,16 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<ScrollingScreenMessageDto>> GetAllScrollingScreenMessagesAsync()
         {
             var messages = await _scrollingScreenMessageRepository.GetAllScrollingScreenMessagesAsync();
-            return messages.Select(m => MapToDto(m)).ToList();
+            var result = new List<ScrollingScreenMessageDto>();
+            
+            foreach (var message in messages)
+            {
+                // Mesaja bağlı cihazları getir
+                var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(message.Id);
+                result.Add(MapToDto(message, devices));
+            }
+            
+            return result;
         }
 
         /// <summary>
@@ -40,8 +49,11 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 throw new Exception("Kayan ekran mesajı bulunamadı.");
             }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(id);
 
-            return MapToDto(message);
+            return MapToDto(message, devices);
         }
 
         /// <summary>
@@ -61,8 +73,28 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 throw new Exception("Bu cihaza ait kayan ekran mesajı bulunamadı.");
             }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(message.Id);
 
-            return MapToDto(message);
+            return MapToDto(message, devices);
+        }
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        public async Task<List<int>> GetDeviceIdsByScrollingScreenMessageIdAsync(int scrollingScreenMessageId)
+        {
+            // Mesajın var olduğunu kontrol et
+            var message = await _scrollingScreenMessageRepository.GetScrollingScreenMessageByIdAsync(scrollingScreenMessageId);
+            if (message == null)
+            {
+                throw new Exception("Kayan ekran mesajı bulunamadı.");
+            }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(scrollingScreenMessageId);
+            return devices.Select(d => d.Id).ToList();
         }
 
         /// <summary>
@@ -70,30 +102,51 @@ namespace DeviceApi.Business.Services.Concrete
         /// </summary>
         public async Task<ScrollingScreenMessageDto> CreateScrollingScreenMessageAsync(CreateScrollingScreenMessageRequest request)
         {
-            // Cihaz var mı kontrol et
+            var scrollingScreenMessage = new ScrollingScreenMessage
+            {
+                TurkishLine = request.TurkishLine,
+                EnglishLine = request.EnglishLine,
+                CreatedAt = DateTime.Now
+            };
+
+            await _scrollingScreenMessageRepository.AddScrollingScreenMessageAsync(scrollingScreenMessage);
+            return MapToDto(scrollingScreenMessage, new List<Device>());
+        }
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        public async Task AssignMessageToDeviceAsync(AssignScrollingScreenMessageRequest request)
+        {
+            // Cihaz ve mesajın var olduğunu kontrol et
             var device = await _deviceRepository.GetDeviceByIdAsync(request.DeviceId);
             if (device == null)
             {
                 throw new Exception("Cihaz bulunamadı.");
             }
-
-            // Cihazın zaten kayan ekran mesajı var mı kontrol et
-            var existingMessage = await _scrollingScreenMessageRepository.GetScrollingScreenMessageByDeviceIdAsync(request.DeviceId);
-            if (existingMessage != null)
+            
+            var message = await _scrollingScreenMessageRepository.GetScrollingScreenMessageByIdAsync(request.ScrollingScreenMessageId);
+            if (message == null)
             {
-                throw new Exception("Bu cihaza ait zaten bir kayan ekran mesajı bulunmaktadır.");
+                throw new Exception("Kayan ekran mesajı bulunamadı.");
             }
-
-            var scrollingScreenMessage = new ScrollingScreenMessage
+            
+            await _scrollingScreenMessageRepository.AssignMessageToDeviceAsync(request.DeviceId, request.ScrollingScreenMessageId);
+        }
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        public async Task UnassignMessageFromDeviceAsync(int deviceId)
+        {
+            // Cihazın var olduğunu kontrol et
+            var device = await _deviceRepository.GetDeviceByIdAsync(deviceId);
+            if (device == null)
             {
-                TurkishLine = request.TurkishLine,
-                EnglishLine = request.EnglishLine,
-                DeviceId = request.DeviceId,
-                CreatedAt = DateTime.Now
-            };
-
-            await _scrollingScreenMessageRepository.AddScrollingScreenMessageAsync(scrollingScreenMessage);
-            return MapToDto(scrollingScreenMessage);
+                throw new Exception("Cihaz bulunamadı.");
+            }
+            
+            await _scrollingScreenMessageRepository.UnassignMessageFromDeviceAsync(deviceId);
         }
 
         /// <summary>
@@ -112,7 +165,11 @@ namespace DeviceApi.Business.Services.Concrete
             scrollingScreenMessage.UpdatedAt = DateTime.Now;
 
             await _scrollingScreenMessageRepository.UpdateScrollingScreenMessageAsync(scrollingScreenMessage);
-            return MapToDto(scrollingScreenMessage);
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(id);
+            
+            return MapToDto(scrollingScreenMessage, devices);
         }
 
         /// <summary>
@@ -132,7 +189,7 @@ namespace DeviceApi.Business.Services.Concrete
         /// <summary>
         /// ScrollingScreenMessage entity'sini ScrollingScreenMessageDto'ya dönüştürür
         /// </summary>
-        private ScrollingScreenMessageDto MapToDto(ScrollingScreenMessage scrollingScreenMessage)
+        private ScrollingScreenMessageDto MapToDto(ScrollingScreenMessage scrollingScreenMessage, List<Device> devices)
         {
             return new ScrollingScreenMessageDto
             {
@@ -141,7 +198,7 @@ namespace DeviceApi.Business.Services.Concrete
                 EnglishLine = scrollingScreenMessage.EnglishLine,
                 CreatedAt = scrollingScreenMessage.CreatedAt,
                 UpdatedAt = scrollingScreenMessage.UpdatedAt,
-                DeviceId = scrollingScreenMessage.DeviceId
+                DeviceIds = devices.Select(d => d.Id).ToList()
             };
         }
     }

@@ -28,11 +28,17 @@ namespace DeviceApi.DataAccess.Configurations
             builder.Property(f => f.CreatedAt).IsRequired();
             builder.Property(f => f.ModifiedAt).IsRequired(false);
 
-            // One-to-One ilişki
-            builder.HasOne(f => f.Device)
+            // Many-to-One ilişki (bir mesajı birden fazla cihaz kullanabilir)
+            builder.HasMany(f => f.Devices)
                 .WithOne(d => d.FullScreenMessage)
-                .HasForeignKey<FullScreenMessage>(f => f.DeviceId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(d => d.FullScreenMessageId)
+                .OnDelete(DeleteBehavior.SetNull);
+                
+            // AlignmentType ile ilişki
+            builder.HasOne(f => f.AlignmentType)
+                .WithMany()
+                .HasForeignKey(f => f.AlignmentTypeId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

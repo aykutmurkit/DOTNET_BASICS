@@ -1089,16 +1089,11 @@
   {
     "ContainingType": "DeviceApi.API.Controllers.FullScreenMessagesController",
     "Method": "CreateFullScreenMessage",
-    "RelativePath": "api/FullScreenMessages/{deviceId}",
+    "RelativePath": "api/FullScreenMessages",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "deviceId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "request",
         "Type": "Entities.Dtos.CreateFullScreenMessageRequest",
@@ -1123,15 +1118,6 @@
           "text/json"
         ],
         "StatusCode": 400
-      },
-      {
-        "Type": "Core.Utilities.ApiResponse\u00601",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
       }
     ]
   },
@@ -1256,6 +1242,85 @@
   },
   {
     "ContainingType": "DeviceApi.API.Controllers.FullScreenMessagesController",
+    "Method": "GetDevicesByFullScreenMessageId",
+    "RelativePath": "api/FullScreenMessages/{id}/devices",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "DeviceApi.API.Controllers.FullScreenMessagesController",
+    "Method": "AssignMessageToDevice",
+    "RelativePath": "api/FullScreenMessages/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Entities.Dtos.AssignFullScreenMessageRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "DeviceApi.API.Controllers.FullScreenMessagesController",
     "Method": "GetFullScreenMessageByDeviceId",
     "RelativePath": "api/FullScreenMessages/by-device/{deviceId}",
     "HttpMethod": "GET",
@@ -1271,6 +1336,41 @@
     "ReturnTypes": [
       {
         "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.FullScreenMessageDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "DeviceApi.API.Controllers.FullScreenMessagesController",
+    "Method": "UnassignMessageFromDevice",
+    "RelativePath": "api/FullScreenMessages/unassign/{deviceId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deviceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -2097,9 +2197,88 @@
   },
   {
     "ContainingType": "DeviceApi.API.Controllers.ScrollingScreenMessagesController",
-    "Method": "GetScrollingScreenMessageByDeviceId",
-    "RelativePath": "api/ScrollingScreenMessages/by-device/{deviceId}",
+    "Method": "GetDevicesByScrollingScreenMessageId",
+    "RelativePath": "api/ScrollingScreenMessages/{id}/devices",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "DeviceApi.API.Controllers.ScrollingScreenMessagesController",
+    "Method": "AssignMessageToDevice",
+    "RelativePath": "api/ScrollingScreenMessages/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Entities.Dtos.AssignScrollingScreenMessageRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Core.Utilities.ApiResponse\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "DeviceApi.API.Controllers.ScrollingScreenMessagesController",
+    "Method": "UnassignMessageFromDevice",
+    "RelativePath": "api/ScrollingScreenMessages/unassign/{deviceId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -2111,7 +2290,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[Entities.Dtos.ScrollingScreenMessageDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Core.Utilities.ApiResponse\u00601",
         "MediaTypes": [
           "text/plain",
           "application/json",

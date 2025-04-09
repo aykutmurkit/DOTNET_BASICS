@@ -38,10 +38,16 @@ namespace Entities.Concrete
         // One-to-One ilişki - DeviceStatus
         public DeviceStatus Status { get; set; }
         
-        // One-to-One ilişki - FullScreenMessage
+        // Many-to-One ilişki - FullScreenMessage (Çoklu cihaz aynı mesajı kullanabilir)
+        public int? FullScreenMessageId { get; set; }
+        
+        [ForeignKey("FullScreenMessageId")]
         public FullScreenMessage FullScreenMessage { get; set; }
         
-        // One-to-One ilişki - ScrollingScreenMessage
+        // Many-to-One ilişki - ScrollingScreenMessage (Çoklu cihaz aynı mesajı kullanabilir)
+        public int? ScrollingScreenMessageId { get; set; }
+        
+        [ForeignKey("ScrollingScreenMessageId")]
         public ScrollingScreenMessage ScrollingScreenMessage { get; set; }
         
         // One-to-One ilişki - BitmapScreenMessage

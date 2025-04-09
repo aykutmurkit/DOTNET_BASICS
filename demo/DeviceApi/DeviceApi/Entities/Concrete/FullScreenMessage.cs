@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Entities.Concrete
 {
     /// <summary>
-    /// Cihazlar için tam ekran mesaj bilgisini tutan entity
+    /// Tam ekran mesaj bilgisini tutan entity
     /// </summary>
     public class FullScreenMessage
     {
@@ -35,10 +35,9 @@ namespace Entities.Concrete
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         
-        // Device ile one-to-one ilişki
-        public int DeviceId { get; set; }
-        
-        [ForeignKey("DeviceId")]
-        public Device Device { get; set; }
+        /// <summary>
+        /// Bu mesajı kullanan cihazlar (Many-to-One ilişki)
+        /// </summary>
+        public ICollection<Device> Devices { get; set; } = new List<Device>();
     }
 } 

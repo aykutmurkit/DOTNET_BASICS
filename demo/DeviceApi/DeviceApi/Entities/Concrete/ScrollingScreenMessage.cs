@@ -23,10 +23,9 @@ namespace Entities.Concrete
         
         public DateTime? UpdatedAt { get; set; }
         
-        [Required]
-        public int DeviceId { get; set; }
-        
-        [ForeignKey("DeviceId")]
-        public Device Device { get; set; }
+        /// <summary>
+        /// Bu mesajı kullanan cihazlar (Many-to-One ilişki)
+        /// </summary>
+        public ICollection<Device> Devices { get; set; } = new List<Device>();
     }
 } 

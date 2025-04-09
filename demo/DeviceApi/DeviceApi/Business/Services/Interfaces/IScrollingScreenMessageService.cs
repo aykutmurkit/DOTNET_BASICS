@@ -21,11 +21,26 @@ namespace DeviceApi.Business.Services.Interfaces
         /// Cihaz ID'sine göre kayan ekran mesajı getirir
         /// </summary>
         Task<ScrollingScreenMessageDto> GetScrollingScreenMessageByDeviceIdAsync(int deviceId);
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        Task<List<int>> GetDeviceIdsByScrollingScreenMessageIdAsync(int scrollingScreenMessageId);
 
         /// <summary>
         /// Kayan ekran mesajı oluşturur
         /// </summary>
         Task<ScrollingScreenMessageDto> CreateScrollingScreenMessageAsync(CreateScrollingScreenMessageRequest request);
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        Task AssignMessageToDeviceAsync(AssignScrollingScreenMessageRequest request);
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        Task UnassignMessageFromDeviceAsync(int deviceId);
 
         /// <summary>
         /// Kayan ekran mesajı günceller

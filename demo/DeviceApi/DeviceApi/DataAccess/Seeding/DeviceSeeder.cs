@@ -10,6 +10,9 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceSeeder : ISeeder
     {
+        // FullScreenMessageSeeder'dan (8) önce çalışması için
+        public int Order => 7;
+        
         public async Task SeedAsync(AppDbContext context)
         {
             if (await context.Devices.AnyAsync())

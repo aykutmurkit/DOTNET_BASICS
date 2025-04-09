@@ -110,16 +110,47 @@ namespace DeviceApi.API.Controllers
                 return NotFound(ApiResponse<object>.NotFound(ex.Message));
             }
         }
+        
+        /// <summary>
+        /// Bir mesaja bağlı cihaz ID'lerini getirir
+        /// </summary>
+        [HttpGet("{id}/devices")]
+        [ProducesResponseType(typeof(ApiResponse<List<int>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> GetDevicesByFullScreenMessageId(int id)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "GetDevicesByFullScreenMessageId çağrıldı", 
+                "FullScreenMessagesController.GetDevicesByFullScreenMessageId", 
+                new { MessageId = id, UserId = userId, Role = userRole });
+            
+            try
+            {
+                var deviceIds = await _fullScreenMessageService.GetDeviceIdsByFullScreenMessageIdAsync(id);
+                return Ok(ApiResponse<List<int>>.Success(deviceIds, "Cihaz ID'leri başarıyla getirildi"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    ex.Message, 
+                    "FullScreenMessagesController.GetDevicesByFullScreenMessageId", 
+                    new { MessageId = id, UserId = userId, Role = userRole });
+                
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
+            }
+        }
 
         /// <summary>
-        /// Cihaz için yeni bir tam ekran mesaj oluşturur
+        /// Yeni bir tam ekran mesaj oluşturur
         /// </summary>
-        [HttpPost("{deviceId}")]
+        [HttpPost]
         [Authorize(Roles = "Admin,Developer")]
         [ProducesResponseType(typeof(ApiResponse<FullScreenMessageDto>), 201)]
         [ProducesResponseType(typeof(ApiResponse<>), 400)]
-        [ProducesResponseType(typeof(ApiResponse<>), 404)]
-        public async Task<IActionResult> CreateFullScreenMessage(int deviceId, [FromBody] CreateFullScreenMessageRequest request)
+        public async Task<IActionResult> CreateFullScreenMessage([FromBody] CreateFullScreenMessageRequest request)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
@@ -127,7 +158,7 @@ namespace DeviceApi.API.Controllers
             await _logService.LogInfoAsync(
                 "CreateFullScreenMessage çağrıldı", 
                 "FullScreenMessagesController.CreateFullScreenMessage", 
-                new { DeviceId = deviceId, UserId = userId, Role = userRole });
+                new { UserId = userId, Role = userRole });
             
             if (!ModelState.IsValid)
             {
@@ -139,14 +170,14 @@ namespace DeviceApi.API.Controllers
                 await _logService.LogWarningAsync(
                     "Geçersiz model durumu", 
                     "FullScreenMessagesController.CreateFullScreenMessage", 
-                    new { DeviceId = deviceId, Errors = errors, UserId = userId, Role = userRole });
+                    new { Errors = errors, UserId = userId, Role = userRole });
                 
                 return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
             }
             
             try
             {
-                var createdMessage = await _fullScreenMessageService.CreateFullScreenMessageAsync(deviceId, request);
+                var createdMessage = await _fullScreenMessageService.CreateFullScreenMessageAsync(request);
                 
                 var response = ApiResponse<FullScreenMessageDto>.Created(createdMessage, "Tam ekran mesaj başarıyla oluşturuldu");
                 return CreatedAtAction(nameof(GetFullScreenMessageById), new { id = createdMessage.Id }, response);
@@ -156,6 +187,93 @@ namespace DeviceApi.API.Controllers
                 await _logService.LogWarningAsync(
                     ex.Message, 
                     "FullScreenMessagesController.CreateFullScreenMessage", 
+                    new { UserId = userId, Role = userRole });
+                
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
+            }
+        }
+        
+        /// <summary>
+        /// Cihaza mesaj atar (atama yapar)
+        /// </summary>
+        [HttpPost("assign")]
+        [Authorize(Roles = "Admin,Developer")]
+        [ProducesResponseType(typeof(ApiResponse<>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 400)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> AssignMessageToDevice([FromBody] AssignFullScreenMessageRequest request)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "AssignMessageToDevice çağrıldı", 
+                "FullScreenMessagesController.AssignMessageToDevice", 
+                new { DeviceId = request.DeviceId, MessageId = request.FullScreenMessageId, UserId = userId, Role = userRole });
+            
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                );
+                
+                return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
+            }
+            
+            try
+            {
+                await _fullScreenMessageService.AssignMessageToDeviceAsync(request);
+                return Ok(ApiResponse<object>.Success("Tam ekran mesaj cihaza başarıyla atandı"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    ex.Message, 
+                    "FullScreenMessagesController.AssignMessageToDevice", 
+                    new { DeviceId = request.DeviceId, MessageId = request.FullScreenMessageId, UserId = userId, Role = userRole });
+                
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
+            }
+        }
+        
+        /// <summary>
+        /// Cihazdan mesajı kaldırır
+        /// </summary>
+        [HttpDelete("unassign/{deviceId}")]
+        [Authorize(Roles = "Admin,Developer")]
+        [ProducesResponseType(typeof(ApiResponse<>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> UnassignMessageFromDevice(int deviceId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "UnassignMessageFromDevice çağrıldı", 
+                "FullScreenMessagesController.UnassignMessageFromDevice", 
+                new { DeviceId = deviceId, UserId = userId, Role = userRole });
+            
+            try
+            {
+                await _fullScreenMessageService.UnassignMessageFromDeviceAsync(deviceId);
+                return Ok(ApiResponse<object>.Success("Tam ekran mesaj cihazdan başarıyla kaldırıldı"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    ex.Message, 
+                    "FullScreenMessagesController.UnassignMessageFromDevice", 
                     new { DeviceId = deviceId, UserId = userId, Role = userRole });
                 
                 if (ex.Message.Contains("bulunamadı"))
@@ -250,7 +368,12 @@ namespace DeviceApi.API.Controllers
                     "FullScreenMessagesController.DeleteFullScreenMessage", 
                     new { MessageId = id, UserId = userId, Role = userRole });
                 
-                return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
         }
     }

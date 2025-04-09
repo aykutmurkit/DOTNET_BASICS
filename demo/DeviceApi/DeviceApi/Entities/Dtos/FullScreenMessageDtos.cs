@@ -8,12 +8,12 @@ namespace Entities.Dtos
     public class AlignmentValueDto
     {
         /// <summary>
-        /// Alignment'ın sayısal değeri
+        /// Alignment'ın ID'si (veritabanı ID'si)
         /// </summary>
         public int Id { get; set; }
         
         /// <summary>
-        /// Alignment'ın anahtar değeri
+        /// Alignment'ın anahtar değeri (enum'daki sayısal değere benzer)
         /// </summary>
         public int Key { get; set; }
         
@@ -45,7 +45,11 @@ namespace Entities.Dtos
         
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-        public int DeviceId { get; set; }
+        
+        /// <summary>
+        /// Bu mesajı kullanan cihaz ID'leri
+        /// </summary>
+        public List<int> DeviceIds { get; set; } = new List<int>();
     }
 
     /// <summary>
@@ -77,8 +81,11 @@ namespace Entities.Dtos
         [MaxLength(255)]
         public string EnglishLine4 { get; set; }
         
+        /// <summary>
+        /// Hizalama türü ID'si
+        /// </summary>
         [Required]
-        public int AlignmentTypeId { get; set; }
+        public int AlignmentTypeId { get; set; } = 1; // Varsayılan olarak Center (1)
     }
 
     /// <summary>
@@ -110,7 +117,22 @@ namespace Entities.Dtos
         [MaxLength(255)]
         public string EnglishLine4 { get; set; }
         
+        /// <summary>
+        /// Hizalama türü ID'si
+        /// </summary>
         [Required]
-        public int AlignmentTypeId { get; set; }
+        public int AlignmentTypeId { get; set; } = 1; // Varsayılan olarak Center (1)
+    }
+    
+    /// <summary>
+    /// Cihaza mesaj atama isteği
+    /// </summary>
+    public class AssignFullScreenMessageRequest
+    {
+        [Required]
+        public int DeviceId { get; set; }
+        
+        [Required]
+        public int FullScreenMessageId { get; set; }
     }
 } 

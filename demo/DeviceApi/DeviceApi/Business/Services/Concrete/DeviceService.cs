@@ -178,7 +178,7 @@ namespace DeviceApi.Business.Services.Concrete
                 await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
             }
             
-            // FullScreenMessage kaydet
+            // FullScreenMessage ekle
             if (request.FullScreenMessage != null)
             {
                 var fullScreenMessage = new FullScreenMessage
@@ -191,11 +191,15 @@ namespace DeviceApi.Business.Services.Concrete
                     EnglishLine2 = request.FullScreenMessage.EnglishLine2,
                     EnglishLine3 = request.FullScreenMessage.EnglishLine3,
                     EnglishLine4 = request.FullScreenMessage.EnglishLine4,
-                    CreatedAt = DateTime.Now,
-                    DeviceId = device.Id
+                    AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId,
+                    CreatedAt = DateTime.Now
                 };
                 
                 await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
+                
+                // Mesajı cihaza ata
+                device.FullScreenMessageId = fullScreenMessage.Id;
+                await _deviceRepository.UpdateDeviceAsync(device);
             }
             
             // İlişkileri içeren device nesnesini çek
@@ -280,6 +284,7 @@ namespace DeviceApi.Business.Services.Concrete
             // FullScreenMessage güncelle
             if (request.FullScreenMessage != null)
             {
+                // Cihaza atanmış bir mesaj var mı kontrol et
                 var fullScreenMessage = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(id);
                 
                 if (fullScreenMessage == null)
@@ -287,7 +292,6 @@ namespace DeviceApi.Business.Services.Concrete
                     // Mesaj yoksa yeni kayıt ekle
                     fullScreenMessage = new FullScreenMessage
                     {
-                        DeviceId = id,
                         TurkishLine1 = request.FullScreenMessage.TurkishLine1,
                         TurkishLine2 = request.FullScreenMessage.TurkishLine2,
                         TurkishLine3 = request.FullScreenMessage.TurkishLine3,
@@ -296,10 +300,15 @@ namespace DeviceApi.Business.Services.Concrete
                         EnglishLine2 = request.FullScreenMessage.EnglishLine2,
                         EnglishLine3 = request.FullScreenMessage.EnglishLine3,
                         EnglishLine4 = request.FullScreenMessage.EnglishLine4,
+                        AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId,
                         CreatedAt = DateTime.Now
                     };
                     
                     await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
+                    
+                    // Mesajı cihaza ata
+                    device.FullScreenMessageId = fullScreenMessage.Id;
+                    await _deviceRepository.UpdateDeviceAsync(device);
                 }
                 else
                 {
@@ -312,6 +321,7 @@ namespace DeviceApi.Business.Services.Concrete
                     fullScreenMessage.EnglishLine2 = request.FullScreenMessage.EnglishLine2;
                     fullScreenMessage.EnglishLine3 = request.FullScreenMessage.EnglishLine3;
                     fullScreenMessage.EnglishLine4 = request.FullScreenMessage.EnglishLine4;
+                    fullScreenMessage.AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId;
                     fullScreenMessage.ModifiedAt = DateTime.Now;
                     
                     await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(fullScreenMessage);
@@ -414,7 +424,7 @@ namespace DeviceApi.Business.Services.Concrete
                     EnglishLine4 = device.FullScreenMessage.EnglishLine4,
                     CreatedAt = device.FullScreenMessage.CreatedAt,
                     ModifiedAt = device.FullScreenMessage.ModifiedAt,
-                    DeviceId = device.FullScreenMessage.DeviceId
+                    DeviceIds = new List<int> { device.Id }
                 };
             }
             
@@ -428,7 +438,7 @@ namespace DeviceApi.Business.Services.Concrete
                     EnglishLine = device.ScrollingScreenMessage.EnglishLine,
                     CreatedAt = device.ScrollingScreenMessage.CreatedAt,
                     UpdatedAt = device.ScrollingScreenMessage.UpdatedAt,
-                    DeviceId = device.ScrollingScreenMessage.DeviceId
+                    DeviceIds = new List<int> { device.Id }
                 };
             }
             

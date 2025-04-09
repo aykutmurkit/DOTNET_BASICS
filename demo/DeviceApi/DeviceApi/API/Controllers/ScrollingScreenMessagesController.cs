@@ -79,34 +79,121 @@ namespace DeviceApi.API.Controllers
         }
 
         /// <summary>
-        /// Cihaz ID'sine göre kayan ekran mesajı getirir
+        /// Bir mesaja bağlı tüm cihazları getirir
         /// </summary>
-        [HttpGet("by-device/{deviceId}")]
-        [ProducesResponseType(typeof(ApiResponse<ScrollingScreenMessageDto>), 200)]
+        [HttpGet("{id}/devices")]
+        [ProducesResponseType(typeof(ApiResponse<List<int>>), 200)]
         [ProducesResponseType(typeof(ApiResponse<>), 404)]
-        public async Task<IActionResult> GetScrollingScreenMessageByDeviceId(int deviceId)
+        public async Task<IActionResult> GetDevicesByScrollingScreenMessageId(int id)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-
+            
             await _logService.LogInfoAsync(
-                "GetScrollingScreenMessageByDeviceId çağrıldı",
-                "ScrollingScreenMessagesController.GetScrollingScreenMessageByDeviceId",
-                new { DeviceId = deviceId, UserId = userId, Role = userRole });
-
+                "GetDevicesByScrollingScreenMessageId çağrıldı", 
+                "ScrollingScreenMessagesController.GetDevicesByScrollingScreenMessageId", 
+                new { MessageId = id, UserId = userId, Role = userRole });
+            
             try
             {
-                var message = await _scrollingScreenMessageService.GetScrollingScreenMessageByDeviceIdAsync(deviceId);
-                return Ok(ApiResponse<ScrollingScreenMessageDto>.Success(message, $"Cihaza (ID: {deviceId}) ait kayan ekran mesajı başarıyla getirildi"));
+                var deviceIds = await _scrollingScreenMessageService.GetDeviceIdsByScrollingScreenMessageIdAsync(id);
+                return Ok(ApiResponse<List<int>>.Success(deviceIds, "Cihaz ID'leri başarıyla getirildi"));
             }
             catch (Exception ex)
             {
                 await _logService.LogWarningAsync(
-                    "Cihaza ait kayan ekran mesajı bulunamadı",
-                    "ScrollingScreenMessagesController.GetScrollingScreenMessageByDeviceId",
-                    new { DeviceId = deviceId, UserId = userId, Role = userRole });
-
+                    ex.Message, 
+                    "ScrollingScreenMessagesController.GetDevicesByScrollingScreenMessageId", 
+                    new { MessageId = id, UserId = userId, Role = userRole });
+                
                 return NotFound(ApiResponse<object>.NotFound(ex.Message));
+            }
+        }
+        
+        /// <summary>
+        /// Cihaza mesaj atar (atama yapar)
+        /// </summary>
+        [HttpPost("assign")]
+        [Authorize(Roles = "Admin,Developer")]
+        [ProducesResponseType(typeof(ApiResponse<>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 400)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> AssignMessageToDevice([FromBody] AssignScrollingScreenMessageRequest request)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "AssignMessageToDevice çağrıldı", 
+                "ScrollingScreenMessagesController.AssignMessageToDevice", 
+                new { DeviceId = request.DeviceId, MessageId = request.ScrollingScreenMessageId, UserId = userId, Role = userRole });
+            
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                );
+                
+                return BadRequest(ApiResponse<object>.Error(errors, "Geçersiz veri"));
+            }
+            
+            try
+            {
+                await _scrollingScreenMessageService.AssignMessageToDeviceAsync(request);
+                return Ok(ApiResponse<object>.Success("Kayan ekran mesajı cihaza başarıyla atandı"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    ex.Message, 
+                    "ScrollingScreenMessagesController.AssignMessageToDevice", 
+                    new { DeviceId = request.DeviceId, MessageId = request.ScrollingScreenMessageId, UserId = userId, Role = userRole });
+                
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
+            }
+        }
+        
+        /// <summary>
+        /// Cihazdan mesajı kaldırır
+        /// </summary>
+        [HttpDelete("unassign/{deviceId}")]
+        [Authorize(Roles = "Admin,Developer")]
+        [ProducesResponseType(typeof(ApiResponse<>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> UnassignMessageFromDevice(int deviceId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "UnassignMessageFromDevice çağrıldı", 
+                "ScrollingScreenMessagesController.UnassignMessageFromDevice", 
+                new { DeviceId = deviceId, UserId = userId, Role = userRole });
+            
+            try
+            {
+                await _scrollingScreenMessageService.UnassignMessageFromDeviceAsync(deviceId);
+                return Ok(ApiResponse<object>.Success("Kayan ekran mesajı cihazdan başarıyla kaldırıldı"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    ex.Message, 
+                    "ScrollingScreenMessagesController.UnassignMessageFromDevice", 
+                    new { DeviceId = deviceId, UserId = userId, Role = userRole });
+                
+                if (ex.Message.Contains("bulunamadı"))
+                {
+                    return NotFound(ApiResponse<object>.NotFound(ex.Message));
+                }
+                
+                return BadRequest(ApiResponse<object>.Error(ex.Message));
             }
         }
 
@@ -148,7 +235,7 @@ namespace DeviceApi.API.Controllers
                 await _logService.LogInfoAsync(
                     "Kayan ekran mesajı oluşturuldu",
                     "ScrollingScreenMessagesController.CreateScrollingScreenMessage",
-                    new { MessageId = createdMessage.Id, DeviceId = request.DeviceId, UserId = userId, Role = userRole });
+                    new { MessageId = createdMessage.Id, UserId = userId, Role = userRole });
 
                 var response = ApiResponse<ScrollingScreenMessageDto>.Created(createdMessage, "Kayan ekran mesajı başarıyla oluşturuldu");
                 return CreatedAtAction(nameof(GetScrollingScreenMessageById), new { id = createdMessage.Id }, response);

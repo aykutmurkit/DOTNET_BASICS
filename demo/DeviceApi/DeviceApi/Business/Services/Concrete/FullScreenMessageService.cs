@@ -35,12 +35,15 @@ namespace DeviceApi.Business.Services.Concrete
         {
             var messages = await _fullScreenMessageRepository.GetAllFullScreenMessagesAsync();
             
-            // Her mesaj için AlignmentType bilgisini yükle
+            // Her mesaj için AlignmentType bilgisini ve cihaz listesini yükle
             var result = new List<FullScreenMessageDto>();
             foreach (var message in messages)
             {
-                var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
-                result.Add(MapToFullScreenMessageDto(message, alignmentType));
+                // Mesaja bağlı cihazları getir
+                var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
+                
+                // DTO'ya dönüştür
+                result.Add(MapToFullScreenMessageDto(message, message.AlignmentType, devices));
             }
             
             return result;
@@ -57,8 +60,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Tam ekran mesaj bulunamadı");
             }
             
-            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
-            return MapToFullScreenMessageDto(message, alignmentType);
+            // Mesaja bağlı cihazları getir
+            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
+            
+            return MapToFullScreenMessageDto(message, message.AlignmentType, devices);
         }
         
         /// <summary>
@@ -79,29 +84,34 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz için tam ekran mesaj bulunamadı");
             }
             
-            var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(message.AlignmentTypeId);
-            return MapToFullScreenMessageDto(message, alignmentType);
+            // Mesaja bağlı cihazları getir
+            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
+            
+            return MapToFullScreenMessageDto(message, message.AlignmentType, devices);
+        }
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        public async Task<List<int>> GetDeviceIdsByFullScreenMessageIdAsync(int fullScreenMessageId)
+        {
+            // Mesajın var olduğunu kontrol et
+            var message = await _fullScreenMessageRepository.GetFullScreenMessageByIdAsync(fullScreenMessageId);
+            if (message == null)
+            {
+                throw new Exception("Tam ekran mesaj bulunamadı");
+            }
+            
+            // Mesaja bağlı cihazları getir
+            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(fullScreenMessageId);
+            return devices.Select(d => d.Id).ToList();
         }
 
         /// <summary>
-        /// Cihaz için tam ekran mesaj oluşturur
+        /// Yeni bir tam ekran mesaj oluşturur
         /// </summary>
-        public async Task<FullScreenMessageDto> CreateFullScreenMessageAsync(int deviceId, CreateFullScreenMessageRequest request)
+        public async Task<FullScreenMessageDto> CreateFullScreenMessageAsync(CreateFullScreenMessageRequest request)
         {
-            // Cihaz var mı kontrol et
-            var device = await _deviceRepository.GetDeviceByIdAsync(deviceId);
-            if (device == null)
-            {
-                throw new Exception("Cihaz bulunamadı");
-            }
-            
-            // Cihaz için zaten bir mesaj var mı kontrol et
-            var existingMessage = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(deviceId);
-            if (existingMessage != null)
-            {
-                throw new Exception("Bu cihaz için zaten bir tam ekran mesaj mevcut. Güncelleme yapabilirsiniz.");
-            }
-            
             // Alignment type kontrolü
             var alignmentType = await _alignmentTypeRepository.GetAlignmentTypeByIdAsync(request.AlignmentTypeId);
             if (alignmentType == null)
@@ -121,8 +131,7 @@ namespace DeviceApi.Business.Services.Concrete
                 EnglishLine3 = request.EnglishLine3,
                 EnglishLine4 = request.EnglishLine4,
                 AlignmentTypeId = request.AlignmentTypeId,
-                CreatedAt = DateTime.Now,
-                DeviceId = deviceId
+                CreatedAt = DateTime.Now
             };
             
             await _fullScreenMessageRepository.AddFullScreenMessageAsync(message);
@@ -130,9 +139,35 @@ namespace DeviceApi.Business.Services.Concrete
             await _logService.LogInfoAsync(
                 "Tam ekran mesaj oluşturuldu", 
                 "FullScreenMessageService.CreateFullScreenMessage", 
-                new { MessageId = message.Id, DeviceId = deviceId });
+                new { MessageId = message.Id });
             
-            return MapToFullScreenMessageDto(message, alignmentType);
+            return MapToFullScreenMessageDto(message, alignmentType, new List<Device>());
+        }
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        public async Task AssignMessageToDeviceAsync(AssignFullScreenMessageRequest request)
+        {
+            await _fullScreenMessageRepository.AssignMessageToDeviceAsync(request.DeviceId, request.FullScreenMessageId);
+            
+            await _logService.LogInfoAsync(
+                "Tam ekran mesaj cihaza atandı", 
+                "FullScreenMessageService.AssignMessageToDevice", 
+                new { DeviceId = request.DeviceId, MessageId = request.FullScreenMessageId });
+        }
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        public async Task UnassignMessageFromDeviceAsync(int deviceId)
+        {
+            await _fullScreenMessageRepository.UnassignMessageFromDeviceAsync(deviceId);
+            
+            await _logService.LogInfoAsync(
+                "Tam ekran mesaj cihazdan kaldırıldı", 
+                "FullScreenMessageService.UnassignMessageFromDevice", 
+                new { DeviceId = deviceId });
         }
 
         /// <summary>
@@ -173,7 +208,10 @@ namespace DeviceApi.Business.Services.Concrete
                 "FullScreenMessageService.UpdateFullScreenMessage", 
                 new { MessageId = id });
             
-            return MapToFullScreenMessageDto(existingMessage, alignmentType);
+            // Mesaja bağlı cihazları getir
+            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(id);
+            
+            return MapToFullScreenMessageDto(existingMessage, alignmentType, devices);
         }
 
         /// <summary>
@@ -199,7 +237,7 @@ namespace DeviceApi.Business.Services.Concrete
         /// <summary>
         /// Entity'den DTO'ya dönüşüm
         /// </summary>
-        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message, AlignmentType alignmentType)
+        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message, AlignmentType alignmentType, List<Device> devices)
         {
             return new FullScreenMessageDto
             {
@@ -218,7 +256,7 @@ namespace DeviceApi.Business.Services.Concrete
                     Key = alignmentType.Key,
                     Name = alignmentType.Name
                 } : null,
-                DeviceId = message.DeviceId,
+                DeviceIds = devices.Select(d => d.Id).ToList(),
                 CreatedAt = message.CreatedAt,
                 ModifiedAt = message.ModifiedAt
             };

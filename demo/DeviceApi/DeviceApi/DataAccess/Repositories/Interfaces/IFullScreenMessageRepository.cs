@@ -21,6 +21,11 @@ namespace Data.Interfaces
         /// Cihaz ID'sine göre tam ekran mesajı getirir
         /// </summary>
         Task<FullScreenMessage> GetFullScreenMessageByDeviceIdAsync(int deviceId);
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        Task<List<Device>> GetDevicesByFullScreenMessageIdAsync(int fullScreenMessageId);
 
         /// <summary>
         /// Tam ekran mesaj ekler
@@ -36,5 +41,15 @@ namespace Data.Interfaces
         /// Tam ekran mesaj siler
         /// </summary>
         Task DeleteFullScreenMessageAsync(int id);
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        Task AssignMessageToDeviceAsync(int deviceId, int fullScreenMessageId);
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        Task UnassignMessageFromDeviceAsync(int deviceId);
     }
 } 

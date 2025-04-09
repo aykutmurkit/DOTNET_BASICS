@@ -12,7 +12,11 @@ namespace Entities.Dtos
         public string EnglishLine { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public int DeviceId { get; set; }
+        
+        /// <summary>
+        /// Bu mesajı kullanan cihaz ID'leri
+        /// </summary>
+        public List<int> DeviceIds { get; set; } = new List<int>();
     }
 
     /// <summary>
@@ -27,9 +31,6 @@ namespace Entities.Dtos
         [Required]
         [MaxLength(200)]
         public string EnglishLine { get; set; }
-        
-        [Required]
-        public int DeviceId { get; set; }
     }
 
     /// <summary>
@@ -44,5 +45,17 @@ namespace Entities.Dtos
         [Required]
         [MaxLength(200)]
         public string EnglishLine { get; set; }
+    }
+    
+    /// <summary>
+    /// Cihaza kayan ekran mesajı atama isteği
+    /// </summary>
+    public class AssignScrollingScreenMessageRequest
+    {
+        [Required]
+        public int DeviceId { get; set; }
+        
+        [Required]
+        public int ScrollingScreenMessageId { get; set; }
     }
 } 

@@ -21,11 +21,26 @@ namespace DeviceApi.Business.Services.Interfaces
         /// Cihaz ID'sine göre tam ekran mesaj getirir
         /// </summary>
         Task<FullScreenMessageDto> GetFullScreenMessageByDeviceIdAsync(int deviceId);
+        
+        /// <summary>
+        /// Bir mesaja bağlı tüm cihazları getirir
+        /// </summary>
+        Task<List<int>> GetDeviceIdsByFullScreenMessageIdAsync(int fullScreenMessageId);
 
         /// <summary>
-        /// Cihaz için tam ekran mesaj oluşturur
+        /// Yeni bir tam ekran mesaj oluşturur
         /// </summary>
-        Task<FullScreenMessageDto> CreateFullScreenMessageAsync(int deviceId, CreateFullScreenMessageRequest request);
+        Task<FullScreenMessageDto> CreateFullScreenMessageAsync(CreateFullScreenMessageRequest request);
+        
+        /// <summary>
+        /// Cihaza mesaj atar
+        /// </summary>
+        Task AssignMessageToDeviceAsync(AssignFullScreenMessageRequest request);
+        
+        /// <summary>
+        /// Cihazdan mesaj bağlantısını kaldırır
+        /// </summary>
+        Task UnassignMessageFromDeviceAsync(int deviceId);
 
         /// <summary>
         /// Tam ekran mesaj günceller
