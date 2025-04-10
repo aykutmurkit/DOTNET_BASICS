@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JWTVerifyLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ab9e2998d8f1ac85d08fe3e5da8c767799115ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10a5747266f76da42a1775797882b66dfdab6485")]
 [assembly: System.Reflection.AssemblyProductAttribute("JWTVerifyLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JWTVerifyLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

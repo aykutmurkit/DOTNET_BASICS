@@ -12,6 +12,7 @@ using RateLimitLibrary.Extensions;
 using LogLibrary.Extensions;
 using Microsoft.Extensions.Configuration;
 using TCPListenerLibrary.Extensions;
+using DeviceApi.Business.Mappings.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,9 @@ var logLibrarySettings = new ConfigurationBuilder()
     .AddJsonFile("LogLibrarySettings.json", optional: false, reloadOnChange: true)
     .Build();
 builder.Services.AddLogLibrary(logLibrarySettings);
+
+// Add AutoMapper with profiles from DeviceApi assembly
+builder.Services.AddAutoMapperConfiguration();
 
 // Controllers ve API davranış ayarları
 builder.Services.AddControllers(options =>

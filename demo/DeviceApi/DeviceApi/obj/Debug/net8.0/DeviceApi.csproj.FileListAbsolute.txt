@@ -635,3 +635,5 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\n
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrary.pdb
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerLibrary.pdb
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

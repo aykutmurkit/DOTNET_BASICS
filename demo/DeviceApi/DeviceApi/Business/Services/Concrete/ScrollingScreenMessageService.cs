@@ -2,6 +2,7 @@ using DeviceApi.Business.Services.Interfaces;
 using Data.Interfaces;
 using Entities.Concrete;
 using Entities.Dtos;
+using AutoMapper;
 
 namespace DeviceApi.Business.Services.Concrete
 {
@@ -12,13 +13,16 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IScrollingScreenMessageRepository _scrollingScreenMessageRepository;
         private readonly IDeviceRepository _deviceRepository;
+        private readonly IMapper _mapper;
 
         public ScrollingScreenMessageService(
             IScrollingScreenMessageRepository scrollingScreenMessageRepository,
-            IDeviceRepository deviceRepository)
+            IDeviceRepository deviceRepository,
+            IMapper mapper)
         {
             _scrollingScreenMessageRepository = scrollingScreenMessageRepository;
             _deviceRepository = deviceRepository;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -33,7 +37,14 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 // Mesaja bağlı cihazları getir
                 var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(message.Id);
-                result.Add(MapToDto(message, devices));
+                
+                // AutoMapper ile dönüşüm
+                var dto = _mapper.Map<ScrollingScreenMessageDto>(message);
+                
+                // Cihaz ID'lerini manuel olarak atama (kendi tanımladığımız DeviceIds özelliği için)
+                dto.DeviceIds = devices.Select(d => d.Id).ToList();
+                
+                result.Add(dto);
             }
             
             return result;
@@ -52,8 +63,14 @@ namespace DeviceApi.Business.Services.Concrete
             
             // Mesaja bağlı cihazları getir
             var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(id);
+            
+            // AutoMapper ile dönüşüm
+            var dto = _mapper.Map<ScrollingScreenMessageDto>(message);
+            
+            // Cihaz ID'lerini manuel olarak atama
+            dto.DeviceIds = devices.Select(d => d.Id).ToList();
 
-            return MapToDto(message, devices);
+            return dto;
         }
 
         /// <summary>
@@ -76,8 +93,14 @@ namespace DeviceApi.Business.Services.Concrete
             
             // Mesaja bağlı cihazları getir
             var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(message.Id);
+            
+            // AutoMapper ile dönüşüm
+            var dto = _mapper.Map<ScrollingScreenMessageDto>(message);
+            
+            // Cihaz ID'lerini manuel olarak atama
+            dto.DeviceIds = devices.Select(d => d.Id).ToList();
 
-            return MapToDto(message, devices);
+            return dto;
         }
         
         /// <summary>
@@ -102,15 +125,16 @@ namespace DeviceApi.Business.Services.Concrete
         /// </summary>
         public async Task<ScrollingScreenMessageDto> CreateScrollingScreenMessageAsync(CreateScrollingScreenMessageRequest request)
         {
-            var scrollingScreenMessage = new ScrollingScreenMessage
-            {
-                TurkishLine = request.TurkishLine,
-                EnglishLine = request.EnglishLine,
-                CreatedAt = DateTime.Now
-            };
+            // AutoMapper ile request'ten entity oluştur
+            var scrollingScreenMessage = _mapper.Map<ScrollingScreenMessage>(request);
 
             await _scrollingScreenMessageRepository.AddScrollingScreenMessageAsync(scrollingScreenMessage);
-            return MapToDto(scrollingScreenMessage, new List<Device>());
+            
+            // AutoMapper ile entity'den DTO oluştur
+            var dto = _mapper.Map<ScrollingScreenMessageDto>(scrollingScreenMessage);
+            dto.DeviceIds = new List<int>();
+            
+            return dto;
         }
         
         /// <summary>
@@ -160,8 +184,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Kayan ekran mesajı bulunamadı.");
             }
 
-            scrollingScreenMessage.TurkishLine = request.TurkishLine;
-            scrollingScreenMessage.EnglishLine = request.EnglishLine;
+            // AutoMapper ile güncelleme
+            _mapper.Map(request, scrollingScreenMessage);
+            
+            // UpdatedAt'i manuel güncelle, çünkü map'te birebir mapping değil
             scrollingScreenMessage.UpdatedAt = DateTime.Now;
 
             await _scrollingScreenMessageRepository.UpdateScrollingScreenMessageAsync(scrollingScreenMessage);
@@ -169,7 +195,13 @@ namespace DeviceApi.Business.Services.Concrete
             // Mesaja bağlı cihazları getir
             var devices = await _scrollingScreenMessageRepository.GetDevicesByScrollingScreenMessageIdAsync(id);
             
-            return MapToDto(scrollingScreenMessage, devices);
+            // AutoMapper ile dönüşüm
+            var dto = _mapper.Map<ScrollingScreenMessageDto>(scrollingScreenMessage);
+            
+            // Cihaz ID'lerini manuel olarak atama
+            dto.DeviceIds = devices.Select(d => d.Id).ToList();
+            
+            return dto;
         }
 
         /// <summary>
@@ -184,22 +216,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _scrollingScreenMessageRepository.DeleteScrollingScreenMessageAsync(id);
-        }
-
-        /// <summary>
-        /// ScrollingScreenMessage entity'sini ScrollingScreenMessageDto'ya dönüştürür
-        /// </summary>
-        private ScrollingScreenMessageDto MapToDto(ScrollingScreenMessage scrollingScreenMessage, List<Device> devices)
-        {
-            return new ScrollingScreenMessageDto
-            {
-                Id = scrollingScreenMessage.Id,
-                TurkishLine = scrollingScreenMessage.TurkishLine,
-                EnglishLine = scrollingScreenMessage.EnglishLine,
-                CreatedAt = scrollingScreenMessage.CreatedAt,
-                UpdatedAt = scrollingScreenMessage.UpdatedAt,
-                DeviceIds = devices.Select(d => d.Id).ToList()
-            };
         }
     }
 } 

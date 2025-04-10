@@ -2,6 +2,7 @@ using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
 using Entities.Dtos;
+using AutoMapper;
 
 namespace DeviceApi.Business.Services.Concrete
 {
@@ -11,16 +12,18 @@ namespace DeviceApi.Business.Services.Concrete
     public class StationService : IStationService
     {
         private readonly IStationRepository _stationRepository;
+        private readonly IMapper _mapper;
 
-        public StationService(IStationRepository stationRepository)
+        public StationService(IStationRepository stationRepository, IMapper mapper)
         {
             _stationRepository = stationRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<StationDto>> GetAllStationsAsync()
         {
             var stations = await _stationRepository.GetAllStationsWithRelationsAsync();
-            return stations.Select(MapToStationDto).ToList();
+            return _mapper.Map<List<StationDto>>(stations);
         }
 
         public async Task<StationDto> GetStationByIdAsync(int id)
@@ -31,7 +34,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("İstasyon bulunamadı.");
             }
 
-            return MapToStationDto(station);
+            return _mapper.Map<StationDto>(station);
         }
 
         public async Task<StationDto> CreateStationAsync(CreateStationRequest request)
@@ -42,18 +45,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu isimde bir istasyon zaten mevcut.");
             }
 
-            var station = new Station
-            {
-                Name = request.Name,
-                Latitude = request.Latitude,
-                Longitude = request.Longitude
-            };
+            var station = _mapper.Map<Station>(request);
 
             await _stationRepository.AddStationAsync(station);
             
             // İlişkileri içeren station nesnesini çek
             var createdStation = await _stationRepository.GetStationByIdWithRelationsAsync(station.Id);
-            return MapToStationDto(createdStation);
+            return _mapper.Map<StationDto>(createdStation);
         }
 
         public async Task<StationDto> UpdateStationAsync(int id, UpdateStationRequest request)
@@ -70,15 +68,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu isimde bir istasyon zaten mevcut.");
             }
 
-            station.Name = request.Name;
-            station.Latitude = request.Latitude;
-            station.Longitude = request.Longitude;
+            _mapper.Map(request, station);
 
             await _stationRepository.UpdateStationAsync(station);
             
             // İlişkileri içeren station nesnesini çek
             var updatedStation = await _stationRepository.GetStationByIdWithRelationsAsync(id);
-            return MapToStationDto(updatedStation);
+            return _mapper.Map<StationDto>(updatedStation);
         }
 
         public async Task DeleteStationAsync(int id)
@@ -90,47 +86,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _stationRepository.DeleteStationAsync(id);
-        }
-
-        private StationDto MapToStationDto(Station station)
-        {
-            return new StationDto
-            {
-                Id = station.Id,
-                Name = station.Name,
-                Latitude = station.Latitude,
-                Longitude = station.Longitude,
-                Platforms = station.Platforms?.Select(p => new PlatformDto
-                {
-                    Id = p.Id,
-                    Latitude = p.Latitude,
-                    Longitude = p.Longitude,
-                    StationId = p.StationId,
-                    StationName = station.Name,
-                    Devices = p.Devices?.Select(d => new DeviceDto
-                    {
-                        Id = d.Id,
-                        Name = d.Name,
-                        Ip = d.Ip,
-                        Port = d.Port,
-                        Latitude = d.Latitude,
-                        Longitude = d.Longitude,
-                        PlatformId = d.PlatformId,
-                        PlatformStationName = station.Name,
-                        Status = d.Status != null ? new DeviceStatusDto
-                        {
-                            Id = d.Status.Id,
-                            FullScreenMessageStatus = d.Status.FullScreenMessageStatus,
-                            ScrollingScreenMessageStatus = d.Status.ScrollingScreenMessageStatus,
-                            BitmapScreenMessageStatus = d.Status.BitmapScreenMessageStatus,
-                            DeviceId = d.Status.DeviceId,
-                            DeviceName = d.Name,
-                            CreatedAt = d.Status.CreatedAt,
-                            UpdatedAt = d.Status.UpdatedAt
-                        } : null
-                    }).ToList() ?? new List<DeviceDto>()
-                }).ToList() ?? new List<PlatformDto>()
-            };
         }
     }
 } 
