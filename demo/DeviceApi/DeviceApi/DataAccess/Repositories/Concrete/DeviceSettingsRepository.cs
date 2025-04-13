@@ -38,6 +38,12 @@ namespace Data.Repositories
                 .Include(ds => ds.Device)
                 .FirstOrDefaultAsync(ds => ds.DeviceId == deviceId);
         }
+        
+        public async Task<DeviceSettings> GetSettingsByDeviceIdAsync(int deviceId)
+        {
+            // This is an alias for GetDeviceSettingsByDeviceIdAsync to maintain compatibility
+            return await GetDeviceSettingsByDeviceIdAsync(deviceId);
+        }
 
         public async Task AddDeviceSettingsAsync(DeviceSettings deviceSettings)
         {
@@ -54,6 +60,18 @@ namespace Data.Repositories
         public async Task DeleteDeviceSettingsAsync(int id)
         {
             var deviceSettings = await _context.DeviceSettings.FindAsync(id);
+            if (deviceSettings != null)
+            {
+                _context.DeviceSettings.Remove(deviceSettings);
+                await _context.SaveChangesAsync();
+            }
+        }
+        
+        public async Task DeleteDeviceSettingsByDeviceIdAsync(int deviceId)
+        {
+            var deviceSettings = await _context.DeviceSettings
+                .FirstOrDefaultAsync(ds => ds.DeviceId == deviceId);
+                
             if (deviceSettings != null)
             {
                 _context.DeviceSettings.Remove(deviceSettings);

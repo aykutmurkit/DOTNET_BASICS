@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -12,17 +13,22 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IDeviceStatusRepository _deviceStatusRepository;
         private readonly IDeviceRepository _deviceRepository;
+        private readonly IMapper _mapper;
 
-        public DeviceStatusService(IDeviceStatusRepository deviceStatusRepository, IDeviceRepository deviceRepository)
+        public DeviceStatusService(
+            IDeviceStatusRepository deviceStatusRepository, 
+            IDeviceRepository deviceRepository,
+            IMapper mapper)
         {
             _deviceStatusRepository = deviceStatusRepository;
             _deviceRepository = deviceRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<DeviceStatusDto>> GetAllDeviceStatusesAsync()
         {
             var deviceStatuses = await _deviceStatusRepository.GetAllDeviceStatusesAsync();
-            return deviceStatuses.Select(MapToDeviceStatusDto).ToList();
+            return _mapper.Map<List<DeviceStatusDto>>(deviceStatuses);
         }
 
         public async Task<DeviceStatusDto> GetDeviceStatusByIdAsync(int id)
@@ -33,7 +39,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz durumu bulunamadı.");
             }
 
-            return MapToDeviceStatusDto(deviceStatus);
+            return _mapper.Map<DeviceStatusDto>(deviceStatus);
         }
         
         public async Task<DeviceStatusDto> GetDeviceStatusByDeviceIdAsync(int deviceId)
@@ -44,7 +50,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz durumu bulunamadı.");
             }
 
-            return MapToDeviceStatusDto(deviceStatus);
+            return _mapper.Map<DeviceStatusDto>(deviceStatus);
         }
 
         public async Task<DeviceStatusDto> AddDeviceStatusAsync(CreateDeviceStatusDto createDeviceStatusDto)
@@ -61,17 +67,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu cihaza ait durum bilgisi zaten mevcut.");
             }
 
-            var deviceStatus = new DeviceStatus
-            {
-                FullScreenMessageStatus = createDeviceStatusDto.FullScreenMessageStatus,
-                ScrollingScreenMessageStatus = createDeviceStatusDto.ScrollingScreenMessageStatus,
-                BitmapScreenMessageStatus = createDeviceStatusDto.BitmapScreenMessageStatus,
-                DeviceId = createDeviceStatusDto.DeviceId,
-                CreatedAt = DateTime.Now
-            };
+            var deviceStatus = _mapper.Map<DeviceStatus>(createDeviceStatusDto);
 
             await _deviceStatusRepository.AddDeviceStatusAsync(deviceStatus);
-            return MapToDeviceStatusDto(deviceStatus);
+            return _mapper.Map<DeviceStatusDto>(deviceStatus);
         }
 
         public async Task<DeviceStatusDto> UpdateDeviceStatusAsync(int id, UpdateDeviceStatusDto updateDeviceStatusDto)
@@ -88,14 +87,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz bulunamadı.");
             }
 
-            deviceStatus.FullScreenMessageStatus = updateDeviceStatusDto.FullScreenMessageStatus;
-            deviceStatus.ScrollingScreenMessageStatus = updateDeviceStatusDto.ScrollingScreenMessageStatus;
-            deviceStatus.BitmapScreenMessageStatus = updateDeviceStatusDto.BitmapScreenMessageStatus;
-            deviceStatus.DeviceId = updateDeviceStatusDto.DeviceId;
-            deviceStatus.UpdatedAt = DateTime.Now;
+            _mapper.Map(updateDeviceStatusDto, deviceStatus);
 
             await _deviceStatusRepository.UpdateDeviceStatusAsync(deviceStatus);
-            return MapToDeviceStatusDto(deviceStatus);
+            return _mapper.Map<DeviceStatusDto>(deviceStatus);
         }
 
         public async Task DeleteDeviceStatusAsync(int id)
@@ -107,21 +102,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _deviceStatusRepository.DeleteDeviceStatusAsync(id);
-        }
-
-        private DeviceStatusDto MapToDeviceStatusDto(DeviceStatus deviceStatus)
-        {
-            return new DeviceStatusDto
-            {
-                Id = deviceStatus.Id,
-                FullScreenMessageStatus = deviceStatus.FullScreenMessageStatus,
-                ScrollingScreenMessageStatus = deviceStatus.ScrollingScreenMessageStatus,
-                BitmapScreenMessageStatus = deviceStatus.BitmapScreenMessageStatus,
-                DeviceId = deviceStatus.DeviceId,
-                DeviceName = deviceStatus.Device?.Name,
-                CreatedAt = deviceStatus.CreatedAt,
-                UpdatedAt = deviceStatus.UpdatedAt
-            };
         }
     }
 } 

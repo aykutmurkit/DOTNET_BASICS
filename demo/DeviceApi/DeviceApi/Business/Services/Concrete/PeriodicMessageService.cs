@@ -1,3 +1,4 @@
+using AutoMapper;
 using DeviceApi.Business.Services.Interfaces;
 using Data.Interfaces;
 using Entities.Concrete;
@@ -12,13 +13,16 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IPeriodicMessageRepository _periodicMessageRepository;
         private readonly IDeviceRepository _deviceRepository;
+        private readonly IMapper _mapper;
 
         public PeriodicMessageService(
             IPeriodicMessageRepository periodicMessageRepository,
-            IDeviceRepository deviceRepository)
+            IDeviceRepository deviceRepository,
+            IMapper mapper)
         {
             _periodicMessageRepository = periodicMessageRepository;
             _deviceRepository = deviceRepository;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -27,7 +31,7 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<PeriodicMessageDto>> GetAllPeriodicMessagesAsync()
         {
             var messages = await _periodicMessageRepository.GetAllPeriodicMessagesAsync();
-            return messages.Select(m => MapToDto(m)).ToList();
+            return _mapper.Map<List<PeriodicMessageDto>>(messages);
         }
 
         /// <summary>
@@ -41,7 +45,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Periyodik mesaj bulunamadı.");
             }
 
-            return MapToDto(message);
+            return _mapper.Map<PeriodicMessageDto>(message);
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu cihaza ait periyodik mesaj bulunamadı.");
             }
 
-            return MapToDto(message);
+            return _mapper.Map<PeriodicMessageDto>(message);
         }
 
         /// <summary>
@@ -84,25 +88,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu cihaza ait zaten bir periyodik mesaj bulunmaktadır.");
             }
 
-            var periodicMessage = new PeriodicMessage
-            {
-                TemperatureLevel = request.TemperatureLevel,
-                HumidityLevel = request.HumidityLevel,
-                GasLevel = request.GasLevel,
-                FrontLightLevel = request.FrontLightLevel,
-                BackLightLevel = request.BackLightLevel,
-                LedFailureCount = request.LedFailureCount,
-                CabinStatus = request.CabinStatus,
-                FanStatus = request.FanStatus,
-                ShowStatus = request.ShowStatus,
-                Rs232Status = request.Rs232Status,
-                PowerSupplyStatus = request.PowerSupplyStatus,
-                DeviceId = request.DeviceId,
-                CreatedAt = DateTime.Now
-            };
+            var periodicMessage = _mapper.Map<PeriodicMessage>(request);
 
             await _periodicMessageRepository.AddPeriodicMessageAsync(periodicMessage);
-            return MapToDto(periodicMessage);
+            return _mapper.Map<PeriodicMessageDto>(periodicMessage);
         }
 
         /// <summary>
@@ -116,21 +105,10 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Periyodik mesaj bulunamadı.");
             }
 
-            periodicMessage.TemperatureLevel = request.TemperatureLevel;
-            periodicMessage.HumidityLevel = request.HumidityLevel;
-            periodicMessage.GasLevel = request.GasLevel;
-            periodicMessage.FrontLightLevel = request.FrontLightLevel;
-            periodicMessage.BackLightLevel = request.BackLightLevel;
-            periodicMessage.LedFailureCount = request.LedFailureCount;
-            periodicMessage.CabinStatus = request.CabinStatus;
-            periodicMessage.FanStatus = request.FanStatus;
-            periodicMessage.ShowStatus = request.ShowStatus;
-            periodicMessage.Rs232Status = request.Rs232Status;
-            periodicMessage.PowerSupplyStatus = request.PowerSupplyStatus;
-            periodicMessage.ForecastedAt = DateTime.Now;
+            _mapper.Map(request, periodicMessage);
 
             await _periodicMessageRepository.UpdatePeriodicMessageAsync(periodicMessage);
-            return MapToDto(periodicMessage);
+            return _mapper.Map<PeriodicMessageDto>(periodicMessage);
         }
 
         /// <summary>
@@ -145,31 +123,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _periodicMessageRepository.DeletePeriodicMessageAsync(id);
-        }
-
-        /// <summary>
-        /// PeriodicMessage entity'sini PeriodicMessageDto'ya dönüştürür
-        /// </summary>
-        private PeriodicMessageDto MapToDto(PeriodicMessage periodicMessage)
-        {
-            return new PeriodicMessageDto
-            {
-                Id = periodicMessage.Id,
-                TemperatureLevel = periodicMessage.TemperatureLevel,
-                HumidityLevel = periodicMessage.HumidityLevel,
-                GasLevel = periodicMessage.GasLevel,
-                FrontLightLevel = periodicMessage.FrontLightLevel,
-                BackLightLevel = periodicMessage.BackLightLevel,
-                LedFailureCount = periodicMessage.LedFailureCount,
-                CabinStatus = periodicMessage.CabinStatus,
-                FanStatus = periodicMessage.FanStatus,
-                ShowStatus = periodicMessage.ShowStatus,
-                Rs232Status = periodicMessage.Rs232Status,
-                PowerSupplyStatus = periodicMessage.PowerSupplyStatus,
-                CreatedAt = periodicMessage.CreatedAt,
-                ForecastedAt = periodicMessage.ForecastedAt,
-                DeviceId = periodicMessage.DeviceId
-            };
         }
     }
 } 

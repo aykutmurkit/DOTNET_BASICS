@@ -23,6 +23,11 @@ namespace Data.Interfaces
         Task<DeviceSettings> GetDeviceSettingsByDeviceIdAsync(int deviceId);
         
         /// <summary>
+        /// Cihaz ID'sine göre cihaz ayarlarını getirir (alternatif metot ismi)
+        /// </summary>
+        Task<DeviceSettings> GetSettingsByDeviceIdAsync(int deviceId);
+        
+        /// <summary>
         /// Cihaz ayarları ekler
         /// </summary>
         Task AddDeviceSettingsAsync(DeviceSettings deviceSettings);
@@ -36,5 +41,10 @@ namespace Data.Interfaces
         /// Cihaz ayarlarını siler
         /// </summary>
         Task DeleteDeviceSettingsAsync(int id);
+        
+        /// <summary>
+        /// Cihaz ID'sine göre cihaz ayarlarını siler
+        /// </summary>
+        Task DeleteDeviceSettingsByDeviceIdAsync(int deviceId);
     }
 } 

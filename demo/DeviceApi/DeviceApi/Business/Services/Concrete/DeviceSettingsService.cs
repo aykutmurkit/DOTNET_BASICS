@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -12,17 +13,22 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IDeviceSettingsRepository _deviceSettingsRepository;
         private readonly IDeviceRepository _deviceRepository;
+        private readonly IMapper _mapper;
 
-        public DeviceSettingsService(IDeviceSettingsRepository deviceSettingsRepository, IDeviceRepository deviceRepository)
+        public DeviceSettingsService(
+            IDeviceSettingsRepository deviceSettingsRepository, 
+            IDeviceRepository deviceRepository,
+            IMapper mapper)
         {
             _deviceSettingsRepository = deviceSettingsRepository;
             _deviceRepository = deviceRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<DeviceSettingsDto>> GetAllDeviceSettingsAsync()
         {
             var deviceSettings = await _deviceSettingsRepository.GetAllDeviceSettingsAsync();
-            return deviceSettings.Select(MapToDeviceSettingsDto).ToList();
+            return _mapper.Map<List<DeviceSettingsDto>>(deviceSettings);
         }
 
         public async Task<DeviceSettingsDto> GetDeviceSettingsByIdAsync(int id)
@@ -33,7 +39,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz ayarları bulunamadı.");
             }
 
-            return MapToDeviceSettingsDto(deviceSettings);
+            return _mapper.Map<DeviceSettingsDto>(deviceSettings);
         }
         
         public async Task<DeviceSettingsDto> GetDeviceSettingsByDeviceIdAsync(int deviceId)
@@ -44,7 +50,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz ayarları bulunamadı.");
             }
 
-            return MapToDeviceSettingsDto(deviceSettings);
+            return _mapper.Map<DeviceSettingsDto>(deviceSettings);
         }
 
         public async Task<DeviceSettingsDto> CreateDeviceSettingsAsync(int deviceId, CreateDeviceSettingsRequest request)
@@ -63,22 +69,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Bu cihaz için ayarlar zaten tanımlanmış.");
             }
 
-            var deviceSettings = new DeviceSettings
-            {
-                ApnName = request.ApnName,
-                ApnUsername = request.ApnUsername,
-                ApnPassword = request.ApnPassword,
-                ServerIP = request.ServerIP,
-                TcpPort = request.TcpPort,
-                UdpPort = request.UdpPort,
-                FtpStatus = request.FtpStatus,
-                DeviceId = deviceId
-            };
+            var deviceSettings = _mapper.Map<DeviceSettings>(request);
+            deviceSettings.DeviceId = deviceId;
 
             await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
             
             var createdDeviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByIdAsync(deviceSettings.Id);
-            return MapToDeviceSettingsDto(createdDeviceSettings);
+            return _mapper.Map<DeviceSettingsDto>(createdDeviceSettings);
         }
 
         public async Task<DeviceSettingsDto> UpdateDeviceSettingsAsync(int id, UpdateDeviceSettingsRequest request)
@@ -89,18 +86,12 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz ayarları bulunamadı.");
             }
 
-            deviceSettings.ApnName = request.ApnName;
-            deviceSettings.ApnUsername = request.ApnUsername;
-            deviceSettings.ApnPassword = request.ApnPassword;
-            deviceSettings.ServerIP = request.ServerIP;
-            deviceSettings.TcpPort = request.TcpPort;
-            deviceSettings.UdpPort = request.UdpPort;
-            deviceSettings.FtpStatus = request.FtpStatus;
+            _mapper.Map(request, deviceSettings);
 
             await _deviceSettingsRepository.UpdateDeviceSettingsAsync(deviceSettings);
             
             var updatedDeviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByIdAsync(id);
-            return MapToDeviceSettingsDto(updatedDeviceSettings);
+            return _mapper.Map<DeviceSettingsDto>(updatedDeviceSettings);
         }
 
         public async Task DeleteDeviceSettingsAsync(int id)
@@ -112,22 +103,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _deviceSettingsRepository.DeleteDeviceSettingsAsync(id);
-        }
-
-        private DeviceSettingsDto MapToDeviceSettingsDto(DeviceSettings deviceSettings)
-        {
-            return new DeviceSettingsDto
-            {
-                Id = deviceSettings.Id,
-                ApnName = deviceSettings.ApnName,
-                ApnUsername = deviceSettings.ApnUsername,
-                ApnPassword = deviceSettings.ApnPassword,
-                ServerIP = deviceSettings.ServerIP,
-                TcpPort = deviceSettings.TcpPort,
-                UdpPort = deviceSettings.UdpPort,
-                FtpStatus = deviceSettings.FtpStatus,
-                DeviceId = deviceSettings.DeviceId
-            };
         }
     }
 } 

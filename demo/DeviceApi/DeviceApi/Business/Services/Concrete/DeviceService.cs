@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -15,6 +16,7 @@ namespace DeviceApi.Business.Services.Concrete
         private readonly IStationRepository _stationRepository;
         private readonly IDeviceSettingsRepository _deviceSettingsRepository;
         private readonly IFullScreenMessageRepository _fullScreenMessageRepository;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// DeviceService sınıfının constructor'ı
@@ -24,53 +26,42 @@ namespace DeviceApi.Business.Services.Concrete
         /// <param name="stationRepository">İstasyon veritabanı işlemleri için repository</param>
         /// <param name="deviceSettingsRepository">Cihaz ayarları veritabanı işlemleri için repository</param>
         /// <param name="fullScreenMessageRepository">Tam ekran mesaj veritabanı işlemleri için repository</param>
+        /// <param name="mapper">AutoMapper instance</param>
         public DeviceService(
             IDeviceRepository deviceRepository, 
             IPlatformRepository platformRepository, 
             IStationRepository stationRepository,
             IDeviceSettingsRepository deviceSettingsRepository,
-            IFullScreenMessageRepository fullScreenMessageRepository)
+            IFullScreenMessageRepository fullScreenMessageRepository,
+            IMapper mapper)
         {
             _deviceRepository = deviceRepository;
             _platformRepository = platformRepository;
             _stationRepository = stationRepository;
             _deviceSettingsRepository = deviceSettingsRepository;
             _fullScreenMessageRepository = fullScreenMessageRepository;
+            _mapper = mapper;
         }
 
         /// <summary>
-        /// Tüm cihazları getirir
+        /// Tüm cihazları listeler
         /// </summary>
         /// <returns>Cihaz listesi</returns>
         public async Task<List<DeviceDto>> GetAllDevicesAsync()
         {
             var devices = await _deviceRepository.GetAllDevicesAsync();
-            var deviceDtos = new List<DeviceDto>();
-            
-            foreach (var device in devices)
-            {
-                var deviceDto = await MapToDeviceDtoAsync(device);
-                deviceDtos.Add(deviceDto);
-            }
-            
-            return deviceDtos;
+            return _mapper.Map<List<DeviceDto>>(devices);
         }
 
         /// <summary>
-        /// Belirtilen ID'ye sahip cihazı getirir
+        /// ID'ye göre cihaz getirir
         /// </summary>
-        /// <param name="id">Cihaz ID'si</param>
-        /// <returns>Cihaz bilgileri</returns>
-        /// <exception cref="Exception">Cihaz bulunamazsa fırlatılır</exception>
+        /// <param name="id">Cihaz ID</param>
+        /// <returns>Cihaz bilgisi</returns>
         public async Task<DeviceDto> GetDeviceByIdAsync(int id)
         {
-            var device = await _deviceRepository.GetDeviceByIdAsync(id);
-            if (device == null)
-            {
-                throw new Exception("Cihaz bulunamadı.");
-            }
-
-            return await MapToDeviceDtoAsync(device);
+            var device = await _deviceRepository.GetByIdAsync(id);
+            return _mapper.Map<DeviceDto>(device);
         }
         
         /// <summary>
@@ -89,15 +80,7 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             var devices = await _deviceRepository.GetDevicesByPlatformIdAsync(platformId);
-            var deviceDtos = new List<DeviceDto>();
-            
-            foreach (var device in devices)
-            {
-                var deviceDto = await MapToDeviceDtoAsync(device);
-                deviceDtos.Add(deviceDto);
-            }
-            
-            return deviceDtos;
+            return _mapper.Map<List<DeviceDto>>(devices);
         }
         
         /// <summary>
@@ -116,15 +99,18 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             var devices = await _deviceRepository.GetDevicesByStationIdAsync(stationId);
-            var deviceDtos = new List<DeviceDto>();
-            
-            foreach (var device in devices)
-            {
-                var deviceDto = await MapToDeviceDtoAsync(device);
-                deviceDtos.Add(deviceDto);
-            }
-            
-            return deviceDtos;
+            return _mapper.Map<List<DeviceDto>>(devices);
+        }
+
+        /// <summary>
+        /// İsme göre cihazları filtreler
+        /// </summary>
+        /// <param name="name">Cihaz adı</param>
+        /// <returns>Filtrelenmiş cihaz listesi</returns>
+        public async Task<List<DeviceDto>> GetDevicesByNameAsync(string name)
+        {
+            var devices = await _deviceRepository.GetDevicesByNameAsync(name);
+            return _mapper.Map<List<DeviceDto>>(devices);
         }
 
         /// <summary>
@@ -148,32 +134,15 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception($"Bu IP adresi ({request.Ip}) ve port ({request.Port}) kombinasyonu zaten kullanılıyor.");
             }
 
-            var device = new Device
-            {
-                Name = request.Name,
-                Ip = request.Ip,
-                Port = request.Port,
-                Latitude = request.Latitude,
-                Longitude = request.Longitude,
-                PlatformId = request.PlatformId
-            };
+            var device = _mapper.Map<Device>(request);
 
             await _deviceRepository.AddDeviceAsync(device);
             
             // DeviceSettings kaydet
             if (request.Settings != null)
             {
-                var deviceSettings = new DeviceSettings
-                {
-                    ApnName = request.Settings.ApnName,
-                    ApnUsername = request.Settings.ApnUsername,
-                    ApnPassword = request.Settings.ApnPassword,
-                    ServerIP = request.Settings.ServerIP,
-                    TcpPort = request.Settings.TcpPort,
-                    UdpPort = request.Settings.UdpPort,
-                    FtpStatus = request.Settings.FtpStatus,
-                    DeviceId = device.Id
-                };
+                var deviceSettings = _mapper.Map<DeviceSettings>(request.Settings);
+                deviceSettings.DeviceId = device.Id;
                 
                 await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
             }
@@ -181,19 +150,8 @@ namespace DeviceApi.Business.Services.Concrete
             // FullScreenMessage ekle
             if (request.FullScreenMessage != null)
             {
-                var fullScreenMessage = new FullScreenMessage
-                {
-                    TurkishLine1 = request.FullScreenMessage.TurkishLine1,
-                    TurkishLine2 = request.FullScreenMessage.TurkishLine2,
-                    TurkishLine3 = request.FullScreenMessage.TurkishLine3,
-                    TurkishLine4 = request.FullScreenMessage.TurkishLine4,
-                    EnglishLine1 = request.FullScreenMessage.EnglishLine1,
-                    EnglishLine2 = request.FullScreenMessage.EnglishLine2,
-                    EnglishLine3 = request.FullScreenMessage.EnglishLine3,
-                    EnglishLine4 = request.FullScreenMessage.EnglishLine4,
-                    AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId,
-                    CreatedAt = DateTime.Now
-                };
+                var fullScreenMessage = _mapper.Map<FullScreenMessage>(request.FullScreenMessage);
+                fullScreenMessage.CreatedAt = DateTime.Now;
                 
                 await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
                 
@@ -204,16 +162,16 @@ namespace DeviceApi.Business.Services.Concrete
             
             // İlişkileri içeren device nesnesini çek
             var createdDevice = await _deviceRepository.GetDeviceByIdAsync(device.Id);
-            return await MapToDeviceDtoAsync(createdDevice);
+            return _mapper.Map<DeviceDto>(createdDevice);
         }
 
         /// <summary>
-        /// Mevcut bir cihazı günceller
+        /// Cihaz bilgilerini günceller
         /// </summary>
-        /// <param name="id">Güncellenecek cihazın ID'si</param>
-        /// <param name="request">Cihaz güncelleme isteği</param>
-        /// <returns>Güncellenen cihaz bilgileri</returns>
-        /// <exception cref="Exception">Cihaz veya platform bulunamazsa veya IP/Port kombinasyonu kullanılıyorsa fırlatılır</exception>
+        /// <param name="id">Güncellenecek cihaz ID</param>
+        /// <param name="request">Güncelleme bilgileri</param>
+        /// <returns>Güncellenmiş cihaz bilgileri</returns>
+        /// <exception cref="Exception">Cihaz veya platform bulunamazsa veya IP/Port kombinasyonu başka bir cihaz tarafından kullanılıyorsa fırlatılır</exception>
         public async Task<DeviceDto> UpdateDeviceAsync(int id, UpdateDeviceRequest request)
         {
             var device = await _deviceRepository.GetDeviceByIdAsync(id);
@@ -221,7 +179,7 @@ namespace DeviceApi.Business.Services.Concrete
             {
                 throw new Exception("Cihaz bulunamadı.");
             }
-
+            
             // Platform var mı kontrol et
             var platform = await _platformRepository.GetPlatformByIdAsync(request.PlatformId);
             if (platform == null)
@@ -229,114 +187,70 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Platform bulunamadı.");
             }
             
-            // IP ve port kombinasyonu zaten kullanılıyor mu kontrol et (cihazın kendisi hariç)
-            if (await _deviceRepository.IpPortCombinationExistsAsync(request.Ip, request.Port, id))
+            // IP ve port kombinasyonu başka bir cihaz için var mı kontrol et
+            if (await _deviceRepository.IpPortCombinationExistsForDifferentDeviceAsync(id, request.Ip, request.Port))
             {
-                throw new Exception($"Bu IP adresi ({request.Ip}) ve port ({request.Port}) kombinasyonu zaten kullanılıyor.");
+                throw new Exception($"Bu IP adresi ({request.Ip}) ve port ({request.Port}) kombinasyonu zaten başka bir cihaz tarafından kullanılıyor.");
             }
-
-            device.Name = request.Name;
-            device.Ip = request.Ip;
-            device.Port = request.Port;
-            device.Latitude = request.Latitude;
-            device.Longitude = request.Longitude;
-            device.PlatformId = request.PlatformId;
-
+            
+            // Cihaz bilgilerini güncelle
+            _mapper.Map(request, device);
+            
             await _deviceRepository.UpdateDeviceAsync(device);
             
             // DeviceSettings güncelle
             if (request.Settings != null)
             {
-                var deviceSettings = await _deviceSettingsRepository.GetDeviceSettingsByDeviceIdAsync(id);
-                
-                if (deviceSettings == null)
+                var deviceSettings = await _deviceSettingsRepository.GetSettingsByDeviceIdAsync(id);
+                if (deviceSettings != null)
                 {
-                    // Ayarlar yoksa yeni kayıt ekle
-                    deviceSettings = new DeviceSettings
-                    {
-                        DeviceId = id,
-                        ApnName = request.Settings.ApnName,
-                        ApnUsername = request.Settings.ApnUsername,
-                        ApnPassword = request.Settings.ApnPassword,
-                        ServerIP = request.Settings.ServerIP,
-                        TcpPort = request.Settings.TcpPort,
-                        UdpPort = request.Settings.UdpPort,
-                        FtpStatus = request.Settings.FtpStatus
-                    };
-                    
-                    await _deviceSettingsRepository.AddDeviceSettingsAsync(deviceSettings);
+                    _mapper.Map(request.Settings, deviceSettings);
+                    await _deviceSettingsRepository.UpdateDeviceSettingsAsync(deviceSettings);
                 }
                 else
                 {
-                    // Mevcut ayarları güncelle
-                    deviceSettings.ApnName = request.Settings.ApnName;
-                    deviceSettings.ApnUsername = request.Settings.ApnUsername;
-                    deviceSettings.ApnPassword = request.Settings.ApnPassword;
-                    deviceSettings.ServerIP = request.Settings.ServerIP;
-                    deviceSettings.TcpPort = request.Settings.TcpPort;
-                    deviceSettings.UdpPort = request.Settings.UdpPort;
-                    deviceSettings.FtpStatus = request.Settings.FtpStatus;
-                    
-                    await _deviceSettingsRepository.UpdateDeviceSettingsAsync(deviceSettings);
+                    // Eğer ayarlar yoksa yeni ekle
+                    var newSettings = _mapper.Map<DeviceSettings>(request.Settings);
+                    newSettings.DeviceId = id;
+                    await _deviceSettingsRepository.AddDeviceSettingsAsync(newSettings);
                 }
             }
             
             // FullScreenMessage güncelle
             if (request.FullScreenMessage != null)
             {
-                // Cihaza atanmış bir mesaj var mı kontrol et
-                var fullScreenMessage = await _fullScreenMessageRepository.GetFullScreenMessageByDeviceIdAsync(id);
-                
-                if (fullScreenMessage == null)
+                if (device.FullScreenMessageId.HasValue)
                 {
-                    // Mesaj yoksa yeni kayıt ekle
-                    fullScreenMessage = new FullScreenMessage
+                    var message = await _fullScreenMessageRepository.GetFullScreenMessageByIdAsync(device.FullScreenMessageId.Value);
+                    if (message != null)
                     {
-                        TurkishLine1 = request.FullScreenMessage.TurkishLine1,
-                        TurkishLine2 = request.FullScreenMessage.TurkishLine2,
-                        TurkishLine3 = request.FullScreenMessage.TurkishLine3,
-                        TurkishLine4 = request.FullScreenMessage.TurkishLine4,
-                        EnglishLine1 = request.FullScreenMessage.EnglishLine1,
-                        EnglishLine2 = request.FullScreenMessage.EnglishLine2,
-                        EnglishLine3 = request.FullScreenMessage.EnglishLine3,
-                        EnglishLine4 = request.FullScreenMessage.EnglishLine4,
-                        AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId,
-                        CreatedAt = DateTime.Now
-                    };
-                    
-                    await _fullScreenMessageRepository.AddFullScreenMessageAsync(fullScreenMessage);
-                    
-                    // Mesajı cihaza ata
-                    device.FullScreenMessageId = fullScreenMessage.Id;
-                    await _deviceRepository.UpdateDeviceAsync(device);
+                        _mapper.Map(request.FullScreenMessage, message);
+                        await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(message);
+                    }
                 }
                 else
                 {
-                    // Mevcut mesajı güncelle
-                    fullScreenMessage.TurkishLine1 = request.FullScreenMessage.TurkishLine1;
-                    fullScreenMessage.TurkishLine2 = request.FullScreenMessage.TurkishLine2;
-                    fullScreenMessage.TurkishLine3 = request.FullScreenMessage.TurkishLine3;
-                    fullScreenMessage.TurkishLine4 = request.FullScreenMessage.TurkishLine4;
-                    fullScreenMessage.EnglishLine1 = request.FullScreenMessage.EnglishLine1;
-                    fullScreenMessage.EnglishLine2 = request.FullScreenMessage.EnglishLine2;
-                    fullScreenMessage.EnglishLine3 = request.FullScreenMessage.EnglishLine3;
-                    fullScreenMessage.EnglishLine4 = request.FullScreenMessage.EnglishLine4;
-                    fullScreenMessage.AlignmentTypeId = request.FullScreenMessage.AlignmentTypeId;
-                    fullScreenMessage.ModifiedAt = DateTime.Now;
+                    // Eğer mesaj yoksa yeni ekle
+                    var newMessage = _mapper.Map<FullScreenMessage>(request.FullScreenMessage);
+                    newMessage.CreatedAt = DateTime.Now;
                     
-                    await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(fullScreenMessage);
+                    await _fullScreenMessageRepository.AddFullScreenMessageAsync(newMessage);
+                    
+                    // Mesajı cihaza ata
+                    device.FullScreenMessageId = newMessage.Id;
+                    await _deviceRepository.UpdateDeviceAsync(device);
                 }
             }
             
-            // İlişkileri içeren device nesnesini çek
+            // Güncellenmiş cihazı çek
             var updatedDevice = await _deviceRepository.GetDeviceByIdAsync(id);
-            return await MapToDeviceDtoAsync(updatedDevice);
+            return _mapper.Map<DeviceDto>(updatedDevice);
         }
 
         /// <summary>
-        /// Belirtilen ID'ye sahip cihazı siler
+        /// Cihazı ve ilişkili kayıtları siler
         /// </summary>
-        /// <param name="id">Silinecek cihazın ID'si</param>
+        /// <param name="id">Silinecek cihaz ID</param>
         /// <exception cref="Exception">Cihaz bulunamazsa fırlatılır</exception>
         public async Task DeleteDeviceAsync(int id)
         {
@@ -346,6 +260,16 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz bulunamadı.");
             }
 
+            // İlişkili FullScreenMessage varsa önce onu sil
+            if (device.FullScreenMessageId.HasValue)
+            {
+                await _fullScreenMessageRepository.DeleteFullScreenMessageAsync(device.FullScreenMessageId.Value);
+            }
+
+            // İlişkili DeviceSettings'i sil
+            await _deviceSettingsRepository.DeleteDeviceSettingsByDeviceIdAsync(id);
+
+            // Cihazı sil
             await _deviceRepository.DeleteDeviceAsync(id);
         }
 

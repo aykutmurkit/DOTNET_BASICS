@@ -18,6 +18,16 @@ namespace Data.Interfaces
         Task<Device> GetDeviceByIdAsync(int id);
         
         /// <summary>
+        /// ID'ye göre cihaz getirir (alternatif metot ismi)
+        /// </summary>
+        Task<Device> GetByIdAsync(int id);
+        
+        /// <summary>
+        /// İsme göre cihazları filtreler
+        /// </summary>
+        Task<List<Device>> GetDevicesByNameAsync(string name);
+        
+        /// <summary>
         /// Platform ID'sine göre cihazları getirir
         /// </summary>
         Task<List<Device>> GetDevicesByPlatformIdAsync(int platformId);
@@ -46,5 +56,10 @@ namespace Data.Interfaces
         /// Aynı IP ve port ile başka bir cihaz var mı kontrol eder
         /// </summary>
         Task<bool> IpPortCombinationExistsAsync(string ip, int port, int? excludeDeviceId = null);
+        
+        /// <summary>
+        /// Belirtilen cihaz dışında, aynı IP ve port ile başka bir cihaz var mı kontrol eder
+        /// </summary>
+        Task<bool> IpPortCombinationExistsForDifferentDeviceAsync(int deviceId, string ip, int port);
     }
 } 

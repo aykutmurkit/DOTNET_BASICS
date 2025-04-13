@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -12,17 +13,22 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IPlatformRepository _platformRepository;
         private readonly IStationRepository _stationRepository;
+        private readonly IMapper _mapper;
 
-        public PlatformService(IPlatformRepository platformRepository, IStationRepository stationRepository)
+        public PlatformService(
+            IPlatformRepository platformRepository, 
+            IStationRepository stationRepository,
+            IMapper mapper)
         {
             _platformRepository = platformRepository;
             _stationRepository = stationRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<PlatformDto>> GetAllPlatformsAsync()
         {
             var platforms = await _platformRepository.GetAllPlatformsWithDevicesAsync();
-            return platforms.Select(MapToPlatformDto).ToList();
+            return _mapper.Map<List<PlatformDto>>(platforms);
         }
 
         public async Task<PlatformDto> GetPlatformByIdAsync(int id)
@@ -33,7 +39,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Platform bulunamadı.");
             }
 
-            return MapToPlatformDto(platform);
+            return _mapper.Map<PlatformDto>(platform);
         }
         
         public async Task<List<PlatformDto>> GetPlatformsByStationIdAsync(int stationId)
@@ -46,7 +52,7 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             var platforms = await _platformRepository.GetPlatformsByStationIdAsync(stationId);
-            return platforms.Select(MapToPlatformDto).ToList();
+            return _mapper.Map<List<PlatformDto>>(platforms);
         }
 
         public async Task<PlatformDto> CreatePlatformAsync(CreatePlatformRequest request)
@@ -58,18 +64,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("İstasyon bulunamadı.");
             }
 
-            var platform = new Platform
-            {
-                Latitude = request.Latitude,
-                Longitude = request.Longitude,
-                StationId = request.StationId
-            };
+            var platform = _mapper.Map<Platform>(request);
 
             await _platformRepository.AddPlatformAsync(platform);
             
             // İlişkileri içeren platform nesnesini çek
             var createdPlatform = await _platformRepository.GetPlatformByIdWithDevicesAsync(platform.Id);
-            return MapToPlatformDto(createdPlatform);
+            return _mapper.Map<PlatformDto>(createdPlatform);
         }
 
         public async Task<PlatformDto> UpdatePlatformAsync(int id, UpdatePlatformRequest request)
@@ -87,15 +88,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("İstasyon bulunamadı.");
             }
 
-            platform.Latitude = request.Latitude;
-            platform.Longitude = request.Longitude;
-            platform.StationId = request.StationId;
+            _mapper.Map(request, platform);
 
             await _platformRepository.UpdatePlatformAsync(platform);
             
             // İlişkileri içeren platform nesnesini çek
             var updatedPlatform = await _platformRepository.GetPlatformByIdWithDevicesAsync(id);
-            return MapToPlatformDto(updatedPlatform);
+            return _mapper.Map<PlatformDto>(updatedPlatform);
         }
 
         public async Task DeletePlatformAsync(int id)
@@ -107,61 +106,6 @@ namespace DeviceApi.Business.Services.Concrete
             }
 
             await _platformRepository.DeletePlatformAsync(id);
-        }
-
-        private PlatformDto MapToPlatformDto(Platform platform)
-        {
-            return new PlatformDto
-            {
-                Id = platform.Id,
-                Latitude = platform.Latitude,
-                Longitude = platform.Longitude,
-                StationId = platform.StationId,
-                StationName = platform.Station?.Name ?? "Bilinmiyor",
-                Devices = platform.Devices?.Select(d => new DeviceDto
-                {
-                    Id = d.Id,
-                    Name = d.Name,
-                    Ip = d.Ip,
-                    Port = d.Port,
-                    Latitude = d.Latitude,
-                    Longitude = d.Longitude,
-                    PlatformId = d.PlatformId,
-                    PlatformStationName = platform.Station?.Name ?? "Bilinmiyor",
-                    Status = d.Status != null ? new DeviceStatusDto
-                    {
-                        Id = d.Status.Id,
-                        FullScreenMessageStatus = d.Status.FullScreenMessageStatus,
-                        ScrollingScreenMessageStatus = d.Status.ScrollingScreenMessageStatus,
-                        BitmapScreenMessageStatus = d.Status.BitmapScreenMessageStatus,
-                        DeviceId = d.Status.DeviceId,
-                        DeviceName = d.Name,
-                        CreatedAt = d.Status.CreatedAt,
-                        UpdatedAt = d.Status.UpdatedAt
-                    } : null
-                }).ToList() ?? new List<DeviceDto>(),
-                Prediction = platform.Prediction != null ? new PredictionDto
-                {
-                    Id = platform.Prediction.Id,
-                    StationName = platform.Prediction.StationName,
-                    Direction = platform.Prediction.Direction,
-                    Train1 = platform.Prediction.Train1,
-                    Line1 = platform.Prediction.Line1,
-                    Destination1 = platform.Prediction.Destination1,
-                    Time1 = platform.Prediction.Time1,
-                    Train2 = platform.Prediction.Train2,
-                    Line2 = platform.Prediction.Line2,
-                    Destination2 = platform.Prediction.Destination2,
-                    Time2 = platform.Prediction.Time2,
-                    Train3 = platform.Prediction.Train3,
-                    Line3 = platform.Prediction.Line3,
-                    Destination3 = platform.Prediction.Destination3,
-                    Time3 = platform.Prediction.Time3,
-                    ForecastGenerationAt = platform.Prediction.ForecastGenerationAt,
-                    CreatedAt = platform.Prediction.CreatedAt,
-                    PlatformId = platform.Prediction.PlatformId
-                } : null
-            };
         }
     }
 } 

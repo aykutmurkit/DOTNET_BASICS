@@ -45,6 +45,27 @@ namespace Data.Repositories
                 .Include(d => d.PeriodicMessage)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
+        
+        public async Task<Device> GetByIdAsync(int id)
+        {
+            // This is an alias for GetDeviceByIdAsync to maintain compatibility
+            return await GetDeviceByIdAsync(id);
+        }
+        
+        public async Task<List<Device>> GetDevicesByNameAsync(string name)
+        {
+            return await _context.Devices
+                .Include(d => d.Platform)
+                    .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
+                .Include(d => d.Status)
+                .Include(d => d.FullScreenMessage)
+                .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
+                .Include(d => d.PeriodicMessage)
+                .Where(d => d.Name.Contains(name))
+                .ToListAsync();
+        }
 
         public async Task<List<Device>> GetDevicesByPlatformIdAsync(int platformId)
         {
@@ -108,6 +129,13 @@ namespace Data.Repositories
             }
             
             return await query.AnyAsync();
+        }
+        
+        public async Task<bool> IpPortCombinationExistsForDifferentDeviceAsync(int deviceId, string ip, int port)
+        {
+            return await _context.Devices
+                .Where(d => d.Id != deviceId && d.Ip == ip && d.Port == port)
+                .AnyAsync();
         }
     }
 } 

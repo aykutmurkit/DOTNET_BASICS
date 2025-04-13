@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -15,17 +16,20 @@ namespace DeviceApi.Business.Services.Concrete
         private readonly IDeviceRepository _deviceRepository;
         private readonly IAlignmentTypeRepository _alignmentTypeRepository;
         private readonly ILogService _logService;
+        private readonly IMapper _mapper;
 
         public FullScreenMessageService(
             IFullScreenMessageRepository fullScreenMessageRepository,
             IDeviceRepository deviceRepository,
             IAlignmentTypeRepository alignmentTypeRepository,
-            ILogService logService)
+            ILogService logService,
+            IMapper mapper)
         {
             _fullScreenMessageRepository = fullScreenMessageRepository;
             _deviceRepository = deviceRepository;
             _alignmentTypeRepository = alignmentTypeRepository;
             _logService = logService;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -34,19 +38,7 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<FullScreenMessageDto>> GetAllFullScreenMessagesAsync()
         {
             var messages = await _fullScreenMessageRepository.GetAllFullScreenMessagesAsync();
-            
-            // Her mesaj için AlignmentType bilgisini ve cihaz listesini yükle
-            var result = new List<FullScreenMessageDto>();
-            foreach (var message in messages)
-            {
-                // Mesaja bağlı cihazları getir
-                var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
-                
-                // DTO'ya dönüştür
-                result.Add(MapToFullScreenMessageDto(message, message.AlignmentType, devices));
-            }
-            
-            return result;
+            return _mapper.Map<List<FullScreenMessageDto>>(messages);
         }
 
         /// <summary>
@@ -60,10 +52,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Tam ekran mesaj bulunamadı");
             }
             
-            // Mesaja bağlı cihazları getir
-            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
-            
-            return MapToFullScreenMessageDto(message, message.AlignmentType, devices);
+            return _mapper.Map<FullScreenMessageDto>(message);
         }
         
         /// <summary>
@@ -84,10 +73,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Cihaz için tam ekran mesaj bulunamadı");
             }
             
-            // Mesaja bağlı cihazları getir
-            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(message.Id);
-            
-            return MapToFullScreenMessageDto(message, message.AlignmentType, devices);
+            return _mapper.Map<FullScreenMessageDto>(message);
         }
         
         /// <summary>
@@ -120,19 +106,7 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             // Yeni mesaj oluştur
-            var message = new FullScreenMessage
-            {
-                TurkishLine1 = request.TurkishLine1,
-                TurkishLine2 = request.TurkishLine2,
-                TurkishLine3 = request.TurkishLine3,
-                TurkishLine4 = request.TurkishLine4,
-                EnglishLine1 = request.EnglishLine1,
-                EnglishLine2 = request.EnglishLine2,
-                EnglishLine3 = request.EnglishLine3,
-                EnglishLine4 = request.EnglishLine4,
-                AlignmentTypeId = request.AlignmentTypeId,
-                CreatedAt = DateTime.Now
-            };
+            var message = _mapper.Map<FullScreenMessage>(request);
             
             await _fullScreenMessageRepository.AddFullScreenMessageAsync(message);
             
@@ -141,7 +115,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "FullScreenMessageService.CreateFullScreenMessage", 
                 new { MessageId = message.Id });
             
-            return MapToFullScreenMessageDto(message, alignmentType, new List<Device>());
+            return _mapper.Map<FullScreenMessageDto>(message);
         }
         
         /// <summary>
@@ -190,16 +164,7 @@ namespace DeviceApi.Business.Services.Concrete
             }
             
             // Mesajı güncelle
-            existingMessage.TurkishLine1 = request.TurkishLine1;
-            existingMessage.TurkishLine2 = request.TurkishLine2;
-            existingMessage.TurkishLine3 = request.TurkishLine3;
-            existingMessage.TurkishLine4 = request.TurkishLine4;
-            existingMessage.EnglishLine1 = request.EnglishLine1;
-            existingMessage.EnglishLine2 = request.EnglishLine2;
-            existingMessage.EnglishLine3 = request.EnglishLine3;
-            existingMessage.EnglishLine4 = request.EnglishLine4;
-            existingMessage.AlignmentTypeId = request.AlignmentTypeId;
-            existingMessage.ModifiedAt = DateTime.Now;
+            _mapper.Map(request, existingMessage);
             
             await _fullScreenMessageRepository.UpdateFullScreenMessageAsync(existingMessage);
             
@@ -208,10 +173,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "FullScreenMessageService.UpdateFullScreenMessage", 
                 new { MessageId = id });
             
-            // Mesaja bağlı cihazları getir
-            var devices = await _fullScreenMessageRepository.GetDevicesByFullScreenMessageIdAsync(id);
-            
-            return MapToFullScreenMessageDto(existingMessage, alignmentType, devices);
+            return _mapper.Map<FullScreenMessageDto>(existingMessage);
         }
 
         /// <summary>
@@ -232,34 +194,6 @@ namespace DeviceApi.Business.Services.Concrete
                 "Tam ekran mesaj silindi", 
                 "FullScreenMessageService.DeleteFullScreenMessage", 
                 new { MessageId = id });
-        }
-
-        /// <summary>
-        /// Entity'den DTO'ya dönüşüm
-        /// </summary>
-        private FullScreenMessageDto MapToFullScreenMessageDto(FullScreenMessage message, AlignmentType alignmentType, List<Device> devices)
-        {
-            return new FullScreenMessageDto
-            {
-                Id = message.Id,
-                TurkishLine1 = message.TurkishLine1,
-                TurkishLine2 = message.TurkishLine2,
-                TurkishLine3 = message.TurkishLine3,
-                TurkishLine4 = message.TurkishLine4,
-                EnglishLine1 = message.EnglishLine1,
-                EnglishLine2 = message.EnglishLine2,
-                EnglishLine3 = message.EnglishLine3,
-                EnglishLine4 = message.EnglishLine4,
-                Alignment = alignmentType != null ? new AlignmentValueDto
-                {
-                    Id = alignmentType.Id,
-                    Key = alignmentType.Key,
-                    Name = alignmentType.Name
-                } : null,
-                DeviceIds = devices.Select(d => d.Id).ToList(),
-                CreatedAt = message.CreatedAt,
-                ModifiedAt = message.ModifiedAt
-            };
         }
     }
 } 

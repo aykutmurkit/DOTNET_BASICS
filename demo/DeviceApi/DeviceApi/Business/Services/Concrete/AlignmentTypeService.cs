@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
 using Entities.Concrete;
@@ -13,13 +14,16 @@ namespace DeviceApi.Business.Services.Concrete
     {
         private readonly IAlignmentTypeRepository _alignmentTypeRepository;
         private readonly ILogService _logService;
+        private readonly IMapper _mapper;
 
         public AlignmentTypeService(
             IAlignmentTypeRepository alignmentTypeRepository,
-            ILogService logService)
+            ILogService logService,
+            IMapper mapper)
         {
             _alignmentTypeRepository = alignmentTypeRepository;
             _logService = logService;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -28,7 +32,7 @@ namespace DeviceApi.Business.Services.Concrete
         public async Task<List<AlignmentTypeDto>> GetAllAlignmentTypesAsync()
         {
             var alignmentTypes = await _alignmentTypeRepository.GetAllAlignmentTypesAsync();
-            return alignmentTypes.Select(MapToAlignmentTypeDto).ToList();
+            return _mapper.Map<List<AlignmentTypeDto>>(alignmentTypes);
         }
 
         /// <summary>
@@ -42,7 +46,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Hizalama türü bulunamadı");
             }
             
-            return MapToAlignmentTypeDto(alignmentType);
+            return _mapper.Map<AlignmentTypeDto>(alignmentType);
         }
 
         /// <summary>
@@ -56,7 +60,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Belirtilen key değerine sahip hizalama türü bulunamadı");
             }
             
-            return MapToAlignmentTypeDto(alignmentType);
+            return _mapper.Map<AlignmentTypeDto>(alignmentType);
         }
 
         /// <summary>
@@ -71,11 +75,7 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception($"Bu key değeri ({request.Key}) zaten kullanılıyor");
             }
             
-            var alignmentType = new AlignmentType
-            {
-                Key = request.Key,
-                Name = request.Name
-            };
+            var alignmentType = _mapper.Map<AlignmentType>(request);
             
             await _alignmentTypeRepository.AddAlignmentTypeAsync(alignmentType);
             
@@ -84,7 +84,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "AlignmentTypeService.CreateAlignmentType", 
                 new { AlignmentTypeId = alignmentType.Id, Key = alignmentType.Key });
             
-            return MapToAlignmentTypeDto(alignmentType);
+            return _mapper.Map<AlignmentTypeDto>(alignmentType);
         }
 
         /// <summary>
@@ -108,8 +108,7 @@ namespace DeviceApi.Business.Services.Concrete
                 }
             }
             
-            existingType.Key = request.Key;
-            existingType.Name = request.Name;
+            _mapper.Map(request, existingType);
             
             await _alignmentTypeRepository.UpdateAlignmentTypeAsync(existingType);
             
@@ -118,7 +117,7 @@ namespace DeviceApi.Business.Services.Concrete
                 "AlignmentTypeService.UpdateAlignmentType", 
                 new { AlignmentTypeId = id });
             
-            return MapToAlignmentTypeDto(existingType);
+            return _mapper.Map<AlignmentTypeDto>(existingType);
         }
 
         /// <summary>
@@ -141,19 +140,6 @@ namespace DeviceApi.Business.Services.Concrete
                 "Hizalama türü silindi", 
                 "AlignmentTypeService.DeleteAlignmentType", 
                 new { AlignmentTypeId = id });
-        }
-
-        /// <summary>
-        /// Entity'den DTO'ya dönüşüm
-        /// </summary>
-        private AlignmentTypeDto MapToAlignmentTypeDto(AlignmentType alignmentType)
-        {
-            return new AlignmentTypeDto
-            {
-                Id = alignmentType.Id,
-                Key = alignmentType.Key,
-                Name = alignmentType.Name
-            };
         }
     }
 } 
