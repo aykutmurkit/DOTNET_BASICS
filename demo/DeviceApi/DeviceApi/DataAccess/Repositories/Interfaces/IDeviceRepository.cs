@@ -13,6 +13,11 @@ namespace Data.Interfaces
         Task<List<Device>> GetAllDevicesAsync();
         
         /// <summary>
+        /// Tüm cihazları getirir (alternatif metot ismi)
+        /// </summary>
+        Task<List<Device>> GetAllAsync();
+        
+        /// <summary>
         /// ID'ye göre cihaz getirir
         /// </summary>
         Task<Device> GetDeviceByIdAsync(int id);
@@ -21,6 +26,11 @@ namespace Data.Interfaces
         /// ID'ye göre cihaz getirir (alternatif metot ismi)
         /// </summary>
         Task<Device> GetByIdAsync(int id);
+        
+        /// <summary>
+        /// ID'ye göre cihazı DeviceStatus ile birlikte getirir
+        /// </summary>
+        Task<Device> GetByIdWithStatusAsync(int id);
         
         /// <summary>
         /// İsme göre cihazları filtreler
@@ -46,6 +56,11 @@ namespace Data.Interfaces
         /// Cihaz günceller
         /// </summary>
         Task UpdateDeviceAsync(Device device);
+        
+        /// <summary>
+        /// Cihaz günceller (alternatif metot ismi)
+        /// </summary>
+        Task<Device> UpdateAsync(Device device);
         
         /// <summary>
         /// Cihaz siler

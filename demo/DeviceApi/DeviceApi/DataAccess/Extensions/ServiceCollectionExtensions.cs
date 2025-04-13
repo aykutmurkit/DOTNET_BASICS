@@ -34,6 +34,7 @@ namespace DeviceApi.DataAccess.Extensions
             services.AddScoped<IScrollingScreenMessageRepository, ScrollingScreenMessageRepository>();
             services.AddScoped<IBitmapScreenMessageRepository, BitmapScreenMessageRepository>();
             services.AddScoped<IPeriodicMessageRepository, PeriodicMessageRepository>();
+            services.AddScoped<IScheduleRuleRepository, ScheduleRuleRepository>();
 
             // Seeding servisleri
             services.AddScoped<DatabaseSeeder>();

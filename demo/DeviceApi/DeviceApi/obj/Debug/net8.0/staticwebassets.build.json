@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5q8qDhvUu/YJZ7t/9waX2qd1HJbGgEE9FRjFBMZwApk=",
+  "Hash": "xZ7pSFTdfW+A0RUTh3Q47cAjzn5/I+6KeE0NkY4TIZE=",
   "Source": "DeviceApi",
   "BasePath": "_content/DeviceApi",
   "Mode": "Default",
@@ -83,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
+          "Value": "Sun, 13 Apr 2025 18:42:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -120,7 +120,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
+          "Value": "Sun, 13 Apr 2025 18:42:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -165,7 +165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
+          "Value": "Sun, 13 Apr 2025 18:42:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -202,7 +202,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Apr 2025 18:34:07 GMT"
+          "Value": "Sun, 13 Apr 2025 18:42:03 GMT"
         },
         {
           "Name": "Cache-Control",

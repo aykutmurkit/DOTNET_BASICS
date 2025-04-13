@@ -31,6 +31,12 @@ namespace Data.Repositories
                 .AsNoTracking()
                 .ToListAsync();
         }
+        
+        public async Task<List<Device>> GetAllAsync()
+        {
+            // This is an alias for GetAllDevicesAsync to maintain compatibility
+            return await GetAllDevicesAsync();
+        }
 
         public async Task<Device> GetDeviceByIdAsync(int id)
         {
@@ -50,6 +56,13 @@ namespace Data.Repositories
         {
             // This is an alias for GetDeviceByIdAsync to maintain compatibility
             return await GetDeviceByIdAsync(id);
+        }
+        
+        public async Task<Device> GetByIdWithStatusAsync(int id)
+        {
+            return await _context.Devices
+                .Include(d => d.Status)
+                .FirstOrDefaultAsync(d => d.Id == id);
         }
         
         public async Task<List<Device>> GetDevicesByNameAsync(string name)
@@ -107,6 +120,13 @@ namespace Data.Repositories
         {
             _context.Devices.Update(device);
             await _context.SaveChangesAsync();
+        }
+        
+        public async Task<Device> UpdateAsync(Device device)
+        {
+            _context.Devices.Update(device);
+            await _context.SaveChangesAsync();
+            return device;
         }
 
         public async Task DeleteDeviceAsync(int id)

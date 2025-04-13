@@ -13,6 +13,7 @@ using LogLibrary.Extensions;
 using Microsoft.Extensions.Configuration;
 using TCPListenerLibrary.Extensions;
 using DeviceApi.Business.Mappings.Extensions;
+using DeviceApi.Business.Services.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -115,6 +116,9 @@ builder.Services.AddCoreServices(builder.Configuration);
 // Rate limiting servisleri - RateLimitLibrary'den gelen extension metotları kullanarak
 builder.Services.AddRateLimiting(builder.Configuration);
 
+// ScheduleRule background servisini ekle
+builder.Services.AddHostedService<ScheduleRuleBackgroundService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -164,6 +168,26 @@ if (builder.Configuration.GetValue<bool>("DatabaseSettings:ResetDatabaseOnStartu
         {
             logger.LogError(ex, "Veritabanı başlatma sırasında hata oluştu");
             throw;
+        }
+    }
+}
+else
+{
+    // Veritabanını sıfırlamıyorsak, mevcut ScheduleRule kayıtlarındaki null RecurringDays değerlerini düzelt
+    using (var scope = app.Services.CreateScope())
+    {
+        var serviceProvider = scope.ServiceProvider;
+        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+        
+        try
+        {
+            logger.LogInformation("Null RecurringDays değerleri kontrol ediliyor...");
+            var scheduleRuleRepository = serviceProvider.GetRequiredService<Data.Interfaces.IScheduleRuleRepository>();
+            await scheduleRuleRepository.FixNullRecurringDaysAsync();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "RecurringDays düzeltme işlemi sırasında hata oluştu");
         }
     }
 }

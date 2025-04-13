@@ -72,6 +72,11 @@ namespace Data.Context
         /// Periyodik Mesajlar tablosu
         /// </summary>
         public DbSet<PeriodicMessage> PeriodicMessages { get; set; }
+        
+        /// <summary>
+        /// Zamanlanmış Kurallar tablosu
+        /// </summary>
+        public DbSet<ScheduleRule> ScheduleRules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

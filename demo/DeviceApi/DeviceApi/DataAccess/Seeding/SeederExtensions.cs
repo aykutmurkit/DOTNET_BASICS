@@ -24,6 +24,7 @@ namespace Data.Seeding
                 nameof(ScrollingScreenMessageSeeder) => (int)SeederOrder.ScrollingScreenMessages,
                 nameof(BitmapScreenMessageSeeder) => (int)SeederOrder.BitmapScreenMessages,
                 nameof(PeriodicMessageSeeder) => (int)SeederOrder.PeriodicMessages,
+                nameof(ScheduleRuleSeeder) => (int)SeederOrder.ScheduleRules,
                 _ => throw new NotImplementedException($"{seeder.GetType().Name} için sıralama tanımlanmamış.")
             };
         }

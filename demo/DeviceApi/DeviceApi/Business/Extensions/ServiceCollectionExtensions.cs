@@ -32,6 +32,7 @@ namespace DeviceApi.Business.Extensions
             services.AddScoped<IFullScreenMessageService, FullScreenMessageService>();
             services.AddScoped<IPredictionService, PredictionService>();
             services.AddScoped<IAlignmentTypeService, AlignmentTypeService>();
+            services.AddScoped<IScheduleRuleService, ScheduleRuleService>();
             
             // Utility servisleri
             services.AddScoped<EmailService>();

@@ -27,6 +27,7 @@ DeviceApi is a comprehensive REST API designed to manage IoT devices and their d
 - [Deployment](12-Deployment.md)
 - [Monitoring](13-Monitoring.md)
 - [Troubleshooting](14-Troubleshooting.md)
+- [RecurringDays NULL Value Solution](10-RecurringDays-NULL-Value-Solution.md)
 - [Contributing](15-Contributing.md)
 - [License](16-License.md)
 

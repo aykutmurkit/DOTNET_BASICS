@@ -27,6 +27,7 @@ DeviceApi, IoT cihazlarını ve verilerini yönetmek için tasarlanmış kapsaml
 - [Dağıtım](11-Dagitim.md)
 - [İzleme](12-Izleme.md)
 - [Sorun Giderme](13-Sorun-Giderme.md)
+- [RecurringDays NULL Değer Sorunu Çözümü](10-RecurringDays-NULL-Deger-Cozumu.md)
 - [Katkıda Bulunma](14-Katkida-Bulunma.md)
 - [Lisans](15-Lisans.md)
 

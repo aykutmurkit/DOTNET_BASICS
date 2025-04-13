@@ -23,6 +23,9 @@ namespace Data.Seeding
         FullScreenMessages = 9,
         ScrollingScreenMessages = 10,
         BitmapScreenMessages = 11,
-        PeriodicMessages = 12
+        PeriodicMessages = 12,
+        
+        // Zamanlanmış kurallar
+        ScheduleRules = 13
     }
 } 
