@@ -458,7 +458,6 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\n
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrarySettings.json
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrary.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrary.pdb
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.csproj.AssemblyReference.cache
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\DeviceApi.AssemblyInfoInputs.cache
@@ -639,3 +638,4 @@ C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug
 C:\Users\amurkit\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

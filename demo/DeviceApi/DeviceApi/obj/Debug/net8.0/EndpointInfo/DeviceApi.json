@@ -4892,6 +4892,9 @@
           "bitmapScreenMessageStatus": {
             "type": "boolean"
           },
+          "screenStatus": {
+            "type": "boolean"
+          },
           "deviceId": {
             "type": "integer",
             "format": "int32"
@@ -5386,6 +5389,9 @@
             "type": "boolean"
           },
           "bitmapScreenMessageStatus": {
+            "type": "boolean"
+          },
+          "screenStatus": {
             "type": "boolean"
           },
           "createdAt": {
@@ -6386,6 +6392,9 @@
             "type": "boolean"
           },
           "bitmapScreenMessageStatus": {
+            "type": "boolean"
+          },
+          "screenStatus": {
             "type": "boolean"
           },
           "deviceId": {

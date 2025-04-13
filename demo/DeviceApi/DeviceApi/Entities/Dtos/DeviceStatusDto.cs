@@ -13,6 +13,8 @@ namespace Entities.Dtos
         
         public bool BitmapScreenMessageStatus { get; set; }
         
+        public bool ScreenStatus { get; set; }
+        
         public DateTime CreatedAt { get; set; }
         
         public DateTime? UpdatedAt { get; set; }
@@ -33,6 +35,8 @@ namespace Entities.Dtos
         
         public bool BitmapScreenMessageStatus { get; set; }
         
+        public bool ScreenStatus { get; set; }
+        
         public int DeviceId { get; set; }
     }
     
@@ -46,6 +50,8 @@ namespace Entities.Dtos
         public bool ScrollingScreenMessageStatus { get; set; }
         
         public bool BitmapScreenMessageStatus { get; set; }
+        
+        public bool ScreenStatus { get; set; }
         
         public int DeviceId { get; set; }
     }

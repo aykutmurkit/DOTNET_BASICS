@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TCPListenerLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d30c5745b5e12f77d31f59c3bd55037840eb889e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cf347253bbda5ca5e05e593f51e6e8311c7b4bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("TCPListenerLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TCPListenerLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -28,7 +28,7 @@ namespace Data.Seeding
             // SQL komutu oluşturma
             var queryBuilder = new StringBuilder();
             queryBuilder.AppendLine("SET IDENTITY_INSERT [DeviceStatuses] ON;");
-            queryBuilder.AppendLine("INSERT INTO [DeviceStatuses] ([Id], [FullScreenMessageStatus], [ScrollingScreenMessageStatus], [BitmapScreenMessageStatus], [CreatedAt], [UpdatedAt], [DeviceId]) VALUES");
+            queryBuilder.AppendLine("INSERT INTO [DeviceStatuses] ([Id], [FullScreenMessageStatus], [ScrollingScreenMessageStatus], [BitmapScreenMessageStatus], [ScreenStatus], [CreatedAt], [UpdatedAt], [DeviceId]) VALUES");
             
             var currentDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             var counter = 1;
@@ -40,8 +40,9 @@ namespace Data.Seeding
                 var fullScreenStatus = i % 3 == 0 ? "1" : "0";
                 var scrollingScreenStatus = i % 2 == 0 ? "1" : "0";
                 var bitmapScreenStatus = i % 4 == 0 ? "1" : "0";
+                var screenStatus = i % 2 == 0 ? "1" : "0"; // Ekran durumu için değer oluştur
                 
-                queryBuilder.Append($"({counter}, {fullScreenStatus}, {scrollingScreenStatus}, {bitmapScreenStatus}, '{currentDateTime}', NULL, {devices[i].Id})");
+                queryBuilder.Append($"({counter}, {fullScreenStatus}, {scrollingScreenStatus}, {bitmapScreenStatus}, {screenStatus}, '{currentDateTime}', NULL, {devices[i].Id})");
                 
                 if (i < devices.Count - 1)
                 {
