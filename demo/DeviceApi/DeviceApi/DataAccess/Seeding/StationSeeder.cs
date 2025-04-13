@@ -10,6 +10,9 @@ namespace Data.Seeding
     /// </summary>
     public class StationSeeder : ISeeder
     {
+        // SeederOrder enum değerine göre ayarlandı
+        public int Order => (int)SeederOrder.Stations; // 3
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // İstasyonlar zaten varsa işlem yapma
@@ -49,13 +52,21 @@ namespace Data.Seeding
 
             queryBuilder.AppendLine("SET IDENTITY_INSERT [Stations] OFF;");
 
-            // SQL komutunu çalıştır
-            await context.Database.ExecuteSqlRawAsync(queryBuilder.ToString());
-            
-            // Context cache'ini temizle
-            foreach (var entry in context.ChangeTracker.Entries())
+            try
             {
-                entry.State = EntityState.Detached;
+                // SQL komutunu çalıştır
+                await context.Database.ExecuteSqlRawAsync(queryBuilder.ToString());
+                
+                // Context cache'ini temizle
+                foreach (var entry in context.ChangeTracker.Entries())
+                {
+                    entry.State = EntityState.Detached;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"StationSeeder hatası: {ex.Message}");
+                throw;
             }
         }
     }

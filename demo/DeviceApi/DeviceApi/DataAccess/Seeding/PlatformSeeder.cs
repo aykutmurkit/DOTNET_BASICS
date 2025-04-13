@@ -10,12 +10,22 @@ namespace Data.Seeding
     /// </summary>
     public class PlatformSeeder : ISeeder
     {
+        // SeederOrder enum değerine göre ayarlandı
+        public int Order => (int)SeederOrder.Platforms; // 4
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // Platformlar zaten varsa işlem yapma
             if (await context.Platforms.AnyAsync())
             {
                 return;
+            }
+            
+            // İstasyonları kontrol et
+            var stations = await context.Stations.ToListAsync();
+            if (!stations.Any())
+            {
+                throw new Exception("İstasyonlar bulunamadı. Önce StationSeeder çalıştırılmalıdır.");
             }
 
             // SQL komutu oluşturma ve yürütme
@@ -57,13 +67,20 @@ namespace Data.Seeding
 
             queryBuilder.AppendLine("SET IDENTITY_INSERT [Platforms] OFF;");
 
-            // SQL komutunu çalıştır
-            await context.Database.ExecuteSqlRawAsync(queryBuilder.ToString());
-            
-            // Context cache'ini temizle
-            foreach (var entry in context.ChangeTracker.Entries())
+            try {
+                // SQL komutunu çalıştır
+                await context.Database.ExecuteSqlRawAsync(queryBuilder.ToString());
+                
+                // Context cache'ini temizle
+                foreach (var entry in context.ChangeTracker.Entries())
+                {
+                    entry.State = EntityState.Detached;
+                }
+            }
+            catch (Exception ex)
             {
-                entry.State = EntityState.Detached;
+                Console.WriteLine($"PlatformSeeder hatası: {ex.Message}");
+                throw;
             }
         }
     }

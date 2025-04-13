@@ -10,8 +10,8 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceSeeder : ISeeder
     {
-        // FullScreenMessageSeeder'dan (8) önce çalışması için
-        public int Order => 7;
+        // SeederOrder enum değeriyle aynı olması için 5 olarak değiştirildi
+        public int Order => (int)SeederOrder.Devices; // 5
         
         public async Task SeedAsync(AppDbContext context)
         {
@@ -24,7 +24,8 @@ namespace Data.Seeding
             var platforms = await context.Platforms.ToListAsync();
             if (!platforms.Any())
             {
-                return; // Platformlar yoksa işlem yapma
+                // Platformlar yoksa hata fırlat
+                throw new Exception("Platformlar bulunamadı. Önce PlatformSeeder çalıştırılmalıdır.");
             }
 
             // SQL komutu oluşturma

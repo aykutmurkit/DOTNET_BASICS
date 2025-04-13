@@ -17,7 +17,7 @@ namespace Data.Seeding
                 nameof(StationSeeder) => (int)SeederOrder.Stations,
                 nameof(PlatformSeeder) => (int)SeederOrder.Platforms,
                 nameof(DeviceSeeder) => (int)SeederOrder.Devices,
-                nameof(DeviceSettingSeeder) => (int)SeederOrder.DeviceSettings,
+                nameof(DeviceSettingsSeeder) => (int)SeederOrder.DeviceSettings,
                 nameof(DeviceStatusSeeder) => (int)SeederOrder.DeviceStatuses,
                 nameof(PredictionSeeder) => (int)SeederOrder.Predictions,
                 nameof(FullScreenMessageSeeder) => (int)SeederOrder.FullScreenMessages,
