@@ -10,6 +10,7 @@ using DeviceApi.TCPListener.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DeviceApi.TCPListener.Services
 {
@@ -21,11 +22,20 @@ namespace DeviceApi.TCPListener.Services
         private readonly ILogger<TcpListenerService> _logger;
         private readonly MessageHandler _messageHandler;
         private readonly TcpListenerSettings _settings;
+        private readonly IServiceProvider _serviceProvider;
         
         private TcpListener _listener;
         private bool _isRunning;
         private CancellationTokenSource _stoppingCts;
         private readonly ConcurrentDictionary<string, TcpClient> _clients = new();
+        
+        private DateTime? _startTime;
+        private long _totalConnectionsReceived = 0;
+        private readonly Queue<DateTime> _recentConnections = new Queue<DateTime>();
+        private readonly object _connectionLock = new object();
+        
+        private int _activeConnectionThreads = 0;
+        private readonly object _threadCountLock = new object();
         
         /// <summary>
         /// TcpListenerService constructor'ı
@@ -33,11 +43,13 @@ namespace DeviceApi.TCPListener.Services
         public TcpListenerService(
             ILogger<TcpListenerService> logger,
             IOptions<TcpListenerSettings> settings,
-            MessageHandler messageHandler)
+            MessageHandler messageHandler,
+            IServiceProvider serviceProvider)
         {
             _logger = logger;
             _settings = settings.Value;
             _messageHandler = messageHandler;
+            _serviceProvider = serviceProvider;
         }
         
         /// <summary>
@@ -96,6 +108,8 @@ namespace DeviceApi.TCPListener.Services
             
             try
             {
+                _startTime = DateTime.Now;
+                
                 // IP adresini parse et
                 IPAddress ipAddress = IPAddress.Parse(_settings.IpAddress);
                 
@@ -122,6 +136,20 @@ namespace DeviceApi.TCPListener.Services
                                 // İstemci socket bilgilerini al
                                 var remoteEndPoint = (IPEndPoint)client.Client.RemoteEndPoint;
                                 var clientId = $"{remoteEndPoint.Address}:{remoteEndPoint.Port}";
+                                
+                                // Bağlantı istatistiklerini güncelle
+                                lock (_connectionLock)
+                                {
+                                    _totalConnectionsReceived++;
+                                    _recentConnections.Enqueue(DateTime.Now);
+                                    
+                                    // Son 1 dakikadan eski bağlantıları kuyruktan çıkar
+                                    while (_recentConnections.Count > 0 && 
+                                          (DateTime.Now - _recentConnections.Peek()).TotalMinutes > 1)
+                                    {
+                                        _recentConnections.Dequeue();
+                                    }
+                                }
                                 
                                 // İstemciyi kaydet
                                 _clients.TryAdd(clientId, client);
@@ -210,6 +238,9 @@ namespace DeviceApi.TCPListener.Services
         /// </summary>
         private async Task ProcessClientAsync(TcpClient client, string clientId, CancellationToken cancellationToken)
         {
+            // Thread sayacını artır
+            Interlocked.Increment(ref _activeConnectionThreads);
+            
             try
             {
                 // Timeout ayarla
@@ -274,6 +305,9 @@ namespace DeviceApi.TCPListener.Services
             {
                 // İstemci bağlantısını kapat
                 CloseClient(client, clientId);
+                
+                // Thread sayacını azalt
+                Interlocked.Decrement(ref _activeConnectionThreads);
             }
         }
         
@@ -311,6 +345,275 @@ namespace DeviceApi.TCPListener.Services
             await Task.Delay(100);
             
             _logger.LogInformation("Tüm istemci bağlantıları kapatıldı");
+        }
+        
+        /// <summary>
+        /// TCP Listener hakkında detaylı istatistik bilgilerini döndürür
+        /// </summary>
+        /// <returns>TCP Listener istatistikleri</returns>
+        public TcpListenerStatistics GetStatistics()
+        {
+            // Cihaz doğrulama servisi ve MessageHandler'a erişim için
+            var deviceVerificationService = _serviceProvider.GetService<IDeviceVerificationService>();
+            var messageHandler = _serviceProvider.GetService<MessageHandler>();
+            
+            // Kara liste ve rate limit istatistikleri
+            var rateLimitStats = new RateLimitStatistics
+            {
+                BlacklistedImeiCount = GetBlacklistedImeiCount(deviceVerificationService),
+                RateLimitedImeiCount = GetRateLimitedImeiCount(deviceVerificationService),
+                BlacklistDurationSeconds = GetBlacklistDuration(deviceVerificationService),
+                RateLimitConfig = GetRateLimitConfig(deviceVerificationService)
+            };
+            
+            // Mesaj işleme istatistikleri
+            var messageStats = new MessageStatistics
+            {
+                TotalProcessedMessages = GetTotalProcessedMessages(messageHandler),
+                ThrottledLogCount = GetThrottledLogCount(messageHandler),
+                LastSuccessfulHandshake = GetLastSuccessfulHandshake(messageHandler),
+                LastRejectedHandshake = GetLastRejectedHandshake(messageHandler)
+            };
+            
+            var stats = new TcpListenerStatistics
+            {
+                IsRunning = _isRunning,
+                Port = _settings.Port,
+                IpAddress = _settings.IpAddress,
+                ActiveConnections = _clients.Count,
+                MaximumConnections = _settings.MaxConnections,
+                TotalConnectionsReceived = _totalConnectionsReceived,
+                ActiveThreads = _activeConnectionThreads,
+                StartTime = _startTime,
+                Uptime = GetUptimeString(),
+                ConnectionsLastMinute = GetConnectionsLastMinute(),
+                ActiveClientAddresses = GetActiveClientAddresses(),
+                RateLimit = rateLimitStats,
+                MessageStats = messageStats
+            };
+            
+            return stats;
+        }
+        
+        /// <summary>
+        /// Kara listedeki IMEI sayısını alır
+        /// </summary>
+        private int GetBlacklistedImeiCount(IDeviceVerificationService deviceVerificationService)
+        {
+            // Burada reflection veya sadece yaklaşık bir değer kullanabilirsiniz
+            // Rate limit bilgileri genellikle private olduğundan, bu bir tahmin olabilir
+            try 
+            {
+                var type = deviceVerificationService.GetType();
+                var field = type.GetField("_blacklistedImeis", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null && field.GetValue(deviceVerificationService) is System.Collections.IDictionary dict)
+                {
+                    return dict.Count;
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return -1; // Bilinmiyor
+        }
+        
+        /// <summary>
+        /// Rate limit takip edilen IMEI sayısını alır
+        /// </summary>
+        private int GetRateLimitedImeiCount(IDeviceVerificationService deviceVerificationService)
+        {
+            try 
+            {
+                var type = deviceVerificationService.GetType();
+                var field = type.GetField("_rateLimitTracker", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null && field.GetValue(deviceVerificationService) is System.Collections.IDictionary dict)
+                {
+                    return dict.Count;
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return -1; // Bilinmiyor
+        }
+        
+        /// <summary>
+        /// Kara liste süresini alır
+        /// </summary>
+        private int GetBlacklistDuration(IDeviceVerificationService deviceVerificationService)
+        {
+            try 
+            {
+                var type = deviceVerificationService.GetType();
+                var field = type.GetField("BLACKLIST_DURATION_SECONDS", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+                if (field != null)
+                {
+                    return (int)field.GetValue(null);
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return 300; // Varsayılan değer
+        }
+        
+        /// <summary>
+        /// Rate limit konfigürasyonunu alır
+        /// </summary>
+        private string GetRateLimitConfig(IDeviceVerificationService deviceVerificationService)
+        {
+            try 
+            {
+                var type = deviceVerificationService.GetType();
+                var maxField = type.GetField("RATE_LIMIT_MAX_REQUESTS", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+                var windowField = type.GetField("RATE_LIMIT_WINDOW_SECONDS", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+                
+                if (maxField != null && windowField != null)
+                {
+                    int max = (int)maxField.GetValue(null);
+                    int window = (int)windowField.GetValue(null);
+                    return $"{max} istek / {window} saniye";
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return "5 istek / 1 saniye"; // Varsayılan değer
+        }
+        
+        /// <summary>
+        /// Toplam işlenen mesaj sayısını alır
+        /// </summary>
+        private long GetTotalProcessedMessages(MessageHandler messageHandler)
+        {
+            if (messageHandler == null) return 0;
+            
+            try 
+            {
+                var type = messageHandler.GetType();
+                var field = type.GetField("_totalProcessedMessages", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null)
+                {
+                    return (long)field.GetValue(messageHandler);
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return -1; // Bilinmiyor
+        }
+        
+        /// <summary>
+        /// Kısıtlanan log sayısını alır
+        /// </summary>
+        private long GetThrottledLogCount(MessageHandler messageHandler)
+        {
+            if (messageHandler == null) return 0;
+            
+            try 
+            {
+                var type = messageHandler.GetType();
+                var field = type.GetField("_throttledLogCount", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null)
+                {
+                    return (long)field.GetValue(messageHandler);
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return -1; // Bilinmiyor
+        }
+        
+        /// <summary>
+        /// Son başarılı handshake zamanını alır
+        /// </summary>
+        private DateTime? GetLastSuccessfulHandshake(MessageHandler messageHandler)
+        {
+            if (messageHandler == null) return null;
+            
+            try 
+            {
+                var type = messageHandler.GetType();
+                var field = type.GetField("_lastSuccessfulHandshake", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null)
+                {
+                    return (DateTime?)field.GetValue(messageHandler);
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return null;
+        }
+        
+        /// <summary>
+        /// Son reddedilen handshake zamanını alır
+        /// </summary>
+        private DateTime? GetLastRejectedHandshake(MessageHandler messageHandler)
+        {
+            if (messageHandler == null) return null;
+            
+            try 
+            {
+                var type = messageHandler.GetType();
+                var field = type.GetField("_lastRejectedHandshake", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null)
+                {
+                    return (DateTime?)field.GetValue(messageHandler);
+                }
+            }
+            catch 
+            {
+                // Sessizce hatayı yut
+            }
+            return null;
+        }
+        
+        /// <summary>
+        /// Aktif bağlantı thread sayısını döndürür
+        /// </summary>
+        private int GetActiveThreadCount()
+        {
+            return _activeConnectionThreads;
+        }
+        
+        /// <summary>
+        /// Çalışma süresini hesaplar
+        /// </summary>
+        private string GetUptimeString()
+        {
+            if (!_startTime.HasValue)
+                return "00:00:00";
+                
+            var uptime = DateTime.Now - _startTime.Value;
+            return $"{uptime.Hours:D2}:{uptime.Minutes:D2}:{uptime.Seconds:D2}";
+        }
+        
+        /// <summary>
+        /// Son dakika içinde alınan bağlantı sayısını hesaplar
+        /// </summary>
+        private int GetConnectionsLastMinute()
+        {
+            lock (_connectionLock)
+            {
+                return _recentConnections.Count;
+            }
+        }
+        
+        /// <summary>
+        /// Aktif bağlı cihazların adreslerini döndürür
+        /// </summary>
+        private List<string> GetActiveClientAddresses()
+        {
+            return _clients.Keys.ToList();
         }
     }
 } 

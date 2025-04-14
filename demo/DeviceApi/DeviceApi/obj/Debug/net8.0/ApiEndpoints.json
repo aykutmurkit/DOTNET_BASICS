@@ -2702,7 +2702,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[DeviceApi.TCPListener.Models.DeviceInfoDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[DeviceApi.TCPListener.Models.ApprovedDeviceDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -2829,7 +2829,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[DeviceApi.TCPListener.Models.DeviceInfoDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "Core.Utilities.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[DeviceApi.TCPListener.Models.UnapprovedDeviceDto, DeviceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

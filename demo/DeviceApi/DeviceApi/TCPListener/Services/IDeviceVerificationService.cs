@@ -25,7 +25,7 @@ namespace DeviceApi.TCPListener.Services
         /// Onaylı cihazların detaylı bilgilerini döndürür
         /// </summary>
         /// <returns>Onaylı cihazların detaylı bilgileri</returns>
-        IEnumerable<DeviceInfoDto> GetApprovedDevicesWithDetails();
+        IEnumerable<ApprovedDeviceDto> GetApprovedDevicesWithDetails();
         
         /// <summary>
         /// Onaysız cihazların listesini döndürür
@@ -37,6 +37,6 @@ namespace DeviceApi.TCPListener.Services
         /// Onaysız cihazların detaylı bilgilerini döndürür
         /// </summary>
         /// <returns>Onaysız cihazların detaylı bilgileri</returns>
-        IEnumerable<DeviceInfoDto> GetUnapprovedDevicesWithDetails();
+        IEnumerable<UnapprovedDeviceDto> GetUnapprovedDevicesWithDetails();
     }
 } 

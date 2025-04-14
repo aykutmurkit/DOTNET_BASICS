@@ -3,9 +3,9 @@ using System;
 namespace DeviceApi.TCPListener.Models
 {
     /// <summary>
-    /// Cihaz bilgilerini içeren DTO (Data Transfer Object) sınıfı
+    /// Onaylı cihaz bilgilerini içeren DTO (Data Transfer Object) sınıfı
     /// </summary>
-    public class DeviceInfoDto
+    public class ApprovedDeviceDto
     {
         /// <summary>
         /// Cihaz ID
@@ -48,9 +48,9 @@ namespace DeviceApi.TCPListener.Models
         public string StationName { get; set; }
         
         /// <summary>
-        /// Onay durumu
+        /// Son bağlantı tarihi
         /// </summary>
-        public bool IsApproved { get; set; }
+        public DateTime LastConnectionDate { get; set; }
         
         /// <summary>
         /// Oluşturulma tarihi
@@ -61,5 +61,10 @@ namespace DeviceApi.TCPListener.Models
         /// Son güncelleme tarihi
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
+        
+        /// <summary>
+        /// Aktif mesaj sayısı
+        /// </summary>
+        public int ActiveMessageCount { get; set; }
     }
 } 

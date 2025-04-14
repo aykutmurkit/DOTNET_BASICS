@@ -460,13 +460,10 @@ C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\n
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\RateLimitLibrary.pdb
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrarySettings.json
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\Configuration\Settings\settings.json
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerSettings.json
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrary.dll
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerLibrary.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\LogLibrary.pdb
-C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\TCPListenerLibrary.pdb
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\aykut\Desktop\github\DOTNET_BASICS\demo\DeviceApi\DeviceApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -4,6 +4,8 @@ using System.Text;
 using System.Text.Json;
 using DeviceApi.TCPListener.Models;
 using DeviceApi.TCPListener.Services;
+using System.Collections.Concurrent;
+using System.Threading;
 
 namespace DeviceApi.TCPListener.Core
 {
@@ -15,6 +17,12 @@ namespace DeviceApi.TCPListener.Core
         private readonly ILogger<MessageHandler> _logger;
         private readonly TcpListenerSettings _settings;
         private readonly IDeviceVerificationService _deviceVerificationService;
+        private readonly ConcurrentDictionary<string, (DateTime lastTime, int count)> _recentMessages = new ConcurrentDictionary<string, (DateTime, int)>();
+        private const int MESSAGE_LOG_INTERVAL_SECONDS = 60; // Aynı mesaj için loglama aralığı
+        private long _totalProcessedMessages = 0;
+        private long _throttledLogCount = 0;
+        private DateTime? _lastSuccessfulHandshake = null;
+        private DateTime? _lastRejectedHandshake = null;
 
         /// <summary>
         /// MessageHandler sınıfının constructor'ı
@@ -39,7 +47,20 @@ namespace DeviceApi.TCPListener.Core
         /// <returns>İstemciye gönderilecek yanıt</returns>
         public string ProcessMessage(string message)
         {
-            _logger.LogInformation("Gelen mesaj işleniyor: {Message}", message);
+            // Toplam işlenen mesaj sayacını artır
+            Interlocked.Increment(ref _totalProcessedMessages);
+            
+            // Gelen mesaj için log kısıtlama
+            bool shouldLog = ShouldLogMessage(message);
+            if (shouldLog)
+            {
+                _logger.LogInformation("Gelen mesaj işleniyor: {Message}", message);
+            }
+            else
+            {
+                // Log kısıtlaması uygulandı
+                Interlocked.Increment(ref _throttledLogCount);
+            }
             
             try
             {
@@ -56,7 +77,30 @@ namespace DeviceApi.TCPListener.Core
                 var response = ProcessDeviceMessage(deviceMessage);
                 var responseMessage = CreateResponse(response);
                 
-                _logger.LogInformation("Yanıt hazırlandı: {Response}", responseMessage);
+                // Yanıt logunu sadece onaylı cihazlar için bilgi seviyesinde göster
+                if (deviceMessage.ApprovalStatus == DeviceApprovalStatus.Approved)
+                {
+                    _logger.LogInformation("Yanıt hazırlandı: {Response}", responseMessage);
+                }
+                else
+                {
+                    // Onaysız cihazlar için debug seviyesinde log tut
+                    _logger.LogDebug("Reddedilen cihaz için yanıt: {Response}", responseMessage);
+                }
+                
+                // Handshake mesajları için zamanları izle
+                if (deviceMessage.MessageType == MessageType.Handshake)
+                {
+                    if (response.ResponseCode == ResponseCode.Accept)
+                    {
+                        _lastSuccessfulHandshake = DateTime.Now;
+                    }
+                    else if (response.ResponseCode == ResponseCode.Reject)
+                    {
+                        _lastRejectedHandshake = DateTime.Now;
+                    }
+                }
+                
                 return responseMessage;
             }
             catch (Exception ex)
@@ -189,6 +233,19 @@ namespace DeviceApi.TCPListener.Core
                     break;
             }
             
+            // Handshake mesajları için zamanları izle
+            if (deviceMessage.MessageType == MessageType.Handshake)
+            {
+                if (response.ResponseCode == ResponseCode.Accept)
+                {
+                    _lastSuccessfulHandshake = DateTime.Now;
+                }
+                else if (response.ResponseCode == ResponseCode.Reject)
+                {
+                    _lastRejectedHandshake = DateTime.Now;
+                }
+            }
+            
             return response;
         }
         
@@ -203,6 +260,15 @@ namespace DeviceApi.TCPListener.Core
             sb.Append((int)response.MessageType);
             sb.Append(_settings.DelimiterChar);
             sb.Append((int)response.ResponseCode);
+            
+            // ResponseCode.Reject ise (2) tarih-saat bilgisi ekleme, direkt sonlandır
+            if (response.ResponseCode == ResponseCode.Reject)
+            {
+                sb.Append(_settings.EndChar);
+                return sb.ToString();
+            }
+            
+            // Kabul edilen (ResponseCode.Accept) veya diğer durumlar için tarih-saat ekle
             sb.Append(_settings.DelimiterChar);
             sb.Append(response.ResponseTime);
             sb.Append(_settings.EndChar);
@@ -218,6 +284,70 @@ namespace DeviceApi.TCPListener.Core
             _logger.LogWarning("Hata yanıtı oluşturuluyor: {ErrorMessage}", errorMessage);
             
             return $"{_settings.StartChar}0{_settings.DelimiterChar}2{_settings.DelimiterChar}{DateTime.Now.ToString("dd/MM/yy,HH:mm:ss")}{_settings.EndChar}";
+        }
+
+        /// <summary>
+        /// Belirli bir mesaj için log yazılıp yazılmayacağını kontrol eder
+        /// </summary>
+        private bool ShouldLogMessage(string message)
+        {
+            // IMEI'yi mesajdan çıkarmaya çalış
+            string imei = ExtractImeiFromMessage(message);
+            if (string.IsNullOrEmpty(imei))
+            {
+                // IMEI bulunamadı, her zaman logla
+                return true;
+            }
+            
+            var now = DateTime.Now;
+            var messageKey = imei;
+            
+            // İlgili IMEI için son log zamanını ve sayısını al veya oluştur
+            var (lastLogTime, count) = _recentMessages.GetOrAdd(messageKey, (now, 0));
+            
+            // Son logdan bu yana geçen süre
+            var timeSinceLastLog = now - lastLogTime;
+            
+            // İlk mesaj veya belirli süre geçtiyse logla
+            if (count == 0 || timeSinceLastLog.TotalSeconds >= MESSAGE_LOG_INTERVAL_SECONDS)
+            {
+                _recentMessages[messageKey] = (now, count + 1);
+                return true;
+            }
+            
+            // Sayacı güncelle ama loglama
+            _recentMessages[messageKey] = (lastLogTime, count + 1);
+            return false;
+        }
+        
+        /// <summary>
+        /// Mesaj içinden IMEI değerini çıkarır
+        /// </summary>
+        private string ExtractImeiFromMessage(string message)
+        {
+            try
+            {
+                if (!IsValidMessage(message))
+                    return string.Empty;
+                    
+                // Start ve end karakterlerini kaldır
+                var content = message.TrimStart(_settings.StartChar).TrimEnd(_settings.EndChar);
+                
+                // Parametreleri ayır
+                var parts = content.Split(_settings.DelimiterChar);
+                
+                // Handshake mesajı kontrolü (^1+IMEI+ILETISIM_TIPI~)
+                if (parts.Length >= 2 && parts[0] == "1" && !string.IsNullOrEmpty(parts[1]))
+                {
+                    return parts[1]; // IMEI değeri
+                }
+                
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 } 

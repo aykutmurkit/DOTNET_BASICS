@@ -8,6 +8,8 @@ using System.Security.Claims;
 using Core.Utilities;
 using LogLibrary.Core.Interfaces;
 using DeviceApi.TCPListener.Models;
+using System.Linq;
+using System;
 
 namespace DeviceApi.API.Controllers
 {
@@ -34,7 +36,7 @@ namespace DeviceApi.API.Controllers
         }
 
         /// <summary>
-        /// TCP Listener servisinin durumunu getirir
+        /// TCP Listener servisinin durumunu ve istatistiklerini getirir
         /// </summary>
         /// <returns>TCP Listener'ın durum bilgisini içeren yanıt</returns>
         [HttpGet("status")]
@@ -45,22 +47,71 @@ namespace DeviceApi.API.Controllers
             var userName = User.FindFirst(ClaimTypes.Name)?.Value;
             
             await _logService.LogInfoAsync(
-                "TCP Listener durum bilgisi alınıyor", 
+                "TCP Listener durum bilgisi ve istatistikler alınıyor", 
                 "TcpListenerController.GetStatus", 
                 new { UserId = userId, UserName = userName });
             
-            var isRunning = _tcpListenerService.IsRunning();
-            var connectedClients = _tcpListenerService.GetConnectedClientsCount();
+            var stats = _tcpListenerService.GetStatistics();
+            var approvedDevicesCount = _deviceVerificationService.GetApprovedDevices().Count();
+            var unapprovedDevicesCount = _deviceVerificationService.GetUnapprovedDevices().Count();
             
             var result = new 
             {
-                IsRunning = isRunning,
-                ConnectedClients = connectedClients,
-                Port = _tcpListenerService.Port,
-                IpAddress = _tcpListenerService.IpAddress
+                // Temel bilgiler
+                IsRunning = stats.IsRunning,
+                IpAddress = stats.IpAddress,
+                Port = stats.Port,
+                
+                // Bağlantı bilgileri
+                ActiveConnections = stats.ActiveConnections,
+                MaximumConnections = stats.MaximumConnections,
+                TotalConnectionsReceived = stats.TotalConnectionsReceived,
+                ConnectionsLastMinute = stats.ConnectionsLastMinute,
+                
+                // Cihaz ve thread bilgileri
+                ApprovedDevices = approvedDevicesCount,
+                UnapprovedDevices = unapprovedDevicesCount,
+                TotalDevices = approvedDevicesCount + unapprovedDevicesCount,
+                ActiveThreads = stats.ActiveThreads,
+                
+                // Zaman bilgileri
+                StartTime = stats.StartTime,
+                Uptime = stats.Uptime,
+                ServerTime = DateTime.Now,
+                
+                // Aktif bağlantı bilgileri
+                ActiveClientAddresses = stats.ActiveClientAddresses.Take(20).ToList(), // Sadece ilk 20 adresi göster
+                TotalActiveClients = stats.ActiveClientAddresses.Count,
+                
+                // Hız sınırlama ve kara liste istatistikleri
+                RateLimit = stats.RateLimit != null ? new
+                {
+                    BlacklistedImeiCount = stats.RateLimit.BlacklistedImeiCount,
+                    RateLimitedImeiCount = stats.RateLimit.RateLimitedImeiCount,
+                    BlacklistDurationSeconds = stats.RateLimit.BlacklistDurationSeconds,
+                    RateLimitConfig = stats.RateLimit.RateLimitConfig
+                } : null,
+                
+                // Mesaj işleme istatistikleri
+                MessageStats = stats.MessageStats != null ? new
+                {
+                    TotalProcessedMessages = stats.MessageStats.TotalProcessedMessages,
+                    ThrottledLogCount = stats.MessageStats.ThrottledLogCount,
+                    LogEfficiencyPercent = stats.MessageStats.TotalProcessedMessages > 0 
+                        ? Math.Round(100.0 * stats.MessageStats.ThrottledLogCount / stats.MessageStats.TotalProcessedMessages, 2) 
+                        : 0,
+                    LastSuccessfulHandshake = stats.MessageStats.LastSuccessfulHandshake,
+                    LastRejectedHandshake = stats.MessageStats.LastRejectedHandshake,
+                    TimeSinceLastSuccess = stats.MessageStats.LastSuccessfulHandshake.HasValue 
+                        ? (DateTime.Now - stats.MessageStats.LastSuccessfulHandshake.Value).TotalMinutes.ToString("F1") + " dakika"
+                        : "Yok",
+                    TimeSinceLastReject = stats.MessageStats.LastRejectedHandshake.HasValue 
+                        ? (DateTime.Now - stats.MessageStats.LastRejectedHandshake.Value).TotalMinutes.ToString("F1") + " dakika"
+                        : "Yok"
+                } : null
             };
             
-            return Ok(ApiResponse<object>.Success(result, "TCP Listener durum bilgisi"));
+            return Ok(ApiResponse<object>.Success(result, "TCP Listener durum bilgisi ve istatistikler"));
         }
         
         /// <summary>
@@ -68,7 +119,7 @@ namespace DeviceApi.API.Controllers
         /// </summary>
         /// <returns>Onaylı cihazların detaylı bilgilerini içeren liste</returns>
         [HttpGet("approved-devices")]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<DeviceInfoDto>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<ApprovedDeviceDto>>), 200)]
         public async Task<IActionResult> GetApprovedDevices()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -80,15 +131,15 @@ namespace DeviceApi.API.Controllers
                 new { UserId = userId, UserName = userName });
             
             var devices = _deviceVerificationService.GetApprovedDevicesWithDetails();
-            return Ok(ApiResponse<IEnumerable<DeviceInfoDto>>.Success(devices, "Onaylı cihazlar detaylı listesi"));
+            return Ok(ApiResponse<IEnumerable<ApprovedDeviceDto>>.Success(devices, "Onaylı cihazlar detaylı listesi"));
         }
         
         /// <summary>
         /// Onaysız cihazların listesini getirir
         /// </summary>
-        /// <returns>Onaysız cihazların IMEI numaralarını içeren liste</returns>
+        /// <returns>Onaysız cihazların bilgilerini içeren liste</returns>
         [HttpGet("unapproved-devices")]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<DeviceInfoDto>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<UnapprovedDeviceDto>>), 200)]
         public async Task<IActionResult> GetUnapprovedDevices()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -100,7 +151,7 @@ namespace DeviceApi.API.Controllers
                 new { UserId = userId, UserName = userName });
             
             var devices = _deviceVerificationService.GetUnapprovedDevicesWithDetails();
-            return Ok(ApiResponse<IEnumerable<DeviceInfoDto>>.Success(devices, "Onaysız cihazlar detaylı listesi"));
+            return Ok(ApiResponse<IEnumerable<UnapprovedDeviceDto>>.Success(devices, "Onaysız cihazlar detaylı listesi"));
         }
         
         /// <summary>
