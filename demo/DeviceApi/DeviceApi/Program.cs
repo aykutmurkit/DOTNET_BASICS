@@ -11,8 +11,8 @@ using JWTVerifyLibrary.Extensions;
 using RateLimitLibrary.Extensions;
 using LogLibrary.Extensions;
 using Microsoft.Extensions.Configuration;
-using TCPListenerLibrary.Extensions;
 using DeviceApi.Business.Mappings.Extensions;
+using DeviceApi.TCPListener.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,0 @@
-{
-  "TcpListenerSettings": {
-    "Port": 3456,
-    "IpAddress": "0.0.0.0",
-    "MaxConnections": 100,
-    "ConnectionTimeout": 30000,
-    "BufferSize": 1024
-  }
-} 
