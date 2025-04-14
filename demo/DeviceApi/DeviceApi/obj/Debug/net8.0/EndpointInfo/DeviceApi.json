@@ -4880,17 +4880,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               }
             }
@@ -4909,17 +4909,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringIEnumerableApiResponse"
+                  "$ref": "#/components/schemas/DeviceInfoDtoIEnumerableApiResponse"
                 }
               }
             }
@@ -5916,6 +5916,90 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DeviceDto"
+            },
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceInfoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imei": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "platformId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "platformName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceInfoDtoIEnumerableApiResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceInfoDto"
             },
             "nullable": true
           },
@@ -6989,40 +7073,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/StationDto"
-            },
-            "nullable": true
-          },
-          "errors": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "StringIEnumerableApiResponse": {
-        "type": "object",
-        "properties": {
-          "statusCode": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "type": "string"
             },
             "nullable": true
           },

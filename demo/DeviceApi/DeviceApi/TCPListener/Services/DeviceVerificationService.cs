@@ -2,6 +2,11 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using Data.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using DeviceApi.TCPListener.Models;
+using Entities.Concrete;
 
 namespace DeviceApi.TCPListener.Services
 {
@@ -14,10 +19,10 @@ namespace DeviceApi.TCPListener.Services
         private readonly IServiceScopeFactory _serviceScopeFactory;
         
         // Onaylı cihazların IMEI'lerini tutan koleksiyon (önbellek)
-        private readonly ConcurrentDictionary<string, bool> _approvedDevices = new();
+        private readonly HashSet<string> _approvedDevices;
         
         // Onaysız cihazların IMEI'lerini tutan koleksiyon
-        private readonly ConcurrentDictionary<string, bool> _unapprovedDevices = new();
+        private readonly HashSet<string> _unapprovedDevices;
         
         /// <summary>
         /// DeviceVerificationService constructor'ı
@@ -30,6 +35,8 @@ namespace DeviceApi.TCPListener.Services
         {
             _logger = logger;
             _serviceScopeFactory = serviceScopeFactory;
+            _approvedDevices = new HashSet<string>();
+            _unapprovedDevices = new HashSet<string>();
         }
         
         /// <summary>
@@ -39,77 +46,52 @@ namespace DeviceApi.TCPListener.Services
         /// <returns>Cihaz onaylı ise true, değilse false</returns>
         public bool VerifyDeviceByImei(string imei)
         {
-            // Önbellekte varsa sonucu döndür
-            if (_approvedDevices.TryGetValue(imei, out bool _))
+            if (string.IsNullOrEmpty(imei))
             {
-                _logger.LogInformation("IMEI {Imei} onaylı cihazlar listesinde bulundu", imei);
-                return true;
-            }
-            
-            // Onaysız cihazlar listesinde varsa false döndür
-            if (_unapprovedDevices.TryGetValue(imei, out bool _))
-            {
-                _logger.LogInformation("IMEI {Imei} onaysız cihazlar listesinde bulundu", imei);
+                _logger.LogWarning("IMEI değeri boş veya null");
                 return false;
             }
-            
+
+            // Eğer cihaz zaten onaylı listesinde ise
+            if (_approvedDevices.Contains(imei))
+            {
+                _logger.LogInformation($"Cihaz {imei} önceden onaylanmış");
+                return true;
+            }
+
+            // Eğer cihaz zaten onaysız listesinde ise
+            if (_unapprovedDevices.Contains(imei))
+            {
+                _logger.LogInformation($"Cihaz {imei} önceden reddedilmiş");
+                return false;
+            }
+
             try
             {
-                // Veritabanında kontrol et
-                var isApproved = CheckDeviceInDatabase(imei);
+                using var scope = _serviceScopeFactory.CreateScope();
+                var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
                 
-                if (isApproved)
+                // IMEI'ye göre doğrudan veritabanında kontrol et
+                bool deviceExists = deviceRepository.ImeiExistsAsync(imei).GetAwaiter().GetResult();
+                
+                if (deviceExists)
                 {
-                    // Onaylı cihazlar listesine ekle
-                    _approvedDevices.TryAdd(imei, true);
-                    _logger.LogInformation("IMEI {Imei} onaylı cihazlar listesine eklendi", imei);
+                    _approvedDevices.Add(imei);
+                    _logger.LogInformation($"Cihaz {imei} onaylandı");
+                    return true;
                 }
                 else
                 {
-                    // Onaysız cihazlar listesine ekle
-                    _unapprovedDevices.TryAdd(imei, true);
-                    _logger.LogInformation("IMEI {Imei} onaysız cihazlar listesine eklendi", imei);
+                    _unapprovedDevices.Add(imei);
+                    _logger.LogWarning($"Cihaz {imei} bulunamadı ve reddedildi");
+                    return false;
                 }
-                
-                return isApproved;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "IMEI {Imei} doğrulaması sırasında hata oluştu", imei);
-                
-                // Hata durumunda güvenli tarafta kalarak false döndür
-                _unapprovedDevices.TryAdd(imei, true);
+                _logger.LogError(ex, $"Cihaz doğrulama sırasında hata oluştu: {ex.Message}");
+                _unapprovedDevices.Add(imei);
                 return false;
-            }
-        }
-        
-        /// <summary>
-        /// Cihazın IMEI numarası ile veritabanında onaylı olup olmadığını kontrol eder
-        /// </summary>
-        private bool CheckDeviceInDatabase(string imei)
-        {
-            try
-            {
-                // Yeni bir scope oluştur
-                using (var scope = _serviceScopeFactory.CreateScope())
-                {
-                    // Scope içinden IDeviceRepository'yi al
-                    var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
-                    
-                    // Asenkron metodu senkron çağırmak için .Result kullanıyoruz
-                    // Not: Gerçek uygulamada, tüm zincir asenkron olmalıdır
-                    var deviceExists = deviceRepository.ImeiExistsAsync(imei).Result;
-                    
-                    _logger.LogInformation("IMEI {Imei} veritabanında {Status}", 
-                        imei, deviceExists ? "bulundu" : "bulunamadı");
-                    
-                    return deviceExists;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "IMEI {Imei} veritabanı sorgusu sırasında hata oluştu", imei);
-                throw;
             }
         }
         
@@ -119,7 +101,46 @@ namespace DeviceApi.TCPListener.Services
         /// <returns>Onaylı cihazların IMEI listesi</returns>
         public IEnumerable<string> GetApprovedDevices()
         {
-            return _approvedDevices.Keys.ToList();
+            return _approvedDevices.ToList();
+        }
+        
+        /// <summary>
+        /// Onaylı cihazların detaylı bilgilerini döndürür
+        /// </summary>
+        /// <returns>Onaylı cihazların detaylı bilgileri</returns>
+        public IEnumerable<DeviceInfoDto> GetApprovedDevicesWithDetails()
+        {
+            try
+            {
+                using var scope = _serviceScopeFactory.CreateScope();
+                var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
+                
+                var devices = new List<DeviceInfoDto>();
+                var allDevices = deviceRepository.GetAllDevicesAsync().GetAwaiter().GetResult();
+                
+                foreach (var imei in _approvedDevices)
+                {
+                    try
+                    {
+                        var device = allDevices.FirstOrDefault(d => d.IMEI == imei);
+                        if (device != null)
+                        {
+                            devices.Add(MapToDeviceInfoDto(device, true));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"IMEI {imei} için cihaz detayları alınırken hata oluştu: {ex.Message}");
+                    }
+                }
+                
+                return devices;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Onaylı cihazların detayları alınırken hata oluştu: {ex.Message}");
+                return Enumerable.Empty<DeviceInfoDto>();
+            }
         }
         
         /// <summary>
@@ -128,7 +149,67 @@ namespace DeviceApi.TCPListener.Services
         /// <returns>Onaysız cihazların IMEI listesi</returns>
         public IEnumerable<string> GetUnapprovedDevices()
         {
-            return _unapprovedDevices.Keys.ToList();
+            return _unapprovedDevices.ToList();
+        }
+        
+        /// <summary>
+        /// Onaysız cihazların detaylı bilgilerini döndürür
+        /// </summary>
+        /// <returns>Onaysız cihazların detaylı bilgileri</returns>
+        public IEnumerable<DeviceInfoDto> GetUnapprovedDevicesWithDetails()
+        {
+            try
+            {
+                using var scope = _serviceScopeFactory.CreateScope();
+                var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
+                
+                var devices = new List<DeviceInfoDto>();
+                var allDevices = deviceRepository.GetAllDevicesAsync().GetAwaiter().GetResult();
+                
+                foreach (var imei in _unapprovedDevices)
+                {
+                    try
+                    {
+                        var device = allDevices.FirstOrDefault(d => d.IMEI == imei);
+                        if (device != null)
+                        {
+                            devices.Add(MapToDeviceInfoDto(device, false));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"IMEI {imei} için cihaz detayları alınırken hata oluştu: {ex.Message}");
+                    }
+                }
+                
+                return devices;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Onaysız cihazların detayları alınırken hata oluştu: {ex.Message}");
+                return Enumerable.Empty<DeviceInfoDto>();
+            }
+        }
+        
+        /// <summary>
+        /// Device entity'sini DeviceInfoDto'ya dönüştürür
+        /// </summary>
+        private DeviceInfoDto MapToDeviceInfoDto(Device device, bool isApproved)
+        {
+            return new DeviceInfoDto
+            {
+                Id = device.Id,
+                Imei = device.IMEI,
+                IpAddress = device.Ip,
+                Port = device.Port,
+                Name = device.Name,
+                PlatformId = device.PlatformId,
+                PlatformName = device.Platform?.Station?.Name, 
+                StationName = device.Platform?.Station?.Name,
+                IsApproved = isApproved,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
         }
     }
 } 

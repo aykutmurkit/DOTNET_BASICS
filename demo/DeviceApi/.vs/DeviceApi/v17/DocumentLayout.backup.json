@@ -245,7 +245,7 @@
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Services\\DeviceVerificationService.cs",
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Services\\DeviceVerificationService.cs",
               "RelativeToolTip": "DeviceApi\\TCPListener\\Services\\DeviceVerificationService.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAIwH0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-14T11:05:30.969Z",
               "EditorCaption": ""
@@ -308,8 +308,7 @@
               "RelativeToolTip": "DeviceApi\\Program.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T12:18:58.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T12:18:58.714Z"
             },
             {
               "$type": "Document",
@@ -321,8 +320,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Extensions\\TcpServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T10:47:15.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T10:47:15.368Z"
             },
             {
               "$type": "Document",
@@ -334,8 +332,7 @@
               "RelativeToolTip": "DeviceApi\\DataAccess\\Seeding\\BitmapScreenMessageSeeder.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAAACkAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T10:58:21.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T10:58:21.64Z"
             },
             {
               "$type": "Document",
@@ -842,8 +839,7 @@
               "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-07T08:24:28.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T08:24:28.368Z"
             },
             {
               "$type": "Document",
@@ -878,8 +874,7 @@
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeToolTip": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-07T08:24:32.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T08:24:32.96Z"
             },
             {
               "$type": "Document",

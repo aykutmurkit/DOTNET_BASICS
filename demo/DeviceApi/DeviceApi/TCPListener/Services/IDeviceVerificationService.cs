@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using DeviceApi.TCPListener.Models;
+
 namespace DeviceApi.TCPListener.Services
 {
     /// <summary>
@@ -19,9 +22,21 @@ namespace DeviceApi.TCPListener.Services
         IEnumerable<string> GetApprovedDevices();
         
         /// <summary>
+        /// Onaylı cihazların detaylı bilgilerini döndürür
+        /// </summary>
+        /// <returns>Onaylı cihazların detaylı bilgileri</returns>
+        IEnumerable<DeviceInfoDto> GetApprovedDevicesWithDetails();
+        
+        /// <summary>
         /// Onaysız cihazların listesini döndürür
         /// </summary>
         /// <returns>Onaysız cihazların IMEI listesi</returns>
         IEnumerable<string> GetUnapprovedDevices();
+        
+        /// <summary>
+        /// Onaysız cihazların detaylı bilgilerini döndürür
+        /// </summary>
+        /// <returns>Onaysız cihazların detaylı bilgileri</returns>
+        IEnumerable<DeviceInfoDto> GetUnapprovedDevicesWithDetails();
     }
 } 

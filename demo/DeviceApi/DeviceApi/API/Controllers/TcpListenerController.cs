@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Core.Utilities;
 using LogLibrary.Core.Interfaces;
+using DeviceApi.TCPListener.Models;
 
 namespace DeviceApi.API.Controllers
 {
@@ -65,21 +66,21 @@ namespace DeviceApi.API.Controllers
         /// <summary>
         /// Onaylı cihazların listesini getirir
         /// </summary>
-        /// <returns>Onaylı cihazların IMEI numaralarını içeren liste</returns>
+        /// <returns>Onaylı cihazların detaylı bilgilerini içeren liste</returns>
         [HttpGet("approved-devices")]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<string>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<DeviceInfoDto>>), 200)]
         public async Task<IActionResult> GetApprovedDevices()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userName = User.FindFirst(ClaimTypes.Name)?.Value;
             
             await _logService.LogInfoAsync(
-                "Onaylı cihazlar listesi alınıyor", 
+                "Onaylı cihazlar detaylı listesi alınıyor", 
                 "TcpListenerController.GetApprovedDevices", 
                 new { UserId = userId, UserName = userName });
             
-            var devices = _deviceVerificationService.GetApprovedDevices();
-            return Ok(ApiResponse<IEnumerable<string>>.Success(devices, "Onaylı cihazlar listesi"));
+            var devices = _deviceVerificationService.GetApprovedDevicesWithDetails();
+            return Ok(ApiResponse<IEnumerable<DeviceInfoDto>>.Success(devices, "Onaylı cihazlar detaylı listesi"));
         }
         
         /// <summary>
@@ -87,19 +88,19 @@ namespace DeviceApi.API.Controllers
         /// </summary>
         /// <returns>Onaysız cihazların IMEI numaralarını içeren liste</returns>
         [HttpGet("unapproved-devices")]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<string>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<DeviceInfoDto>>), 200)]
         public async Task<IActionResult> GetUnapprovedDevices()
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userName = User.FindFirst(ClaimTypes.Name)?.Value;
             
             await _logService.LogInfoAsync(
-                "Onaysız cihazlar listesi alınıyor", 
+                "Onaysız cihazlar detaylı listesi alınıyor", 
                 "TcpListenerController.GetUnapprovedDevices", 
                 new { UserId = userId, UserName = userName });
             
-            var devices = _deviceVerificationService.GetUnapprovedDevices();
-            return Ok(ApiResponse<IEnumerable<string>>.Success(devices, "Onaysız cihazlar listesi"));
+            var devices = _deviceVerificationService.GetUnapprovedDevicesWithDetails();
+            return Ok(ApiResponse<IEnumerable<DeviceInfoDto>>.Success(devices, "Onaysız cihazlar detaylı listesi"));
         }
         
         /// <summary>

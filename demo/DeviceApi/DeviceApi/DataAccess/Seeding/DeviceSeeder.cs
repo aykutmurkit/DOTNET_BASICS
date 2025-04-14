@@ -52,23 +52,53 @@ namespace Data.Seeding
             // Her platform için 2 cihaz ekle
             foreach (var platform in platforms)
             {
+                // İlk iki cihaz için belirli IMEI numaralarını kullan
+                string imei;
+                if (deviceId == 1)
+                {
+                    // İlk cihaz için: 356158061391111
+                    imei = "356158061391111";
+                }
+                else if (deviceId == 2)
+                {
+                    // İkinci cihaz için: 356158061391113
+                    imei = "356158061391113";
+                }
+                else
+                {
+                    // Diğer cihazlar için rastgele IMEI üret
+                    imei = GenerateRandomIMEI();
+                }
+                
                 devices.Add((
                     deviceId++, 
                     $"Cihaz {platform.Id}-1", 
                     $"192.168.1.{deviceId * 10}", 
                     8000 + deviceId,
-                    GenerateRandomIMEI(),
+                    imei,
                     platform.Latitude + 0.0005, 
                     platform.Longitude + 0.0005, 
                     platform.Id
                 ));
+
+                // İkinci cihazlar için de kontrol et
+                if (deviceId == 2)
+                {
+                    // İkinci cihaz için: 356158061391113
+                    imei = "356158061391113";
+                }
+                else
+                {
+                    // Diğer cihazlar için rastgele IMEI üret
+                    imei = GenerateRandomIMEI();
+                }
 
                 devices.Add((
                     deviceId++, 
                     $"Cihaz {platform.Id}-2", 
                     $"192.168.2.{deviceId * 10}", 
                     9000 + deviceId,
-                    GenerateRandomIMEI(),
+                    imei,
                     platform.Latitude - 0.0005, 
                     platform.Longitude - 0.0005, 
                     platform.Id
