@@ -23,6 +23,9 @@ namespace Data.Configurations
             builder.Property(b => b.TurkishBitmap).HasColumnType("nvarchar(max)").IsRequired();
             builder.Property(b => b.EnglishBitmap).HasColumnType("nvarchar(max)").IsRequired();
             
+            // Duration alanı
+            builder.Property(b => b.Duration).IsRequired().HasDefaultValue(3);
+            
             // Zaman alanları
             builder.Property(b => b.CreatedAt).IsRequired();
             builder.Property(b => b.UpdatedAt).IsRequired(false);

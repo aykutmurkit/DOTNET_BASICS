@@ -106,17 +106,23 @@ namespace DeviceApi.Business.Mappings
             // BitmapScreenMessage Mappings
             CreateMap<BitmapScreenMessage, BitmapScreenMessageDto>()
                 .ForMember(dest => dest.DeviceIds, opt => 
-                    opt.MapFrom(src => src.Devices != null ? src.Devices.Select(d => d.Id).ToList() : new List<int>()));
+                    opt.MapFrom(src => src.Devices != null ? src.Devices.Select(d => d.Id).ToList() : new List<int>()))
+                .ForMember(dest => dest.Duration, opt => 
+                    opt.MapFrom(src => src.Duration));
             CreateMap<CreateBitmapScreenMessageRequest, BitmapScreenMessage>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
-                .ForMember(dest => dest.Devices, opt => opt.Ignore());
+                .ForMember(dest => dest.Devices, opt => opt.Ignore())
+                .ForMember(dest => dest.Duration, opt => 
+                    opt.MapFrom(src => src.Duration));
             CreateMap<UpdateBitmapScreenMessageRequest, BitmapScreenMessage>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.Devices, opt => opt.Ignore());
+                .ForMember(dest => dest.Devices, opt => opt.Ignore())
+                .ForMember(dest => dest.Duration, opt => 
+                    opt.MapFrom(src => src.Duration));
                 
             // PeriodicMessage Mappings
             CreateMap<PeriodicMessage, PeriodicMessageDto>();

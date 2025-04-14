@@ -61,5 +61,15 @@ namespace Data.Interfaces
         /// Belirtilen cihaz dışında, aynı IP ve port ile başka bir cihaz var mı kontrol eder
         /// </summary>
         Task<bool> IpPortCombinationExistsForDifferentDeviceAsync(int deviceId, string ip, int port);
+        
+        /// <summary>
+        /// Aynı IMEI numarasına sahip başka bir cihaz var mı kontrol eder
+        /// </summary>
+        Task<bool> ImeiExistsAsync(string imei, int? excludeDeviceId = null);
+        
+        /// <summary>
+        /// Belirtilen cihaz dışında, aynı IMEI numarasına sahip başka bir cihaz var mı kontrol eder
+        /// </summary>
+        Task<bool> ImeiExistsForDifferentDeviceAsync(int deviceId, string imei);
     }
 } 

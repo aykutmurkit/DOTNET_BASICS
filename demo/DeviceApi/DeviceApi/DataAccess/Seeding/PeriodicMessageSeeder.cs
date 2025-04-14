@@ -10,6 +10,8 @@ namespace Data.Seeding
     /// </summary>
     public class PeriodicMessageSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.PeriodicMessages;
        
         /// <summary>
         /// Seed işlemini gerçekleştirir

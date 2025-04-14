@@ -43,6 +43,11 @@ namespace Entities.Dtos
         /// </summary>
         public AlignmentValueDto Alignment { get; set; }
         
+        /// <summary>
+        /// Font türü bilgisi
+        /// </summary>
+        public FontTypeValueDto FontType { get; set; }
+        
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         
@@ -86,6 +91,12 @@ namespace Entities.Dtos
         /// </summary>
         [Required]
         public int AlignmentTypeId { get; set; } = 1; // Varsayılan olarak Center (1)
+        
+        /// <summary>
+        /// Font türü ID'si
+        /// </summary>
+        [Required]
+        public int FontTypeId { get; set; } = 1; // Varsayılan olarak Small (1)
     }
 
     /// <summary>
@@ -122,6 +133,12 @@ namespace Entities.Dtos
         /// </summary>
         [Required]
         public int AlignmentTypeId { get; set; } = 1; // Varsayılan olarak Center (1)
+        
+        /// <summary>
+        /// Font türü ID'si
+        /// </summary>
+        [Required]
+        public int FontTypeId { get; set; } = 1; // Varsayılan olarak Small (1)
     }
     
     /// <summary>

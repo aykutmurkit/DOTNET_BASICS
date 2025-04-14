@@ -24,6 +24,11 @@ namespace Data.Context
         public DbSet<AlignmentType> AlignmentTypes { get; set; }
         
         /// <summary>
+        /// Font Türleri tablosu
+        /// </summary>
+        public DbSet<FontType> FontTypes { get; set; }
+        
+        /// <summary>
         /// İstasyonlar tablosu
         /// </summary>
         public DbSet<Station> Stations { get; set; }

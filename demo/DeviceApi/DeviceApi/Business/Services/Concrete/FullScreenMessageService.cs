@@ -15,6 +15,7 @@ namespace DeviceApi.Business.Services.Concrete
         private readonly IFullScreenMessageRepository _fullScreenMessageRepository;
         private readonly IDeviceRepository _deviceRepository;
         private readonly IAlignmentTypeRepository _alignmentTypeRepository;
+        private readonly IFontTypeRepository _fontTypeRepository;
         private readonly ILogService _logService;
         private readonly IMapper _mapper;
 
@@ -22,12 +23,14 @@ namespace DeviceApi.Business.Services.Concrete
             IFullScreenMessageRepository fullScreenMessageRepository,
             IDeviceRepository deviceRepository,
             IAlignmentTypeRepository alignmentTypeRepository,
+            IFontTypeRepository fontTypeRepository,
             ILogService logService,
             IMapper mapper)
         {
             _fullScreenMessageRepository = fullScreenMessageRepository;
             _deviceRepository = deviceRepository;
             _alignmentTypeRepository = alignmentTypeRepository;
+            _fontTypeRepository = fontTypeRepository;
             _logService = logService;
             _mapper = mapper;
         }
@@ -105,6 +108,13 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception("Belirtilen hizalama türü bulunamadı");
             }
             
+            // Font type kontrolü
+            var fontType = await _fontTypeRepository.GetFontTypeByIdAsync(request.FontTypeId);
+            if (fontType == null)
+            {
+                throw new Exception("Belirtilen font türü bulunamadı");
+            }
+            
             // Yeni mesaj oluştur
             var message = _mapper.Map<FullScreenMessage>(request);
             
@@ -161,6 +171,13 @@ namespace DeviceApi.Business.Services.Concrete
             if (alignmentType == null)
             {
                 throw new Exception("Belirtilen hizalama türü bulunamadı");
+            }
+            
+            // Font type kontrolü
+            var fontType = await _fontTypeRepository.GetFontTypeByIdAsync(request.FontTypeId);
+            if (fontType == null)
+            {
+                throw new Exception("Belirtilen font türü bulunamadı");
             }
             
             // Mesajı güncelle

@@ -11,6 +11,9 @@ namespace Data.Seeding
     /// </summary>
     public class FullScreenMessageSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.FullScreenMessages;
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // Zaten mesaj var mı kontrol et
@@ -23,6 +26,12 @@ namespace Data.Seeding
             if (!await context.AlignmentTypes.AnyAsync())
             {
                 throw new Exception("Hizalama türleri bulunamadı. Önce AlignmentTypeSeeder çalıştırılmalı.");
+            }
+
+            // FontType'ların var olduğunu kontrol et
+            if (!await context.FontTypes.AnyAsync())
+            {
+                throw new Exception("Font türleri bulunamadı. Önce FontTypeSeeder çalıştırılmalı.");
             }
 
             // Türkçe ve İngilizce örnek mesaj içerikleri
@@ -87,6 +96,9 @@ namespace Data.Seeding
             // AlignmentTypes'ları alalım
             var alignmentTypes = await context.AlignmentTypes.ToListAsync();
             
+            // FontTypes'ları alalım
+            var fontTypes = await context.FontTypes.ToListAsync();
+            
             // Önce FullScreenMessages tablosuna veri ekle
             var queryBuilder = new StringBuilder();
             queryBuilder.AppendLine("SET IDENTITY_INSERT [FullScreenMessages] ON;");
@@ -96,12 +108,15 @@ namespace Data.Seeding
                 // İlk iki mesaj için Center (ID: 1), üçüncü mesaj için Left (ID: 2) hizalama türü kullan
                 int alignmentTypeId = i < 2 ? 1 : 2;
                 
+                // İlk mesaj için Small (ID: 1), ikinci mesaj için Medium (ID: 2), üçüncü mesaj için Big (ID: 3) font türü kullan
+                int fontTypeId = i + 1;
+                
                 queryBuilder.AppendLine($@"
                 INSERT INTO [FullScreenMessages] 
                 (
                     [Id], [TurkishLine1], [TurkishLine2], [TurkishLine3], [TurkishLine4], 
                     [EnglishLine1], [EnglishLine2], [EnglishLine3], [EnglishLine4], 
-                    [AlignmentTypeId], [CreatedAt]
+                    [AlignmentTypeId], [FontTypeId], [CreatedAt]
                 ) 
                 VALUES 
                 (
@@ -114,7 +129,8 @@ namespace Data.Seeding
                     N'{englishMessages[i].Line2}', 
                     N'{englishMessages[i].Line3}', 
                     N'{englishMessages[i].Line4}', 
-                    {alignmentTypeId}, 
+                    {alignmentTypeId},
+                    {fontTypeId},
                     GETDATE()
                 );");
             }

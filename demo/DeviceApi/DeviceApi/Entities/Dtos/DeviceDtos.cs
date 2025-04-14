@@ -11,6 +11,7 @@ namespace Entities.Dtos
         public string Name { get; set; }
         public string Ip { get; set; }
         public int Port { get; set; }
+        public string IMEI { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public int PlatformId { get; set; }
@@ -45,6 +46,10 @@ namespace Entities.Dtos
         [Required]
         [Range(1, 65535)]
         public int Port { get; set; }
+        
+        [Required]
+        [MaxLength(20)]
+        public string IMEI { get; set; }
         
         [Required]
         public double Latitude { get; set; }
@@ -91,6 +96,10 @@ namespace Entities.Dtos
         [Required]
         [Range(1, 65535)]
         public int Port { get; set; }
+        
+        [Required]
+        [MaxLength(20)]
+        public string IMEI { get; set; }
         
         [Required]
         public double Latitude { get; set; }

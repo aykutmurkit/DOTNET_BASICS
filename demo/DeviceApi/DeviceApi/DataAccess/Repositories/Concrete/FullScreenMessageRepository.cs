@@ -22,6 +22,7 @@ namespace Data.Repositories
             return await _context.FullScreenMessages
                 .Include(f => f.Devices)
                 .Include(f => f.AlignmentType)
+                .Include(f => f.FontType)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -31,6 +32,7 @@ namespace Data.Repositories
             return await _context.FullScreenMessages
                 .Include(f => f.Devices)
                 .Include(f => f.AlignmentType)
+                .Include(f => f.FontType)
                 .FirstOrDefaultAsync(f => f.Id == id);
         }
 
@@ -40,6 +42,8 @@ namespace Data.Repositories
             var device = await _context.Devices
                 .Include(d => d.FullScreenMessage)
                 .ThenInclude(f => f.AlignmentType)
+                .Include(d => d.FullScreenMessage)
+                .ThenInclude(f => f.FontType)
                 .FirstOrDefaultAsync(d => d.Id == deviceId);
             
             return device?.FullScreenMessage;

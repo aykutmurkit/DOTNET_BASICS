@@ -10,6 +10,9 @@ namespace Data.Seeding
     /// </summary>
     public class ScrollingScreenMessageSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.ScrollingScreenMessages;
+        
         /// <summary>
         /// Seed işlemini gerçekleştirir
         /// </summary>

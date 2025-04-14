@@ -27,6 +27,11 @@ namespace Entities.Concrete
         public string EnglishBitmap { get; set; }
         
         /// <summary>
+        /// Mesajın ekranda görüntülenme süresi (saniye)
+        /// </summary>
+        public int Duration { get; set; } = 3; // Varsayılan değer 3 saniye
+        
+        /// <summary>
         /// Oluşturulma tarihi
         /// </summary>
         public DateTime CreatedAt { get; set; }

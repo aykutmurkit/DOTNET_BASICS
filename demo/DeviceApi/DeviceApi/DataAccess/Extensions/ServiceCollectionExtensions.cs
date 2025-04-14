@@ -24,6 +24,7 @@ namespace DeviceApi.DataAccess.Extensions
 
             // Repository Services
             services.AddScoped<IAlignmentTypeRepository, AlignmentTypeRepository>();
+            services.AddScoped<IFontTypeRepository, FontTypeRepository>();
             services.AddScoped<IStationRepository, StationRepository>();
             services.AddScoped<IPlatformRepository, PlatformRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();

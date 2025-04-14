@@ -196,6 +196,7 @@ namespace DeviceApi.Business.Services.Concrete
                 Id = bitmapScreenMessage.Id,
                 TurkishBitmap = bitmapScreenMessage.TurkishBitmap,
                 EnglishBitmap = bitmapScreenMessage.EnglishBitmap,
+                Duration = bitmapScreenMessage.Duration,
                 CreatedAt = bitmapScreenMessage.CreatedAt,
                 UpdatedAt = bitmapScreenMessage.UpdatedAt,
                 DeviceIds = devices.Select(d => d.Id).ToList()

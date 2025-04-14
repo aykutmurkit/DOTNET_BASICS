@@ -23,6 +23,11 @@ namespace Entities.Dtos
         public string EnglishBitmap { get; set; }
         
         /// <summary>
+        /// Mesajın ekranda görüntülenme süresi (saniye)
+        /// </summary>
+        public int Duration { get; set; }
+        
+        /// <summary>
         /// Oluşturulma tarihi
         /// </summary>
         public DateTime CreatedAt { get; set; }
@@ -54,6 +59,12 @@ namespace Entities.Dtos
         /// </summary>
         [Required(ErrorMessage = "İngilizce bitmap içeriği zorunludur")]
         public string EnglishBitmap { get; set; }
+        
+        /// <summary>
+        /// Mesajın ekranda görüntülenme süresi (saniye)
+        /// </summary>
+        [Range(1, 5, ErrorMessage = "Görüntülenme süresi 1-5 saniye arasında olmalıdır")]
+        public int Duration { get; set; } = 3; // Varsayılan değer 3 saniye
     }
 
     /// <summary>
@@ -72,6 +83,12 @@ namespace Entities.Dtos
         /// </summary>
         [Required(ErrorMessage = "İngilizce bitmap içeriği zorunludur")]
         public string EnglishBitmap { get; set; }
+        
+        /// <summary>
+        /// Mesajın ekranda görüntülenme süresi (saniye)
+        /// </summary>
+        [Range(1, 5, ErrorMessage = "Görüntülenme süresi 1-5 saniye arasında olmalıdır")]
+        public int Duration { get; set; } = 3; // Varsayılan değer 3 saniye
     }
     
     /// <summary>

@@ -10,6 +10,9 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceStatusSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.DeviceStatuses;
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // Cihaz durumları zaten varsa işlem yapma

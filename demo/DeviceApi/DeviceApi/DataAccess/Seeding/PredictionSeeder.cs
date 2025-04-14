@@ -10,6 +10,8 @@ namespace Data.Seeding
     /// </summary>
     public class PredictionSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.Predictions;
         
         public async Task SeedAsync(AppDbContext context)
         {

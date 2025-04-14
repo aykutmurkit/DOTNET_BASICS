@@ -13,16 +13,20 @@ namespace Data.Seeding
         Stations = 3,
         Platforms = 4,
         
+        // Temel sabit değerler ve enum türleri
+        AlignmentTypes = 5,
+        FontTypes = 6,
+        
         // Cihazlar
-        Devices = 5,
-        DeviceSettings = 6,
-        DeviceStatuses = 7,
+        Devices = 7,
+        DeviceSettings = 8,
+        DeviceStatuses = 9,
         
         // Mesajlar ve tahminler
-        Predictions = 8,
-        FullScreenMessages = 9,
-        ScrollingScreenMessages = 10,
-        BitmapScreenMessages = 11,
-        PeriodicMessages = 12
+        Predictions = 10,
+        FullScreenMessages = 11,
+        ScrollingScreenMessages = 12,
+        BitmapScreenMessages = 13,
+        PeriodicMessages = 14
     }
 } 

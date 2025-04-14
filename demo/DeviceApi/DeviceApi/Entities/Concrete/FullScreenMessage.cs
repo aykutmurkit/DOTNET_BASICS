@@ -32,6 +32,17 @@ namespace Entities.Concrete
         [ForeignKey("AlignmentTypeId")]
         public AlignmentType AlignmentType { get; set; }
         
+        /// <summary>
+        /// Font türü - Foreign Key
+        /// </summary>
+        public int FontTypeId { get; set; }
+        
+        /// <summary>
+        /// Font türü - Navigation property
+        /// </summary>
+        [ForeignKey("FontTypeId")]
+        public FontType FontType { get; set; }
+        
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         

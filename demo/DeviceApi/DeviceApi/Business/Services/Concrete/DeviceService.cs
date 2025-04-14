@@ -134,6 +134,12 @@ namespace DeviceApi.Business.Services.Concrete
                 throw new Exception($"Bu IP adresi ({request.Ip}) ve port ({request.Port}) kombinasyonu zaten kullanılıyor.");
             }
 
+            // IMEI zaten kullanılıyor mu kontrol et
+            if (await _deviceRepository.ImeiExistsAsync(request.IMEI))
+            {
+                throw new Exception($"Bu IMEI numarası ({request.IMEI}) zaten kullanılıyor.");
+            }
+
             var device = _mapper.Map<Device>(request);
 
             await _deviceRepository.AddDeviceAsync(device);
@@ -191,6 +197,12 @@ namespace DeviceApi.Business.Services.Concrete
             if (await _deviceRepository.IpPortCombinationExistsForDifferentDeviceAsync(id, request.Ip, request.Port))
             {
                 throw new Exception($"Bu IP adresi ({request.Ip}) ve port ({request.Port}) kombinasyonu zaten başka bir cihaz tarafından kullanılıyor.");
+            }
+            
+            // IMEI başka bir cihaz için var mı kontrol et
+            if (await _deviceRepository.ImeiExistsForDifferentDeviceAsync(id, request.IMEI))
+            {
+                throw new Exception($"Bu IMEI numarası ({request.IMEI}) zaten başka bir cihaz tarafından kullanılıyor.");
             }
             
             // Cihaz bilgilerini güncelle

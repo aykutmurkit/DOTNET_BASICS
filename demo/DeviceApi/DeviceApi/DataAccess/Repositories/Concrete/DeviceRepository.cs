@@ -137,5 +137,24 @@ namespace Data.Repositories
                 .Where(d => d.Id != deviceId && d.Ip == ip && d.Port == port)
                 .AnyAsync();
         }
+        
+        public async Task<bool> ImeiExistsAsync(string imei, int? excludeDeviceId = null)
+        {
+            var query = _context.Devices.Where(d => d.IMEI == imei);
+            
+            if (excludeDeviceId.HasValue)
+            {
+                query = query.Where(d => d.Id != excludeDeviceId.Value);
+            }
+            
+            return await query.AnyAsync();
+        }
+        
+        public async Task<bool> ImeiExistsForDifferentDeviceAsync(int deviceId, string imei)
+        {
+            return await _context.Devices
+                .Where(d => d.Id != deviceId && d.IMEI == imei)
+                .AnyAsync();
+        }
     }
 } 

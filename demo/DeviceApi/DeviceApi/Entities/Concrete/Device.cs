@@ -22,6 +22,10 @@ namespace Entities.Concrete
         [Required]
         public int Port { get; set; }
         
+        [Required]
+        [MaxLength(20)]
+        public string IMEI { get; set; }
+        
         public double Latitude { get; set; }
         
         public double Longitude { get; set; }

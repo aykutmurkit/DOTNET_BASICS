@@ -9,6 +9,9 @@ namespace Data.Seeding
     /// </summary>
     public class DeviceSettingsSeeder : ISeeder
     {
+        // Order özelliği SeederOrder enum değeri kullanılarak tanımlandı
+        public int Order => (int)SeederOrder.DeviceSettings;
+        
         public async Task SeedAsync(AppDbContext context)
         {
             // Cihaz ayarları zaten varsa işlem yapma
