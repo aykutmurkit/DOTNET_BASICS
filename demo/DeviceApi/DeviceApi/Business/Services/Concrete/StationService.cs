@@ -20,6 +20,24 @@ namespace DeviceApi.Business.Services.Concrete
             _mapper = mapper;
         }
 
+        public async Task<List<StationDto>> GetStationsBasicAsync()
+        {
+            var stations = await _stationRepository.GetStationsBasicAsync();
+            return _mapper.Map<List<StationDto>>(stations);
+        }
+        
+        public async Task<List<StationDto>> GetStationsWithPlatformsAsync()
+        {
+            var stations = await _stationRepository.GetStationsWithPlatformsAsync();
+            return _mapper.Map<List<StationDto>>(stations);
+        }
+        
+        public async Task<List<StationDto>> GetStationsWithPlatformsAndDevicesAsync()
+        {
+            var stations = await _stationRepository.GetStationsWithPlatformsAndDevicesAsync();
+            return _mapper.Map<List<StationDto>>(stations);
+        }
+
         public async Task<List<StationDto>> GetAllStationsAsync()
         {
             var stations = await _stationRepository.GetAllStationsWithRelationsAsync();

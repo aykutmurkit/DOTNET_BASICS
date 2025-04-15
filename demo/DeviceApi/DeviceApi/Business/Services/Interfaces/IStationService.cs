@@ -8,6 +8,21 @@ namespace DeviceApi.Business.Services.Interfaces
     public interface IStationService
     {
         /// <summary>
+        /// Tüm istasyonları sadece temel bilgilerle getirir
+        /// </summary>
+        Task<List<StationDto>> GetStationsBasicAsync();
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ile birlikte getirir (cihazlar olmadan)
+        /// </summary>
+        Task<List<StationDto>> GetStationsWithPlatformsAsync();
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ve cihazları ile birlikte getirir
+        /// </summary>
+        Task<List<StationDto>> GetStationsWithPlatformsAndDevicesAsync();
+        
+        /// <summary>
         /// Tüm istasyonları platformları ve cihazları ile birlikte getirir
         /// </summary>
         Task<List<StationDto>> GetAllStationsAsync();

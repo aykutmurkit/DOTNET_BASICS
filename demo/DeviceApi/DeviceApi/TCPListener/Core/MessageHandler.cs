@@ -1,11 +1,15 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 using System.Text;
 using System.Text.Json;
-using DeviceApi.TCPListener.Models;
-using DeviceApi.TCPListener.Services;
+using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Threading;
+using DeviceApi.TCPListener.Models.Protocol;
+using DeviceApi.TCPListener.Models.Devices;
+using DeviceApi.TCPListener.Models.Configuration;
+using DeviceApi.TCPListener.Services;
 
 namespace DeviceApi.TCPListener.Core
 {

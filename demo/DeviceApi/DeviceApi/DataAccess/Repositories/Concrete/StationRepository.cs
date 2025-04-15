@@ -17,6 +17,30 @@ namespace Data.Repositories
             _context = context;
         }
 
+        public async Task<List<Station>> GetStationsBasicAsync()
+        {
+            return await _context.Stations
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<List<Station>> GetStationsWithPlatformsAsync()
+        {
+            return await _context.Stations
+                .Include(s => s.Platforms)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<List<Station>> GetStationsWithPlatformsAndDevicesAsync()
+        {
+            return await _context.Stations
+                .Include(s => s.Platforms)
+                    .ThenInclude(p => p.Devices)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public async Task<List<Station>> GetAllStationsWithRelationsAsync()
         {
             return await _context.Stations

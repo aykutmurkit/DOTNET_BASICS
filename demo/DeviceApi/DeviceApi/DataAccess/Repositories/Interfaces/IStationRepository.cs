@@ -8,6 +8,21 @@ namespace Data.Interfaces
     public interface IStationRepository
     {
         /// <summary>
+        /// Tüm istasyonları sadece temel bilgilerle getirir
+        /// </summary>
+        Task<List<Station>> GetStationsBasicAsync();
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ile birlikte getirir (cihazlar olmadan)
+        /// </summary>
+        Task<List<Station>> GetStationsWithPlatformsAsync();
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ve cihazları ile birlikte getirir
+        /// </summary>
+        Task<List<Station>> GetStationsWithPlatformsAndDevicesAsync();
+        
+        /// <summary>
         /// Tüm istasyonları platformları ve cihazları ile birlikte getirir
         /// </summary>
         Task<List<Station>> GetAllStationsWithRelationsAsync();

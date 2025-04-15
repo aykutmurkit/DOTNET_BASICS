@@ -19,17 +19,47 @@ namespace DeviceApi.API.Controllers
         }
 
         /// <summary>
-        /// Tüm istasyonları getirir
+        /// Tüm istasyonları sadece temel bilgilerle getirir
         /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(ApiResponse<List<StationDto>>), 200)]
         public async Task<IActionResult> GetAllStations()
         {
-            var stations = await _stationService.GetAllStationsAsync();
+            var stations = await _stationService.GetStationsBasicAsync();
             return Ok(new ApiResponse<List<StationDto>>
             {
                 Data = stations,
                 Message = "İstasyonlar başarıyla getirildi"
+            });
+        }
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ile birlikte getirir (cihazlar olmadan)
+        /// </summary>
+        [HttpGet("with-platforms")]
+        [ProducesResponseType(typeof(ApiResponse<List<StationDto>>), 200)]
+        public async Task<IActionResult> GetStationsWithPlatforms()
+        {
+            var stations = await _stationService.GetStationsWithPlatformsAsync();
+            return Ok(new ApiResponse<List<StationDto>>
+            {
+                Data = stations,
+                Message = "İstasyonlar ve platformları başarıyla getirildi"
+            });
+        }
+        
+        /// <summary>
+        /// Tüm istasyonları platformları ve cihazları ile birlikte getirir
+        /// </summary>
+        [HttpGet("with-platforms-devices")]
+        [ProducesResponseType(typeof(ApiResponse<List<StationDto>>), 200)]
+        public async Task<IActionResult> GetStationsWithPlatformsAndDevices()
+        {
+            var stations = await _stationService.GetStationsWithPlatformsAndDevicesAsync();
+            return Ok(new ApiResponse<List<StationDto>>
+            {
+                Data = stations,
+                Message = "İstasyonlar, platformları ve cihazları başarıyla getirildi"
             });
         }
 

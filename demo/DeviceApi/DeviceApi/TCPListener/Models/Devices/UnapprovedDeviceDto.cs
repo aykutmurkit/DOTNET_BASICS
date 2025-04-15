@@ -1,6 +1,7 @@
 using System;
+using DeviceApi.TCPListener.Models.Protocol;
 
-namespace DeviceApi.TCPListener.Models
+namespace DeviceApi.TCPListener.Models.Devices
 {
     /// <summary>
     /// Onaylanmamış cihaz bilgilerini içeren DTO (Data Transfer Object) sınıfı

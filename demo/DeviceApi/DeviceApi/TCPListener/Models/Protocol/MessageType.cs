@@ -1,4 +1,4 @@
-namespace DeviceApi.TCPListener.Models
+namespace DeviceApi.TCPListener.Models.Protocol
 {
     /// <summary>
     /// Haberleşme protokolündeki mesaj tiplerini tanımlar

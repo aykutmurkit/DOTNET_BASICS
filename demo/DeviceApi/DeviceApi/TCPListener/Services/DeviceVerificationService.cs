@@ -5,7 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DeviceApi.TCPListener.Models;
+using DeviceApi.TCPListener.Models.Devices;
+using DeviceApi.TCPListener.Models.Protocol;
 using Entities.Concrete;
 
 namespace DeviceApi.TCPListener.Services

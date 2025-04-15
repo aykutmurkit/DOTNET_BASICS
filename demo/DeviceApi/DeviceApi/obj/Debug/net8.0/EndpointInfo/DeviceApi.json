@@ -4622,6 +4622,64 @@
         }
       }
     },
+    "/api/Stations/with-platforms": {
+      "get": {
+        "tags": [
+          "Stations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Stations/with-platforms-devices": {
+      "get": {
+        "tags": [
+          "Stations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationDtoListApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Stations/{id}": {
       "get": {
         "tags": [
@@ -5438,8 +5496,8 @@
       "CommunicationType": {
         "enum": [
           "unknown",
-          "ethernet",
-          "gsmGprs"
+          "tcpIp",
+          "gsm"
         ],
         "type": "string"
       },

@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using DeviceApi.TCPListener.Core;
-using DeviceApi.TCPListener.Models;
+using DeviceApi.TCPListener.Models.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

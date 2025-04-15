@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DeviceApi.TCPListener.Models;
+using DeviceApi.TCPListener.Models.Devices;
 
 namespace DeviceApi.TCPListener.Services
 {

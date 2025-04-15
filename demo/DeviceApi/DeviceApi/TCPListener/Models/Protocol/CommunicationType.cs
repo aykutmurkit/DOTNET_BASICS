@@ -1,4 +1,4 @@
-namespace DeviceApi.TCPListener.Models
+namespace DeviceApi.TCPListener.Models.Protocol
 {
     /// <summary>
     /// Cihazların kullandığı iletişim tiplerini tanımlar
@@ -11,13 +11,13 @@ namespace DeviceApi.TCPListener.Models
         Unknown = 0,
         
         /// <summary>
-        /// Ethernet üzerinden iletişim
+        /// TCP/IP tabanlı iletişim
         /// </summary>
-        Ethernet = 1,
+        TcpIp = 1,
         
         /// <summary>
-        /// GSM/GPRS üzerinden iletişim
+        /// GSM tabanlı iletişim
         /// </summary>
-        GsmGprs = 2
+        Gsm = 2
     }
 } 

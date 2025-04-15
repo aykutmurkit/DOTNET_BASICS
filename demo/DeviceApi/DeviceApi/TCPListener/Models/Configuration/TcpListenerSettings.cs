@@ -1,4 +1,4 @@
-namespace DeviceApi.TCPListener.Models
+namespace DeviceApi.TCPListener.Models.Configuration
 {
     /// <summary>
     /// TCP Listener ayarlarını tanımlayan sınıf

@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using DeviceApi.TCPListener.Models.Protocol;
 
-namespace DeviceApi.TCPListener.Models
+namespace DeviceApi.TCPListener.Models.Devices
 {
     /// <summary>
     /// Cihazlara gönderilecek yanıtları temsil eden sınıf

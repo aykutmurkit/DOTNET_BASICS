@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DeviceApi.TCPListener.Core;
-using DeviceApi.TCPListener.Models;
 using DeviceApi.TCPListener.Services;
+using DeviceApi.TCPListener.Models.Configuration;
 
 namespace DeviceApi.TCPListener.Extensions
 {

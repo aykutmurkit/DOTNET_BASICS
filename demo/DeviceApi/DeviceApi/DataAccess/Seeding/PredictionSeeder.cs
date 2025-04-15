@@ -37,45 +37,45 @@ namespace Data.Seeding
             var now = DateTime.Now;
             var forecastTime = now;
             
-            // Tahmin örnek verileri - her platforma bir tahmin
+            // Tahmin örnek verileri - sadece Yusufpaşa, Kabataş ve Aksaray istasyonları için
             var predictions = new List<object>();
             
-            // Birinci merkez platform için - 3 tren tahmini
+            // Yusufpaşa 1. platform için - 3 tren tahmini
             predictions.Add(new
             {
                 Id = 1,
-                StationName = "Merkez İstasyon",
+                StationName = "Yusufpaşa",
                 Direction = "Kuzey",
                 Train1 = "Express",
-                Line1 = "Kırmızı",
-                Destination1 = "Terminal",
+                Line1 = "T1",
+                Destination1 = "Kabataş",
                 Time1 = now.AddMinutes(5),
                 Train2 = "Banliyö",
-                Line2 = "Mavi",
-                Destination2 = "Havalimanı",
+                Line2 = "T1",
+                Destination2 = "Bağcılar",
                 Time2 = now.AddMinutes(12),
                 Train3 = "Hızlı",
-                Line3 = "Yeşil",
-                Destination3 = "Merkez",
+                Line3 = "T1",
+                Destination3 = "Eminönü",
                 Time3 = now.AddMinutes(20),
                 ForecastGenerationAt = forecastTime,
                 CreatedAt = now,
                 PlatformId = 1
             });
             
-            // İkinci merkez platform için - 2 tren tahmini
+            // Yusufpaşa 2. platform için - 2 tren tahmini
             predictions.Add(new
             {
                 Id = 2,
-                StationName = "Merkez İstasyon",
+                StationName = "Yusufpaşa",
                 Direction = "Güney",
                 Train1 = "Express",
-                Line1 = "Kırmızı",
-                Destination1 = "Sahil",
+                Line1 = "T1",
+                Destination1 = "Zeytinburnu",
                 Time1 = now.AddMinutes(3),
                 Train2 = "Banliyö",
-                Line2 = "Mavi",
-                Destination2 = "Üniversite",
+                Line2 = "T1",
+                Destination2 = "Topkapı",
                 Time2 = now.AddMinutes(15),
                 Train3 = (string)null,
                 Line3 = (string)null,
@@ -86,15 +86,15 @@ namespace Data.Seeding
                 PlatformId = 2
             });
             
-            // Doğu istasyonu platformu için - 1 tren tahmini
+            // Kabataş 1. platform için - 1 tren tahmini
             predictions.Add(new
             {
                 Id = 3,
-                StationName = "Doğu İstasyonu",
-                Direction = "Batı",
+                StationName = "Kabataş",
+                Direction = "Doğu",
                 Train1 = "Express",
-                Line1 = "Kırmızı",
-                Destination1 = "Merkez",
+                Line1 = "T1",
+                Destination1 = "Bağcılar",
                 Time1 = now.AddMinutes(8),
                 Train2 = (string)null,
                 Line2 = (string)null,
@@ -109,12 +109,12 @@ namespace Data.Seeding
                 PlatformId = 3
             });
             
-            // Batı istasyonu platformu için - hiç tren tahmini yok
+            // Aksaray platformu için - hiç tren tahmini yok
             predictions.Add(new
             {
                 Id = 4,
-                StationName = "Batı İstasyonu",
-                Direction = "Doğu",
+                StationName = "Aksaray",
+                Direction = "Batı",
                 Train1 = (string)null,
                 Line1 = (string)null,
                 Destination1 = (string)null,
@@ -129,7 +129,7 @@ namespace Data.Seeding
                 Time3 = (DateTime?)null,
                 ForecastGenerationAt = forecastTime,
                 CreatedAt = now,
-                PlatformId = 5
+                PlatformId = 13
             });
             
             // SQL değerlerini oluştur
