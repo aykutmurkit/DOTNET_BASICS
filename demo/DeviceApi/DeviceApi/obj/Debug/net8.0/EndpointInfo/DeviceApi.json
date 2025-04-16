@@ -5615,7 +5615,7 @@
         "required": [
           "apnName",
           "ftpStatus",
-          "serverIP",
+          "serverIp",
           "tcpPort",
           "udpPort"
         ],
@@ -5636,7 +5636,7 @@
             "type": "string",
             "nullable": true
           },
-          "serverIP": {
+          "serverIp": {
             "maxLength": 50,
             "minLength": 1,
             "type": "string"
@@ -5655,6 +5655,162 @@
           },
           "ftpStatus": {
             "type": "boolean"
+          },
+          "ftpIp": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPort": {
+            "maximum": 65535,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ftpUsername": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPassword": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "connectionTimeoutDuration": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "communicationHardwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "communicationSoftwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardHardwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardSoftwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "scrollingTextSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tramDisplayType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "busScreenPageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "timeDisplayFormat": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "tramFont": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "screenVerticalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "screenHorizontalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "temperatureAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "humidityAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gasAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorStatus": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "lightSensorOperationLevel": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel1": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel3": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "socketType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "stopName": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoFilename": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoCrc16": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoFilename": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoCrc16": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "communicationType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -6110,7 +6266,7 @@
             "type": "string",
             "nullable": true
           },
-          "serverIP": {
+          "serverIp": {
             "type": "string",
             "nullable": true
           },
@@ -6124,6 +6280,143 @@
           },
           "ftpStatus": {
             "type": "boolean"
+          },
+          "ftpIp": {
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPort": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ftpUsername": {
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "connectionTimeoutDuration": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "communicationHardwareVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "communicationSoftwareVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardHardwareVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardSoftwareVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "scrollingTextSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tramDisplayType": {
+            "type": "string",
+            "nullable": true
+          },
+          "busScreenPageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "timeDisplayFormat": {
+            "type": "string",
+            "nullable": true
+          },
+          "tramFont": {
+            "type": "string",
+            "nullable": true
+          },
+          "screenVerticalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "screenHorizontalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "temperatureAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "humidityAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gasAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorStatus": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "lightSensorOperationLevel": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel1": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel3": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "socketType": {
+            "type": "string",
+            "nullable": true
+          },
+          "stopName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoFilename": {
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoCrc16": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoFilename": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoCrc16": {
+            "type": "string",
+            "nullable": true
+          },
+          "communicationType": {
+            "type": "string",
+            "nullable": true
           },
           "deviceId": {
             "type": "integer",
@@ -7351,7 +7644,7 @@
         "required": [
           "apnName",
           "ftpStatus",
-          "serverIP",
+          "serverIp",
           "tcpPort",
           "udpPort"
         ],
@@ -7372,7 +7665,7 @@
             "type": "string",
             "nullable": true
           },
-          "serverIP": {
+          "serverIp": {
             "maxLength": 50,
             "minLength": 1,
             "type": "string"
@@ -7391,6 +7684,162 @@
           },
           "ftpStatus": {
             "type": "boolean"
+          },
+          "ftpIp": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPort": {
+            "maximum": 65535,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ftpUsername": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "ftpPassword": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "connectionTimeoutDuration": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "communicationHardwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "communicationSoftwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardHardwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "graphicsCardSoftwareVersion": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "scrollingTextSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tramDisplayType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "busScreenPageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "timeDisplayFormat": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "tramFont": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "screenVerticalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "screenHorizontalPixelCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "temperatureAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "humidityAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gasAlarmThreshold": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorStatus": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "lightSensorOperationLevel": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel1": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lightSensorLevel3": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "socketType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "stopName": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoFilename": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "startupLogoCrc16": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoFilename": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleLogoCrc16": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "communicationType": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

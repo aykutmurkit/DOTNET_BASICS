@@ -247,8 +247,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PeriodicMessageSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAEIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:47:33.517Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -299,19 +312,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PeriodicMessageSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
-              "RelativeToolTip": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADUAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T10:47:33.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "DeviceMessage.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Devices\\DeviceMessage.cs",
@@ -332,8 +332,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Protocol\\CommunicationType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T06:27:18.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T06:27:18.393Z"
             },
             {
               "$type": "Document",
