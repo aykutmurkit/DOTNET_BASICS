@@ -5,6 +5,19 @@ using AuthApi.Core.Enums;
 namespace Entities.Dtos
 {
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Kullanıcı listeleme DTO'su
     /// </summary>
     public class UserDto
@@ -33,6 +46,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Kullanıcı profil bilgileri
     /// </summary>
     public class UserProfileInfo
@@ -59,6 +85,19 @@ namespace Entities.Dtos
     }
     
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// İki faktörlü kimlik doğrulama bilgileri
     /// </summary>
     public class TwoFactorInfo
@@ -74,6 +113,19 @@ namespace Entities.Dtos
         public bool Required { get; set; }
     }
     
+    /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
     /// <summary>
     /// Profil fotoğrafı bilgileri
     /// </summary>
@@ -95,6 +147,19 @@ namespace Entities.Dtos
         public string Picture { get; set; }
     }
 
+    /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
     /// <summary>
     /// Kullanıcı oluşturma DTO'su
     /// </summary>
@@ -173,6 +238,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Random şifre ile kullanıcı oluşturma DTO'su
     /// </summary>
     public class RandomPasswordUserRequest
@@ -246,6 +324,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Kullanıcı güncelleme DTO'su
     /// </summary>
     public class UpdateUserRequest
@@ -312,6 +403,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Kullanıcı rolü güncelleme DTO'su
     /// </summary>
     public class UpdateUserRoleRequest
@@ -322,6 +426,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// Kullanıcı e-posta güncelleme DTO'su
     /// </summary>
     public class UpdateUserEmailRequest
@@ -331,6 +448,19 @@ namespace Entities.Dtos
         public string Email { get; set; }
     }
 
+    /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
     /// <summary>
     /// Profil fotoğrafı yükleme DTO'su
     /// </summary>

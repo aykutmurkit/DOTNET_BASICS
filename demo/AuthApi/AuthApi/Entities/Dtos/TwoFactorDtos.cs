@@ -3,6 +3,19 @@ using System.ComponentModel.DataAnnotations;
 namespace Entities.Dtos
 {
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// İki faktörlü doğrulama kodu giriş isteği DTO'su
     /// </summary>
     public class TwoFactorVerifyRequest
@@ -16,6 +29,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// İki faktörlü doğrulama ilk aşama giriş yanıtı
     /// </summary>
     public class TwoFactorRequiredResponse
@@ -28,6 +54,19 @@ namespace Entities.Dtos
     }
 
     /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
+    /// <summary>
     /// İki faktörlü doğrulamanın aktifleştirilmesi/devre dışı bırakılması için istek
     /// </summary>
     public class TwoFactorSetupRequest
@@ -39,6 +78,19 @@ namespace Entities.Dtos
         public string CurrentPassword { get; set; }
     }
 
+    /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
     /// <summary>
     /// İki faktörlü kimlik doğrulama (2FA) durumu yanıtı.
     /// Kullanıcının 2FA durumunu, sistem ayarlarını ve açıklayıcı mesajları içerir.

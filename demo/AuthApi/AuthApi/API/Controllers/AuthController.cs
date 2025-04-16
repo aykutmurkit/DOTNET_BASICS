@@ -9,6 +9,19 @@ using System.Security.Claims;
 
 namespace AuthApi.Controllers
 {
+    /// <summary>
+    /// Author        : Aykut Mürkit
+    /// Title         : Ar-Ge Mühendisi
+    /// Unit          : Akıllı Şehircilik ve Coğrafi Bilgi Sistemleri Şefliği
+    /// Unit Chief    : Mahmut Bulut
+    /// Department    : Ar-Ge Müdürlüğü
+    /// Company       : İSBAK A.Ş. (İstanbul Büyükşehir Belediyesi)
+    /// Email         : aykutmurkit@outlook.com / amurkit@isbak.com.tr
+    /// CreatedDate   : 2025-04-16
+    /// LastModified  : 2025-04-16
+    /// 
+    /// © 2025 İSBAK A.Ş. – Tüm hakları saklıdır.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
