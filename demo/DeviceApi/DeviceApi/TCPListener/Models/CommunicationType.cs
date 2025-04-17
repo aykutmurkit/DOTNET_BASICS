@@ -3,21 +3,21 @@ namespace DeviceApi.TCPListener.Models
     /// <summary>
     /// Cihazların kullandığı iletişim tiplerini tanımlar
     /// </summary>
-    public enum CommunicationType
+    public static class CommunicationType
     {
         /// <summary>
         /// Bilinmeyen iletişim tipi
         /// </summary>
-        Unknown = 0,
+        public const int Unknown = 0;
         
         /// <summary>
         /// Ethernet üzerinden iletişim
         /// </summary>
-        Ethernet = 1,
+        public const int Ethernet = 1;
         
         /// <summary>
         /// GSM/GPRS üzerinden iletişim
         /// </summary>
-        GsmGprs = 2
+        public const int GsmGprs = 2;
     }
 } 

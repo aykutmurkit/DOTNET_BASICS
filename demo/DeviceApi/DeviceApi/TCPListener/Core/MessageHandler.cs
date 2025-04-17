@@ -158,20 +158,18 @@ namespace DeviceApi.TCPListener.Core
                 throw new ArgumentException("Geçersiz mesaj formatı", nameof(message));
                 
             // MessageType'ı belirle
-            if (!int.TryParse(parts[0], out int messageTypeInt) || !Enum.IsDefined(typeof(MessageType), messageTypeInt))
+            if (!int.TryParse(parts[0], out int messageTypeInt))
                 throw new ArgumentException($"Geçersiz mesaj tipi: {parts[0]}", nameof(message));
                 
-            var messageType = (MessageType)messageTypeInt;
-            
             var deviceMessage = new DeviceMessage
             {
-                MessageType = messageType,
+                MessageType = messageTypeInt,
                 RawMessage = message,
                 ApprovalStatus = DeviceApprovalStatus.Unknown
             };
             
             // Mesaj tipine göre ayrıştırmayı yap
-            switch (messageType)
+            switch (messageTypeInt)
             {
                 case MessageType.Handshake:
                     ParseHandshakeMessage(deviceMessage, parts);
@@ -179,7 +177,7 @@ namespace DeviceApi.TCPListener.Core
                     
                 // Diğer mesaj tipleri için gerekli parsers eklenecek
                 default:
-                    _logger.LogWarning("Desteklenmeyen mesaj tipi: {MessageType}", messageType);
+                    _logger.LogWarning("Desteklenmeyen mesaj tipi: {MessageType}", messageTypeInt);
                     break;
             }
             
@@ -196,10 +194,10 @@ namespace DeviceApi.TCPListener.Core
                 
             deviceMessage.Imei = parts[1];
             
-            if (!int.TryParse(parts[2], out int commTypeInt) || !Enum.IsDefined(typeof(CommunicationType), commTypeInt))
+            if (!int.TryParse(parts[2], out int commTypeInt))
                 throw new ArgumentException($"Geçersiz iletişim tipi: {parts[2]}");
                 
-            deviceMessage.CommunicationType = (CommunicationType)commTypeInt;
+            deviceMessage.CommunicationType = commTypeInt;
             
             // IMEI'ye göre cihazın onaylı olup olmadığını kontrol et
             deviceMessage.ApprovalStatus = _deviceVerificationService.VerifyDeviceByImei(deviceMessage.Imei)
@@ -257,9 +255,9 @@ namespace DeviceApi.TCPListener.Core
             StringBuilder sb = new StringBuilder();
             
             sb.Append(_settings.StartChar);
-            sb.Append((int)response.MessageType);
+            sb.Append(response.MessageType);
             sb.Append(_settings.DelimiterChar);
-            sb.Append((int)response.ResponseCode);
+            sb.Append(response.ResponseCode);
             
             // ResponseCode.Reject ise (2) tarih-saat bilgisi ekleme, direkt sonlandır
             if (response.ResponseCode == ResponseCode.Reject)

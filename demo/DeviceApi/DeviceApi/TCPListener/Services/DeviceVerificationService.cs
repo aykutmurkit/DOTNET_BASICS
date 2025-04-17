@@ -559,7 +559,7 @@ namespace DeviceApi.TCPListener.Services
         public DateTime FirstConnectionTime { get; set; }
         public DateTime LastConnectionTime { get; set; }
         public int ConnectionCount { get; set; }
-        public CommunicationType? CommunicationType { get; set; }
+        public int? CommunicationType { get; set; }
         public bool IsRecommendedForApproval { get; set; }
         public bool IsSavedToDatabase { get; set; }
     }

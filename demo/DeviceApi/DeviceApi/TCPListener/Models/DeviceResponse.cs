@@ -10,14 +10,12 @@ namespace DeviceApi.TCPListener.Models
         /// <summary>
         /// Yanıt mesajının tipi
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public MessageType MessageType { get; set; }
+        public int MessageType { get; set; }
         
         /// <summary>
         /// Yanıt kodu
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ResponseCode ResponseCode { get; set; }
+        public int ResponseCode { get; set; }
         
         /// <summary>
         /// Yanıt zamanı (dd/MM/yy,HH:mm:ss formatında)
@@ -31,23 +29,23 @@ namespace DeviceApi.TCPListener.Models
     }
     
     /// <summary>
-    /// Yanıt kodlarını belirten enum
+    /// Yanıt kodlarını belirten sınıf
     /// </summary>
-    public enum ResponseCode
+    public static class ResponseCode
     {
         /// <summary>
         /// Bilinmeyen yanıt kodu
         /// </summary>
-        Unknown = 0,
+        public const int Unknown = 0;
         
         /// <summary>
         /// Kabul edildi
         /// </summary>
-        Accept = 1,
+        public const int Accept = 1;
         
         /// <summary>
         /// Reddedildi
         /// </summary>
-        Reject = 2
+        public const int Reject = 2;
     }
 } 
