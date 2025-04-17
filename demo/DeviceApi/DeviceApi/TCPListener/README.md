@@ -1,43 +1,138 @@
-# TCP Listener
+# TCP Listener Bileşeni
 
-Bu modül, TCP bağlantıları dinlemek, istemcilerle iletişim kurmak ve belirli kurallara göre istekleri yanıtlamak için kullanılır.
+Bu modül, TCP bağlantıları dinlemek, cihazlarla iletişim kurmak ve belirli protokol kurallarına göre mesajları işlemek için kullanılır.
 
 ## Özellikler
 
-- 3456 portunda TCP bağlantı dinleme
-- Her bağlantı için ayrı thread oluşturma
-- İstek/yanıt (request/response) desenini uygulama
-- DeviceApi ile entegrasyon
-- Asenkron olmayan iletişim
+- Konfigüre edilebilir port üzerinden TCP bağlantı dinleme (varsayılan: 3456)
+- Asenkron bağlantı yönetimi
+- Basit text tabanlı protokol desteği
+- Cihaz onaylama mekanizması
+- Hız sınırlama (rate limiting) ve kara liste mekanizması
+- Kapsamlı loglama ve istatistik toplama
+- Ölçeklenebilir mimari
 
-## İstek/Yanıt Kuralları
+## Protokol
 
-TCP Listener'a gelen istekler aşağıdaki kurallara göre yanıtlanır:
+TCP Listener, aşağıdaki formatta simple text-based bir protokol kullanır:
 
-- İstemci "8" gönderirse, yanıt "8" olur
-- İstemci "7" gönderirse, yanıt "7" olur
-- İstemci "5" gönderirse, yanıt "67" olur (hem 6 hem 7)
-- Diğer tüm isteklerde, mesaj echo edilir (gelen mesaj aynen geri gönderilir)
+```
+^TİP+DEĞER1+DEĞER2...~
+```
 
-## Test Etme
+Burada:
+- `^` : Mesaj başlangıç karakteri
+- `+` : Parametre ayırıcı karakteri
+- `~` : Mesaj bitiş karakteri
 
-Hercules gibi TCP istemci araçları kullanarak 3456 portuna bağlanabilir ve mesajlar gönderebilirsiniz.
+### Mesaj Tipleri
+
+| Kod | Tip | Açıklama |
+|-----|-----|----------|
+| 0 | Unknown | Bilinmeyen mesaj tipi |
+| 1 | Handshake | El sıkışma mesajı (Format: `^1+IMEI+ILETISIM_TIPI~`) |
+| 2 | OpeningScreen | Açılış ekranı mesajı |
+| 3 | Settings | Ayarlar mesajı |
+| 4 | Logo | Logo mesajı |
+| 5 | ClearScreen | Ekran temizleme mesajı |
+| 6 | Information | Bilgilendirme mesajı |
+| 7 | Bus | Otobüs mesajı |
+| 8 | Tram | Tramvay mesajı |
+| 9 | Live | Canlı mesaj |
+| 10 | Ferry | Vapur mesajı |
+
+### Yanıt Kodları
+
+| Kod | Tip | Açıklama |
+|-----|-----|----------|
+| 0 | Unknown | Bilinmeyen yanıt kodu |
+| 1 | Accept | Kabul edildi |
+| 2 | Reject | Reddedildi |
 
 ## Kullanım
 
-Bu modül, DeviceApi'ye doğrudan entegre edilmiştir. Program.cs dosyasında otomatik olarak yüklenmektedir:
+TCP Listener modülünü kullanmak için Program.cs dosyasında servis olarak ekleyin:
 
 ```csharp
-// DeviceApi projesinde TCP Listener servisini ekleme
+// Program.cs dosyasında:
+using DeviceApi.TCPListener;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// TCP Listener servisini ekle
 builder.Services.AddTcpListener(builder.Configuration);
+
+// ...
 ```
 
-## Ayarlar
+Uygulama yapılandırmasına özel konfigürasyon eklemek için appsettings.json dosyasını kullanabilirsiniz:
 
-TCP Listener modülü aşağıdaki ayarları kullanır:
+```json
+{
+  "TcpListenerSettings": {
+    "Port": 3456,
+    "IpAddress": "0.0.0.0",
+    "MaxConnections": 100,
+    "ConnectionTimeout": 30000,
+    "BufferSize": 1024,
+    "StartChar": "^",
+    "DelimiterChar": "+",
+    "EndChar": "~"
+  }
+}
+```
 
-- Port: TCP sunucusunun dinleyeceği port (varsayılan: 3456)
-- IpAddress: TCP sunucusunun dinleyeceği IP adresi (varsayılan: 0.0.0.0)
-- MaxConnections: Maksimum eşzamanlı bağlantı sayısı (varsayılan: 100)
-- ConnectionTimeout: Bağlantı zaman aşımı süresi (milisaniye) (varsayılan: 30000)
-- BufferSize: Buffer boyutu (byte) (varsayılan: 1024) 
+## API Kullanımı
+
+TCP Listener'ın durumunu ve istatistiklerini API üzerinden kontrol etmek için controller üzerinden erişebilirsiniz:
+
+```csharp
+// Controllerınızda:
+[ApiController]
+[Route("api/[controller]")]
+public class TcpListenerController : ControllerBase
+{
+    private readonly ITcpServer _tcpServer;
+    
+    public TcpListenerController(ITcpServer tcpServer)
+    {
+        _tcpServer = tcpServer;
+    }
+    
+    [HttpGet("status")]
+    public IActionResult GetStatus()
+    {
+        var stats = _tcpServer.GetStatistics();
+        return Ok(stats);
+    }
+    
+    // ...
+}
+```
+
+## Test Etme
+
+TCP Listener'ı test etmek için Hercules gibi TCP istemci araçları kullanabilirsiniz:
+
+1. Hercules TCP Client'ı açın
+2. IP adresi olarak sunucu IP'sini girin
+3. Port olarak 3456 (veya konfigüre ettiğiniz port) girin
+4. Bağlanın
+5. Aşağıdaki gibi bir mesaj gönderin: `^1+123456789012345+1~` (Handshake mesajı örneği)
+
+## Mimarisi
+
+TCP Listener bileşeni aşağıdaki alt bileşenlerden oluşur:
+
+- **Configuration**: Konfigürasyon modelleri
+- **Connection**: TCP bağlantı yönetimi
+- **Messaging**: Mesaj işleme ve yanıt üretme
+- **Protocol**: Protokol sabitleri ve kuralları
+- **Security**: Cihaz doğrulama ve güvenlik kontrolleri
+
+## Best Practices
+
+- TCP bağlantısı uzun süre açık bırakılmamalıdır, işlem tamamlandığında bağlantıyı kapatın
+- Hassas IMEI bilgileri için uygun güvenlik önlemleri alın
+- Büyük veri transferleri için mesajları bölün
+- Yüksek yoğunluklu ortamlarda rate limiting değerlerini uygun şekilde ayarlayın 
