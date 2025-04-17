@@ -12,7 +12,7 @@ namespace DeviceApi.TCPListener.Models.Devices
         /// <summary>
         /// Mesaj tipi
         /// </summary>
-        public MessageType MessageType { get; set; }
+        public int MessageType { get; set; }
         
         /// <summary>
         /// Cihazın IMEI numarası
@@ -22,7 +22,7 @@ namespace DeviceApi.TCPListener.Models.Devices
         /// <summary>
         /// İletişim tipi
         /// </summary>
-        public CommunicationType CommunicationType { get; set; }
+        public int CommunicationType { get; set; }
         
         /// <summary>
         /// Cihazın onay durumu

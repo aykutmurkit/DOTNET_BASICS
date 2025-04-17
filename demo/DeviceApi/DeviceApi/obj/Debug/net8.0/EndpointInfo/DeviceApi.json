@@ -5493,14 +5493,6 @@
         },
         "additionalProperties": false
       },
-      "CommunicationType": {
-        "enum": [
-          "unknown",
-          "tcpIp",
-          "gsm"
-        ],
-        "type": "string"
-      },
       "CreateAlignmentTypeRequest": {
         "required": [
           "key",
@@ -7485,7 +7477,9 @@
             "format": "int32"
           },
           "communicationType": {
-            "$ref": "#/components/schemas/CommunicationType"
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "isRecommendedForApproval": {
             "type": "boolean"

@@ -36,7 +36,7 @@ namespace DeviceApi.TCPListener.Models.Devices
         /// <summary>
         /// Bağlantı protokolü
         /// </summary>
-        public CommunicationType? CommunicationType { get; set; }
+        public int? CommunicationType { get; set; }
         
         /// <summary>
         /// Otomatik onay için önerilen mi

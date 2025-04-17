@@ -12,8 +12,7 @@ namespace DeviceApi.TCPListener.Models.Devices
         /// <summary>
         /// Yanıt mesajının tipi
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public MessageType MessageType { get; set; }
+        public int MessageType { get; set; }
         
         /// <summary>
         /// Yanıt kodu
