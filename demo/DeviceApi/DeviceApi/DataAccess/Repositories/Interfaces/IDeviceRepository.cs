@@ -23,6 +23,16 @@ namespace Data.Interfaces
         Task<Device> GetByIdAsync(int id);
         
         /// <summary>
+        /// IMEI numarasına göre cihaz getirir
+        /// </summary>
+        Task<Device> GetByImeiAsync(string imei);
+        
+        /// <summary>
+        /// IMEI numarasına göre cihaz getirir (senkron versiyon)
+        /// </summary>
+        Device GetByImei(string imei);
+        
+        /// <summary>
         /// İsme göre cihazları filtreler
         /// </summary>
         Task<List<Device>> GetDevicesByNameAsync(string name);

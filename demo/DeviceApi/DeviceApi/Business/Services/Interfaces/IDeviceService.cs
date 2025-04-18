@@ -18,6 +18,11 @@ namespace DeviceApi.Business.Services.Interfaces
         Task<DeviceDto> GetDeviceByIdAsync(int id);
         
         /// <summary>
+        /// IMEI numarasına göre cihaz getirir
+        /// </summary>
+        Task<DeviceDto> GetDeviceByImeiAsync(string imei);
+        
+        /// <summary>
         /// Platform ID'sine göre cihazları getirir
         /// </summary>
         Task<List<DeviceDto>> GetDevicesByPlatformIdAsync(int platformId);

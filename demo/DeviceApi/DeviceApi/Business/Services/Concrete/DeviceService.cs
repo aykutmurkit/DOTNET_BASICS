@@ -65,6 +65,21 @@ namespace DeviceApi.Business.Services.Concrete
         }
         
         /// <summary>
+        /// IMEI numarasına göre cihaz getirir
+        /// </summary>
+        /// <param name="imei">Cihaz IMEI numarası</param>
+        /// <returns>Cihaz bilgisi</returns>
+        public async Task<DeviceDto> GetDeviceByImeiAsync(string imei)
+        {
+            var device = await _deviceRepository.GetByImeiAsync(imei);
+            if (device == null)
+            {
+                throw new Exception($"IMEI: {imei} numaralı cihaz bulunamadı.");
+            }
+            return _mapper.Map<DeviceDto>(device);
+        }
+        
+        /// <summary>
         /// Belirtilen platforma ait tüm cihazları getirir
         /// </summary>
         /// <param name="platformId">Platform ID'si</param>

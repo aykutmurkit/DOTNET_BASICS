@@ -2,14 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DeviceApi.TCPListener.Services;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Core.Utilities;
 using LogLibrary.Core.Interfaces;
-using DeviceApi.TCPListener.Models.Devices;
 using System.Linq;
 using System;
+using DeviceApi.TCPListener.Core.Interfaces;
+using DeviceApi.TCPListener.Models.Dto;
 
 namespace DeviceApi.API.Controllers
 {

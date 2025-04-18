@@ -52,6 +52,34 @@ namespace Data.Repositories
             return await GetDeviceByIdAsync(id);
         }
         
+        public async Task<Device> GetByImeiAsync(string imei)
+        {
+            return await _context.Devices
+                .Include(d => d.Platform)
+                    .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
+                .Include(d => d.Status)
+                .Include(d => d.FullScreenMessage)
+                .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
+                .Include(d => d.PeriodicMessage)
+                .FirstOrDefaultAsync(d => d.IMEI == imei);
+        }
+        
+        public Device GetByImei(string imei)
+        {
+            return _context.Devices
+                .Include(d => d.Platform)
+                    .ThenInclude(p => p.Station)
+                .Include(d => d.Settings)
+                .Include(d => d.Status)
+                .Include(d => d.FullScreenMessage)
+                .Include(d => d.ScrollingScreenMessage)
+                .Include(d => d.BitmapScreenMessage)
+                .Include(d => d.PeriodicMessage)
+                .FirstOrDefault(d => d.IMEI == imei);
+        }
+        
         public async Task<List<Device>> GetDevicesByNameAsync(string name)
         {
             return await _context.Devices

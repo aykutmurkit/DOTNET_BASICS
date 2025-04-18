@@ -82,6 +82,38 @@ namespace DeviceApi.API.Controllers
         }
 
         /// <summary>
+        /// IMEI numarasına göre cihaz getirir
+        /// </summary>
+        [HttpGet("by-imei/{imei}")]
+        [ProducesResponseType(typeof(ApiResponse<DeviceDto>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<>), 404)]
+        public async Task<IActionResult> GetDeviceByImei(string imei)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            await _logService.LogInfoAsync(
+                "GetDeviceByImei çağrıldı", 
+                "DevicesController.GetDeviceByImei", 
+                new { Imei = imei, UserId = userId, Role = userRole });
+            
+            try
+            {
+                var device = await _deviceService.GetDeviceByImeiAsync(imei);
+                return Ok(ApiResponse<DeviceDto>.Success(device, "Cihaz başarıyla getirildi"));
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogWarningAsync(
+                    "IMEI ile cihaz bulunamadı", 
+                    "DevicesController.GetDeviceByImei", 
+                    new { Imei = imei, UserId = userId, Role = userRole });
+                
+                return NotFound(ApiResponse<object>.NotFound(ex.Message));
+            }
+        }
+
+        /// <summary>
         /// Platform ID'sine göre cihazları getirir
         /// </summary>
         [HttpGet("by-platform/{platformId}")]
