@@ -282,8 +282,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Constants\\ResponseCodes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:01:29.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:01:29.357Z"
             },
             {
               "$type": "Document",
@@ -295,8 +294,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Constants\\MessageTypes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:01:28.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:01:28.052Z"
             },
             {
               "$type": "Document",
@@ -308,8 +306,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Constants\\DeviceApprovalStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:01:06.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:01:06.683Z"
             },
             {
               "$type": "Document",
@@ -321,8 +318,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\DeviceInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T07:47:05.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T07:47:05.795Z"
             },
             {
               "$type": "Document",
@@ -347,8 +343,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Constants\\CommunicationTypes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:01:11.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:01:11.64Z"
             },
             {
               "$type": "Document",
@@ -360,8 +355,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Configurations\\TcpListenerSettings.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T07:46:51.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T07:46:51.006Z"
             },
             {
               "$type": "Document",
@@ -373,8 +367,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Entities\\DeviceResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T07:46:48.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T07:46:48.21Z"
             },
             {
               "$type": "Document",
@@ -386,8 +379,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Dto\\TcpListenerStatistics.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T07:46:37.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T07:46:37.17Z"
             },
             {
               "$type": "Document",
@@ -399,8 +391,7 @@
               "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T06:50:30.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T06:50:30.223Z"
             },
             {
               "$type": "Document",
@@ -436,8 +427,7 @@
               "RelativeToolTip": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAADEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T10:47:33.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T10:47:33.517Z"
             },
             {
               "$type": "Document",
@@ -485,8 +475,7 @@
               "RelativeToolTip": "DeviceApi\\Program.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T12:18:58.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T12:18:58.714Z"
             },
             {
               "$type": "Document",
@@ -1040,8 +1029,7 @@
               "RelativeToolTip": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAcwCYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T08:20:33.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T08:20:33.22Z"
             },
             {
               "$type": "Document",
