@@ -24,7 +24,17 @@ namespace DeviceApi.TCPListener.Extensions
 
             // Servisleri ekle
             services.AddSingleton<IDeviceVerificationService, DeviceVerificationService>();
-            services.AddSingleton<IMessageHandler, MessageHandler>();
+            
+            // MessageHandler artık IServiceScopeFactory'e ihtiyaç duyduğu için, şu şekilde ekle:
+            services.AddSingleton<IMessageHandler>(serviceProvider => 
+            {
+                var logger = serviceProvider.GetRequiredService<Microsoft.Extensions.Logging.ILogger<MessageHandler>>();
+                var settings = serviceProvider.GetRequiredService<Microsoft.Extensions.Options.IOptions<TcpListenerSettings>>();
+                var deviceVerificationService = serviceProvider.GetRequiredService<IDeviceVerificationService>();
+                var serviceScopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+                
+                return new MessageHandler(logger, settings, deviceVerificationService, serviceScopeFactory);
+            });
             
             // TcpListenerService'i hem IHostedService hem de ITcpListenerService olarak ekle
             services.AddSingleton<TcpListenerService>();

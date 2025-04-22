@@ -16,6 +16,11 @@ namespace DeviceApi.TCPListener.Models.Constants
         public const int PeriodicInfo = 2;
         
         /// <summary>
+        /// Cihaz Ayarları mesaj tipi
+        /// </summary>
+        public const int DeviceSettings = 3;
+        
+        /// <summary>
         /// Hata/Bilinmeyen mesaj tipi
         /// </summary>
         public const int Error = 0;

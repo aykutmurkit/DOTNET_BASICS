@@ -10,6 +10,9 @@ using DeviceApi.TCPListener.Core.Interfaces;
 using DeviceApi.TCPListener.Models.Configurations;
 using DeviceApi.TCPListener.Models.Entities;
 using DeviceApi.TCPListener.Models.Constants;
+using Microsoft.Extensions.DependencyInjection;
+using Data.Interfaces;
+using Entities.Concrete;
 
 namespace DeviceApi.TCPListener.Core.Services
 {
@@ -21,6 +24,7 @@ namespace DeviceApi.TCPListener.Core.Services
         private readonly ILogger<MessageHandler> _logger;
         private readonly TcpListenerSettings _settings;
         private readonly IDeviceVerificationService _deviceVerificationService;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ConcurrentDictionary<string, (DateTime lastTime, int count)> _recentMessages = new();
         private const int MESSAGE_LOG_INTERVAL_SECONDS = 60; // Aynı mesaj için loglama aralığı
         private long _totalProcessedMessages = 0;
@@ -34,11 +38,13 @@ namespace DeviceApi.TCPListener.Core.Services
         public MessageHandler(
             ILogger<MessageHandler> logger,
             IOptions<TcpListenerSettings> settings,
-            IDeviceVerificationService deviceVerificationService)
+            IDeviceVerificationService deviceVerificationService,
+            IServiceScopeFactory serviceScopeFactory)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _deviceVerificationService = deviceVerificationService ?? throw new ArgumentNullException(nameof(deviceVerificationService));
+            _serviceScopeFactory = serviceScopeFactory ?? throw new ArgumentNullException(nameof(serviceScopeFactory));
         }
 
         /// <summary>
@@ -219,6 +225,30 @@ namespace DeviceApi.TCPListener.Core.Services
                     response.ResponseCode = deviceMessage.ApprovalStatus == DeviceApprovalStatus.Approved
                         ? ResponseCodes.Accept
                         : ResponseCodes.Reject;
+                    
+                    // Eğer handshake kabul edildiyse, cihaz ayarlarını gönder
+                    if (response.ResponseCode == ResponseCodes.Accept)
+                    {
+                        try
+                        {
+                            var deviceSettings = GetDeviceSettingsByImei(deviceMessage.Imei);
+                            if (deviceSettings != null)
+                            {
+                                // Cihaz ayarlarını formatla ve Response.Data'ya ekle
+                                response.Data = FormatDeviceSettings(deviceSettings);
+                                _logger.LogInformation("Cihaz ayarları hazırlandı. IMEI: {Imei}, Ayarlar: {Settings}", 
+                                    deviceMessage.Imei, response.Data);
+                            }
+                            else
+                            {
+                                _logger.LogWarning("Cihaz ayarları bulunamadı. IMEI: {Imei}", deviceMessage.Imei);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "Cihaz ayarları hazırlanırken hata oluştu. IMEI: {Imei}", deviceMessage.Imei);
+                        }
+                    }
                     break;
                     
                 // Diğer mesaj tipleri için yanıt oluşturma kodu eklenecek
@@ -229,6 +259,154 @@ namespace DeviceApi.TCPListener.Core.Services
             }
             
             return response;
+        }
+        
+        /// <summary>
+        /// IMEI numarasına göre cihaz ayarlarını getirir
+        /// </summary>
+        private DeviceSettings GetDeviceSettingsByImei(string imei)
+        {
+            using (var scope = _serviceScopeFactory.CreateScope())
+            {
+                try
+                {
+                    var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
+                    var device = deviceRepository.GetByImei(imei);
+                    
+                    if (device != null && device.Settings != null)
+                    {
+                        return device.Settings;
+                    }
+                    
+                    _logger.LogWarning("IMEI: {Imei} için cihaz veya ayarlar bulunamadı", imei);
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "IMEI: {Imei} için cihaz ayarları getirilirken hata oluştu", imei);
+                    return null;
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Cihaz ayarlarını istenen formatta düzenler
+        /// </summary>
+        /// <param name="settings">Cihaz ayarları</param>
+        /// <returns>Formatlanmış ayarlar metni</returns>
+        private string FormatDeviceSettings(DeviceSettings settings)
+        {
+            // Başlangıç formatı: ^3+devicesetting~
+            StringBuilder formattedSettings = new StringBuilder();
+            
+            formattedSettings.Append($"{_settings.StartChar}3{_settings.DelimiterChar}");
+            
+            // Ayarları ekle
+            formattedSettings.Append("ApnName=").Append(settings.ApnName).Append(";");
+            formattedSettings.Append("ApnUsername=").Append(settings.ApnUsername ?? string.Empty).Append(";");
+            formattedSettings.Append("ApnPassword=").Append(settings.ApnPassword ?? string.Empty).Append(";");
+            formattedSettings.Append("ServerIp=").Append(settings.ServerIp).Append(";");
+            formattedSettings.Append("TcpPort=").Append(settings.TcpPort).Append(";");
+            formattedSettings.Append("UdpPort=").Append(settings.UdpPort).Append(";");
+            formattedSettings.Append("FtpStatus=").Append(settings.FtpStatus ? "1" : "0").Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpIp))
+                formattedSettings.Append("FtpIp=").Append(settings.FtpIp).Append(";");
+            
+            if (settings.FtpPort.HasValue)
+                formattedSettings.Append("FtpPort=").Append(settings.FtpPort.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpUsername))
+                formattedSettings.Append("FtpUsername=").Append(settings.FtpUsername).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpPassword))
+                formattedSettings.Append("FtpPassword=").Append(settings.FtpPassword).Append(";");
+            
+            if (settings.ConnectionTimeoutDuration.HasValue)
+                formattedSettings.Append("ConnectionTimeoutDuration=").Append(settings.ConnectionTimeoutDuration.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationHardwareVersion))
+                formattedSettings.Append("CommunicationHardwareVersion=").Append(settings.CommunicationHardwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationSoftwareVersion))
+                formattedSettings.Append("CommunicationSoftwareVersion=").Append(settings.CommunicationSoftwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.GraphicsCardHardwareVersion))
+                formattedSettings.Append("GraphicsCardHardwareVersion=").Append(settings.GraphicsCardHardwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.GraphicsCardSoftwareVersion))
+                formattedSettings.Append("GraphicsCardSoftwareVersion=").Append(settings.GraphicsCardSoftwareVersion).Append(";");
+            
+            if (settings.ScrollingTextSpeed.HasValue)
+                formattedSettings.Append("ScrollingTextSpeed=").Append(settings.ScrollingTextSpeed.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TramDisplayType))
+                formattedSettings.Append("TramDisplayType=").Append(settings.TramDisplayType).Append(";");
+            
+            if (settings.BusScreenPageCount.HasValue)
+                formattedSettings.Append("BusScreenPageCount=").Append(settings.BusScreenPageCount.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TimeDisplayFormat))
+                formattedSettings.Append("TimeDisplayFormat=").Append(settings.TimeDisplayFormat).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TramFont))
+                formattedSettings.Append("TramFont=").Append(settings.TramFont).Append(";");
+            
+            if (settings.ScreenVerticalPixelCount.HasValue)
+                formattedSettings.Append("ScreenVerticalPixelCount=").Append(settings.ScreenVerticalPixelCount.Value).Append(";");
+            
+            if (settings.ScreenHorizontalPixelCount.HasValue)
+                formattedSettings.Append("ScreenHorizontalPixelCount=").Append(settings.ScreenHorizontalPixelCount.Value).Append(";");
+            
+            if (settings.TemperatureAlarmThreshold.HasValue)
+                formattedSettings.Append("TemperatureAlarmThreshold=").Append(settings.TemperatureAlarmThreshold.Value).Append(";");
+            
+            if (settings.HumidityAlarmThreshold.HasValue)
+                formattedSettings.Append("HumidityAlarmThreshold=").Append(settings.HumidityAlarmThreshold.Value).Append(";");
+            
+            if (settings.GasAlarmThreshold.HasValue)
+                formattedSettings.Append("GasAlarmThreshold=").Append(settings.GasAlarmThreshold.Value).Append(";");
+            
+            if (settings.LightSensorStatus.HasValue)
+                formattedSettings.Append("LightSensorStatus=").Append(settings.LightSensorStatus.Value ? "1" : "0").Append(";");
+            
+            if (settings.LightSensorOperationLevel.HasValue)
+                formattedSettings.Append("LightSensorOperationLevel=").Append(settings.LightSensorOperationLevel.Value).Append(";");
+            
+            if (settings.LightSensorLevel1.HasValue)
+                formattedSettings.Append("LightSensorLevel1=").Append(settings.LightSensorLevel1.Value).Append(";");
+            
+            if (settings.LightSensorLevel2.HasValue)
+                formattedSettings.Append("LightSensorLevel2=").Append(settings.LightSensorLevel2.Value).Append(";");
+            
+            if (settings.LightSensorLevel3.HasValue)
+                formattedSettings.Append("LightSensorLevel3=").Append(settings.LightSensorLevel3.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.SocketType))
+                formattedSettings.Append("SocketType=").Append(settings.SocketType).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StopName))
+                formattedSettings.Append("StopName=").Append(settings.StopName).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StartupLogoFilename))
+                formattedSettings.Append("StartupLogoFilename=").Append(settings.StartupLogoFilename).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StartupLogoCrc16))
+                formattedSettings.Append("StartupLogoCrc16=").Append(settings.StartupLogoCrc16).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.VehicleLogoFilename))
+                formattedSettings.Append("VehicleLogoFilename=").Append(settings.VehicleLogoFilename).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.VehicleLogoCrc16))
+                formattedSettings.Append("VehicleLogoCrc16=").Append(settings.VehicleLogoCrc16).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationType))
+                formattedSettings.Append("CommunicationType=").Append(settings.CommunicationType).Append(";");
+            
+            // Sonu ekle
+            formattedSettings.Append(_settings.EndChar);
+            
+            return formattedSettings.ToString();
         }
         
         /// <summary>
@@ -247,9 +425,11 @@ namespace DeviceApi.TCPListener.Core.Services
                 _ => ResponseCodes.Error
             };
             
-            return $"{_settings.StartChar}{response.MessageType}{_settings.DelimiterChar}" +
+            string baseResponse = $"{_settings.StartChar}{response.MessageType}{_settings.DelimiterChar}" +
                    $"{responseCode}{_settings.DelimiterChar}" +
                    $"{response.ResponseTime}{_settings.EndChar}";
+                   
+            return baseResponse;
         }
         
         /// <summary>

@@ -4,9 +4,7 @@
     "\\DeviceApi",
     "\\DeviceApi\\TCPListener",
     "\\DeviceApi\\TCPListener\\Extensions",
-    "\\DeviceApi\\TCPListener\\Models",
-    "\\DeviceApi\\TCPListener\\Services"
+    "\\DeviceApi\\TCPListener\\Models"
   ],
-  "SelectedNode": "\\DeviceApi\\DeviceApi.sln",
   "PreviewInSolutionExplorer": false
 }
