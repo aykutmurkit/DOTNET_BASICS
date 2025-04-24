@@ -21,6 +21,11 @@ namespace DeviceApi.TCPListener.Models.Constants
         public const int DeviceSettings = 3;
         
         /// <summary>
+        /// Ekran Mesajı tipi
+        /// </summary>
+        public const int ScreenMessage = 6;
+        
+        /// <summary>
         /// Hata/Bilinmeyen mesaj tipi
         /// </summary>
         public const int Error = 0;

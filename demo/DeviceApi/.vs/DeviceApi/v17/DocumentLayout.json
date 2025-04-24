@@ -284,7 +284,7 @@
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Core\\Services\\TcpListenerService.cs",
               "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Core\\Services\\TcpListenerService.cs",
               "RelativeToolTip": "DeviceApi\\TCPListener\\Core\\Services\\TcpListenerService.cs",
-              "ViewState": "AgIAAGcBAAAAAAAAAAAiwIkBAABVAAAAAAAAAA==",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAUwKYBAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T11:38:49.079Z",
               "EditorCaption": ""
@@ -335,8 +335,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Core\\Services\\MessageHandler.cs",
               "ViewState": "AgIAAJUAAAAAAAAAAAAIwKkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T07:47:56.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T07:47:56.324Z"
             },
             {
               "$type": "Document",
@@ -348,8 +347,7 @@
               "RelativeToolTip": "DeviceApi\\TCPListener\\Models\\Constants\\CommunicationTypes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:01:11.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:01:11.64Z"
             },
             {
               "$type": "Document",

@@ -282,7 +282,7 @@ namespace DeviceApi.TCPListener.Core.Services
                             _logger.LogDebug("İstemciden mesaj alındı: {ClientId}, {BytesRead} byte", clientId, bytesRead);
 
                             // Mesajı işle ve yanıt oluştur
-                            var (responseBytes, deviceSettingsData) = ProcessClientMessage(requestBytes);
+                            var (responseBytes, deviceInfo) = ProcessClientMessage(requestBytes);
 
                             // Ana yanıtı gönder
                             await networkStream.WriteAsync(responseBytes, 0, responseBytes.Length, cancellationToken);
@@ -290,16 +290,19 @@ namespace DeviceApi.TCPListener.Core.Services
                                 clientId, responseBytes.Length);
                             
                             // Eğer cihaz ayarları varsa onları da gönder
-                            if (!string.IsNullOrEmpty(deviceSettingsData))
+                            if (deviceInfo?.DeviceSettings != null)
                             {
                                 // Cihaza ayarları göndermeden önce kısa bir bekleme
                                 await Task.Delay(200, cancellationToken);
                                 
-                                byte[] settingsBytes = Encoding.UTF8.GetBytes(deviceSettingsData);
+                                byte[] settingsBytes = Encoding.UTF8.GetBytes(deviceInfo.DeviceSettings);
                                 await networkStream.WriteAsync(settingsBytes, 0, settingsBytes.Length, cancellationToken);
                                 
                                 _logger.LogInformation("İstemciye cihaz ayarları gönderildi: {ClientId}, {SettingsLength} byte",
                                     clientId, settingsBytes.Length);
+                                    
+                                // Eğer ekran mesajları varsa onları da sırayla gönder
+                                await SendScreenMessagesAsync(networkStream, deviceInfo, cancellationToken);
                             }
                         }
                         catch (IOException ex)
@@ -336,17 +339,17 @@ namespace DeviceApi.TCPListener.Core.Services
         /// <summary>
         /// İstemciden gelen mesajı işler ve yanıt oluşturur
         /// </summary>
-        private (byte[] responseBytes, string deviceSettingsData) ProcessClientMessage(byte[] requestBytes)
+        private (byte[] responseBytes, DeviceInfoForMessaging deviceInfo) ProcessClientMessage(byte[] requestBytes)
         {
             try
             {
                 // MessageHandler ile mesajı işle
                 byte[] responseBytes = _messageHandler.ProcessMessageBytes(requestBytes);
                 
-                // Cihaz ayarlarını kontrol et
-                string deviceSettingsData = ExtractDeviceSettingsData(requestBytes, responseBytes);
+                // Handshake ve cihaz onayı ile ilgili bilgileri kontrol et
+                DeviceInfoForMessaging deviceInfo = ExtractDeviceInfoFromMessage(requestBytes, responseBytes);
                 
-                return (responseBytes, deviceSettingsData);
+                return (responseBytes, deviceInfo);
             }
             catch (Exception ex)
             {
@@ -356,9 +359,24 @@ namespace DeviceApi.TCPListener.Core.Services
         }
 
         /// <summary>
-        /// İstek ve yanıttan cihaz ayarları verilerini çıkarır
+        /// Cihaz mesajları için gerekli bilgileri taşıyan sınıf
         /// </summary>
-        private string ExtractDeviceSettingsData(byte[] requestBytes, byte[] responseBytes)
+        private class DeviceInfoForMessaging
+        {
+            public string Imei { get; set; }
+            public string DeviceSettings { get; set; }
+            public string FullScreenMessage { get; set; }
+            public string ScrollingScreenMessage { get; set; }
+            public string BitmapScreenMessage { get; set; }
+            public bool HasFullScreenMessage { get; set; }
+            public bool HasScrollingScreenMessage { get; set; }
+            public bool HasBitmapScreenMessage { get; set; }
+        }
+
+        /// <summary>
+        /// İstek ve yanıttan cihaz bilgilerini ve mesajları çıkarır
+        /// </summary>
+        private DeviceInfoForMessaging ExtractDeviceInfoFromMessage(byte[] requestBytes, byte[] responseBytes)
         {
             try
             {
@@ -376,133 +394,51 @@ namespace DeviceApi.TCPListener.Core.Services
                         if (parts.Length >= 2)
                         {
                             string imei = parts[1];
-                            _logger.LogInformation("Onaylanan cihaz için ayarlar gönderilecek: IMEI {Imei}", imei);
+                            _logger.LogInformation("Onaylanan cihaz için mesajlar hazırlanıyor: IMEI {Imei}", imei);
                             
-                            // Device ve DeviceSettings verilerini al
+                            // Device ve mesajları al
                             using (var scope = _serviceProvider.CreateScope())
                             {
                                 var deviceRepository = scope.ServiceProvider.GetRequiredService<Data.Interfaces.IDeviceRepository>();
                                 var device = deviceRepository.GetByImei(imei);
                                 
-                                if (device != null && device.Settings != null)
+                                if (device != null)
                                 {
-                                    var settings = device.Settings;
+                                    var deviceInfo = new DeviceInfoForMessaging
+                                    {
+                                        Imei = imei
+                                    };
                                     
-                                    // DeviceSettings verisini formatla
-                                    StringBuilder formattedSettings = new StringBuilder();
+                                    // Cihaz ayarlarını ekle
+                                    if (device.Settings != null)
+                                    {
+                                        deviceInfo.DeviceSettings = FormatDeviceSettings(device.Settings);
+                                    }
                                     
-                                    formattedSettings.Append($"{_settings.StartChar}{MessageTypes.DeviceSettings}{_settings.DelimiterChar}");
+                                    // Ekran mesajlarını ekle
+                                    if (device.FullScreenMessage != null)
+                                    {
+                                        deviceInfo.HasFullScreenMessage = true;
+                                        deviceInfo.FullScreenMessage = FormatFullScreenMessage(device.FullScreenMessage);
+                                    }
                                     
-                                    // Ayarları ekle
-                                    formattedSettings.Append("ApnName=").Append(settings.ApnName).Append(";");
-                                    formattedSettings.Append("ApnUsername=").Append(settings.ApnUsername ?? string.Empty).Append(";");
-                                    formattedSettings.Append("ApnPassword=").Append(settings.ApnPassword ?? string.Empty).Append(";");
-                                    formattedSettings.Append("ServerIp=").Append(settings.ServerIp).Append(";");
-                                    formattedSettings.Append("TcpPort=").Append(settings.TcpPort).Append(";");
-                                    formattedSettings.Append("UdpPort=").Append(settings.UdpPort).Append(";");
-                                    formattedSettings.Append("FtpStatus=").Append(settings.FtpStatus ? "1" : "0").Append(";");
+                                    if (device.ScrollingScreenMessage != null)
+                                    {
+                                        deviceInfo.HasScrollingScreenMessage = true;
+                                        deviceInfo.ScrollingScreenMessage = FormatScrollingScreenMessage(device.ScrollingScreenMessage);
+                                    }
                                     
-                                    if (!string.IsNullOrEmpty(settings.FtpIp))
-                                        formattedSettings.Append("FtpIp=").Append(settings.FtpIp).Append(";");
+                                    if (device.BitmapScreenMessage != null)
+                                    {
+                                        deviceInfo.HasBitmapScreenMessage = true;
+                                        deviceInfo.BitmapScreenMessage = FormatBitmapScreenMessage(device.BitmapScreenMessage);
+                                    }
                                     
-                                    if (settings.FtpPort.HasValue)
-                                        formattedSettings.Append("FtpPort=").Append(settings.FtpPort.Value).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.FtpUsername))
-                                        formattedSettings.Append("FtpUsername=").Append(settings.FtpUsername).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.FtpPassword))
-                                        formattedSettings.Append("FtpPassword=").Append(settings.FtpPassword).Append(";");
-                                    
-                                    if (settings.ConnectionTimeoutDuration.HasValue)
-                                        formattedSettings.Append("ConnectionTimeoutDuration=").Append(settings.ConnectionTimeoutDuration.Value).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.CommunicationHardwareVersion))
-                                        formattedSettings.Append("CommunicationHardwareVersion=").Append(settings.CommunicationHardwareVersion).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.CommunicationSoftwareVersion))
-                                        formattedSettings.Append("CommunicationSoftwareVersion=").Append(settings.CommunicationSoftwareVersion).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.GraphicsCardHardwareVersion))
-                                        formattedSettings.Append("GraphicsCardHardwareVersion=").Append(settings.GraphicsCardHardwareVersion).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.GraphicsCardSoftwareVersion))
-                                        formattedSettings.Append("GraphicsCardSoftwareVersion=").Append(settings.GraphicsCardSoftwareVersion).Append(";");
-                                    
-                                    if (settings.ScrollingTextSpeed.HasValue)
-                                        formattedSettings.Append("ScrollingTextSpeed=").Append(settings.ScrollingTextSpeed.Value).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.TramDisplayType))
-                                        formattedSettings.Append("TramDisplayType=").Append(settings.TramDisplayType).Append(";");
-                                    
-                                    if (settings.BusScreenPageCount.HasValue)
-                                        formattedSettings.Append("BusScreenPageCount=").Append(settings.BusScreenPageCount.Value).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.TimeDisplayFormat))
-                                        formattedSettings.Append("TimeDisplayFormat=").Append(settings.TimeDisplayFormat).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.TramFont))
-                                        formattedSettings.Append("TramFont=").Append(settings.TramFont).Append(";");
-                                    
-                                    if (settings.ScreenVerticalPixelCount.HasValue)
-                                        formattedSettings.Append("ScreenVerticalPixelCount=").Append(settings.ScreenVerticalPixelCount.Value).Append(";");
-                                    
-                                    if (settings.ScreenHorizontalPixelCount.HasValue)
-                                        formattedSettings.Append("ScreenHorizontalPixelCount=").Append(settings.ScreenHorizontalPixelCount.Value).Append(";");
-                                    
-                                    if (settings.TemperatureAlarmThreshold.HasValue)
-                                        formattedSettings.Append("TemperatureAlarmThreshold=").Append(settings.TemperatureAlarmThreshold.Value).Append(";");
-                                    
-                                    if (settings.HumidityAlarmThreshold.HasValue)
-                                        formattedSettings.Append("HumidityAlarmThreshold=").Append(settings.HumidityAlarmThreshold.Value).Append(";");
-                                    
-                                    if (settings.GasAlarmThreshold.HasValue)
-                                        formattedSettings.Append("GasAlarmThreshold=").Append(settings.GasAlarmThreshold.Value).Append(";");
-                                    
-                                    if (settings.LightSensorStatus.HasValue)
-                                        formattedSettings.Append("LightSensorStatus=").Append(settings.LightSensorStatus.Value ? "1" : "0").Append(";");
-                                    
-                                    if (settings.LightSensorOperationLevel.HasValue)
-                                        formattedSettings.Append("LightSensorOperationLevel=").Append(settings.LightSensorOperationLevel.Value).Append(";");
-                                    
-                                    if (settings.LightSensorLevel1.HasValue)
-                                        formattedSettings.Append("LightSensorLevel1=").Append(settings.LightSensorLevel1.Value).Append(";");
-                                    
-                                    if (settings.LightSensorLevel2.HasValue)
-                                        formattedSettings.Append("LightSensorLevel2=").Append(settings.LightSensorLevel2.Value).Append(";");
-                                    
-                                    if (settings.LightSensorLevel3.HasValue)
-                                        formattedSettings.Append("LightSensorLevel3=").Append(settings.LightSensorLevel3.Value).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.SocketType))
-                                        formattedSettings.Append("SocketType=").Append(settings.SocketType).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.StopName))
-                                        formattedSettings.Append("StopName=").Append(settings.StopName).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.StartupLogoFilename))
-                                        formattedSettings.Append("StartupLogoFilename=").Append(settings.StartupLogoFilename).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.StartupLogoCrc16))
-                                        formattedSettings.Append("StartupLogoCrc16=").Append(settings.StartupLogoCrc16).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.VehicleLogoFilename))
-                                        formattedSettings.Append("VehicleLogoFilename=").Append(settings.VehicleLogoFilename).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.VehicleLogoCrc16))
-                                        formattedSettings.Append("VehicleLogoCrc16=").Append(settings.VehicleLogoCrc16).Append(";");
-                                    
-                                    if (!string.IsNullOrEmpty(settings.CommunicationType))
-                                        formattedSettings.Append("CommunicationType=").Append(settings.CommunicationType).Append(";");
-                                    
-                                    // Sonu ekle
-                                    formattedSettings.Append(_settings.EndChar);
-                                    
-                                    return formattedSettings.ToString();
+                                    return deviceInfo;
                                 }
                                 else
                                 {
-                                    _logger.LogWarning("Cihaz ayarları bulunamadı: IMEI {Imei}", imei);
+                                    _logger.LogWarning("Cihaz bulunamadı: IMEI {Imei}", imei);
                                 }
                             }
                         }
@@ -513,8 +449,246 @@ namespace DeviceApi.TCPListener.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Cihaz ayarları çıkarılırken hata");
+                _logger.LogError(ex, "Cihaz bilgileri çıkarılırken hata");
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Cihaz ayarlarını istenen formatta düzenler
+        /// </summary>
+        private string FormatDeviceSettings(Entities.Concrete.DeviceSettings settings)
+        {
+            StringBuilder formattedSettings = new StringBuilder();
+            
+            formattedSettings.Append($"{_settings.StartChar}{MessageTypes.DeviceSettings}{_settings.DelimiterChar}");
+            
+            // Ayarları ekle
+            formattedSettings.Append("ApnName=").Append(settings.ApnName).Append(";");
+            formattedSettings.Append("ApnUsername=").Append(settings.ApnUsername ?? string.Empty).Append(";");
+            formattedSettings.Append("ApnPassword=").Append(settings.ApnPassword ?? string.Empty).Append(";");
+            formattedSettings.Append("ServerIp=").Append(settings.ServerIp).Append(";");
+            formattedSettings.Append("TcpPort=").Append(settings.TcpPort).Append(";");
+            formattedSettings.Append("UdpPort=").Append(settings.UdpPort).Append(";");
+            formattedSettings.Append("FtpStatus=").Append(settings.FtpStatus ? "1" : "0").Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpIp))
+                formattedSettings.Append("FtpIp=").Append(settings.FtpIp).Append(";");
+            
+            if (settings.FtpPort.HasValue)
+                formattedSettings.Append("FtpPort=").Append(settings.FtpPort.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpUsername))
+                formattedSettings.Append("FtpUsername=").Append(settings.FtpUsername).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.FtpPassword))
+                formattedSettings.Append("FtpPassword=").Append(settings.FtpPassword).Append(";");
+            
+            if (settings.ConnectionTimeoutDuration.HasValue)
+                formattedSettings.Append("ConnectionTimeoutDuration=").Append(settings.ConnectionTimeoutDuration.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationHardwareVersion))
+                formattedSettings.Append("CommunicationHardwareVersion=").Append(settings.CommunicationHardwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationSoftwareVersion))
+                formattedSettings.Append("CommunicationSoftwareVersion=").Append(settings.CommunicationSoftwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.GraphicsCardHardwareVersion))
+                formattedSettings.Append("GraphicsCardHardwareVersion=").Append(settings.GraphicsCardHardwareVersion).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.GraphicsCardSoftwareVersion))
+                formattedSettings.Append("GraphicsCardSoftwareVersion=").Append(settings.GraphicsCardSoftwareVersion).Append(";");
+            
+            if (settings.ScrollingTextSpeed.HasValue)
+                formattedSettings.Append("ScrollingTextSpeed=").Append(settings.ScrollingTextSpeed.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TramDisplayType))
+                formattedSettings.Append("TramDisplayType=").Append(settings.TramDisplayType).Append(";");
+            
+            if (settings.BusScreenPageCount.HasValue)
+                formattedSettings.Append("BusScreenPageCount=").Append(settings.BusScreenPageCount.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TimeDisplayFormat))
+                formattedSettings.Append("TimeDisplayFormat=").Append(settings.TimeDisplayFormat).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.TramFont))
+                formattedSettings.Append("TramFont=").Append(settings.TramFont).Append(";");
+            
+            if (settings.ScreenVerticalPixelCount.HasValue)
+                formattedSettings.Append("ScreenVerticalPixelCount=").Append(settings.ScreenVerticalPixelCount.Value).Append(";");
+            
+            if (settings.ScreenHorizontalPixelCount.HasValue)
+                formattedSettings.Append("ScreenHorizontalPixelCount=").Append(settings.ScreenHorizontalPixelCount.Value).Append(";");
+            
+            if (settings.TemperatureAlarmThreshold.HasValue)
+                formattedSettings.Append("TemperatureAlarmThreshold=").Append(settings.TemperatureAlarmThreshold.Value).Append(";");
+            
+            if (settings.HumidityAlarmThreshold.HasValue)
+                formattedSettings.Append("HumidityAlarmThreshold=").Append(settings.HumidityAlarmThreshold.Value).Append(";");
+            
+            if (settings.GasAlarmThreshold.HasValue)
+                formattedSettings.Append("GasAlarmThreshold=").Append(settings.GasAlarmThreshold.Value).Append(";");
+            
+            if (settings.LightSensorStatus.HasValue)
+                formattedSettings.Append("LightSensorStatus=").Append(settings.LightSensorStatus.Value ? "1" : "0").Append(";");
+            
+            if (settings.LightSensorOperationLevel.HasValue)
+                formattedSettings.Append("LightSensorOperationLevel=").Append(settings.LightSensorOperationLevel.Value).Append(";");
+            
+            if (settings.LightSensorLevel1.HasValue)
+                formattedSettings.Append("LightSensorLevel1=").Append(settings.LightSensorLevel1.Value).Append(";");
+            
+            if (settings.LightSensorLevel2.HasValue)
+                formattedSettings.Append("LightSensorLevel2=").Append(settings.LightSensorLevel2.Value).Append(";");
+            
+            if (settings.LightSensorLevel3.HasValue)
+                formattedSettings.Append("LightSensorLevel3=").Append(settings.LightSensorLevel3.Value).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.SocketType))
+                formattedSettings.Append("SocketType=").Append(settings.SocketType).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StopName))
+                formattedSettings.Append("StopName=").Append(settings.StopName).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StartupLogoFilename))
+                formattedSettings.Append("StartupLogoFilename=").Append(settings.StartupLogoFilename).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.StartupLogoCrc16))
+                formattedSettings.Append("StartupLogoCrc16=").Append(settings.StartupLogoCrc16).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.VehicleLogoFilename))
+                formattedSettings.Append("VehicleLogoFilename=").Append(settings.VehicleLogoFilename).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.VehicleLogoCrc16))
+                formattedSettings.Append("VehicleLogoCrc16=").Append(settings.VehicleLogoCrc16).Append(";");
+            
+            if (!string.IsNullOrEmpty(settings.CommunicationType))
+                formattedSettings.Append("CommunicationType=").Append(settings.CommunicationType).Append(";");
+            
+            // Sonu ekle
+            formattedSettings.Append(_settings.EndChar);
+            
+            return formattedSettings.ToString();
+        }
+
+        /// <summary>
+        /// Tam ekran mesajını formatlar
+        /// </summary>
+        private string FormatFullScreenMessage(Entities.Concrete.FullScreenMessage message)
+        {
+            StringBuilder formattedMessage = new StringBuilder();
+            
+            // ^6 ile başla ve mesaj tipini belirt
+            formattedMessage.Append($"{_settings.StartChar}{MessageTypes.ScreenMessage}{_settings.DelimiterChar}");
+            
+            // Mesaj tipini belirt (1 = FullScreenMessage)
+            formattedMessage.Append("1").Append(_settings.DelimiterChar);
+            
+            // Türkçe satırlar
+            formattedMessage.Append(message.TurkishLine1 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.TurkishLine2 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.TurkishLine3 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.TurkishLine4 ?? string.Empty).Append(_settings.DelimiterChar);
+            
+            // İngilizce satırlar
+            formattedMessage.Append(message.EnglishLine1 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.EnglishLine2 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.EnglishLine3 ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.EnglishLine4 ?? string.Empty).Append(_settings.DelimiterChar);
+            
+            // Font tipi ve hizalama
+            formattedMessage.Append(message.FontTypeId).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.AlignmentTypeId);
+            
+            // Sonu ekle
+            formattedMessage.Append(_settings.EndChar);
+            
+            return formattedMessage.ToString();
+        }
+
+        /// <summary>
+        /// Kayan ekran mesajını formatlar
+        /// </summary>
+        private string FormatScrollingScreenMessage(Entities.Concrete.ScrollingScreenMessage message)
+        {
+            StringBuilder formattedMessage = new StringBuilder();
+            
+            // ^6 ile başla ve mesaj tipini belirt
+            formattedMessage.Append($"{_settings.StartChar}{MessageTypes.ScreenMessage}{_settings.DelimiterChar}");
+            
+            // Mesaj tipini belirt (2 = ScrollingScreenMessage)
+            formattedMessage.Append("2").Append(_settings.DelimiterChar);
+            
+            // Türkçe ve İngilizce satırlar
+            formattedMessage.Append(message.TurkishLine ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.EnglishLine ?? string.Empty);
+            
+            // Sonu ekle
+            formattedMessage.Append(_settings.EndChar);
+            
+            return formattedMessage.ToString();
+        }
+
+        /// <summary>
+        /// Bitmap ekran mesajını formatlar
+        /// </summary>
+        private string FormatBitmapScreenMessage(Entities.Concrete.BitmapScreenMessage message)
+        {
+            StringBuilder formattedMessage = new StringBuilder();
+            
+            // ^6 ile başla ve mesaj tipini belirt
+            formattedMessage.Append($"{_settings.StartChar}{MessageTypes.ScreenMessage}{_settings.DelimiterChar}");
+            
+            // Mesaj tipini belirt (3 = BitmapScreenMessage)
+            formattedMessage.Append("3").Append(_settings.DelimiterChar);
+            
+            // Türkçe ve İngilizce bitmap
+            formattedMessage.Append(message.TurkishBitmap ?? string.Empty).Append(_settings.DelimiterChar);
+            formattedMessage.Append(message.EnglishBitmap ?? string.Empty).Append(_settings.DelimiterChar);
+            
+            // Görüntülenme süresi
+            formattedMessage.Append(message.Duration);
+            
+            // Sonu ekle
+            formattedMessage.Append(_settings.EndChar);
+            
+            return formattedMessage.ToString();
+        }
+
+        /// <summary>
+        /// Ekran mesajlarını sırayla gönderir
+        /// </summary>
+        private async Task SendScreenMessagesAsync(NetworkStream networkStream, DeviceInfoForMessaging deviceInfo, CancellationToken cancellationToken)
+        {
+            // Atanmış mesajlar varsa gönder
+            if (deviceInfo.HasFullScreenMessage)
+            {
+                await Task.Delay(200, cancellationToken); // Kısa beklemeler ekle
+                
+                byte[] messageBytes = Encoding.UTF8.GetBytes(deviceInfo.FullScreenMessage);
+                await networkStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
+                
+                _logger.LogInformation("Cihaza FullScreenMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
+            }
+            
+            if (deviceInfo.HasScrollingScreenMessage)
+            {
+                await Task.Delay(200, cancellationToken);
+                
+                byte[] messageBytes = Encoding.UTF8.GetBytes(deviceInfo.ScrollingScreenMessage);
+                await networkStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
+                
+                _logger.LogInformation("Cihaza ScrollingScreenMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
+            }
+            
+            if (deviceInfo.HasBitmapScreenMessage)
+            {
+                await Task.Delay(200, cancellationToken);
+                
+                byte[] messageBytes = Encoding.UTF8.GetBytes(deviceInfo.BitmapScreenMessage);
+                await networkStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
+                
+                _logger.LogInformation("Cihaza BitmapScreenMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
             }
         }
 
