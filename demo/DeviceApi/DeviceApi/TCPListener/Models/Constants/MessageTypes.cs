@@ -26,6 +26,11 @@ namespace DeviceApi.TCPListener.Models.Constants
         public const int ScreenMessage = 6;
         
         /// <summary>
+        /// Tahmin Verisi mesaj tipi
+        /// </summary>
+        public const int Prediction = 8;
+        
+        /// <summary>
         /// Hata/Bilinmeyen mesaj tipi
         /// </summary>
         public const int Error = 0;

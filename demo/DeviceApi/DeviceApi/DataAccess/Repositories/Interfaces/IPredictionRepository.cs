@@ -23,6 +23,11 @@ namespace Data.Interfaces
         Task<Prediction> GetPredictionByPlatformIdAsync(int platformId);
         
         /// <summary>
+        /// Platform ID'sine göre tahmin getirir (senkron versiyon)
+        /// </summary>
+        Prediction GetByPlatformId(int platformId);
+        
+        /// <summary>
         /// Yeni tahmin ekler
         /// </summary>
         Task AddPredictionAsync(Prediction prediction);

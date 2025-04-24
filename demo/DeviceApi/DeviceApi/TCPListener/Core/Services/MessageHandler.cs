@@ -250,6 +250,39 @@ namespace DeviceApi.TCPListener.Core.Services
                         }
                     }
                     break;
+                
+                case MessageTypes.Prediction:
+                    // Tahmin mesajları için işleme
+                    response.ResponseCode = deviceMessage.ApprovalStatus == DeviceApprovalStatus.Approved
+                        ? ResponseCodes.Accept
+                        : ResponseCodes.Reject;
+                    
+                    if (response.ResponseCode == ResponseCodes.Accept)
+                    {
+                        _logger.LogInformation("Tahmin mesajı işlendi. IMEI: {Imei}", deviceMessage.Imei);
+                        
+                        // Burada cihazın tahmin mesajına dönüş yanıtı hazırlanabilir
+                        // Örneğin, cihaz tahmin aldığını onayladığında burada işlenebilir
+                        try
+                        {
+                            using (var scope = _serviceScopeFactory.CreateScope())
+                            {
+                                var deviceRepository = scope.ServiceProvider.GetRequiredService<IDeviceRepository>();
+                                var device = deviceRepository.GetByImei(deviceMessage.Imei);
+                                
+                                if (device != null)
+                                {
+                                    _logger.LogInformation("Tahmin mesajı onaylandı: Platform {PlatformId}, IMEI: {Imei}", 
+                                        device.PlatformId, deviceMessage.Imei);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "Tahmin mesajı işlenirken hata oluştu. IMEI: {Imei}", deviceMessage.Imei);
+                        }
+                    }
+                    break;
                     
                 // Diğer mesaj tipleri için yanıt oluşturma kodu eklenecek
                 

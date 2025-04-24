@@ -38,6 +38,13 @@ namespace Data.Repositories
                 .Include(p => p.Platform)
                 .FirstOrDefaultAsync(p => p.PlatformId == platformId);
         }
+        
+        public Prediction GetByPlatformId(int platformId)
+        {
+            return _context.Predictions
+                .Include(p => p.Platform)
+                .FirstOrDefault(p => p.PlatformId == platformId);
+        }
 
         public async Task AddPredictionAsync(Prediction prediction)
         {

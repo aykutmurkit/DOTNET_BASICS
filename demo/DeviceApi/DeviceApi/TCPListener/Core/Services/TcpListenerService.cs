@@ -368,9 +368,11 @@ namespace DeviceApi.TCPListener.Core.Services
             public string FullScreenMessage { get; set; }
             public string ScrollingScreenMessage { get; set; }
             public string BitmapScreenMessage { get; set; }
+            public string PredictionMessage { get; set; }
             public bool HasFullScreenMessage { get; set; }
             public bool HasScrollingScreenMessage { get; set; }
             public bool HasBitmapScreenMessage { get; set; }
+            public bool HasPredictionMessage { get; set; }
         }
 
         /// <summary>
@@ -434,11 +436,30 @@ namespace DeviceApi.TCPListener.Core.Services
                                         deviceInfo.BitmapScreenMessage = FormatBitmapScreenMessage(device.BitmapScreenMessage);
                                     }
                                     
+                                    // Platformun tahmin verisini ekle
+                                    if (device.Platform != null)
+                                    {
+                                        var predictionRepository = scope.ServiceProvider.GetRequiredService<Data.Interfaces.IPredictionRepository>();
+                                        var prediction = predictionRepository.GetByPlatformId(device.PlatformId);
+                                        
+                                        if (prediction != null)
+                                        {
+                                            deviceInfo.HasPredictionMessage = true;
+                                            deviceInfo.PredictionMessage = FormatPredictionMessage(prediction);
+                                            _logger.LogInformation("Cihaz için tahmin verisi hazırlandı: IMEI {Imei}, Platform {PlatformId}", 
+                                                imei, device.PlatformId);
+                                        }
+                                        else
+                                        {
+                                            _logger.LogWarning("Platform için tahmin verisi bulunamadı: Platform {PlatformId}", device.PlatformId);
+                                        }
+                                    }
+                                    
                                     return deviceInfo;
                                 }
                                 else
                                 {
-                                    _logger.LogWarning("Cihaz bulunamadı: IMEI {Imei}", imei);
+                                    _logger.LogWarning("IMEI değerine göre cihaz bulunamadı: {Imei}", imei);
                                 }
                             }
                         }
@@ -449,7 +470,7 @@ namespace DeviceApi.TCPListener.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Cihaz bilgileri çıkarılırken hata");
+                _logger.LogError(ex, "Cihaz bilgilerini çıkarırken hata oluştu");
                 return null;
             }
         }
@@ -656,6 +677,76 @@ namespace DeviceApi.TCPListener.Core.Services
         }
 
         /// <summary>
+        /// Tahmin mesajını formatlar
+        /// </summary>
+        private string FormatPredictionMessage(Entities.Concrete.Prediction prediction)
+        {
+            StringBuilder formattedMessage = new StringBuilder();
+            
+            // ^8 ile başla (Prediction mesaj tipi)
+            formattedMessage.Append($"{_settings.StartChar}{MessageTypes.Prediction}{_settings.DelimiterChar}");
+            
+            // Tahmin bilgilerini ekle
+            // Bu kısım platform adı/yönü ve her bir tren bilgisini içerebilir
+            formattedMessage.Append("İstasyon: ").Append(prediction.StationName).Append(", ");
+            formattedMessage.Append("Yön: ").Append(prediction.Direction).Append(", ");
+            
+            // İlk tren bilgisi
+            if (!string.IsNullOrEmpty(prediction.Train1))
+            {
+                formattedMessage.Append("Tren 1: ").Append(prediction.Train1);
+                
+                if (!string.IsNullOrEmpty(prediction.Line1))
+                    formattedMessage.Append("/").Append(prediction.Line1);
+                    
+                if (!string.IsNullOrEmpty(prediction.Destination1))
+                    formattedMessage.Append("/").Append(prediction.Destination1);
+                    
+                if (prediction.Time1.HasValue)
+                    formattedMessage.Append("/").Append(prediction.Time1.Value.ToString("HH:mm"));
+                
+                formattedMessage.Append(", ");
+            }
+            
+            // İkinci tren bilgisi
+            if (!string.IsNullOrEmpty(prediction.Train2))
+            {
+                formattedMessage.Append("Tren 2: ").Append(prediction.Train2);
+                
+                if (!string.IsNullOrEmpty(prediction.Line2))
+                    formattedMessage.Append("/").Append(prediction.Line2);
+                    
+                if (!string.IsNullOrEmpty(prediction.Destination2))
+                    formattedMessage.Append("/").Append(prediction.Destination2);
+                    
+                if (prediction.Time2.HasValue)
+                    formattedMessage.Append("/").Append(prediction.Time2.Value.ToString("HH:mm"));
+                
+                formattedMessage.Append(", ");
+            }
+            
+            // Üçüncü tren bilgisi
+            if (!string.IsNullOrEmpty(prediction.Train3))
+            {
+                formattedMessage.Append("Tren 3: ").Append(prediction.Train3);
+                
+                if (!string.IsNullOrEmpty(prediction.Line3))
+                    formattedMessage.Append("/").Append(prediction.Line3);
+                    
+                if (!string.IsNullOrEmpty(prediction.Destination3))
+                    formattedMessage.Append("/").Append(prediction.Destination3);
+                    
+                if (prediction.Time3.HasValue)
+                    formattedMessage.Append("/").Append(prediction.Time3.Value.ToString("HH:mm"));
+            }
+            
+            // Sonu ekle
+            formattedMessage.Append(_settings.EndChar);
+            
+            return formattedMessage.ToString();
+        }
+
+        /// <summary>
         /// Ekran mesajlarını sırayla gönderir
         /// </summary>
         private async Task SendScreenMessagesAsync(NetworkStream networkStream, DeviceInfoForMessaging deviceInfo, CancellationToken cancellationToken)
@@ -689,6 +780,43 @@ namespace DeviceApi.TCPListener.Core.Services
                 await networkStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
                 
                 _logger.LogInformation("Cihaza BitmapScreenMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
+            }
+            
+            // Tahmin mesajı göndermesi
+            if (deviceInfo.HasPredictionMessage)
+            {
+                // İlk tahmin mesajını hemen gönder (6'lı mesajlardan sonra)
+                await Task.Delay(200, cancellationToken);
+                
+                byte[] messageBytes = Encoding.UTF8.GetBytes(deviceInfo.PredictionMessage);
+                await networkStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
+                
+                _logger.LogInformation("Cihaza ilk PredictionMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
+                
+                // Tahmin mesajlarını 5 saniye aralıklarla göndermeye devam et
+                // Bu işlem ayrı bir thread'de çalışacak ve bağlantı kopana kadar devam edecek
+                _ = Task.Run(async () => 
+                {
+                    try
+                    {
+                        while (!cancellationToken.IsCancellationRequested && networkStream.CanWrite)
+                        {
+                            // 5 saniye bekle
+                            await Task.Delay(5000, cancellationToken);
+                            
+                            // Tahmin mesajını tekrar gönder
+                            byte[] predictionBytes = Encoding.UTF8.GetBytes(deviceInfo.PredictionMessage);
+                            await networkStream.WriteAsync(predictionBytes, 0, predictionBytes.Length, cancellationToken);
+                            
+                            _logger.LogInformation("Cihaza periyodik PredictionMessage gönderildi: IMEI {Imei}", deviceInfo.Imei);
+                        }
+                    }
+                    catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+                    {
+                        // Bağlantı kapanmış veya hata oluşmuş olabilir
+                        _logger.LogWarning(ex, "Periyodik tahmin mesajı gönderimi sırasında hata oluştu: IMEI {Imei}", deviceInfo.Imei);
+                    }
+                }, cancellationToken);
             }
         }
 
