@@ -1,6 +1,6 @@
 using AutoMapper;
-using Data.Interfaces;
 using DeviceApi.Business.Services.Interfaces;
+using DeviceApi.DataAccess.Repositories.Interfaces;
 using Entities.Concrete;
 using Entities.Dtos;
 using LogLibrary.Core.Interfaces;

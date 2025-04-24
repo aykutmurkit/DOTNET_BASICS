@@ -3,6 +3,7 @@ using Data.Interfaces;
 using Data.Repositories;
 using Data.Seeding;
 using DeviceApi.DataAccess.Repositories.Concrete;
+using DeviceApi.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

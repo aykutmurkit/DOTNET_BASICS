@@ -1,5 +1,5 @@
 using Data.Context;
-using Data.Interfaces;
+using DeviceApi.DataAccess.Repositories.Interfaces;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 

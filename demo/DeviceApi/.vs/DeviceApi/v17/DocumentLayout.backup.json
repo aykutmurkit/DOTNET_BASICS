@@ -3,6 +3,66 @@
   "WorkspaceRootPath": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\mappings\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\mappings\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\repositories\\interfaces\\idevicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\repositories\\interfaces\\idevicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\repositories\\concrete\\devicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\repositories\\concrete\\devicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\configurations\\bitmapscreenmessageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\configurations\\bitmapscreenmessageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\core\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\repositories\\concrete\\alignmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\repositories\\concrete\\alignmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\repositories\\interfaces\\ialignmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\repositories\\interfaces\\ialignmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\core\\utilities\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\core\\utilities\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\models\\enumdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\models\\enumdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\models\\auth\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\models\\auth\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\models\\auth\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\models\\auth\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\models\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\tcplistener\\core\\services\\tcplistenerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\tcplistener\\core\\services\\tcplistenerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -55,10 +115,6 @@
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\tcplistener\\models\\dto\\tcplistenerstatistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\repositories\\concrete\\devicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\repositories\\concrete\\devicestatusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\seeding\\docs\\seedingprocess.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\seeding\\docs\\seedingprocess.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
@@ -79,10 +135,6 @@
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\controllers\\devicestatusescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\seeding\\bitmapscreenmessageseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\seeding\\bitmapscreenmessageseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -101,10 +153,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\services\\concrete\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\services\\concrete\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\mappings\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\mappings\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\mappings\\scrollingscreenmessagemappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -135,10 +183,6 @@
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\seeding\\platformseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\core\\utilities\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\core\\utilities\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\seeding\\predictionseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\seeding\\predictionseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -149,10 +193,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\docs\\tr\\seeding-sureci.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\docs\\tr\\seeding-sureci.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\seeding\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -243,20 +283,12 @@
       "RelativeMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|solutionrelative:jwtverifylibrary\\jwtverifylibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\business\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\entities\\concrete\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\entities\\concrete\\device.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\jwtverifylibrary\\jwtverifylibrary.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{EF95CD07-E647-4565-93EE-9E7D66DA74D2}|JWTVerifyLibrary\\JWTVerifyLibrary.csproj|solutionrelative:jwtverifylibrary\\jwtverifylibrary.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|solutionrelative:deviceapi\\dataaccess\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F17049F-5203-4825-8AA4-DA5AD1957B14}|DeviceApi\\DeviceApi.csproj|c:\\users\\amurkit\\desktop\\github\\dotnet_basics\\demo\\deviceapi\\deviceapi\\entities\\concrete\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -274,11 +306,193 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IDeviceStatusRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Interfaces\\IDeviceStatusRepository.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Interfaces\\IDeviceStatusRepository.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Interfaces\\IDeviceStatusRepository.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Interfaces\\IDeviceStatusRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:51:18.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeviceStatusRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T06:50:30.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T05:58:37.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Program.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs*",
+              "RelativeToolTip": "DeviceApi\\Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T12:18:58.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BitmapScreenMessageConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\BitmapScreenMessageConfiguration.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Configurations\\BitmapScreenMessageConfiguration.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\BitmapScreenMessageConfiguration.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Configurations\\BitmapScreenMessageConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:50:59.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\Core\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:50:52.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AlignmentTypeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\AlignmentTypeRepository.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Concrete\\AlignmentTypeRepository.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\AlignmentTypeRepository.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Concrete\\AlignmentTypeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:49:27.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:20:33.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IAlignmentTypeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Interfaces\\IAlignmentTypeRepository.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Interfaces\\IAlignmentTypeRepository.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Interfaces\\IAlignmentTypeRepository.cs",
+              "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Interfaces\\IAlignmentTypeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:49:21.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:23:06.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EnumDto.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\EnumDto.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\API\\Models\\EnumDto.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\EnumDto.cs",
+              "RelativeToolTip": "DeviceApi\\API\\Models\\EnumDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:38:13.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TokenResponse.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\TokenResponse.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\API\\Models\\Auth\\TokenResponse.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\TokenResponse.cs",
+              "RelativeToolTip": "DeviceApi\\API\\Models\\Auth\\TokenResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:38:14.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RefreshTokenRequest.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\RefreshTokenRequest.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\API\\Models\\Auth\\RefreshTokenRequest.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\RefreshTokenRequest.cs",
+              "RelativeToolTip": "DeviceApi\\API\\Models\\Auth\\RefreshTokenRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:38:12.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\API\\Models\\Auth\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Models\\Auth\\LoginRequest.cs",
+              "RelativeToolTip": "DeviceApi\\API\\Models\\Auth\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:38:10.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "TcpListenerService.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Core\\Services\\TcpListenerService.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Core\\Services\\TcpListenerService.cs",
@@ -291,7 +505,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Utilities\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "DeviceApi\\Core\\Utilities\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Utilities\\ApiResponse.cs",
+              "RelativeToolTip": "DeviceApi\\Core\\Utilities\\ApiResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T16:53:57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "MessageTypes.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Constants\\MessageTypes.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Constants\\MessageTypes.cs",
@@ -303,7 +530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 24,
               "Title": "DeviceApprovalStatus.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Constants\\DeviceApprovalStatus.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Constants\\DeviceApprovalStatus.cs",
@@ -315,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 25,
               "Title": "DeviceInfo.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\DeviceInfo.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\DeviceInfo.cs",
@@ -327,7 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
               "Title": "MessageHandler.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Core\\Services\\MessageHandler.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Core\\Services\\MessageHandler.cs",
@@ -339,7 +566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "CommunicationTypes.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Constants\\CommunicationTypes.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Constants\\CommunicationTypes.cs",
@@ -351,7 +578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 22,
               "Title": "ResponseCodes.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Constants\\ResponseCodes.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Constants\\ResponseCodes.cs",
@@ -363,7 +590,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 26,
               "Title": "TcpListenerSettings.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Configurations\\TcpListenerSettings.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Configurations\\TcpListenerSettings.cs",
@@ -375,7 +602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 27,
               "Title": "DeviceResponse.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Entities\\DeviceResponse.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Entities\\DeviceResponse.cs",
@@ -387,7 +614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 28,
               "Title": "TcpListenerStatistics.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Models\\Dto\\TcpListenerStatistics.cs",
               "RelativeDocumentMoniker": "DeviceApi\\TCPListener\\Models\\Dto\\TcpListenerStatistics.cs",
@@ -399,19 +626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DeviceStatusRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
-              "RelativeToolTip": "DeviceApi\\DataAccess\\Repositories\\Concrete\\DeviceStatusRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T06:50:30.223Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 29,
               "Title": "SeedingProcess.md",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\docs\\SeedingProcess.md",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\docs\\SeedingProcess.md",
@@ -423,7 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 21,
               "Title": "MessageHandler.cs",
               "DocumentMoniker": "C:\\Users\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Core\\MessageHandler.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\aykut\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\TCPListener\\Core\\MessageHandler.cs",
@@ -435,7 +650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 30,
               "Title": "PeriodicMessageSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\PeriodicMessageSeeder.cs",
@@ -447,7 +662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 31,
               "Title": "FontTypesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\FontTypesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\FontTypesController.cs",
@@ -459,7 +674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 32,
               "Title": "FullScreenMessageSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\FullScreenMessageSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\FullScreenMessageSeeder.cs",
@@ -471,7 +686,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 33,
               "Title": "DeviceStatusesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\DeviceStatusesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\DeviceStatusesController.cs",
@@ -483,19 +698,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\Program.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Program.cs",
-              "RelativeToolTip": "DeviceApi\\Program.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T12:18:58.714Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 34,
               "Title": "BitmapScreenMessageSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\BitmapScreenMessageSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\BitmapScreenMessageSeeder.cs",
@@ -507,7 +710,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 35,
               "Title": "DeviceSettingsSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\DeviceSettingsSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\DeviceSettingsSeeder.cs",
@@ -519,7 +722,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 36,
               "Title": "BitmapScreenMessagesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\BitmapScreenMessagesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\BitmapScreenMessagesController.cs",
@@ -531,7 +734,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 37,
               "Title": "DeviceStatus.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\DeviceStatus.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\DeviceStatus.cs",
@@ -543,7 +746,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 18,
               "Title": "dbo.DeviceSettings.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.DeviceSettings.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.DeviceSettings.sql",
@@ -552,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 38,
               "Title": "DeviceService.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Business\\Services\\Concrete\\DeviceService.cs",
@@ -564,19 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "DeviceApi\\Business\\Mappings\\Extensions\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T05:58:37.485Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 39,
               "Title": "ScrollingScreenMessageMappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\ScrollingScreenMessageMappingProfile.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Business\\Mappings\\ScrollingScreenMessageMappingProfile.cs",
@@ -588,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
               "Title": "dbo.Devices.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.Devices.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.Devices.sql",
@@ -597,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 20,
               "Title": "dbo.ScrollingScreenMessages.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.ScrollingScreenMessages.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/DeviceDb/True/SqlTable/dbo.ScrollingScreenMessages.sql",
@@ -606,7 +797,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 40,
               "Title": "SeederOrder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\SeederOrder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\SeederOrder.cs",
@@ -618,7 +809,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 41,
               "Title": "StationMappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Mappings\\StationMappingProfile.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Business\\Mappings\\StationMappingProfile.cs",
@@ -630,7 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 42,
               "Title": "ScrollingScreenMessageSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\ScrollingScreenMessageSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\ScrollingScreenMessageSeeder.cs",
@@ -642,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 43,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\appsettings.json",
               "RelativeDocumentMoniker": "DeviceApi\\appsettings.json",
@@ -654,7 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 44,
               "Title": "FullScreenMessageConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\FullScreenMessageConfiguration.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Configurations\\FullScreenMessageConfiguration.cs",
@@ -666,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 45,
               "Title": "PlatformSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PlatformSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\PlatformSeeder.cs",
@@ -678,19 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "ApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Utilities\\ApiResponse.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\Core\\Utilities\\ApiResponse.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Core\\Utilities\\ApiResponse.cs",
-              "RelativeToolTip": "DeviceApi\\Core\\Utilities\\ApiResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T16:53:57Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 46,
               "Title": "PredictionSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\PredictionSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\PredictionSeeder.cs",
@@ -702,7 +881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 47,
               "Title": "ISeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\ISeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\ISeeder.cs",
@@ -714,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 48,
               "Title": "DevicesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\DevicesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\DevicesController.cs",
@@ -726,19 +905,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "Seeding-Sureci.md",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Docs\\TR\\Seeding-Sureci.md",
-              "RelativeDocumentMoniker": "DeviceApi\\Docs\\TR\\Seeding-Sureci.md",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Docs\\TR\\Seeding-Sureci.md",
-              "RelativeToolTip": "DeviceApi\\Docs\\TR\\Seeding-Sureci.md",
-              "ViewState": "AgIAAJgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-04-08T15:38:29.589Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 49,
               "Title": "DatabaseSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\DatabaseSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\DatabaseSeeder.cs",
@@ -750,7 +917,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "StationSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\StationSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\StationSeeder.cs",
@@ -762,7 +929,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 51,
               "Title": "DeviceSeeder.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Seeding\\DeviceSeeder.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Seeding\\DeviceSeeder.cs",
@@ -774,7 +941,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 52,
               "Title": "PeriodicMessageDtos.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Dtos\\PeriodicMessageDtos.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Dtos\\PeriodicMessageDtos.cs",
@@ -786,7 +953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 53,
               "Title": "PlatformDtos.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Dtos\\PlatformDtos.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Dtos\\PlatformDtos.cs",
@@ -798,7 +965,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 54,
               "Title": "PredictionDtos.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Dtos\\PredictionDtos.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Dtos\\PredictionDtos.cs",
@@ -810,7 +977,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 55,
               "Title": "PeriodicMessage.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\PeriodicMessage.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\PeriodicMessage.cs",
@@ -822,7 +989,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 56,
               "Title": "PeriodicMessageRepository.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Repositories\\Concrete\\PeriodicMessageRepository.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Repositories\\Concrete\\PeriodicMessageRepository.cs",
@@ -834,7 +1001,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 57,
               "Title": "PeriodicMessageConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\PeriodicMessageConfiguration.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Configurations\\PeriodicMessageConfiguration.cs",
@@ -846,7 +1013,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 58,
               "Title": "PredictionsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\PredictionsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\PredictionsController.cs",
@@ -858,7 +1025,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 59,
               "Title": "StationsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\StationsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\StationsController.cs",
@@ -870,7 +1037,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 60,
               "Title": "PlatformsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\PlatformsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\PlatformsController.cs",
@@ -882,7 +1049,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 61,
               "Title": "PeriodicMessagesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\PeriodicMessagesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\PeriodicMessagesController.cs",
@@ -894,7 +1061,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 62,
               "Title": "FullScreenMessageService.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Services\\Concrete\\FullScreenMessageService.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Business\\Services\\Concrete\\FullScreenMessageService.cs",
@@ -902,11 +1069,12 @@
               "RelativeToolTip": "DeviceApi\\Business\\Services\\Concrete\\FullScreenMessageService.cs",
               "ViewState": "AgIAAHIAAAAAAAAAAAAcwJUAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T10:30:43.583Z"
+              "WhenOpened": "2025-04-08T10:30:43.583Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 63,
               "Title": "ScrollingScreenMessagesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\ScrollingScreenMessagesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\ScrollingScreenMessagesController.cs",
@@ -918,7 +1086,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 64,
               "Title": "FullScreenMessagesController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\FullScreenMessagesController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\FullScreenMessagesController.cs",
@@ -930,7 +1098,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 65,
               "Title": "DeviceSettingsController.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\API\\Controllers\\DeviceSettingsController.cs",
               "RelativeDocumentMoniker": "DeviceApi\\API\\Controllers\\DeviceSettingsController.cs",
@@ -942,7 +1110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 66,
               "Title": "DeviceConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\DeviceConfiguration.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Configurations\\DeviceConfiguration.cs",
@@ -954,7 +1122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 67,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Context\\AppDbContext.cs",
@@ -966,7 +1134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 68,
               "Title": "StationConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Configurations\\StationConfiguration.cs",
               "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Configurations\\StationConfiguration.cs",
@@ -978,7 +1146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 69,
               "Title": "ScrollingScreenMessage.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\ScrollingScreenMessage.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\ScrollingScreenMessage.cs",
@@ -990,7 +1158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 70,
               "Title": "JWTVerifyLibrary.csproj",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
@@ -1002,19 +1170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "DeviceApi\\Business\\Extensions\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T08:23:06.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 71,
               "Title": "Device.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Device.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Device.cs",
@@ -1026,7 +1182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 72,
               "Title": "JWTVerifyLibrary",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
               "RelativeDocumentMoniker": "JWTVerifyLibrary\\JWTVerifyLibrary.csproj",
@@ -1037,19 +1193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "DeviceApi\\DataAccess\\Extensions\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCYAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T08:20:33.22Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 73,
               "Title": "Station.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Station.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Station.cs",
@@ -1061,7 +1205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 74,
               "Title": "Platform.cs",
               "DocumentMoniker": "C:\\Users\\amurkit\\Desktop\\github\\DOTNET_BASICS\\demo\\DeviceApi\\DeviceApi\\Entities\\Concrete\\Platform.cs",
               "RelativeDocumentMoniker": "DeviceApi\\Entities\\Concrete\\Platform.cs",

@@ -1,4 +1,3 @@
-using DeviceApi.API.Extensions;
 using DeviceApi.Business.Extensions;
 using DeviceApi.Core.Extensions;
 using DeviceApi.DataAccess.Extensions;

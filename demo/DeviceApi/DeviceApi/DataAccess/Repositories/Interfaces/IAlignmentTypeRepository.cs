@@ -1,6 +1,6 @@
 using Entities.Concrete;
 
-namespace Data.Interfaces
+namespace DeviceApi.DataAccess.Repositories.Interfaces
 {
     /// <summary>
     /// Hizalama türleri için repository interface
@@ -37,4 +37,4 @@ namespace Data.Interfaces
         /// </summary>
         Task DeleteAlignmentTypeAsync(int id);
     }
-} 
+}

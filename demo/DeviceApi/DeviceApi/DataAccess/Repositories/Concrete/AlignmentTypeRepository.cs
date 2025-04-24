@@ -1,9 +1,9 @@
 using Data.Context;
-using Data.Interfaces;
+using DeviceApi.DataAccess.Repositories.Interfaces;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
-namespace Data.Repositories
+namespace DeviceApi.DataAccess.Repositories.Concrete
 {
     /// <summary>
     /// Hizalama türleri için repository implementasyonu
@@ -72,4 +72,4 @@ namespace Data.Repositories
             }
         }
     }
-} 
+}
